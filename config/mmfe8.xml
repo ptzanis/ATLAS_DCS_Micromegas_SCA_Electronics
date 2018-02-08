@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://cern.ch/quasar/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
+	<StandardMetaData>
+		<Log>
+			<GeneralLogLevel logLevel="TRC" /></Log></StandardMetaData>
+	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/80" name="SCA on Felix (elink 0x80)">
+		<AnalogInputSystem name="ai" generalRefreshRate="1">
+			<AnalogInput name="vmmPdo1" id="1" />
+			<AnalogInput name="vmmPdo2" id="2"></AnalogInput>
+			<AnalogInput name="vmmPdo3" id="3"></AnalogInput>
+			<AnalogInput name="vmmPdo4" id="4"></AnalogInput>
+			<AnalogInput name="vmmPdo5" id="5"></AnalogInput>
+			<AnalogInput name="vmmPdo6" id="6"></AnalogInput>
+			<AnalogInput name="vmmPdo7" id="7"></AnalogInput>
+			<AnalogInput name="vmmPdo8" id="8"></AnalogInput>
+			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
+
+		</AnalogInputSystem>
+		<SpiSystem name="spi">
+			<SpiSlave transmissionSize="96" name="vmm0"
+				busSpeed="20000000" slaveId="1" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false"
+				sampleAtFallingTxEdge="false" lsbToMsb="false" autoSsMode="true">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm1" busSpeed="20000000"
+				lsbToMsb="false" slaveId="2" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm2" busSpeed="20000000"
+				lsbToMsb="true" slaveId="3" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm3" busSpeed="20000000"
+				lsbToMsb="false" slaveId="4" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm4" busSpeed="20000000"
+				lsbToMsb="false" slaveId="5" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm5" busSpeed="20000000"
+				lsbToMsb="false" slaveId="6" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm6" busSpeed="20000000"
+				lsbToMsb="false" slaveId="7" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+			<SpiSlave autoSsMode="true" name="vmm7" busSpeed="20000000"
+				lsbToMsb="false" slaveId="8" transmissionSize="96"
+				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
+				sampleAtFallingRxEdge="false">
+			</SpiSlave>
+		</SpiSystem>
+
+		<DigitalIOSystem name="gpio">
+			<DigitalIO name="rocPllResetN" isInput="false" id="8"></DigitalIO>
+			<DigitalIO name="rocSResetN" isInput="false" id="9"></DigitalIO>
+			<DigitalIO name="rocCoreResetN" isInput="false" id="10"></DigitalIO>
+			<DigitalIO name="rocPllRocLocked" isInput="true" id="11"></DigitalIO>
+			<DigitalIO name="rocPllLocked" isInput="true" id="12"></DigitalIO>
+			<DigitalIO name="rocSeu" isInput="true" id="13"></DigitalIO>
+			<DigitalIO name="rocError" isInput="true" id="14"></DigitalIO>
+		</DigitalIOSystem>
+		<I2cMaster sclPadCmosOutput="false" name="mmfe8RocCoreDigital" addressingMode="10" masterId="0" busSpeed="200">
+			<I2cDevice numberOfBytes="1" address="7" name="sRocEnable"></I2cDevice>
+		</I2cMaster><I2cMaster sclPadCmosOutput="false" name="mmfe8RocPllCoreAnalog" addressingMode="10" masterId="1" busSpeed="200">
+			<I2cDevice numberOfBytes="1" address="70" name="ePllVMM0reg70"></I2cDevice>
+			<I2cDevice numberOfBytes="1" address="86" name="ePllVMM1reg86"></I2cDevice>
+			<I2cDevice numberOfBytes="1" address="102" name="ePllTDCreg102"></I2cDevice>
+			<I2cDevice numberOfBytes="1" address="112" name="register112"></I2cDevice>
+			<I2cDevice numberOfBytes="1" address="122" name="vmmEnaInvReg122"></I2cDevice>
+			<I2cDevice numberOfBytes="1" address="124" name="vmmEnaTpReg124"></I2cDevice>
+</I2cMaster>
+		
+
+	</SCA>
+			
+
+</configuration>
