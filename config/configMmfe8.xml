@@ -13,8 +13,17 @@
 			<AnalogInput name="vmmPdo5" id="6"></AnalogInput>
 			<AnalogInput name="vmmPdo6" id="7"></AnalogInput>
 			<AnalogInput name="vmmPdo7" id="8"></AnalogInput>
+			<AnalogInput name="tempSensor1" id="9"></AnalogInput>
+			<AnalogInput name="tempSensor2" id="10"></AnalogInput>
+			<AnalogInput name="feastTempA" id="11"></AnalogInput>
+			<AnalogInput name="feastTempB" id="12"></AnalogInput>
+			<AnalogInput name="feastTempE" id="14"></AnalogInput>
+			<AnalogInput name="feastTempC" id="15"></AnalogInput>
+			<AnalogInput name="0V65for1V3A" id="17"></AnalogInput>
+			<AnalogInput name="0V65for1V3E" id="18"></AnalogInput>
+			<AnalogInput name="0V6for1V2D" id="20"></AnalogInput>
+			<AnalogInput name="0V75for1V5A" id="21"></AnalogInput>
 			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
-
 		</AnalogInputSystem>
 		<SpiSystem name="spi">
 			<SpiSlave transmissionSize="96" name="vmm0"
@@ -58,7 +67,6 @@
 				sampleAtFallingRxEdge="false">
 			</SpiSlave>
 		</SpiSystem>
-
 		<DigitalIOSystem name="gpio">
 			<DigitalIO name="mmfe8Id0" isInput="true" id="0"></DigitalIO>
 			<DigitalIO name="mmfe8Id1" isInput="true" id="1"></DigitalIO>
@@ -121,7 +129,8 @@
 			<I2cDevice numberOfBytes="1" address="52" name="parityCounterVmm7"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="53" name="seuCounter"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="63" name="timeoutStatus"></I2cDevice>
-		</I2cMaster><I2cMaster sclPadCmosOutput="false" name="rocPllCoreAnalog" addressingMode="10" masterId="1" busSpeed="200">
+		</I2cMaster>
+		<I2cMaster sclPadCmosOutput="false" name="rocPllCoreAnalog" addressingMode="10" masterId="1" busSpeed="200">
 			<I2cDevice numberOfBytes="1" address="64" name="ePllVmm0Reg64"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="65" name="ePllVmm0Reg65"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="66" name="ePllVmm0Reg66"></I2cDevice>
@@ -183,7 +192,7 @@
 			<I2cDevice numberOfBytes="1" address="122" name="vmmEnaInv"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="123" name="vmmL0Inv"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="124" name="vmmTpInv"></I2cDevice>
-</I2cMaster>
+		</I2cMaster>
 		
 
 	</SCA>
