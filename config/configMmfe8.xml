@@ -188,7 +188,7 @@
 			<I2cDevice numberOfBytes="1" address="118" name="reg118"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="119" name="reg119"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="120" name="reg120"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="121" name="reg121vmmEcrInv"></I2cDevice>		
+			<I2cDevice numberOfBytes="1" address="121" name="reg121vmmBcrInv"></I2cDevice>		
 			<I2cDevice numberOfBytes="1" address="122" name="reg122vmmEnaInv"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="123" name="reg123vmmL0Inv"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="124" name="reg124vmmTpInv"></I2cDevice>
