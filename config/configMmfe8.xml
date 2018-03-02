@@ -84,7 +84,7 @@
 			<DigitalIO name="rocError" isInput="true" id="14"></DigitalIO>
 		</DigitalIOSystem>
 		<I2cMaster sclPadCmosOutput="false" name="rocCoreDigital" addressingMode="10" masterId="0" busSpeed="200">
-			<I2cDevice numberOfBytes="1" address="0" name="reg000eocId"></I2cDevice>
+			<I2cDevice numberOfBytes="1" address="0" name="reg000rocId"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="1" name="reg001elinkSpeed"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="2" name="reg002sRoc0VmmConnections"></I2cDevice>
 			<I2cDevice numberOfBytes="1" address="3" name="reg003sRoc1VmmConnections"></I2cDevice>
