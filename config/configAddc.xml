@@ -42,22 +42,22 @@
 		</DigitalIOSystem>
 		
 		<I2cMaster sclPadCmosOutput="false" name="gbtx0" addressingMode="7" masterId="0" busSpeed="100">
-			<I2cDevice numberOfBytes="2" address="0" name="gbtx0"></I2cDevice>
+			<I2cDevice numberOfBytes="2" address="1" name="gbtx0"></I2cDevice>
 		</I2cMaster>
 		<I2cMaster sclPadCmosOutput="false" name="gbtx1" addressingMode="7" masterId="1" busSpeed="100">
-			<I2cDevice numberOfBytes="2" address="0" name="gbtx1"></I2cDevice>
+			<I2cDevice numberOfBytes="2" address="2" name="gbtx1"></I2cDevice>
 		</I2cMaster>
 		<I2cMaster sclPadCmosOutput="false" name="art0Ps" addressingMode="7" masterId="3" busSpeed="100">
-			<I2cDevice numberOfBytes="2" address="0" name="art0Ps"></I2cDevice>
+			<I2cDevice numberOfBytes="2" address="25" name="art0Ps"></I2cDevice>
 		</I2cMaster>
 		<I2cMaster sclPadCmosOutput="false" name="art0Core" addressingMode="7" masterId="4" busSpeed="100">
-			<I2cDevice numberOfBytes="2" address="0" name="art0Core"></I2cDevice>
+			<I2cDevice numberOfBytes="2" address="17" name="art0Core"></I2cDevice>
 		</I2cMaster>
 		<I2cMaster sclPadCmosOutput="false" name="art1Ps" addressingMode="7" masterId="5" busSpeed="100">
-			<I2cDevice numberOfBytes="2" address="0" name="art0Ps"></I2cDevice>
+			<I2cDevice numberOfBytes="2" address="26" name="art0Ps"></I2cDevice>
 		</I2cMaster>
 		<I2cMaster sclPadCmosOutput="false" name="art1Core" addressingMode="7" masterId="6" busSpeed="100">
-			<I2cDevice numberOfBytes="2" address="0" name="art0Core"></I2cDevice>
+			<I2cDevice numberOfBytes="2" address="18" name="art0Core"></I2cDevice>
 		</I2cMaster>
 
 	</SCA>
