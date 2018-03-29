@@ -3,7 +3,8 @@
 	<StandardMetaData>
 		<Log>
 			<GeneralLogLevel logLevel="INF" /></Log></StandardMetaData>
-	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/81" name="SCA on MMFE8 0309">
+	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/08" name="SCA on MMFE8 0309">
+	
 		<AnalogInputSystem name="ai" generalRefreshRate="0">
 			<AnalogInput name="vmmPdo0" id="1"></AnalogInput>
 			<AnalogInput name="vmmPdo1" id="2"></AnalogInput>
@@ -25,6 +26,7 @@
 			<AnalogInput name="0V75for1V5A" id="21"></AnalogInput>
 			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
 		</AnalogInputSystem>
+		
 		<SpiSystem name="spi">
 			<SpiSlave transmissionSize="96" name="vmm0"
 				busSpeed="20000000" slaveId="0" sclkIdleHigh="false"
@@ -67,6 +69,7 @@
 				sampleAtFallingRxEdge="false">
 			</SpiSlave>
 		</SpiSystem>
+		
 		<DigitalIOSystem name="gpio">
 			<DigitalIO name="mmfe8Id0" isInput="true" id="0"></DigitalIO>
 			<DigitalIO name="mmfe8Id1" isInput="true" id="1"></DigitalIO>
@@ -83,119 +86,119 @@
 			<DigitalIO name="rocSeu" isInput="true" id="13"></DigitalIO>
 			<DigitalIO name="rocError" isInput="true" id="14"></DigitalIO>
 		</DigitalIOSystem>
-		<I2cMaster sclPadCmosOutput="false" name="rocCoreDigital" addressingMode="10" masterId="0" busSpeed="200">
-			<I2cDevice numberOfBytes="1" address="0" name="reg000rocId"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="1" name="reg001elinkSpeed"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="2" name="reg002sRoc0VmmConnections"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="3" name="reg003sRoc1VmmConnections"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="4" name="reg004sRoc2VmmConnections"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="5" name="reg005sRoc3VmmConnections"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="6" name="reg006eopAndNullEventEnable"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="7" name="reg007sRocEnable"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="8" name="reg008vmmEnable"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="9" name="reg009timeout"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="10" name="reg010bcOffset0_txcSel"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="11" name="reg011bcOffset1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="12" name="reg012bcRollover0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="13" name="reg013bcRollover1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="14" name="reg014eportEnable"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="19" name="reg019fakeVmmFailure"></I2cDevice>		
-			<I2cDevice numberOfBytes="1" address="20" name="reg020busyAndTdcEnable"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="21" name="reg021busyOnLimit0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="22" name="reg022busyOnLimit1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="23" name="reg023busyOffLimit0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="24" name="reg024busyOffLimit1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="31" name="reg031l1EventsWithoutComma"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="32" name="reg022vmmCapture0Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="33" name="reg033vmmCapture1Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="34" name="reg034vmmCapture2Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="35" name="reg035vmmCapture3Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="36" name="reg036vmmCapture4Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="37" name="reg037vmmCapture5Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="38" name="reg038vmmCapture6Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="39" name="reg039vmmCapture7Status"></I2cDevice>	
-			<I2cDevice numberOfBytes="1" address="40" name="reg040sRoc0Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="41" name="reg041sRoc1Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="42" name="reg042sRoc2Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="43" name="reg043sRoc3Status"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="44" name="reg044seu"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="45" name="reg045parityCounterVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="46" name="reg046parityCounterVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="47" name="reg047parityCounterVmm2"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="48" name="reg048parityCounterVmm3"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="49" name="reg049parityCounterVmm4"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="50" name="reg050parityCounterVmm5"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="51" name="reg051parityCounterVmm6"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="52" name="reg052parityCounterVmm7"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="53" name="reg053seuCounter"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="63" name="reg063timeoutStatus"></I2cDevice>
-		</I2cMaster>
-		<I2cMaster sclPadCmosOutput="false" name="rocPllCoreAnalog" addressingMode="10" masterId="1" busSpeed="200">
-			<I2cDevice numberOfBytes="1" address="64" name="reg064ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="65" name="reg065ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="66" name="reg066ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="67" name="reg067ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="68" name="reg068ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="69" name="reg069ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="70" name="reg070ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="71" name="reg071ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="72" name="reg072ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="73" name="reg073ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="74" name="reg074ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="75" name="reg075ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="76" name="reg076ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="77" name="reg077ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="78" name="reg078ePllVmm0"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="79" name="reg079ePllVmm0"></I2cDevice>		
-			<I2cDevice numberOfBytes="1" address="80" name="reg080ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="81" name="reg081ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="82" name="reg082ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="83" name="reg083ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="84" name="reg084ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="85" name="reg085ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="86" name="reg086ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="87" name="reg087ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="88" name="reg088ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="89" name="reg089ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="90" name="reg090ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="91" name="reg091ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="92" name="reg092ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="93" name="reg093ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="94" name="reg094ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="95" name="reg095ePllVmm1"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="96" name="reg096ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="97" name="reg097ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="98" name="reg098ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="99" name="reg099ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="100" name="reg100ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="101" name="reg101ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="102" name="reg102ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="103" name="reg103ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="104" name="reg104ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="105" name="reg105ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="106" name="reg106ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="107" name="reg107ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="108" name="reg108ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="109" name="reg109ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="110" name="reg110ePllTdc"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="111" name="reg111ePllTdc"></I2cDevice>	
-			<I2cDevice numberOfBytes="1" address="112" name="reg112"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="113" name="reg113"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="114" name="reg114"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="115" name="reg115"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="116" name="reg116"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="117" name="reg117"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="118" name="reg118"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="119" name="reg119"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="120" name="reg120"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="121" name="reg121vmmBcrInv"></I2cDevice>		
-			<I2cDevice numberOfBytes="1" address="122" name="reg122vmmEnaInv"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="123" name="reg123vmmL0Inv"></I2cDevice>
-			<I2cDevice numberOfBytes="1" address="124" name="reg124vmmTpInv"></I2cDevice>
+		
+		<I2cMaster sclPadCmosOutput="false" name="rocCoreDigital" masterId="0" busSpeed="200">
+			<I2cSlave numberOfBytes="1" address="0" addressingMode="10" name="reg000rocId"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="1" addressingMode="10" name="reg001elinkSpeed"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="2" addressingMode="10" name="reg002sRoc0VmmConnections"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="3" addressingMode="10" name="reg003sRoc1VmmConnections"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="4" addressingMode="10" name="reg004sRoc2VmmConnections"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="5" addressingMode="10" name="reg005sRoc3VmmConnections"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="6" addressingMode="10" name="reg006eopAndNullEventEnable"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="7" addressingMode="10" name="reg007sRocEnable"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="8" addressingMode="10" name="reg008vmmEnable"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="9" addressingMode="10" name="reg009timeout"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="10" addressingMode="10" name="reg010bcOffset0_txcSel"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="11" addressingMode="10" name="reg011bcOffset1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="12" addressingMode="10" name="reg012bcRollover0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="13" addressingMode="10" name="reg013bcRollover1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="14" addressingMode="10" name="reg014eportEnable"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="19" addressingMode="10" name="reg019fakeVmmFailure"></I2cSlave>		
+			<I2cSlave numberOfBytes="1" address="20" addressingMode="10" name="reg020busyAndTdcEnable"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="21" addressingMode="10" name="reg021busyOnLimit0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="22" addressingMode="10" name="reg022busyOnLimit1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="23" addressingMode="10" name="reg023busyOffLimit0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="24" addressingMode="10" name="reg024busyOffLimit1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="31" addressingMode="10" name="reg031l1EventsWithoutComma"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="32" addressingMode="10" name="reg022vmmCapture0Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="33" addressingMode="10" name="reg033vmmCapture1Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="34" addressingMode="10" name="reg034vmmCapture2Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="35" addressingMode="10" name="reg035vmmCapture3Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="36" addressingMode="10" name="reg036vmmCapture4Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="37" addressingMode="10" name="reg037vmmCapture5Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="38" addressingMode="10" name="reg038vmmCapture6Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="39" addressingMode="10" name="reg039vmmCapture7Status"></I2cSlave>	
+			<I2cSlave numberOfBytes="1" address="40" addressingMode="10" name="reg040sRoc0Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="41" addressingMode="10" name="reg041sRoc1Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="42" addressingMode="10" name="reg042sRoc2Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="43" addressingMode="10" name="reg043sRoc3Status"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="44" addressingMode="10" name="reg044seu"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="45" addressingMode="10" name="reg045parityCounterVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="46" addressingMode="10" name="reg046parityCounterVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="47" addressingMode="10" name="reg047parityCounterVmm2"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="48" addressingMode="10" name="reg048parityCounterVmm3"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="49" addressingMode="10" name="reg049parityCounterVmm4"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="50" addressingMode="10" name="reg050parityCounterVmm5"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="51" addressingMode="10" name="reg051parityCounterVmm6"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="52" addressingMode="10" name="reg052parityCounterVmm7"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="53" addressingMode="10" name="reg053seuCounter"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="63" addressingMode="10" name="reg063timeoutStatus"></I2cSlave>
 		</I2cMaster>
 		
+		<I2cMaster sclPadCmosOutput="false" name="rocPllCoreAnalog" masterId="1" busSpeed="200">
+			<I2cSlave numberOfBytes="1" address="64" addressingMode="10" name="reg064ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="65" addressingMode="10" name="reg065ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="66" addressingMode="10" name="reg066ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="67" addressingMode="10" name="reg067ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="68" addressingMode="10" name="reg068ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="69" addressingMode="10" name="reg069ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="70" addressingMode="10" name="reg070ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="71" addressingMode="10" name="reg071ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="72" addressingMode="10" name="reg072ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="73" addressingMode="10" name="reg073ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="74" addressingMode="10" name="reg074ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="75" addressingMode="10" name="reg075ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="76" addressingMode="10" name="reg076ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="77" addressingMode="10" name="reg077ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="78" addressingMode="10" name="reg078ePllVmm0"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="79" addressingMode="10" name="reg079ePllVmm0"></I2cSlave>		
+			<I2cSlave numberOfBytes="1" address="80" addressingMode="10" name="reg080ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="81" addressingMode="10" name="reg081ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="82" addressingMode="10" name="reg082ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="83" addressingMode="10" name="reg083ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="84" addressingMode="10" name="reg084ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="85" addressingMode="10" name="reg085ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="86" addressingMode="10" name="reg086ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="87" addressingMode="10" name="reg087ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="88" addressingMode="10" name="reg088ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="89" addressingMode="10" name="reg089ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="90" addressingMode="10" name="reg090ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="91" addressingMode="10" name="reg091ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="92" addressingMode="10" name="reg092ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="93" addressingMode="10" name="reg093ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="94" addressingMode="10" name="reg094ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="95" addressingMode="10" name="reg095ePllVmm1"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="96" addressingMode="10" name="reg096ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="97" addressingMode="10" name="reg097ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="98" addressingMode="10" name="reg098ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="99" addressingMode="10" name="reg099ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="100" addressingMode="10" name="reg100ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="101" addressingMode="10" name="reg101ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="102" addressingMode="10" name="reg102ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="103" addressingMode="10" name="reg103ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="104" addressingMode="10" name="reg104ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="105" addressingMode="10" name="reg105ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="106" addressingMode="10" name="reg106ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="107" addressingMode="10" name="reg107ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="108" addressingMode="10" name="reg108ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="109" addressingMode="10" name="reg109ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="110" addressingMode="10" name="reg110ePllTdc"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="111" addressingMode="10" name="reg111ePllTdc"></I2cSlave>	
+			<I2cSlave numberOfBytes="1" address="112" addressingMode="10" name="reg112"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="113" addressingMode="10" name="reg113"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="114" addressingMode="10" name="reg114"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="115" addressingMode="10" name="reg115"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="116" addressingMode="10" name="reg116"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="117" addressingMode="10" name="reg117"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="118" addressingMode="10" name="reg118"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="119" addressingMode="10" name="reg119"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="120" addressingMode="10" name="reg120"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="121" addressingMode="10" name="reg121vmmBcrInv"></I2cSlave>		
+			<I2cSlave numberOfBytes="1" address="122" addressingMode="10" name="reg122vmmEnaInv"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="123" addressingMode="10" name="reg123vmmL0Inv"></I2cSlave>
+			<I2cSlave numberOfBytes="1" address="124" addressingMode="10" name="reg124vmmTpInv"></I2cSlave>
+		</I2cMaster>
 
-	</SCA>
-			
+	</SCA>		
 
 </configuration>

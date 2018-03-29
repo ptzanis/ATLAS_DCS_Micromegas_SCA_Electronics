@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://cern.ch/quasar/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
+	<StandardMetaData>
+		<Log>
+			<GeneralLogLevel logLevel="INF" /></Log></StandardMetaData>
+	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/08" name="SCA on MM-L1DDC">
+		<AnalogInputSystem name="ai" generalRefreshRate="0">
+			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
+		</AnalogInputSystem>
+		
+	</SCA>
+			
+
+</configuration>
