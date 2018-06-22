@@ -58,7 +58,7 @@
 			<I2cSlave numberOfBytes="2" address="26" addressingMode="7" name="art0Ps"></I2cSlave>
 		</I2cMaster>
 		<I2cMaster sclPadCmosOutput="false" name="art1Core" masterId="6" busSpeed="100">
-			<I2cSlave numberOfBytes="2" address="18" addressingMode="7" name="art0Core"></I2cSlave>
+			<I2cSlave numberOfBytes="2" address="18" addressingMode="7" name="art1Core"></I2cSlave>
 		</I2cMaster>
 
 	</SCA>
