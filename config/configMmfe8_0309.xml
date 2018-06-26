@@ -3,7 +3,7 @@
 	<StandardMetaData>
 		<Log>
 			<GeneralLogLevel logLevel="INF" /></Log></StandardMetaData>
-	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/08" name="SCA on MMFE8 0309">
+	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/81" name="SCA on MMFE8 0309">
 	
 		<AnalogInputSystem name="ai" generalRefreshRate="0">
 			<AnalogInput name="vmmPdo0" id="1"></AnalogInput>
