@@ -14,16 +14,14 @@
 			<AnalogInput name="vmmPdo5" id="6"></AnalogInput>
 			<AnalogInput name="vmmPdo6" id="7"></AnalogInput>
 			<AnalogInput name="vmmPdo7" id="8"></AnalogInput>
-			<AnalogInput name="tempSensor1" id="9"></AnalogInput>
-			<AnalogInput name="tempSensor2" id="10"></AnalogInput>
-			<AnalogInput name="feastTempA" id="11"></AnalogInput>
-			<AnalogInput name="feastTempB" id="12"></AnalogInput>
-			<AnalogInput name="feastTempE" id="14"></AnalogInput>
-			<AnalogInput name="feastTempC" id="15"></AnalogInput>
+			<AnalogInput name="vTempOut1" id="9"></AnalogInput>
+			<AnalogInput name="vTempOut2" id="10"></AnalogInput>
+			<AnalogInput name="pTat1V3A" id="11"></AnalogInput>
+			<AnalogInput name="pTat1V3AE" id="12"></AnalogInput>
+			<AnalogInput name="pTat1V2D" id="15"></AnalogInput>
 			<AnalogInput name="0V65for1V3A" id="17"></AnalogInput>
 			<AnalogInput name="0V65for1V3E" id="18"></AnalogInput>
 			<AnalogInput name="0V6for1V2D" id="20"></AnalogInput>
-			<AnalogInput name="0V75for1V5A" id="21"></AnalogInput>
 			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
 		</AnalogInputSystem>
 		
@@ -85,6 +83,12 @@
 			<DigitalIO name="rocPllLocked" isInput="true" id="12"></DigitalIO>
 			<DigitalIO name="rocSeu" isInput="true" id="13"></DigitalIO>
 			<DigitalIO name="rocError" isInput="true" id="14"></DigitalIO>
+			<DigitalIO name="transGate0" isInput="true" id="15"></DigitalIO>
+			<DigitalIO name="transGate1" isInput="true" id="16"></DigitalIO>
+			<DigitalIO name="rocCoreScl" isInput="true" id="17"></DigitalIO>
+			<DigitalIO name="rocCoreSda" isInput="true" id="18"></DigitalIO>
+			<DigitalIO name="rocPllScl" isInput="true" id="19"></DigitalIO>
+			<DigitalIO name="rocPllSda" isInput="true" id="20"></DigitalIO>
 		</DigitalIOSystem>
 		
 		<I2cMaster sclPadCmosOutput="false" name="rocCoreDigital" masterId="0" busSpeed="200">
