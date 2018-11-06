@@ -37,7 +37,7 @@
 				sampleAtFallingRxEdge="false">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm2" busSpeed="20000000"
-				lsbToMsb="true" slaveId="2" transmissionSize="96"
+				lsbToMsb="false" slaveId="2" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
 				sampleAtFallingRxEdge="false">
 			</SpiSlave>
