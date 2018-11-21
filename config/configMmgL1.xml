@@ -3,7 +3,7 @@
 	<StandardMetaData>
 		<Log>
 			<GeneralLogLevel logLevel="INF" /></Log></StandardMetaData>
-	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/bf" name="SCA on MM-L1DDCv3">
+	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/bf" name="SCA on MM-L1DDCv3" idConstraint="dont_care" supervised="true" recoveryActionScaStayedPowered="do_nothing" recoveryActionScaWasRepowered="reset_and_configure" managementFromAddressSpace="only_if_kaputt">
 		
 		<AnalogInputSystem name="ai" generalRefreshRate="0">
 			<AnalogInput name="GBTX1_TEMP" id="0"></AnalogInput>
