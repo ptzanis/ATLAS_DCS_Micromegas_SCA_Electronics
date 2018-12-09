@@ -30,43 +30,43 @@
 		<SpiSystem name="spi">
 			<SpiSlave transmissionSize="96" name="vmm0"
 				busSpeed="20000000" slaveId="0" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false"
+				sampleAtFallingRxEdge="true" toggleSs="true"
 				sampleAtFallingTxEdge="false" lsbToMsb="false" autoSsMode="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm1" busSpeed="20000000"
 				lsbToMsb="false" slaveId="1" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm2" busSpeed="20000000"
 				lsbToMsb="false" slaveId="2" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm3" busSpeed="20000000"
 				lsbToMsb="false" slaveId="3" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm4" busSpeed="20000000"
 				lsbToMsb="false" slaveId="4" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm5" busSpeed="20000000"
 				lsbToMsb="false" slaveId="5" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm6" busSpeed="20000000"
 				lsbToMsb="false" slaveId="6" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 			<SpiSlave autoSsMode="true" name="vmm7" busSpeed="20000000"
 				lsbToMsb="false" slaveId="7" transmissionSize="96"
 				sampleAtFallingTxEdge="false" sclkIdleHigh="false"
-				sampleAtFallingRxEdge="false">
+				sampleAtFallingRxEdge="true" toggleSs="true">
 			</SpiSlave>
 		</SpiSystem>
 		
