@@ -11,8 +11,8 @@
 			<AnalogInput name="2v5TP0" id="2"></AnalogInput>
 			<AnalogInput name="2v5TP1" id="3"></AnalogInput>
 			<AnalogInput name="boardTemp" id="24"></AnalogInput>
-			<AnalogInput name="feastTemp0" id="26"></AnalogInput>
-			<AnalogInput name="feastTemp1" id="27"></AnalogInput>
+			<AnalogInput name="feastTemp1v5" id="26"></AnalogInput>
+			<AnalogInput name="feastTemp2v5" id="27"></AnalogInput>
 			<AnalogInput name="gbtx0NTC" id="28"></AnalogInput>
 			<AnalogInput name="gbtx1NTC" id="29"></AnalogInput>
 			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
