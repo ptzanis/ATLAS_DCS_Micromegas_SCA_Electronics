@@ -1,0 +1,104 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 500 412 N "_3DFace" 0
+E E E E E 1 -1 -1 0  9 38
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+13 0
+"PUSH_BUTTON1"
+""
+1 62 62 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  60 40 233 98
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON1
+"main(mapping event)
+{
+  mapping root;
+  mapping child_map;
+  dyn_string child_dyn;
+  child_map[\"one\"] = 1;
+  child_map[\"two\"] = 2;
+  child_map[\"three\"] = 3;
+  child_dyn[1] = \"one\";
+  child_dyn[2] = \"two\";
+  child_dyn[3] = \"three\";
+  root[\"c1\"] = child_map;
+  root[\"c2\"] = child_dyn;
+  DebugN(\"root =>child1 =>element2:\" + root[\"c1\"][\"two\"]); //Output: 2
+  DebugN(\"root =>child2 =>element1:\" + root[\"c2\"][1]); //Output: one
+}" 0
+ E E E
+14 1
+"TEXT_FIELD1"
+""
+1 60 172 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  58 146 452 213
+3 "0s" 0 0 0 0 0 -1  E "main()
+{
+  this.text(getSystemName());
+}" 0
+ E
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

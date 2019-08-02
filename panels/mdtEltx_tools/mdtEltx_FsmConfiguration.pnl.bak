@@ -1,0 +1,1903 @@
+V 14
+2
+LANG:10001 0 
+LANG:1 0 
+PANEL,-1 -1 773 542 N "_3DFace" 0
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E "#uses \"mdtEltx_LIB_General.ctl\"
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//use the fwFsm library to create the fsm nodes of the eltx structure
+//fwFsmTree_addNode(string parent, string node, string type, int cu) 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+mdtEltx_createFsmTree(string partition)
+{
+  dyn_string sideChambers, layerChambers, chamberList, channels;
+  dyn_string side = makeDynString(\"A\", \"C\");
+  dyn_string layers;
+  dyn_string chambers = mdtPs_getAllChambersOfPartition(partition);
+  string sector;
+  
+  //create barrel/endcap partition in eltx partition first
+  DebugN(\"Creating nodes for eltx partition \"+partition);  
+  
+  for (int s=1; s<=dynlen(side); s++)
+  {
+    DebugN(partition+\" : \"+\"Creating nodes for side \" + side[s]);
+    
+    //INSERT EA, STATUS_EA & REFERENCE STATUS
+    fwFsmTree_addNode(\"MDT_ELTX\",\"MDT_\"+partition+side[s]+\"_ELTX\",\"MDT_PARTITION_ELTX\",1);
+    fwFsmTree_addNode(\"MDT_\"+partition+side[s]+\"_ELTX\",\"STATUS_MDT_\"+partition+side[s]+\"_ELTX\",\"ATLAS_STATUS\",0);    
+    fwFsmTree_addNode(\"STATUS_MDT_ELTX\",\"MDT_\"+partition+side[s]+\"_ELTX::STATUS_MDT_\"+partition+side[s]+\"_ELTX\",\"ATLAS_STATUS\",0);     
+    fwFsmTree_setNodeLabel(\"MDT_\"+partition+side[s]+\"_ELTX\", partition+side[s]);
+    
+    if (!fwFsmTree_isNode(\"MDT_\" + partition + side[s]+\"_ELTX\")) 
+    {
+      DebugN(\"ERROR: MDT_\" + partition + side[s] + \"_ELTX\"+\" node does not exist. Must be generated first.\");
+      return; //YETS2018_CORR
+    }
+    if (partition == \"B\")
+      layers = makeDynString(\"INNER\", \"MIDDLE\", \"OUTER\");
+    else
+      layers = makeDynString(\"INNER\", \"MIDDLE\", \"OUTER\", \"EE\");
+    
+    for (int l=1; l<=dynlen(layers); l++) // Layers next. They are CUs.   
+    {    
+      DebugN(\"Creating nodes for layer \" + layers[l]);
+      fwFsmTree_addNode(\"MDT_\" + partition + side[s]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_ELTX\", \"MDT_LAYER_ELTX\", 1);
+      fwFsmTree_addNode(\"MDT_\" + partition + side[s]+ \"_\" + layers[l]+\"_ELTX\", \"STATUS_MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_ELTX\", \"ATLAS_STATUS\", 0);
+      // References to the layer status objects to propagate status to partition level
+      fwFsmTree_addNode(\"STATUS_MDT_\"+partition+side[s]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l] + \"_ELTX::STATUS_MDT_\" + partition + side[s] + \"_\" + 
+                        layers[l]+\"_ELTX\", \"ATLAS_STATUS\", 0);
+      fwFsmTree_setNodeLabel(\"MDT_\"+partition+side[s]+\"_\"+layers[l]+\"_ELTX\", layers[l]);
+      delay(1);
+      
+      for (int ii=1; ii<=16; ii++)//Sectors next. They should be LUs.
+      {
+          if (ii<=9)  
+          {  
+            fwFsmTree_addNode(\"MDT_\" + partition + side[s]+\"_\" + layers[l]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_SECTOR0\"+ii+\"_ELTX\", \"MDT_SECTOR_ELTX\", 0);            
+            fwFsmTree_addNode(\"MDT_\" + partition + side[s]+ \"_\" + layers[l]+\"_SECTOR0\"+ii+\"_ELTX\", \"STATUS_MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_SECTOR0\"+ii+\"_ELTX\", \"ATLAS_STATUS\", 0);
+            // References to the layer status objects to propagate status to partition level
+            fwFsmTree_addNode(\"STATUS_MDT_\"+partition+side[s]+ \"_\" + layers[l]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l] + \"_ELTX::STATUS_MDT_\" + partition + side[s] + \"_\" + 
+                        layers[l]+\"_SECTOR0\"+ii+\"_ELTX\", \"ATLAS_STATUS\", 0);            
+            fwFsmTree_setNodeLabel(\"MDT_\"+partition+side[s]+\"_\"+layers[l]+\"_SECTOR0\"+ii+\"_ELTX\", \"SECTOR0\"+ii);  
+          }
+          else 
+          {
+            fwFsmTree_addNode(\"MDT_\" + partition + side[s]+\"_\" + layers[l]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_SECTOR\"+ii+\"_ELTX\", \"MDT_SECTOR_ELTX\", 0);            
+            fwFsmTree_addNode(\"MDT_\" + partition + side[s]+ \"_\" + layers[l]+\"_SECTOR\"+ii+\"_ELTX\", \"STATUS_MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_SECTOR\"+ii+\"_ELTX\", \"ATLAS_STATUS\", 0);
+            // References to the layer status objects to propagate status to partition level
+            fwFsmTree_addNode(\"STATUS_MDT_\"+partition+side[s]+ \"_\" + layers[l]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l] + \"_ELTX::STATUS_MDT_\" + partition + side[s] + \"_\" + 
+                        layers[l]+\"_SECTOR\"+ii+\"_ELTX\", \"ATLAS_STATUS\", 0);            
+            fwFsmTree_setNodeLabel(\"MDT_\"+partition+side[s]+\"_\"+layers[l]+\"_SECTOR\"+ii+\"_ELTX\", \"SECTOR\"+ii); 
+           
+          }
+      }//for
+           
+      if((l==2 || l==3) && partition==\"B\")  {//for hosting the BOR/BMR RPC chambers added in 2014
+            fwFsmTree_addNode(\"MDT_\" + partition + side[s]+\"_\" + layers[l]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_RPC\"+\"_ELTX\", \"MDT_SECTOR_ELTX\", 0);            
+            fwFsmTree_addNode(\"MDT_\" + partition + side[s]+ \"_\" + layers[l]+\"_RPC\"+\"_ELTX\", \"STATUS_MDT_\" + partition + side[s] + \"_\" + layers[l]+\"_RPC\"+\"_ELTX\", \"ATLAS_STATUS\", 0);
+            // References to the layer status objects to propagate status to partition level
+            fwFsmTree_addNode(\"STATUS_MDT_\"+partition+side[s]+ \"_\" + layers[l]+\"_ELTX\", \"MDT_\" + partition + side[s] + \"_\" + layers[l] + \"_ELTX::STATUS_MDT_\" + partition + side[s] + \"_\" + 
+                        layers[l]+\"_RPC\"+\"_ELTX\", \"ATLAS_STATUS\", 0);            
+            fwFsmTree_setNodeLabel(\"MDT_\"+partition+side[s]+\"_\"+layers[l]+\"_RPC\"+\"_ELTX\", \"RPC\");  
+      }
+        
+    }
+
+
+  }
+      
+}
+
+FsmBaseMe()
+{
+  //Creates  the FSM Hierarchy of the project
+  //There will be 4 partitions according to the TTC partitions
+
+  DebugN(\"Creating nodes for eltx\");     
+  
+  //create eltx partition in fsm first
+  fwFsmTree_addNode(\"FSM\",\"MDT_ELTX\",\"MDT_ELTX\",1);
+  fwFsmTree_addNode(\"MDT_ELTX\",\"STATUS_MDT_ELTX\",\"ATLAS_STATUS\",0);  
+  fwFsmTree_setNodeLabel(\"MDT_ELTX\", \"FE ELECTRONICS\");    
+  
+  //create fsm tree for each side
+  mdtEltx_createFsmTree(\"B\"); 
+  mdtEltx_createFsmTree(\"E\");
+  
+  //SET PANEL AREA
+  dpSetWait(MDT_ELTX_inSystem()+\"fwOT_MDT_PARTITION_ELTX.panel\",\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_Partition.pnl\");
+  dpSetWait(MDT_ELTX_inSystem()+\"fwOT_MDT_LAYER_ELTX.panel\",\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_Layer.pnl\");  
+  dpSetWait(MDT_ELTX_inSystem()+\"fwOT_MDT_SECTOR_ELTX.panel\",\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_Sector.pnl\");
+  dpSetWait(MDT_ELTX_inSystem()+\"fwOT_MDT_ELTX.panel\",\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_General.pnl\");
+  dpSetWait(MDT_ELTX_inSystem()+\"fwOT_MDT_ELTX_chamber_LU.panel\",\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_Chamber2CSM.pnl\");
+  //--------------------------------
+  DebugN(\"- - - - - - - - - FSM PANELS IN - - - - - - - - -\");
+
+
+  DebugN(\"- - - - - - - - - FSM BASE STRACTURE CREATION ENDED - - - - - - - - -\");
+}
+
+dyn_string PluggedInChambers()
+{
+  //Checks what chambers are already in the FSM tree
+    
+ dyn_string DeviceTypes, chambers;
+ string DeviceType, chamber;
+ 
+ DeviceTypes=dpNames(\"*\",\"_FwFsmDevice\");
+ 
+ for(int ii=1;ii<=dynlen(DeviceTypes);ii++)
+ {
+  dpGet(DeviceTypes[ii]+\".type\",DeviceType);
+  if (DeviceType == \"MDT_ELTX_chamber_DU\")
+   {
+   dpGet(DeviceTypes[ii]+\".ui.label\",chamber);
+   dynAppend(chambers,chamber);
+   }
+ }
+ return(chambers);
+}//PluggedInChambers
+
+
+AddChamberInSupervisor(string chamber,string prefix,string inSystem)
+{
+  //Add the chamber in the FSM hierarchy.
+  //The chambers are placed in the right place according to the TTC partitions
+    
+  //e.g. chamber:BIS1A02
+  string MdtPrefix=\"MDT_\";  
+  string partition = substr(chamber,0,1); //B,E
+  string layer = substr(chamber,1,1);//I,M,O,EE 
+  string side = substr(chamber,4,1); //A,C
+  string sector = \"SECTOR\"+substr(chamber,5,2); //02
+  string station = substr(chamber,1,1); //1
+  string existance; 
+
+  if(layer==\"I\") layer=\"INNER\";
+  else if(layer==\"M\") layer=\"MIDDLE\";  
+  else if(layer==\"O\") layer=\"OUTER\";    
+  else if(layer==\"E\") layer=\"EE\";  
+  
+  //check if chamber already exists in FSM
+  existance = CheckMyExistance(chamber);
+     if(chamber==\"BME4A13\" || chamber==\"BME4C13\" || chamber==\"BME5A13\" || chamber==\"BME5C13\")
+    DebugN(substr(chamber,0,3)); 
+  if (existance == 0)
+  {
+
+   if(substr(chamber,0,3)==\"BME\") 
+   {
+     DebugN(\"special chambers BME4A13, BME4C13\");//chambers with 2 CSMs need special configuration
+     
+     if(substr(chamber,0,4)==\"BME4\")  {
+     //create first LUs for chamber name
+        fwFsmTree_addNode(MdtPrefix+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\",\"MDT_ELTX_\"+chamber+\"_LU\",\"MDT_ELTX_chamber_LU\", 0);
+        fwFsmTree_setNodeLabel(\"MDT_ELTX_\"+chamber+\"_LU\", chamber);
+        fwFsmTree_addNode(\"MDT_ELTX_\"+chamber+\"_LU\", \"STATUS_\"+\"MDT_ELTX_\"+chamber+\"_LU\",\"ATLAS_STATUS\",0);     
+        fwFsmTree_addNode(\"STATUS_MDT_\"+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\", \"MDT_\"+partition+side+\"_\"+layer+\"_ELTX::STATUS_\"+\"MDT_ELTX_\"+chamber+\"_LU\", \"ATLAS_STATUS\", 0);
+
+//        fwFsmTree_addNode(\"STATUS_\" + MdtPrefix+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\", \"STATUS_\"+\"MDT_ELTX_\"+chamber+\"_LU\",\"ATLAS_STATUS\",0);
+//        
+
+//        fwFsmTree_addNode(MdtPrefix+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\",\"MDT_ELTX_\"+chamber+\"_LU\",\"MDT_SECTOR_ELTX\", 0);
+//        fwFsmTree_setNodeLabel(\"MDT_ELTX_\"+chamber+\"_LU\", chamber);
+//        fwFsmTree_addNode(\"MDT_ELTX_\"+chamber+\"_LU\", \"STATUS_\"+\"MDT_ELTX_\"+chamber+\"_LU\",\"ATLAS_STATUS\",0);     
+       // --> fwFsmTree_addNode(\"STATUS_\" + MdtPrefix+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\", \"STATUS_\"+\"MDT_ELTX_\"+chamber+\"_LU\",\"ATLAS_STATUS\",0);
+       //fwFsmTree_setNodePanel(\"MDT_ELTX_\"+chamber+\"_LU\",\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_Chamber_2CSM.pnl\");  
+     }
+
+     if(side==\"A\")  {
+      //add 2 DUs below each BME LU node
+       fwFsmTree_addNode(\"MDT_ELTX_BME4A13_LU\",\"MDT_ELTX_\"+chamber,\"MDT_ELTX_chamber_DU\",0);
+       fwFsmTree_setNodeLabel(\"MDT_ELTX_\"+chamber, chamber);
+       fwFsmTree_addNode(\"STATUS_\"+\"MDT_ELTX_BME4A13_LU\", \"STATUS_\"+\"MDT_ELTX_\"+chamber,\"ATLAS_DU_STATUS\",0);
+     }
+     else if(side==\"C\")  {
+       fwFsmTree_addNode(\"MDT_ELTX_BME4C13_LU\",\"MDT_ELTX_\"+chamber,\"MDT_ELTX_chamber_DU\",0);
+       fwFsmTree_setNodeLabel(\"MDT_ELTX_\"+chamber, chamber);
+       fwFsmTree_addNode(\"STATUS_\"+\"MDT_ELTX_BME4C13_LU\", \"STATUS_\"+\"MDT_ELTX_\"+chamber,\"ATLAS_DU_STATUS\",0);       
+     }
+     
+     DebugN(\"chamber \"+chamber+\" was imported to FSM\"); 
+     PanelMe(chamber,prefix,inSystem);
+     DebugN(\"FSM updated with chamber: \"+chamber);  
+
+   }
+
+   else
+   {
+       if (chamber[3]==\"0\")
+      {
+        //chamber BOG0B12, BOG0B14
+        DebugN(\"special chambers BOG0B12, BOG0B14\");
+        side = \"A\";//these chambers belong to A partition
+        partition = \"B\";
+     
+      }
+      else if(substr(chamber,0,3) ==\"BEE\")
+      {
+        DebugN(\"special chamber, BEE, BIS7xx BIS8xx\");
+        layer=\"EE\";
+        partition = \"E\";
+  
+      }//special in endcap
+      else if((chamber[3]==\"7\" && chamber[2]!=\"F\" && chamber[2]!= \"G\")||
+            (chamber[3]==\"8\" && chamber[2]!=\"F\" && chamber[2]!= \"G\"))
+      {
+              DebugN(\"special chamber, BIS7xx BIS8xx\");
+              partition = \"E\";
+      }
+      else if(substr(chamber,0,3)==\"BOR\" || substr(chamber,0,3)==\"BMR\")
+      {
+        sector = \"RPC\";
+      }
+    
+      fwFsmTree_addNode(MdtPrefix+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\",\"MDT_ELTX_\"+chamber,\"MDT_ELTX_chamber_DU\",0);
+      fwFsmTree_setNodeLabel(\"MDT_ELTX_\"+chamber, chamber);
+      fwFsmTree_addNode(\"STATUS_\" + MdtPrefix+partition+side+\"_\"+layer+\"_\"+sector+\"_ELTX\", \"STATUS_\"+\"MDT_ELTX_\"+chamber,\"ATLAS_DU_STATUS\",0);
+
+      DebugN(\"chamber \"+chamber+\" was imported to FSM\"); 
+      PanelMe(chamber,prefix,inSystem);
+      DebugN(\"FSM updated with chamber: \"+chamber);
+    }
+ }//if existance
+  
+}//Add chamber in supervisor PC
+
+
+int CheckMyExistance(string chamber)
+{
+dyn_string ex;
+if (fwTree_isNode(\"MDT_ELTX_\"+chamber,ex))
+  {
+  DebugN(\"the chamber already exists in FSM\");
+  return 1;
+  } 
+else return 0;   
+}
+
+
+PanelMe(string chamber)
+{
+  fwFsmTree_setNodePanel(\"MDT_ELTX_\"+chamber,\"fwAtlasMainPanels/mdtEltx/ATL_MDT_ELTX_Chamber.pnl\");  
+  //DebugN(\"panel set for chamber: \"+chamber);
+}
+
+
+MDT_ELTX_CreateMDTchambersInSupervisorPC(string chamber)
+{
+  //All chambers in MDM PCs that start with B belong to MDT_ELTX_chamber dpType
+
+  //special chambers BOG0XXX, in MDMs are BOG0AXX but official name is BOG0BXX
+  //the supervisor PC will have the official names of BOG0XXX      
+  if ((chamber == \"BOG0A12\")||(chamber == \"BOG0A14\"))
+  {
+    strreplace(chamber,\"0A\",\"0B\");
+    DebugN(\"BOG0A12/14 will be renamed as \"+chamber); 
+  }
+   
+  if (!dpExists(\"ATL_MDT_ELTX_\"+chamber))
+  {
+    dpCreate(\"ATL_MDT_ELTX_\"+chamber, \"MDT_ELTX_chamber\");
+    DebugN(\"the dp \"+\"MDT_ELTX_\"+chamber+\" was created\");
+  }
+  //else DebugN(\"chamber: \"+chamber+\" already exists as a DP in supervisor PC\");  
+}//CreateMDTchambersInSupervisorPC" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+2 0
+"PRIMITIVE_TEXT6"
+""
+1 20 20 E E E 1 E 1 E N "blue" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 20 20 674 42
+0 2 2 "0s" 0 0 0 192 0 0  20 20 1
+2
+LANG:10001 33 MS Shell Dlg,-1,19,5,75,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,19,5,75,0,0,0,0,0
+0 2
+LANG:10001 56 ATLAS MDT  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
+LANG:1 56 ATLAS MDT  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
+17 1
+"ChambersFound"
+""
+1 170 88 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  168 86 282 500
+0
+
+E
+E
+E
+
+0 0
+2 2
+"PRIMITIVE_TEXT1"
+""
+1 200 74 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 200 74 262 87
+0 2 2 "0s" 0 0 0 192 0 0  200 74 1
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 9  Chambers
+LANG:1 9  Chambers
+17 3
+"PluggedIn"
+""
+1 630 90 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  628 88 742 354
+0
+
+"main()
+{
+ string sysname;
+ dyn_string chambers;
+ 
+ chambers=PluggedInChambers();
+ this.deleteAllItems();
+ for(int ii=1;ii<=dynlen(chambers);ii++)
+ this.appendItem(chambers[ii]);
+}" 0
+
+E
+E
+
+0 0
+2 4
+"PRIMITIVE_TEXT2"
+""
+1 330 72 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 330 72 475 85
+0 2 2 "0s" 0 0 0 192 0 0  330 72 1
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 23 Chambers To be Actioned
+LANG:1 23 Chambers To be Actioned
+13 5
+"Button1"
+""
+1 290 179 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  288 177 322 211
+
+P 
+12303291
+"pictures/right_en.gif"
+2
+LANG:10001 0 
+LANG:1 0 
+"main()
+{
+ int n;
+ string s;
+ 
+ n=ChambersFound.selectedPos;
+ s=ChambersFound.selectedText;
+ 
+ if(s!=\"\")
+ {
+  ToBePlugged.appendItem(s);
+  ChambersFound.deletePos(n);
+ }
+ 
+ setValue(\"ChambersFound\",\"selectedPos\",n);
+}" 0
+ E E E
+13 6
+"Button2"
+""
+1 380 299 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  288 217 322 251
+
+P 
+12303291
+"pictures/right2x_en.gif"
+2
+LANG:10001 0 
+LANG:1 0 
+"main()
+{
+ int i, n;
+ dyn_string s;
+ 
+ n=ChambersFound.itemCount;
+ s=ChambersFound.items;
+ 
+ for(i=1;i<=n;i++)
+ ToBePlugged.appendItem(s[i]);
+ 
+ ChambersFound.deleteAllItems();
+}" 0
+ E E E
+13 7
+"Button3"
+""
+1 470 489 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  288 277 322 311
+
+P 
+6737151
+"pictures/left_en.gif"
+2
+LANG:10001 0 
+LANG:1 0 
+"main()
+{
+ int n;
+ string s;
+ 
+ n=ToBePlugged.selectedPos;
+ s=ToBePlugged.selectedText;
+ 
+ if(s!=\"\")
+ {
+  ChambersFound.appendItem(s);
+  ToBePlugged.deletePos(n);
+ }
+ 
+ setValue(\"ToBePlugged\",\"selectedPos\",n);
+}" 0
+ E E E
+13 8
+"Button4"
+""
+1 560 719 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  288 317 322 351
+
+P 
+12303291
+"pictures/left2x_en.gif"
+2
+LANG:10001 0 
+LANG:1 0 
+"main()
+{
+ int i, n;
+ dyn_string s;
+ 
+ n=ToBePlugged.itemCount;
+ s=ToBePlugged.items;
+ 
+ for(i=1;i<=n;i++)
+ ChambersFound.appendItem(s[i]);
+ 
+ ToBePlugged.deleteAllItems();
+}" 0
+ E E E
+17 9
+"ToBePlugged"
+""
+1 360 111.771428571428 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  328 84 442 498
+0
+
+E
+E
+E
+
+0 0
+13 10
+"PUSH_BUTTON26"
+""
+1 170 501 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  168 499 282 523
+
+T 
+2
+LANG:10001 11 CLEAR TABLE
+LANG:1 11 CLEAR TABLE
+"main()
+{
+  ChambersFound.deleteAllItems();
+}" 0
+ E E E
+13 11
+"PUSH_BUTTON33"
+""
+1 330 501 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  328 499 442 523
+
+T 
+2
+LANG:10001 11 CLEAR TABLE
+LANG:1 11 CLEAR TABLE
+"main()
+{
+  ToBePlugged.deleteAllItems();
+}" 0
+ E E E
+13 12
+"base"
+""
+1 470 140 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 138 592 172
+
+T 
+2
+LANG:10001 21 Create Base Structure
+LANG:1 21 Create Base Structure
+"main()
+{
+this.enabled(0);
+FsmBaseMe();  
+}
+" 0
+ E E E
+13 13
+"PUSH_BUTTON15"
+""
+1 470 100 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 98 592 132
+
+T 
+2
+LANG:10001 22 Enable Base Structure 
+LANG:1 22 Enable Base Structure 
+"main()
+{
+  base.enabled(1);
+}" 0
+ E E E
+13 16
+"PUSH_BUTTON34"
+""
+1 20 101 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  18 99 142 133
+
+T 
+2
+LANG:10001 15 Display All MDT
+LANG:1 15 Display All MDT
+"main()
+{
+ dyn_string MDTchambers;
+ string inSystem = getSystemName();
+ dpGet(inSystem+\"MDT_CHAMBERS.:_original.._value\",MDTchambers);
+ 
+ for (int ii=1;ii<=dynlen(MDTchambers);ii++)
+  {
+    ChambersFound.appendItem(MDTchambers[ii]);
+  }
+}" 0
+ E E E
+13 17
+"PUSH_BUTTON13"
+""
+1 470 180 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 178 592 212
+
+T 
+2
+LANG:10001 31 Plug Chambers in 
+Supervisor PC
+LANG:1 31 Plug Chambers in 
+Supervisor PC
+"main()
+{  
+int n;
+dyn_string s;
+string prefix = \"ATL_MDT_ELTX_\";
+string inSupervisorSystem = getSystemName(); 
+
+n=ToBePlugged.itemCount;
+s=ToBePlugged.items;
+ 
+for(int i=1;i<=n;i++)
+ {
+ AddChamberInSupervisor(s[i],prefix,inSupervisorSystem);
+ }
+
+mdtEltx_ConfirmationMessage(\"CHAMBERS IMPORTED IN THE FSM HIERARCHY\");
+}" 0
+ E E E
+13 19
+"PUSH_BUTTON8"
+""
+1 636 391 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+39 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  634 389 746 423
+
+T 
+2
+LANG:10001 17 Generate all FSMs
+LANG:1 17 Generate all FSMs
+"main()
+{
+  fwFsmTree_generateAll();
+}" 0
+ E E E
+13 20
+"PUSH_BUTTON9"
+""
+1 636 423 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  634 421 746 455
+
+T 
+2
+LANG:10001 13 stop FSM tree
+LANG:1 13 stop FSM tree
+"main()
+{
+  fwFsmTree_stopTree();
+
+}" 0
+ E E E
+13 21
+"PUSH_BUTTON10"
+""
+1 636 457 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+43 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  634 455 746 489
+
+T 
+2
+LANG:10001 16 restart FSM tree
+LANG:1 16 restart FSM tree
+"main()
+{
+  fwFsmTree_startTree();
+
+}" 0
+ E E E
+13 22
+"Button12"
+""
+1 930 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+45 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 7 Refresh
+LANG:1 7 Refresh
+
+2
+"layoutAlignment" "AlignCenter"
+"isToggle" ""
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  638 358 669 387
+
+P 
+12434877
+"pictures/refresh.gif"
+2
+LANG:10001 0 
+LANG:1 0 
+"main()
+{
+ int i;
+ dyn_string chambers;
+ 
+ chambers=PluggedInChambers();
+
+ PluggedIn.deleteAllItems();
+ 
+ for(i=1;i<=dynlen(chambers);i++)
+ PluggedIn.appendItem(chambers[i]);
+}" 0
+ E E E
+4 23
+"LINE2"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  10 10 730 10
+4 24
+"LINE3"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  10 10 10 50
+4 25
+"LINE4"
+""
+1 10 50 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+51 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  10 50 770 50
+4 26
+"LINE6"
+""
+1 730 10 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  730 10 730 30
+4 27
+"LINE7"
+""
+1 730 30 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+55 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  730 30 770 30
+4 28
+"LINE8"
+""
+1 770 30 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  770 30 770 50
+2 29
+"PRIMITIVE_TEXT7"
+""
+1 737 12 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 737 12 768 25
+0 2 2 "0s" 0 0 0 192 0 0  737 12 1
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,75,1,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,75,1,0,0,0,0
+0 2
+LANG:10001 3 MDT
+LANG:1 3 MDT
+30 30
+"FRAME1"
+""
+1 10 53 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+60 0 0 0 0 0
+E E E
+1
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 1 0 1 0 27 0 E 10 53 161 471
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 15 Display Options
+LANG:1 15 Display Options
+30 31
+"FRAME2"
+""
+1 450 63 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+61 0 0 0 0 0
+E E E
+1
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 1 0 1 0 16 0 E 450 63 611 481
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 7 Actions
+LANG:1 7 Actions
+30 33
+"FRAME4"
+""
+1 630 353 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+63 0 0 0 0 0
+E E E
+1
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 0.923076923076923 0 1 48.4615384615384 -3 0 E 630 353 761 501
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 0 
+LANG:1 0 
+2 34
+"PRIMITIVE_TEXT3"
+""
+1 639 72 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+65 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 639 72 759 85
+0 2 2 "0s" 0 0 0 192 0 0  639 72 1
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 19 Chambers Plugged in
+LANG:1 19 Chambers Plugged in
+13 35
+"PUSH_BUTTON36"
+""
+1 470 250 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+66 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 248 592 282
+
+T 
+2
+LANG:10001 23 MDT_ELTX
+Create Dp Type
+LANG:1 23 MDT_ELTX
+Create Dp Type
+"main()
+{
+MDT_ELTX_CreateChamberDpType_info(); 
+MDT_ELTX_CreateChamberDpType_node(); 
+MDT_ELTX_CreateChamberDpType_csm();
+MDT_ELTX_CreateChamberDpType_power();
+MDT_ELTX_CreateChamberDpType_alarms();    
+MDT_ELTX_CreateChamberDpType();
+MDT_ELTX_CreateGeneralInfoType();
+MDT_ELTX_CommunicationMessages();
+MDT_ELTX_CreateMDTchambersListType();
+MDT_ELTX_CheckManagerRunning();  
+  
+}
+
+MDT_ELTX_CreateChamberDpType_info()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types; 
+int MezzMaxNumber = 18+1; //there are  
+
+int i=1;
+elements[i]=makeDynString(\"MDT_ELTX_chamber_info\",\"\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"MezzMaskBinary\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"ActiveMezzNums\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"DataComing\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM1\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM2\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM3\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM4\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM5\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM6\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM7\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM8\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM9\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM10\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM11\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM12\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM13\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM14\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM15\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM16\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM17\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+i=i+1; elements[i]=makeDynString(\"\",\"CSM18\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"ML\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"MezzSeq\");
+
+
+int j=1;
+types[j]=makeDynInt(DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRING);
+j=j+1; types[j]=makeDynInt(0,DPEL_DYN_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_INT);
+
+dpTypeChange(elements,types);
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateChamberDpType_info - Created\");
+}
+
+MDT_ELTX_CreateChamberDpType_node()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types;  
+
+elements[1]=makeDynString(\"MDT_ELTX_chamber_node\",\"\");
+     elements[2]=makeDynString(\"\",\"state\");
+     elements[3]=makeDynString(\"\",\"NodeName\");
+     elements[4]=makeDynString(\"\",\"NodeSeq\");
+     
+types[1]=makeDynInt(DPEL_STRUCT);
+     types[2]=makeDynInt(0,DPEL_INT);
+     types[3]=makeDynInt(0,DPEL_STRING);
+     types[4]=makeDynInt(0,DPEL_STRING);
+     
+dpTypeChange(elements,types); 
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateChamberDpType_node - Created\");
+}
+
+MDT_ELTX_CreateChamberDpType_csm()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types; 
+
+int i=1;
+elements[i]=makeDynString(\"MDT_ELTX_chamber_csm\",\"\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"state\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"MEZZflags\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"SENSflags\",\"\");
+for (int ii=1;ii<=18;ii++)
+{
+i=i+1;elements[i]=makeDynString(\"\",\"MEZZ\"+ii,\"\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"temp\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"Vanal\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"Vdigi\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"VanalDeviation\");//special dps for the dp handling    
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"VdigiDeviation\");//special dps for the dp handling    
+}
+i=i+1; elements[i]=makeDynString(\"\",\"CSM\",\"\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"temp\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"25V\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"15V\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"25VRef\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"HalfCSMplus5\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"HalfCSMmin5\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"25VRefB\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"18V\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"18Vb\");
+i=i+1;elements[i]=makeDynString(\"\",\"\",\"Vcc\");
+
+int j=1;
+types[j]=makeDynInt(DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,DPEL_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_DYN_INT);
+j=j+1; types[j]=makeDynInt(0,DPEL_DYN_STRING);
+for (int ii=1;ii<=18;ii++)
+{
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+}
+j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+j=j+1; types[j]=makeDynInt(0,0,DPEL_FLOAT);
+
+dpTypeChange(elements,types);
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateChamberDpType_csm - Created\");
+}
+
+MDT_ELTX_CreateChamberDpType_power()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types;  
+
+elements[1]=makeDynString(\"MDT_ELTX_chamber_power\",\"\");
+  elements[2]=makeDynString(\"\",\"LV\");
+   
+types[1]=makeDynInt(DPEL_STRUCT);
+     types[2]=makeDynInt(0,DPEL_BOOL);
+     
+dpTypeChange(elements,types);
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateChamberDpType_power - Created\");
+}
+
+MDT_ELTX_CreateChamberDpType_alarms()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types;  
+
+elements[1]=makeDynString(\"MDT_ELTX_chamber_alarm\",\"\");
+  elements[2]=makeDynString(\"\",\"Temperature\");
+  elements[3]=makeDynString(\"\",\"Vanalog\");
+  elements[4]=makeDynString(\"\",\"Vdigital\");
+  
+     types[1]=makeDynInt(DPEL_STRUCT);
+     types[2]=makeDynInt(0,DPEL_BIT32);    
+     types[3]=makeDynInt(0,DPEL_BIT32);
+     types[4]=makeDynInt(0,DPEL_BIT32);
+     
+dpTypeChange(elements,types);
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateChamberDpType_alarm - Created\");
+}
+
+MDT_ELTX_CreateChamberDpType()
+{
+ dyn_dyn_string elements;
+ dyn_dyn_int types;
+
+ elements[1]=makeDynString(\"MDT_ELTX_chamber\",\"\",\"\");
+ elements[2]=makeDynString(\"\",\"info\",\"MDT_ELTX_chamber_info\");
+ elements[3]=makeDynString(\"\",\"node\",\"MDT_ELTX_chamber_node\");
+ elements[4]=makeDynString(\"\",\"csm\",\"MDT_ELTX_chamber_csm\");
+ elements[5]=makeDynString(\"\",\"power\",\"MDT_ELTX_chamber_power\"); 
+ elements[6]=makeDynString(\"\",\"Alarms\",\"MDT_ELTX_chamber_alarm\");  
+ 
+ types[1]=makeDynInt(DPEL_STRUCT);
+ types[2]=makeDynInt(0,DPEL_TYPEREF);
+ types[3]=makeDynInt(0,DPEL_TYPEREF);
+ types[4]=makeDynInt(0,DPEL_TYPEREF); 
+ types[5]=makeDynInt(0,DPEL_TYPEREF);
+ types[6]=makeDynInt(0,DPEL_TYPEREF);
+   
+ dpTypeChange(elements,types);
+ mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateChamberDpType - Created\");
+}
+
+MDT_ELTX_CreateGeneralInfoType()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types;
+
+int i=1;
+elements[i]=makeDynString(\"MDT_ELTX_General_Info\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"ChambersWithBadSensValues\");
+i=i+1; elements[i]=makeDynString(\"\",\"MezzMaskedChambers\");
+i=i+1; elements[i]=makeDynString(\"\",\"MezzMaskedChambers_BrokenCsmChan\");
+i=i+1; elements[i]=makeDynString(\"\",\"MezzMaskedChambers_NaturalMissingCsmChan\");
+
+int j=1;     
+types[j]=makeDynInt(DPEL_STRUCT);
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+
+dpTypeChange(elements,types);
+if(!dpExists(\"MDT_ELXT_GeneralInfoDp\"))
+  dpCreate(\"MDT_ELTX_GeneralInfoDp\",\"MDT_ELTX_General_Info\");
+
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CreateGeneralInfoType - Created\"); 
+}
+
+MDT_ELTX_CommunicationMessages()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types; 
+
+
+int i=1;
+elements[i]=makeDynString(\"MDT_ELTX_CommunicationMessages\",\"\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"SendSmsTo\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendSmsToExperts\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendSmsToCoordinators\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendSmsToShifters\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendSmsToOthers\");
+i=i+1; elements[i]=makeDynString(\"\",\"SendSmsFrom\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendSmsFromDeveloper\");
+i=i+1; elements[i]=makeDynString(\"\",\"SendEmailTo\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendEmailToExperts\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendEmailToCoordinators\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendEmailToShifters\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendEmailToOthers\");
+i=i+1; elements[i]=makeDynString(\"\",\"SendEmailFrom\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"\",\"SendEmailFromDeveloper\");
+
+i=i+1; elements[i]=makeDynString(\"\",\"SMS_messages\",\"\");
+i=i+1; elements[i]=makeDynString(\"\",\"EMAIL_messages\",\"\");
+
+i=i+1; elements[i]=makeDynString(\"\",\"READ_ME\");
+
+int j=1;     
+types[j]=makeDynInt(DPEL_STRUCT);
+j=j+1;types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_STRUCT);
+j=j+1;types[j]=makeDynInt(0,0,DPEL_STRING);
+
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+
+j=j+1;types[j]=makeDynInt(0,DPEL_DYN_STRING);
+
+dpTypeChange(elements,types);
+if(!dpExists(\"MDT_ELXT_TypicalCommunicationMessage\"))
+  dpCreate(\"MDT_ELXT_TypicalCommunicationMessage\",\"MDT_ELTX_CommunicationMessages\");
+
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CommunicationMessages - Created\");   
+}
+
+
+MDT_ELTX_CreateMDTchambersListType()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types;   
+ 
+elements[1]=makeDynString(\"MDT_ELTX_chambers\");
+types[1] = makeDynInt(DPEL_DYN_STRING);  
+
+dpTypeChange(elements,types);
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_MDTchambersListType - Created\");
+}
+
+MDT_ELTX_CheckManagerRunning()
+{
+dyn_dyn_string elements;
+dyn_dyn_int types;   
+ 
+elements[1]=makeDynString(\"MDT_ELTX_CheckManagerRunning\");
+types[1] = makeDynInt(DPEL_BOOL);  
+dpTypeChange(elements,types);
+mdtEltx_ConfirmationMessage(\"MDT_ELTX_CheckManagerRunning - Created\");
+
+if (!dpExists(\"MDT_ETLX_copyManager\"))
+  dpCreate(\"MDT_ETLX_copyManager\",\"MDT_ELTX_CheckManagerRunning\");
+else DebugN(\" dp : MDT_ETLX_copyManager , already exists\");
+
+if (!dpExists(\"MDT_ETLX_AlarmHandlingManager\"))
+  dpCreate(\"MDT_ETLX_AlarmHandlingManager\",\"MDT_ELTX_CheckManagerRunning\");
+else DebugN(\" dp : MDT_ETLX_AlarmHandlingManager , already exists\");
+
+}
+" 0
+ E E E
+13 36
+"PUSH_BUTTON37"
+""
+1 470 290 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+68 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 288 592 322
+
+T 
+2
+LANG:10001 27 MDT_ELTX
+Create chamber dps
+LANG:1 27 MDT_ELTX
+Create chamber dps
+"main()
+{
+ int n;
+ dyn_string s;
+ 
+ n=ToBePlugged.itemCount;
+ s=ToBePlugged.items;
+ 
+ for(int i=1;i<=n;i++)
+ {
+MDT_ELTX_CreateMDTchambersInSupervisorPC(s[i]);
+ }
+ 
+ mdtEltx_ConfirmationMessage(\"MDT CHAMBERS DPs CREATED\"); 
+ }" 0
+ E E E
+4 40
+"LINE9"
+""
+1 470 230 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+73 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  470 230 590 230
+4 41
+"LINE10"
+""
+1 470 360 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+74 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  470 360 590 360
+13 42
+"PUSH_BUTTON39"
+""
+1 470 370 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+75 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 368 592 402
+
+T 
+2
+LANG:10001 19 Configure Archiving
+LANG:1 19 Configure Archiving
+"main()
+{
+int n;
+dyn_string s;
+ 
+n=ToBePlugged.itemCount;
+s=ToBePlugged.items;
+
+string inSystem = MDT_ELTX_inSystem(); 
+string prefix = MDT_ELTX_prefix();
+
+for(int i=1;i<=n;i++)
+{
+ delay(0 , 250);
+ mdtEltx_ConfigureArchivingForChamber(inSystem , prefix, s[i]);
+ DebugN(\"chamber \"+s[i]+\"configured for DB\");
+}
+ 
+mdtEltx_ConfirmationMessage(\"MDT CHAMBERS CONFIGURED FOR DB\");   
+}//main
+
+
+
+
+
+" 0
+ E E E
+13 45
+"PUSH_BUTTON42"
+""
+1 470 410 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+81 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 408 592 442
+
+T 
+2
+LANG:10001 15 Start Archiving
+LANG:1 15 Start Archiving
+"main()
+{
+int n;
+dyn_string s;
+ 
+n=ToBePlugged.itemCount;
+s=ToBePlugged.items;
+
+string inSystem = MDT_ELTX_inSystem(); 
+string prefix = MDT_ELTX_prefix();
+string dp;
+
+dyn_int ActiveMezzs;
+for(int i=1;i<=n;i++)
+{
+ delay(0 , 250);
+ dp=inSystem+prefix+s[i]+\".info.ActiveMezzNums\";
+ dpGet(dp,ActiveMezzs);
+ mdtEltx_Masks2activateArchiving(dp,ActiveMezzs);
+ mdtEltx_StartCSMArchivingForChamber(inSystem,prefix,s[i]);
+ DebugN(\"chamber \"+s[i]+\" started archiving in DB\");
+}
+ 
+mdtEltx_ConfirmationMessage(\"MDT CHAMBERS CONFIGURED FOR DB\");   
+}//main
+
+
+
+
+
+" 0
+ E E E
+13 46
+"PUSH_BUTTON43"
+""
+1 470 450 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+83 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  468 448 592 482
+
+T 
+2
+LANG:10001 14 Stop Archiving
+LANG:1 14 Stop Archiving
+"main()
+{
+int n;
+dyn_string s;
+ 
+n=ToBePlugged.itemCount;
+s=ToBePlugged.items;
+
+string inSystem = MDT_ELTX_inSystem(); 
+string prefix = MDT_ELTX_prefix();
+string MezzMask,dp;
+
+
+for(int i=1;i<=n;i++)
+{
+ delay(0 , 250);
+ dp=inSystem+prefix+s[i]+\".info.ActiveMezzNums\";
+ dpGet(dp,MezzMask);
+ mdtEltx_StopArchivingForChamber(dp,  MezzMask);
+ DebugN(\"chamber archiving \"+s[i]+\" stopped for DB\");
+}
+ 
+mdtEltx_ConfirmationMessage(\"MDT CHAMBERS CONFIGURED FOR DB\");   
+}//main
+
+
+
+
+
+" 0
+ E E E
+13 47
+"PUSH_BUTTON44"
+""
+1 470 500.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+84 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  468 498 592 532
+
+T 
+2
+LANG:10001 25 Alternative Archive
+Start
+LANG:1 25 Alternative Archive
+Start
+"main()
+{
+int n;
+dyn_string s,ex;
+string dp;
+dyn_int MezzNumber;
+ 
+n=ToBePlugged.itemCount;
+s=ToBePlugged.items;
+
+string inSystem = MDT_ELTX_inSystem(); 
+string prefix = MDT_ELTX_prefix();
+for(int i=1;i<=n;i++)
+{
+  dpGet(inSystem+prefix+s[i]+\".info.ActiveMezzNums\",MezzNumber);
+  for (int j=1;j<=dynlen(MezzNumber);j++)
+  {
+    dp=inSystem+prefix+s[i]+\".csm.MEZZ\"+MezzNumber[j]+\".temp\";
+         fwArchive_start(dp,ex);
+    if(dynlen(ex)==0)
+      DebugN(s[i]+\" temp started\");
+    else DebugN(\"temp \",ex);
+    dp=inSystem+prefix+s[i]+\".csm.MEZZ\"+MezzNumber[j]+\".Vanal\";
+         fwArchive_start(dp,ex);
+    if(dynlen(ex)==0)
+      DebugN(s[i]+\" Vanal started\");
+    else DebugN(\"Vanal \",ex);    
+    dp=inSystem+prefix+s[i]+\".csm.MEZZ\"+MezzNumber[j]+\".Vdigi\";
+         fwArchive_start(dp,ex);
+    if(dynlen(ex)==0)
+      DebugN(s[i]+\" Vdigi started\");
+    else DebugN(\"Vdigi \",ex);    
+  }
+}
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

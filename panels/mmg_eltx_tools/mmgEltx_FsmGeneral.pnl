@@ -1,0 +1,811 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 776 614 N "FwAtlasBg" 0
+"main()
+{
+  addLogoNTUABNL(580,550);
+}" 0
+ E E E E 1 -1 -1 0  40 130
+""0  1
+E " /******************************************************************************\\
+     Creation Date: 11/07/2019
+     Developer: Polyneikis Tzanis (polyneikis.tzanis@cern.ch)
+     *FSM Configuration Tools
+     *DPT creation Tool
+
+
+ \\******************************************************************************/
+void addLogoNTUABNL(int x,int y)
+{
+
+addSymbol(myModuleName(),myPanelName(),\"mmg_eltx_tools/logoNTUABNL.pnl\",\"logoNTUABNL\",\"\",x,y,0,1,1);
+
+}
+
+bool checkDPTexistance(string dpType)
+{
+
+dyn_string datapointTypes;
+datapointTypes=dpTypes(dpType);
+
+if(dynlen(datapointTypes)==1) return TRUE;
+else return FALSE;
+
+
+}
+void generateFsm() {
+    fwFsmTree_generateAll();
+}
+
+void startFsm() {
+    fwFsmTree_startTree();
+}
+void stopFsm() {
+    prBar(\"Stopping MMG FSM tree...\");
+    fwFsmTree_stopTree();
+}
+
+void removeFsm() {
+    prBar(\"Removing MMG_ELTX FSM tree ...\");
+    fwFsmTree_removeNode(\"FSM\", \"MMG_ELTX\" , 1);
+}
+
+void prBar(string message){
+    progBar.progress = progBar.progress + 1;
+    list.appendItem = message;
+    list.bottomPos(list.itemCount);
+}
+" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+2 2
+"PRIMITIVE_TEXT6"
+""
+1 20 15 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 20 15 643 40
+0 2 2 "0s" 0 0 0 192 0 0  20 15 1
+2
+LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,19,5,75,0,0,0,0,0
+0 2
+LANG:10001 56 ATLAS MMG  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
+LANG:1 56 ATLAS MDT  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
+4 3
+"LINE2"
+""
+1 5 7 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  5 7 725 7
+4 4
+"LINE3"
+""
+1 5 7 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  5 7 5 47
+4 5
+"LINE4"
+""
+1 5 47 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  5 47 765 47
+4 6
+"LINE6"
+""
+1 725 7 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  725 7 725 27
+4 7
+"LINE7"
+""
+1 725 27 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  725 27 765 27
+4 8
+"LINE8"
+""
+1 765 27 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  765 27 765 47
+2 9
+"PRIMITIVE_TEXT7"
+""
+1 732 9 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 732 9 764 22
+0 2 2 "0s" 0 0 0 192 0 0  732 9 1
+2
+LANG:10001 39 Utopia,-1,11,5,75,1,0,0,0,0,Bold Italic
+LANG:1 33 MS Shell Dlg,-1,11,5,75,1,0,0,0,0
+0 2
+LANG:10001 3 MMG
+LANG:1 3 MDT
+30 16
+"fsmFrame"
+""
+1 357 87 E E E 1 E 1 E N "FwAtlasFg" E N {0,0,0} E E
+ E E
+15 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.593984962406014 0 1.235087719298246 -565.0526315789471 -55.45263157894738 0 E 357 87 624 373
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 3 FSM
+29 17
+"progBar"
+""
+1 32.32281866140079 394 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+4
+"percentageVisible" "bool TRUE"
+"maximum" "int 10"
+"progress" "int 0"
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
+LANG:1 30 Sans Serif,9,-1,5,50,0,0,0,0,0
+0  13.02030656653528 373 408.7218045112782 391
+11 ProgressBar
+0
+E17 18
+"list"
+""
+1 -87.27819548872182 -51 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 145 To build up the ATCA FSM tree from scratch make sure you have stopped and THEN removed the previous ATCA FSM tree before applying these actions. 
+LANG:1 145 To build up the ATCA FSM tree from scratch make sure you have stopped and THEN removed the previous ATCA FSM tree before applying these actions. 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,13,5,50,0,0,0,0,0
+LANG:1 31 Sans Serif,10,-1,5,50,0,0,0,0,0
+0  11.37969924812023 187 411.6203007518796 362
+0
+
+E
+E
+E
+
+0 0
+13 19
+"stopFSMButton"
+""
+1 23.72180451127815 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+18 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  21.72180451127815 79 99.72180451127815 103
+
+T 
+1
+LANG:10001 8 Stop FSM
+"main(mapping event)
+{
+  stopFsm();
+}" 0
+ E E E
+13 20
+"removeFSMButton"
+""
+1 -46 111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+19 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  22 105 100 129
+
+T 
+1
+LANG:10001 10 Remove FSM
+"main(mapping event)
+{
+  removeFsm();
+}" 0
+ E E E
+30 22
+"FRAME1"
+""
+1 357 87 E E E 1 E 1 E N "FwAtlasFg" E N {0,0,0} E E
+ E E
+21 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.240601503759398 0 0.5403508771929825 -9.89473684210509 3.989473684210509 0 E 357 87 624 373
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 3 DPT
+13 23
+"createChamberDPSButton"
+""
+1 519.0000000000002 153 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0  517.0000000000002 136.695306122449 683.0000000000002 175.2238775510204
+
+T 
+2
+LANG:10001 29 MMG _ELTX
+Create Chambers DPs
+LANG:1 9 Create DP
+"main(mapping event)
+{
+   string dpType;
+   dpType = \"MMG_ELTX_Chamber\";
+
+  string chamberName;
+
+  int numberOfChambers=0;
+  string prefix = \"EI\";
+  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string radial= makeDynString(\"R1\",\"R2\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+
+  for(int i_side = 1; i_side <=2 ; i_side++)
+  {
+      for(int i_axial = 1; i_axial <= 2; i_axial++)
+      {
+        for(int i_radial =1 ; i_radial <= 2; i_radial++)
+        {
+          for(int i_sector = 1; i_sector <=16; i_sector++)
+          {
+            chamberName = prefix  + axial[i_axial] + radial[i_radial] + side[i_side] + sector[i_sector];
+            numberOfChambers++;
+            dpCreate(\"MMG_ELTX_\"+chamberName,dpType);
+          }
+        }
+      }
+    }
+
+  DebugTN(\"DONE\",\"DPs of [\"+numberOfChambers+\"] chamber created\");
+
+
+}
+" 0
+ E E E
+13 24
+"createChamberDPTButton"
+""
+1 519.0000000000002 102 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0  517.0000000000002 85.69530612244898 683.0000000000002 124.2238775510204
+
+T 
+2
+LANG:10001 24 MMG _ELTX
+Create DP type
+LANG:1 9 Create DP
+"main(mapping event)
+{
+  MMG_ELTX_CreateChamberDpType();
+}
+
+MMG_ELTX_CreateChamberDpType()
+{
+
+dyn_dyn_string elements;
+dyn_dyn_int types;
+
+int i=1;
+int j=1;
+elements[i]=makeDynString(\"MMG_ELTX_Chamber\",\"\",\"\",\"\");
+types[j]=makeDynInt(DPEL_STRUCT);
+for(int layer=1;layer<=4;layer++)
+{
+    i=i+1; elements[i]=makeDynString(\"\",\"Layer\"+layer,\"\");
+    j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+  for(int pcb=1;pcb<=8;pcb++)
+  {
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"PCB\"+pcb);
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    for(int board=1;board<=4;board++)
+    {
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"Board\"+board);
+    j=j+1; types[j]=makeDynInt(0,0,0,DPEL_STRUCT);
+
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"info\");
+    j=j+1; types[j]=makeDynInt(0,0,0,0,DPEL_STRUCT);
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"channel\");
+    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"type\");
+    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
+
+   i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"power\");
+    j=j+1; types[j]=makeDynInt(0,0,0,0,DPEL_STRUCT);
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"channel\");
+    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"isLVOn\");
+    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
+    }
+  }
+
+}//layer loop
+
+
+int x=dpTypeCreate(elements,types);
+
+ if (x == 0){
+    DebugN(\"MMG_ELTX_Chamber - CREATED\");
+    this.enabled(FALSE);
+  }
+  else {
+   DebugN(\"MMG_ELTX_Chamber - FAILED\");
+  }
+
+
+}
+
+
+" 0
+ E E "main()
+{
+//   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
+}" 0
+
+13 27
+"PUSH_BUTTON2"
+""
+1 97 123 E E E 1 E 1 E N "yellow" E N "_Button" E E
+ E E
+26 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  126.1351351351351 132 226.1351351351352 156
+
+T 
+1
+LANG:10001 16 Create ELTX Tree
+"main(){
+
+
+ mmgEltx_createFsmTree(\"MMG\");
+
+}
+mmgEltx_createFsmTree(string partition)
+{
+  bool showdebugnotes = false;
+  bool setvalues = true;
+
+  DebugN(\"Start building \" + partition + \" FSM Tree\");
+
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_errClass err;
+  string sidevalue, chambername, layername, devicename, sectorname;
+  int zvalue, radialvalue, sectorvalue;
+  string parent, parentstatus, parentstatusvalue, sidestatusvalue,sidestatusvaluedevicemain, chamberstatusvalue, channelstatusvalue, sectorstatusvalue, chamberstatusvaluedevicemain;
+  string referenceforsector, referenceforchamber, referenceforside;
+  string statusvaluecomponent = \"STATUS_\";
+
+    parent = \"ELTX_\" + partition;
+//     fwFsmTree_addNode(\"FSM\", parent, \"ATLAS_STATUS\", 1);               // Create general FSM
+
+  parentstatusvalue = statusvaluecomponent + parent;
+   if(setvalues){fwFsmTree_addNode(parent,parentstatusvalue,\"ATLAS_STATUS\",0);}    // Status for MMG_SIDE_A  -> STATUS_MMG_SIDE_A
+  for(int i_side = 1; i_side <=1; i_side++)
+  {
+    // parent
+    parent = \"HV_\" + partition;
+     if(patternMatch(partition,\"MMG\") && setvalues){fwFsmTree_setNodeLabel(parent,\"Micromegas\");}    // Set label to HV_MMG
+
+    parentstatus = parent;
+    // side
+    sidevalue = partition +\"_SIDE_\" + side[i_side];
+    sidestatusvalue = statusvaluecomponent + sidevalue;
+    referenceforside = parentstatus+ + \"::\" + sidestatusvalue;
+
+    if(showdebugnotes){
+      DebugN(parent);
+      DebugN(\".\\t\" + parentstatus);
+      DebugN(\".\\t\\t\"+ referenceforside);
+      DebugN(\".\\t\" + sidevalue);
+      DebugN(\".\\t\\t\" +sidestatusvalue);
+    }
+
+    if(setvalues){fwFsmTree_addNode(parentstatusvalue,referenceforside,\"ATLAS_STATUS\",0);}  //
+    if(setvalues){fwFsmTree_addNode(parent,sidevalue,\"NSWPS_\"+partition+\"_Side\",0);}  // e.g. MMG_SIDE_A
+    if(setvalues){fwFsmTree_setNodeLabel(sidevalue,\"Side \" + side[i_side]);}          // label to MMG_SIDE_A
+    if(setvalues){fwFsmTree_addNode(sidevalue,sidestatusvalue,\"ATLAS_STATUS\",0);}    // Status for MMG_SIDE_A  -> STATUS_MMG_SIDE_A
+
+    // Sectors
+    for(int i_sector = 1; i_sector <= 1; i_sector++)
+    {
+      string sectornumber = i_sector;
+      if(i_sector < 10){sectornumber = \"0\" + i_sector;}
+      sectorname = partition+\"_SIDE_\"+ side[i_side]+\"_SECTOR_\" + sectornumber;
+      sectorstatusvalue = statusvaluecomponent + sectorname;
+      referenceforsector = parent + \"::\" + sectorstatusvalue;
+    if(showdebugnotes){
+      DebugN(\".\\t\\t\\t\" + referenceforsector);
+      DebugN(\".\\t\\t\" +sectorname);
+      DebugN(\".\\t\\t\\t\" +sectorstatusvalue);
+    }
+      if(setvalues){fwFsmTree_addNode(sidestatusvalue,referenceforsector,\"ATLAS_STATUS\",0);}       // STATUS_SIDE_A_SECTOR in STATUS_MMG_SIDE_A
+      if(setvalues){fwFsmTree_addNode(sidevalue,sectorname,\"NSWPS_\"+partition+\"_Sector\",0);}      // MMG_SIDE_A_SECTOR_1
+      if(setvalues){fwFsmTree_setNodeLabel(sectorname,\"Sector \" + i_sector);}                      // label for MMG_SIDE_A_SECTOR_1
+      if(setvalues){fwFsmTree_addNode(sectorname,sectorstatusvalue,\"ATLAS_STATUS\",0);}            // Status for MMG_SIDE_A_SECTOR_1  --> STATUS_MMG_SIDE_A_SECTOR_1
+
+      // MMG
+      if(patternMatch(partition,\"MMG\"))
+      {
+        // Quadruplets
+        for(int zvalue = 2; zvalue <= 2; zvalue++)
+        {
+          for(int radialvalue = 1; radialvalue <=1; radialvalue++)
+          {
+            // chamber
+            sprintf(chambername,\"EIZ%uR%u%s%02u\",zvalue,radialvalue,side[i_side],i_sector);
+            chamberstatusvalue = statusvaluecomponent + chambername;
+            chamberstatusvaluedevicemain = chamberstatusvalue;
+            referenceforchamber = parent + \"::\" + chamberstatusvalue;
+
+            if(showdebugnotes){DebugN(\".\\t\\t\\t\\t\" + referenceforchamber);}
+            DebugN(\"Make chamber: \" + chambername);
+            if(showdebugnotes){DebugN(\".\\t\\t\\t\\t\" + chamberstatusvalue);}
+
+            if(setvalues){fwFsmTree_addNode(sectorstatusvalue,referenceforchamber,\"ATLAS_STATUS\",0);}
+            if(setvalues){fwFsmTree_addNode(sectorname,chambername,\"NSWPS_MMG_Chamber\",0);}
+            if(setvalues){fwFsmTree_addNode(chambername,chamberstatusvalue,\"ATLAS_STATUS\",0);}
+
+/*
+          // Drift channel
+            sprintf(layername,\"EIZ%uR%u%s%02u.Mapping.Drift\",zvalue,radialvalue,side[i_side],i_sector,i_layer);
+            dpGet(layername,devicename);
+            devicename = dpSubStr(devicename,DPSUB_DP);
+            channelstatusvalue = statusvaluecomponent + devicename;
+            if(showdebugnotes){
+//             DebugN(\".\\t\\t\\t\\t\" + referenceforchamber);
+            DebugN(\".\\t\\t\\t\\t\\t\" + channelstatusvalue);
+            DebugN(\".\\t\\t\\t\\t\" + devicename);
+          }
+//             DebugN(\" --> Drift layer name: \" + layername + \" has device: \" + devicename);
+            if(setvalues){fwFsmTree_addNode(chambername,devicename,\"FwCaenChannelHV_MMG\",0);}
+            if(setvalues){fwFsmTree_setNodeLabel(devicename,\"Drift\");}
+            if(setvalues){fwFsmTree_addNode(chamberstatusvaluedevicemain,channelstatusvalue,\"ATLAS_DU_STATUS\",0);}
+
+            // RO channels
+            for(int i_layer = 1; i_layer <= 4 ; i_layer ++)
+            {
+              sprintf(layername,\"EIZ%uR%u%s%02u.Mapping.RO.L%u\",zvalue,radialvalue,side[i_side],i_sector,i_layer);
+              dpGet(layername,devicename);
+//               DebugN(\" --> RO layer name: \" + layername + \" has device: \" + devicename);
+              if(setvalues){fwFsmTree_addNode(chambername,devicename,\"FwCaenChannelHV_MMG\",0);}
+              if(setvalues){fwFsmTree_setNodeLabel(devicename,\"RO Layer\" + i_layer);}
+              devicename = dpSubStr(devicename,DPSUB_DP);
+              channelstatusvalue = statusvaluecomponent + devicename;
+              if(setvalues){fwFsmTree_addNode(chamberstatusvaluedevicemain,channelstatusvalue,\"ATLAS_DU_STATUS\",0);}
+
+
+
+            }// end layer loop
+             */
+          } // end radialvalue for loop
+        }  // end zvalue for loop
+      }   // end if for MMG
+      // ------------------------------------ ------------------------------------ ------------------------------------ ------------------------------------
+
+    }
+  }
+  DebugN(\"DONE\");
+}
+
+
+" 0
+ E E E
+13 28
+"PUSH_BUTTON3"
+""
+1 318 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+27 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  316 79 394 103
+
+T 
+1
+LANG:10001 12 Generate FSM
+"main(mapping event)
+{
+  generateFsm();
+}" 0
+ E E E
+13 29
+"PUSH_BUTTON4"
+""
+1 248 111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+28 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  316 105 394 129
+
+T 
+1
+LANG:10001 9 Start FSM
+"main(mapping event)
+{
+  startFsm();
+}" 0
+ E E E
+13 30
+"PUSH_BUTTON5"
+""
+1 87 71 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+29 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  116.1351351351351 80 216.1351351351352 104
+
+T 
+1
+LANG:10001 16 Create ELTX Tree
+"main(){
+
+ mmgEltx_createFsmTree();
+
+}
+mmgEltx_createFsmTree()
+{
+
+  fwFsmTree_addNode(\"FSM\", \"MMG_ELTX\", \"ATLAS_CU\", 1);   // Create general FSM
+  fwFsmTree_addNode(\"MMG_ELTX\",\"STATUS_MMG_ELTX\",\"ATLAS_STATUS\",0);   // Status for MMG_SIDE_A  -> STATUS_MMG_SIDE_A
+  fwFsmTree_setNodeLabel(\"MMG_ELTX\",\"ELTX\");
+  fwFsmTree_setNodePanel(\"MMG_ELTX\", \"fwAtlasMainPanels/ATL_MMG_ELTX_OVERVIEW.pnl\");
+
+  fwFsmTree_addNode(\"MMG_ELTX\",\"MMG_SIDE_A\",\"ATLAS_STATUS\",0);  // e.g. MMG_SIDE_A
+  fwFsmTree_addNode(\"STATUS_MMG_ELTX\",\"MMG_ELTX::STATUS_MMG_SIDE_A\",\"ATLAS_STATUS\",0);  //
+  fwFsmTree_setNodeLabel(\"MMG_ELTX\",\"ELTX\");
+
+
+  fwFsmTree_addNode(\"MMG_SIDE_A\",\"MMG_SIDE_A_SECTOR_01\",\"ATLAS_STATUS\",0);      // MMG_SIDE_A_SECTOR_1
+  fwFsmTree_addNode(\"MMG_SIDE_A\",\"STATUS_MMG_SIDE_A\",\"ATLAS_STATUS\",0);    // Status for MMG_SIDE_A  -> STATUS_MMG_SIDE_A
+  fwFsmTree_addNode(\"STATUS_MMG_SIDE_A\",\"MMG_ELTX::STATUS_MMG_SIDE_A_SECTOR_01\",\"ATLAS_STATUS\",0);       // STATUS_SIDE_A_SECTOR in STATUS_MMG_SIDE_A
+  fwFsmTree_setNodeLabel(\"MMG_SIDE_A\",\"Side A\");
+  fwFsmTree_setNodePanel(\"MMG_SIDE_A\", \"fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl\");
+
+
+
+
+  fwFsmTree_addNode(\"MMG_SIDE_A_SECTOR_01\",\"EIZ2R1A01\",\"ATLAS_STATUS\",0);
+  fwFsmTree_addNode(\"MMG_SIDE_A_SECTOR_01\",\"STATUS_MMG_SIDE_A_SECTOR_01\",\"ATLAS_STATUS\",0);
+  fwFsmTree_setNodeLabel(\"MMG_SIDE_A_SECTOR_01\",\"Sector 01\");
+  fwFsmTree_setNodePanel(\"MMG_SIDE_A_SECTOR_01\", \"fwAtlasMainPanels/ATL_MMG_ELTX_SECTOR.pnl\");
+
+  fwFsmTree_addNode(\"STATUS_MMG_SIDE_A_SECTOR_01\",\"MMG_ELTX::STATUS_EIZ2R1A01\",\"ATLAS_STATUS\",0);
+
+  fwFsmTree_addNode(\"EIZ2R1A01\",\"STATUS_EIZ2R1A01\",\"ATLAS_STATUS\",0);
+  fwFsmTree_setNodePanel(\"EIZ2R1A01\", \"fwAtlasMainPanels/ATL_MMG_ELTX_CHAMBER.pnl\");
+
+
+
+
+
+
+}
+
+
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

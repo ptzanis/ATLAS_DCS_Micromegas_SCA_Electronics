@@ -1,0 +1,642 @@
+V 14
+2
+LANG:10001 0 
+LANG:1 0 
+PANEL,-1 -1 569 506 N "_3DFace" 0
+"#uses \"fwATCA/fwATCA.ctl\"
+
+main()
+{    
+    comboSD.text(fwAtlas_getSubdetectorId(getSystemName()));
+    setMaxProgress();
+}" 0
+ E E E E 1 -1 -1 0  90 120
+""0  1
+E " /******************************************************************************\\
+     Creation Date: 21/06/2019
+     Developer: Polyneikis Tzanis (polyneikis.tzanis@cern.ch)
+     Main Developer: Paris Moschovakos (paris.moschovakos@cern.ch)
+     This script removes any previous ATCA nodes and creates a new ATCA FSM tree
+     according to the datapoints created by the fwATCA tool.
+     Added 21/4/2015: Changed object types and panels naming to conform to an fw
+                      component. Changed object types itself to consider all possible
+                      transitions from all states.
+ \\******************************************************************************/
+
+void stopFsm() {
+    prBar(\"Stopping current FSM tree...\");
+    fwFsmTree_stopTree();
+}
+
+void removeFsm() {
+    string subID = comboSD.text;
+    prBar(\"Removing current FSM tree ...\");
+    fwFsmTree_removeNode(\"FSM\", subID , 1);
+}
+
+void removeObjectTypes() {
+    prBar(\"Removing MMG object types ...\");
+//     fwFsm_deleteObjectType(\"fwAtcaSlot_ATCA_SLOT\");
+//     fwFsm_deleteObjectType(\"fwAtcaPowerSupply_ATCA_PS\");
+//     fwFsm_deleteObjectType(\"fwAtcaShelfManager_ATCA_SHM\");
+//     fwFsm_deleteObjectType(\"FW_ATCA\");
+//     fwFsm_deleteObjectType(\"FW_ATCA_SHELF\");
+}
+
+void createObjectTypes() {
+    string subID = comboSD.text;
+    prBar(\"Creating MMG object types...\");
+    fwFsm_createObjectType(subID + \"_EA\", 0);
+    fwFsm_createObjectType(subID + \"_EC\", 0);
+    prBar(\"Creating MMG device types...\");
+//     createNewDeviceTypeBasedOnType(\"fwAtcaSlot\", \"fwAtcaSlot_\" + subID + \"_ATCA_SLOT\");
+//     createNewDeviceTypeBasedOnType(\"fwAtcaPowerSupply\", \"fwAtcaPowerSupply_\" + subID + \"_ATCA_PS\");
+//     createNewDeviceTypeBasedOnType(\"fwAtcaShelfManager\", \"fwAtcaShelfManager_\" + subID + \"_ATCA_SHM\");
+}
+
+void configureObjectTypes() {
+    // Object types will be imported through a .dpl
+}
+
+void createParentNode(bool x) {
+    string subID = comboSD.text;
+    fwFsmTree_addNode(\"FSM\", subID + \"_ATCA\", \"FW_ATCA\", 1);
+    if (x) fwUi_setTypePanel(\"FW_ATCA\",\"fwAtlasMainPanels/fwATCA/fwATCA_Overview.pnl\");
+    fwFsmTree_setNodeLabel(subID + \"_ATCA\", subID + \" ATCA\");
+    list.appendItem = subID + \"_ATCA node created.\";
+
+    fwFsmTree_addNode(subID + \"_ATCA\", \"STATUS_\" + subID + \"_ATCA\", \"ATLAS_STATUS\", 0);
+    prBar(\"STATUS_\" + subID + \"_ATCA reference node created.\");
+}
+
+void createDiscoveredNodes(bool x) {
+    dyn_string temphost, slots, powerSupplies, shelfManagers;
+    string host;
+    string subID = comboSD.text;
+    dyn_string shelves = dpNames(\"*\", \"fwAtcaShelf\");
+
+    for (int i=1; i <=dynlen(shelves); i++){
+        temphost = strsplit(shelves[i], \"/\");
+        host = temphost[2];
+        slots = dpNames(\"ATCA/\" + host + \"/Slot*\", \"fwAtcaSlot\");
+        powerSupplies = dpNames(\"ATCA/\" + host + \"/PowerSupply*\", \"fwAtcaPowerSupply\");
+        shelfManagers = dpNames(\"ATCA/\" + host + \"/ShelfManager*\", \"fwAtcaShelfManager\");
+
+        fwFsmTree_addNode(subID + \"_ATCA\", subID + \"_ATCA_SHELF\" + i, \"FW_ATCA_SHELF\", 1);
+        if (x) fwUi_setTypePanel(\"FW_ATCA_SHELF\", \"fwAtlasMainPanels/fwATCA/fwATCA_Shelf.pnl\");
+        fwFsmTree_setNodeLabel(subID + \"_ATCA_SHELF\" + i, \"ATCA SHELF \" + i);
+        list.appendItem = subID + \"_ATCA_SHELF\" + i + \" node created.\";
+
+        fwFsmTree_addNode(subID + \"_ATCA_SHELF\" + i, \"STATUS_\" + subID + \"_ATCA_SHELF\" + i, \"ATLAS_STATUS\", 0);
+        fwFsmTree_addNode(\"STATUS_\" + subID + \"_ATCA\", subID + \"_ATCA_SHELF\"+i+\"::STATUS_\" + subID +
+                          \"_ATCA_SHELF\" + i, \"ATLAS_STATUS\", 0);
+        prBar(\"STATUS_\" + subID + \"_ATCA_SHELF\" + i + \" refernce node created.\");
+        dpSetAlias(shelves[i] + \".\", subID + \"_ATCA_SHELF\" + i);
+
+        for (int j=1; j<=dynlen(slots); j++){
+
+            fwFsmTree_addNode(subID + \"_ATCA_SHELF\" + i, subID + \"_ATCA_SLOT\" + j, \"fwAtcaSlot_ATCA_SLOT\", 0);
+            if (x) fwUi_setTypePanel(\"fwAtcaSlot_ATCA_SLOT\", \"fwAtlasMainPanels/fwATCA/fwATCA_Slot.pnl\");
+            fwFsmTree_setNodeLabel(subID + \"_ATCA_SLOT\" + j, \"BLADE \" + j);
+            list.appendItem = subID + \"_ATCA_SLOT\" + j + \" for SHELF\" + i + \" node created.\";
+
+            fwFsmTree_addNode(\"STATUS_\" + subID + \"_ATCA_SHELF\" + i, \"STATUS_\" + subID +
+                              \"_ATCA_SLOT\" + j, \"ATLAS_DU_STATUS\", 0);
+            prBar(\"STATUS_\" + subID + \"_ATCA_SLOT\" + j + \" for SHELF\" + i + \" node created.\");
+            dpSetAlias(slots[j] + \".\", subID + \"_ATCA_SLOT\" + j);
+        }
+        for (int k=1; k<=dynlen(powerSupplies); k++){
+            fwFsmTree_addNode(subID + \"_ATCA_SHELF\" + i, subID + \"_ATCA_PS\" + k, \"fwAtcaPowerSupply_ATCA_PS\", 0);
+            if (x) fwUi_setTypePanel(\"fwAtcaPowerSupply_ATCA_PS\", \"fwAtlasMainPanels/fwATCA/fwATCA_PowerSupply.pnl\");
+            fwFsmTree_setNodeLabel(subID + \"_ATCA_PS\" + k, \"POWER SUPPLY \" + k);
+            list.appendItem = subID + \"_ATCA_PS\" + k + \" for SHELF\" + i + \" node created.\";
+
+            fwFsmTree_addNode(\"STATUS_\" + subID + \"_ATCA_SHELF\" + i, \"STATUS_\" + subID +
+                              \"_ATCA_PS\" + k, \"ATLAS_DU_STATUS\", 0);
+            prBar(\"STATUS_\" + subID + \"_ATCA_PS\" + k + \" for SHELF\" + i + \" node created.\");
+            dpSetAlias(powerSupplies[k] + \".\", subID + \"_ATCA_PS\" + k);
+        }
+        for (int l=1; l<=dynlen(shelfManagers); l++){
+            fwFsmTree_addNode(subID + \"_ATCA_SHELF\" + i, subID + \"_ATCA_SHM\" + l, \"fwAtcaShelfManager_ATCA_SHM\", 0);
+            if (x) fwUi_setTypePanel(\"fwAtcaShelfManager_ATCA_SHM\", \"fwAtlasMainPanels/fwATCA/fwATCA_ShelfManager.pnl\");
+            fwFsmTree_setNodeLabel(subID + \"_ATCA_SHM\" + l, \"SHELF MANAGER \" + l);
+            list.appendItem = subID + \"_ATCA_SHM\" + l + \" for SHELF\" + i + \" node created.\";
+
+            fwFsmTree_addNode(\"STATUS_\" + subID + \"_ATCA_SHELF\" + i, \"STATUS_\" + subID +
+                              \"_ATCA_SHM\" + l, \"ATLAS_DU_STATUS\", 0);
+            prBar(\"STATUS_\" + subID + \"_ATCA_SHM\" + l + \" for SHELF\" + i + \" node created.\");
+            dpSetAlias(shelfManagers[l] + \".\", subID + \"_ATCA_SHM\" + l);
+        }
+    }
+}
+
+void generateFsm() {
+    list.appendItem = \"\";
+    prBar(\"Generating ATCA FSM tree...\");
+    fwFsmTree_generateAll();
+    prBar(\"Done!\");
+}
+
+void startFsm() {
+    prBar(\"Starting ATCA FSM...\");
+    fwFsmTree_startTree();
+    prBar(\"Done!\");
+}
+
+int setMaxProgress() {
+    dyn_string shelves = dpNames(\"*\", \"fwAtcaShelf\");
+    dyn_string slots = dpNames(\"*\", \"fwAtcaSlot\");
+    dyn_string powerSupplies = dpNames(\"*\", \"fwAtcaPowerSupply\");
+    dyn_string shelfManagers = dpNames(\"*\", \"fwAtcaShelfManager\");
+    progBar.maximum = dynlen(shelves) + dynlen(slots) + dynlen(powerSupplies) + dynlen(shelfManagers) + 7;
+    return progBar.maximum;
+}
+
+void createNewDeviceTypeBasedOnType(string baseType, string newName) {
+    string newtype = newName;
+				fwFsm_createObjectType(newtype,1);
+				fwUi_setTypePanelBaseType(newtype, baseType);
+}
+
+void prBar(string message){
+    progBar.progress = progBar.progress + 1;
+    list.appendItem = message;
+    list.bottomPos(list.itemCount);
+}
+
+
+
+" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+13 0
+"createFsmButton"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 96 WARNING: This script will stop and remove the current ATCA FSM tree before creating the new one!
+LANG:1 96 WARNING: This script will stop and remove the current ATCA FSM tree before creating the new one!
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,11,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,8,-1,5,50,0,0,0,0,0
+0  8 8 337 32
+
+T 
+2
+LANG:10001 10 Create FSM
+LANG:1 15 Create ATCA FSM
+"main()
+{ 
+    string subID = comboSD.text;
+    bool x;
+    this.enabled = \"FALSE\";
+    comboSD.enabled = \"FALSE\";    
+    this.backCol(\"betrKamUnq\");
+    this.text(\"Generating ATCA FSM...\");
+    
+    getValue(\"checkBox1\", \"state\",0, x);   
+    if (x) stopFsm();
+    getValue(\"checkBox1\", \"state\",1, x);   
+    if (x) removeFsm();
+    getValue(\"checkBox1\", \"state\",2, x);   
+    if (x) removeObjectTypes();
+    
+    getValue(\"checkBox2\", \"state\",0, x);   
+    if (x) createObjectTypes();
+    getValue(\"checkBox2\", \"state\",1, x);   
+    if (x) configureObjectTypes();
+    getValue(\"checkBox2\", \"state\",2, x);   
+    if (x) {
+        list.appendItem = \"Creation of \" + subID + \" ATCA FSM tree started.\";
+        getValue(\"checkBox3\", \"state\",0, x);
+        createParentNode(x);
+        createDiscoveredNodes(x);
+    }
+    
+    getValue(\"checkBox3\", \"state\",1, x);
+    if (x) generateFsm();
+    getValue(\"checkBox3\", \"state\",2, x);
+    if (x) startFsm();
+    
+    this.backCol(\"_Button\");
+    this.text = \"Create ATCA FSM\";
+    comboSD.enabled = \"TRUE\";
+    this.enabled = \"TRUE\";
+    progBar.progress(setMaxProgress());
+}" 0
+ E E E
+13 3
+"closeButton"
+""
+1 429 528 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,11,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,8,-1,5,50,0,0,0,0,0
+0  383 220 457 244
+
+T 
+2
+LANG:10001 5 Close
+LANG:1 5 Close
+"main()
+{
+    PanelOff();
+}" 0
+ E E E
+29 15
+"progBar"
+""
+1 27.95121951219512 244 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+4
+"percentageVisible" "bool TRUE"
+"maximum" "int 10"
+"progress" "int 0"
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,9,-1,5,50,0,0,0,0,0
+0  10 223 378 241
+11 ProgressBar
+0
+E17 16
+"list"
+""
+1 10 40 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 145 To build up the ATCA FSM tree from scratch make sure you have stopped and THEN removed the previous ATCA FSM tree before applying these actions. 
+LANG:1 145 To build up the ATCA FSM tree from scratch make sure you have stopped and THEN removed the previous ATCA FSM tree before applying these actions. 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,13,5,50,0,0,0,0,0
+LANG:1 31 Sans Serif,10,-1,5,50,0,0,0,0,0
+0  8 38 457 213
+0
+
+"main()
+{
+    this.font(\"Monospace\");
+
+    this.appendItem(\"WARNING: This script will stop and remove the current\");  
+    this.appendItem(\"         ATCA FSM tree before creating the new one!\");
+    this.appendItem(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");
+    this.appendItem(comboSD.text + \" subdetector detected.\");
+    for (int i = 0; i < 3; i++) {this.appendItem(\"\");}
+}" 0
+
+E
+E
+
+0 0
+22 18
+"comboSD"
+""
+1 366 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,9,-1,5,50,0,0,0,0,0
+0  364 8 458 32
+0
+
+E
+"main()
+{
+    list.appendItem(\"WARNING: You are going to create the ATCA FSM for \" + comboSD.text + \".\");
+}" 0
+
+E
+ 0 0
+20 20
+"checkBox1"
+""
+1 20 41 E E E 1 E 0 E N "_3DText" E N "_3DFace" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 34 Utopia,-1,9,5,50,0,0,0,0,0,Regular
+LANG:1 30 Sans Serif,7,-1,5,50,0,0,0,0,0
+0  8 30 172 88
+3
+T 
+2
+LANG:10001 8 Stop FSM
+LANG:1 8 Stop FSM
+
+1 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:10001 16 Remove ATCA tree
+LANG:1 16 Remove ATCA tree
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:10001 19 Remove object types
+LANG:1 19 Remove object types
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+0
+"main()
+{
+    setValue(\"checkBox1\", \"font\", \"Utopia, 8,-1,5,50,0,0,0,0,0\");
+//     setValue(\"checkBox1\", \"itemEnabled\", 2, false);
+}" 0
+E20 22
+"checkBox2"
+""
+1 28.93749999999994 36 E E E 1 E 0 E N "_3DText" E N "_3DFace" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 30 Sans Serif,-1,9,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,7,-1,5,50,0,0,0,0,0
+0  161 30 330 88
+3
+T 
+2
+LANG:10001 19 Create object types
+LANG:1 19 Create object types
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:10001 22 Configure object types
+LANG:1 22 Configure object types
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:10001 16 Create ATCA tree
+LANG:1 16 Create ATCA tree
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+0
+"main()
+{
+    setValue(\"checkBox2\", \"font\", \"Utopia, 8,-1,5,50,0,0,0,0,0\");
+//     setValue(\"checkBox2\", \"itemEnabled\", 0, false);
+//     setValue(\"checkBox2\", \"itemEnabled\", 1, false);
+//     setValue(\"checkBox2\", \"itemEnabled\", 2, false);
+}" 0
+E13 25
+"advancedButton"
+""
+1 32 0 E E E 1 E 1 E N "_WindowText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 31 Sans Serif,-1,11,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,8,-1,5,50,0,0,0,0,0
+0  335 8 359 32
+
+P 
+4294967295
+"pictures/more_arrow.bmp"
+2
+LANG:10001 15 Create ATCA FSM
+LANG:1 15 Create ATCA FSM
+"main()
+{ 
+    if (checkBox1.visible == false) {
+        list.size(446,122);
+        list.position(10,90);
+        checkBox1.visible = true;
+        checkBox2.visible = true;
+        checkBox3.visible = true;  
+    }
+    else {
+        list.size(446,172);
+        list.position(10,40);
+        checkBox1.visible = false;
+        checkBox2.visible = false;
+        checkBox3.visible = false;
+    }
+}" 0
+ E E E
+20 26
+"checkBox3"
+""
+1 336.9224806201551 41 E E E 1 E 0 E N "_3DText" E N "_3DFace" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 30 Sans Serif,-1,9,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,7,-1,5,50,0,0,0,0,0
+0  325 30 457 88
+3
+T 
+2
+LANG:10001 13 Assign Panels
+LANG:1 13 Assign Panels
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:10001 12 Generate FSM
+LANG:1 12 Generate FSM
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:10001 9 Start FSM
+LANG:1 9 Start FSM
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+0
+"main()
+{
+    setValue(\"checkBox3\", \"font\", \"Utopia, 8,-1,5,50,0,0,0,0,0\");
+//     setValue(\"checkBox3\", \"itemEnabled\", 0, false);
+//     setValue(\"checkBox3\", \"itemEnabled\", 1, false);
+//     setValue(\"checkBox3\", \"itemEnabled\", 2, false);
+
+
+}" 0
+E4 29
+"LINE1"
+""
+1 11 280 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 2 1 2 1 E  11 280 418 280
+2 31
+"PRIMITIVE_TEXT1"
+""
+1 163 272 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+4
+"hoverbclr" "N \"_3DFace\""
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 163 272 266 286
+0 2 2 "0s" 0 0 0 192 0 0  163 272 1
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 30 Sans Serif,9,-1,5,50,0,0,0,0,0
+0 2
+LANG:10001 15 Debugging Tools
+LANG:1 15 Debugging Tools
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

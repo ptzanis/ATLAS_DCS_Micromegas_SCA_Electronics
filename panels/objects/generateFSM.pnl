@@ -1,0 +1,390 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 480 374 N "_3DFace" 0
+E E E E E 1 -1 -1 0  180 68
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+13 0
+"PUSH_BUTTON1"
+""
+1 155.75 58 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  153.75 48 326.75 81
+
+T 
+1
+LANG:10001 10 Initialize
+"main()
+{
+
+    DebugN(\"STARTED\",\"Initializing MMG-ELTX FSM tree\");
+/*
+
+dpDelete(\"fwTN_&0001STATUS_MMG\");
+dpDelete(\"fwTN_&0001STATUS_SGC\");
+dpDelete(\"fwTN_MMG\");
+dpDelete(\"fwTN_NSW\");
+dpDelete(\"fwTN_SGC\");
+dpDelete(\"fwTN_STATUS_MMG\");
+dpDelete(\"fwTN_STATUS_NSW\");
+dpDelete(\"fwTN_STATUS_SGC\");
+
+*/
+
+    fwFsmTree_addNode(\"FSM\", \"MMG\", \"ATLAS_MMG\", 1);               // Create general FSM
+    fwFsmTree_addNode(\"MMG\", \"STATUS_MMG\", \"ATLAS_STATUS\", 0);
+
+    fwFsmTree_addNode(\"MMG\", \"MMG_EA\", \"MMG_EA\", 1);
+    fwFsmTree_addNode(\"MMG_EA\", \"STATUS_MMG_EA\", \"ATLAS_STATUS\", 0);
+    fwFsmTree_addNode(\"STATUS_MMG\", \"MMG::STATUS_MMG_EA\", \"ATLAS_STATUS\", 0);
+
+    fwFsmTree_addNode(\"MMG\", \"MMG_EC\", \"MMG_EC\", 1);
+    fwFsmTree_addNode(\"MMG_EC\", \"STATUS_MMG_EC\", \"ATLAS_STATUS\", 0);
+    fwFsmTree_addNode(\"STATUS_MMG\", \"MMG::STATUS_MMG_EC\", \"ATLAS_STATUS\", 0);
+
+    DebugN(\"FINISHED\",\"Initializing MMG-ELTX FSM tree\");
+
+
+
+
+
+
+}" 0
+ E E E
+13 1
+"PUSH_BUTTON2"
+""
+1 155.5 171 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  153.5 156 326.5 189
+
+T 
+1
+LANG:10001 9 Set Label
+"main()
+{
+
+   DebugN(\"STARTED\",\"Setting FSM node labels\");
+
+   fwFsmTree_setNodeLabel(\"MMG_EA\", \"MMG EA\");
+   fwFsmTree_setNodeLabel(\"MMG_EC\", \"MMG EC\");
+
+
+/*
+   fwFsmTree_setNodeLabel(\"ATL_MMG\", \"MMG\");
+   fwFsmTree_setNodeLabel(\"MMG_MSW\", \"MSW\");
+
+ //  fwFsmTree_setNodeLabel(\"MSW\", \"MICROMEGAS SMALL WHEEL\");
+
+   fwFsmTree_setNodeLabel(\"MMG_MSW_HV\", \"HV\");                //CAEN HV
+   fwFsmTree_setNodeLabel(\"MMG_MSW_LV\", \"LV\");                //WIENER LV
+
+  // fwFsmTree_setNodeLabel(\"HV_CHANNEL_00\", \"HV DRIFT\");
+
+   string side_MSW = \"\";
+   int isPassed = 0;
+   int number;
+   string hvchannels;
+
+   for (int i=0; i<12; i++){
+     if(i<10){
+       hvchannels = \"HV_CHANNEL_0\"+i;
+       }
+
+     else{
+       hvchannels = \"HV_CHANNEL_\"+i;
+       }
+
+     if (i<4){
+      fwFsmTree_setNodeLabel(hvchannels, \"HvDrift_\"+i);
+     }
+
+     else {
+
+       if (i%2 == 0) {
+         side_MSW = \"L\";
+         number = i - 4 - isPassed;
+         isPassed++;
+       }
+       else {
+         side_MSW = \"R\";
+         number = i - 4 - isPassed;
+       }
+
+  fwFsmTree_setNodeLabel(hvchannels, \"HvRO_\" + side_MSW + number);
+     }
+   }
+
+    string lvchannels;
+    for (int i=0; i<2; i++){
+        lvchannels = \"LV_CHANNEL_0\"+i;
+        fwFsmTree_setNodeLabel(lvchannels, \"LV Channel_0\" +i);
+          }
+
+
+
+   fwFsmTree_setNodeLabel(\"MMG_INF\", \"INFRASTRUCTURE\");
+   fwFsmTree_setNodeLabel(\"MMG_CAEN_SYSTEM\", \"CAEN SYSTEM\");
+   fwFsmTree_setNodeLabel(\"MSW_MAINFRAME\", \"SY1527 MAINFRAME\");
+   fwFsmTree_setNodeLabel(\"MMG_MSW_BOARDS\", \"MSW BOARDS\");
+   fwFsmTree_setNodeLabel(\"MSW_BOARD_P\", \"HV_A1821P\");
+   fwFsmTree_setNodeLabel(\"MSW_BOARD_N\", \"HV_A1821N\");
+  //   fwFsmTree_setNodeLabel(\"MSW_BOARD_LV\", \"LV_A3025P\");
+   fwFsmTree_setNodeLabel(\"MMG_WIENER_MARATON_SYSTEM\", \"WIENER MARATON SYSTEM\");
+   fwFsmTree_setNodeLabel(\"MMG_VME_CRATES\", \"VME CRATES\");
+   fwFsmTree_setNodeLabel(\"VME_CRATE\", \"WienerCrate/CAN3/Crate71\");
+
+
+*/
+
+DebugN(\"FINISHED\",\"Setting FSM node labels\");
+
+
+}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E E E
+13 2
+"PUSH_BUTTON3"
+""
+1 155.75 312 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  153.75 287 326.75 320
+
+T 
+1
+LANG:10001 14 Panels to Node
+"main()
+{
+  DebugN(\"STARTED\",\"Setting MSW Micromegas DCS FSM node panels\");
+
+  //  string name= \"HV_CHANNEL_00\";
+     string name= \"\";
+  for(int i=0; i<12; i++)
+  {
+    if(i<10){
+      name= \"HV_CHANNEL_0\";
+    }
+    else{
+       name= \"HV_CHANNEL_\";
+    }
+    name += i;                 // name = name +i;
+       getChannelDpName(name);
+//        name= \"HV_CHANNEL_0\";
+       DebugN(\"++++++++++++++channel name .pnl : \"+name);
+       fwFsmTree_setNodePanel(name,\"MMG_MSW_CHANNEL.pnl\");
+  }
+
+  string nameLV= \"\";
+  for(int j=0; j<2; j++)
+  {
+      nameLV = \"LV_CHANNEL_0\";
+      nameLV += j;
+       getChannelDpName(name);
+//        name= \"LV_CHANNEL_0\";
+       DebugN(\"++++++++++++++ LV channel name .pnl : \"+nameLV);
+       fwFsmTree_setNodePanel(nameLV,\"MMG_MSW_LV_CHANNEL.pnl\");
+  }
+
+
+       fwFsmTree_setNodePanel(\"ATL_MMG\",\"ATL_MMG_main.pnl\");
+        fwFsmTree_setNodePanel(\"MMG_MSW\",\"MMG_MSW_info.pnl\");
+          fwFsmTree_setNodePanel(name,\"MMG_MSW_CHANNEL.pnl\");
+         fwFsmTree_setNodePanel(\"MMG_MSW_HV\",\"MMG_MSW_HVLV.pnl\");
+         fwFsmTree_setNodePanel(\"MMG_MSW_LV\",\"MMG_MSW_HVLV.pnl\");
+
+         fwFsmTree_setNodePanel(\"MMG_VME_CRATES\",\"MSW_WIENER_VMEcrate.pnl\");
+         fwFsmTree_setNodePanel(\"VME_CRATE\",\"MSW_WIENER_VMEcrate.pnl\");
+
+
+
+
+  DebugN(\"FINISHED\",\"Setting MSW Micromegas DCS FSM node panels\");
+}
+
+
+
+
+
+//
+// main()
+// {
+//   dyn_string lwdaq_serv;
+//   int num_serv;
+// ===  //fill lwdaq_serv list somehow
+//   num_serv = dynlen(lwdaq_serv);
+//
+//   DebugN(\"STARTED\",\"Setting Endcap Alignment FSM node panels\");
+//
+//   fwFsmTree_setNodePanel(\"MDT_E_ALIGN\", \"fwAtlasMainPanels/mdtEalign/MDT_EAL_OVERVIEW.pnl\");
+//
+//   fwFsmTree_setNodePanel(\"mdtLwdaqLtx\", \"fwAtlasMainPanels/mdtEalign/MDT_EAL_OVERVIEW.pnl\");
+//
+//   fwFsmTree_setNodePanel(\"mdtLwdaqCycle\", \"fwAtlasMainPanels/mdtEalign/MDT_EAL_OVERVIEW.pnl\");
+//
+//   fwFsmTree_setNodePanel(\"mdtLwdaqDb\", \"fwAtlasMainPanels/mdtEalign/MDT_EAL_OVERVIEW.pnl\");
+//
+//   DebugN(\"FINISHED\",\"Setting Endcap Alignment FSM node panels\");
+// }
+
+
+
+string getChannelDpName(string mmgChannelName){
+
+  string sy = \"ATLMMGSCS:CAEN/ATLMMGPS1\";
+  string board = \"/board0\";
+  string channel = \"/channel0\";
+  string channelNum;
+  string channelDp;
+
+  channelNum = strltrim(mmgChannelName,\"HV_CHANNEL_\");
+
+  if((int)channelNum>3){
+   board=board+\"0\";
+   channelNum = (int)channelNum-4;
+   channelNum = \"0\"+channelNum;
+  }
+  else
+  {
+    board=board+\"1\";
+  }
+
+  channel = channel+channelNum;
+  channelDp = sy+board+channel;
+}
+
+
+
+
+
+
+
+
+
+" 0
+ E E E
+13 3
+"PUSH_BUTTON4"
+""
+1 340 58 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  338 48 411.5 81
+
+T 
+1
+LANG:10001 6 Delete
+"main()
+{
+
+
+ DebugN(\"STARTED\",\"Deleting MMG-ELTX FSM tree\");
+
+dpDelete(\"fwTN_&0001STATUS_MMG_EA\");
+dpDelete(\"fwTN_&0001STATUS_MMG_EC\");
+dpDelete(\"fwTN_MMG\");
+dpDelete(\"fwTN_MMG_EA\");
+dpDelete(\"fwTN_MMG_EC\");
+dpDelete(\"fwTN_STATUS_MMG\");
+dpDelete(\"fwTN_STATUS_MMG_EA\");
+dpDelete(\"fwTN_STATUS_MMG_EC\");
+
+
+
+DebugN(\"FINISHED\",\"Deleting MMG-ELTX FSM tree\");
+
+
+
+
+
+
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0
