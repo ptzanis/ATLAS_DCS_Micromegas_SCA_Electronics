@@ -509,7 +509,7 @@ int x=dpTypeCreate(elements,types);
 13 27
 "PUSH_BUTTON2"
 ""
-1 97 123 E E E 1 E 1 E N "yellow" E N "_Button" E E
+1 97 139 E E E 1 E 1 E N "yellow" E N "_Button" E E
  E E
 26 0 0 0 0 0
 E E E
@@ -521,7 +521,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  126.1351351351351 132 226.1351351351352 156
+0  126.1351351351351 148 226.1351351351352 172
 
 T 
 1
@@ -715,7 +715,7 @@ LANG:10001 9 Start FSM
 13 30
 "PUSH_BUTTON5"
 ""
-1 96 70 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 99 69 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 29 0 0 0 0 0
 E E E
@@ -727,28 +727,101 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  124.4426588750913 79 222.3075237399562 103
+0  131.5591376621325 78 242.1164787870412 102
 
 T 
 1
 LANG:10001 16 Create ELTX Tree
 "main(){
 
- mmgEltx_createFsmTree();
+  mmgEltx_createFsmTree();
 
 }
 mmgEltx_createFsmTree()
 {
 
+  string prefix = \"EI\";
+  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string radial= makeDynString(\"R1\",\"R2\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  string chamberName;
+
+    fwFsmTree_addNode(\"FSM\", \"MMG_ELTX\", \"ATLAS_CU\", 1);   // Create general FSM
+
+    fwFsmTree_addNode(\"MMG_ELTX\",\"STATUS_MMG_ELTX\",\"ATLAS_STATUS\",0);
+    fwFsmTree_setNodeLabel(\"MMG_ELTX\",\"ELTX\");
+
+  for(int i_side = 1; i_side <=1 ; i_side++)
+  {
+
+   fwFsmTree_addNode(\"MMG_ELTX\",\"MMG_SIDE_\"+side[i_side],\"ATLAS_STATUS\",0);
+   fwFsmTree_addNode(\"STATUS_MMG_ELTX\",\"MMG_ELTX::STATUS_MMG_SIDE_\"+side[i_side],\"ATLAS_STATUS\",0);
+   fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side],\"Side \"+side[i_side]);
+
+      for(int i_axial = 1; i_axial <= 2; i_axial++)
+      {
+        for(int i_radial =1 ; i_radial <= 2; i_radial++)
+        {
+          for(int i_sector = 1; i_sector <=1; i_sector++)
+          {
+
+           fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side],\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"ATLAS_STATUS\",0);      // MMG_SIDE_A_SECTOR_1
+           fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side],\"STATUS_MMG_SIDE_\"+side[i_side],\"ATLAS_STATUS\",0);    // Status for MMG_SIDE_A  -> STATUS_MMG_SIDE_A
+           fwFsmTree_addNode(\"STATUS_MMG_SIDE_\"+side[i_side],\"MMG_ELTX::STATUS_MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"ATLAS_STATUS\",0);       // STATUS_SIDE_A_SECTOR in STATUS_MMG_SIDE_A
+
+            chamberName = prefix  + axial[i_axial] + radial[i_radial] + side[i_side] + sector[i_sector];
+
+              fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],chamberName,\"ATLAS_STATUS\",0);
+              fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"ATLAS_STATUS\",0);
+              fwFsmTree_addNode(\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"MMG_ELTX::STATUS_\"+chamberName,\"ATLAS_STATUS\",0);
+              fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"Sector \"+side[i_side]);
+
+              fwFsmTree_addNode(chamberName,\"STATUS_\"+chamberName,\"ATLAS_STATUS\",0);
+
+               for(int layer=1;layer<=1;layer++)
+              {
+                fwFsmTree_addNode(chamberName,chamberName+\"_\"+\"LAYER\"+layer,\"ATLAS_STATUS\",0);
+                fwFsmTree_addNode(chamberName+\"_\"+\"LAYER\"+layer,\"STATUS_\"+chamberName+\"_\"+\"LAYER\"+layer,\"ATLAS_STATUS\",0);
+                fwFsmTree_setNodeLabel(chamberName+\"_\"+\"LAYER\"+layer,\"Layer \"+layer);
+
+                for(int pcb=1;pcb<=1;pcb++)
+                {
+                    fwFsmTree_addNode(chamberName+\"_\"+\"LAYER\"+layer,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"ATLAS_STATUS\",0);
+                    fwFsmTree_addNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"ATLAS_STATUS\",0);
+                    fwFsmTree_setNodeLabel(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"PCB \"+pcb);
+
+                  for(int board=1;board<=1;board++)
+                    {
+                    fwFsmTree_addNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_STATUS\",0);
+                    fwFsmTree_addNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"BOARD\"+board,\"STATUS_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_STATUS\",0);
+                    }//board
+
+                }//pcb
+             }//layer
+          }//sector
+        }//radial R1,R2
+      }//axial Z2,Z3
+    }//side A,C
+
+
+
+
+}
+
+
+mmgEltx_createFsmTree_old()
+{
+
   fwFsmTree_addNode(\"FSM\", \"MMG_ELTX\", \"ATLAS_CU\", 1);   // Create general FSM
   fwFsmTree_addNode(\"MMG_ELTX\",\"STATUS_MMG_ELTX\",\"ATLAS_STATUS\",0);   // Status for MMG_SIDE_A  -> STATUS_MMG_SIDE_A
   fwFsmTree_setNodeLabel(\"MMG_ELTX\",\"ELTX\");
-  fwFsmTree_setNodePanel(\"MMG_ELTX\", \"fwAtlasMainPanels/ATL_MMG_ELTX_OVERVIEW.pnl\");
+//   fwFsmTree_setNodePanel(\"MMG_ELTX\", \"fwAtlasMainPanels/ATL_MMG_ELTX_OVERVIEW.pnl\");
 
   fwFsmTree_addNode(\"MMG_ELTX\",\"MMG_SIDE_A\",\"ATLAS_STATUS\",0);  // e.g. MMG_SIDE_A
   fwFsmTree_addNode(\"STATUS_MMG_ELTX\",\"MMG_ELTX::STATUS_MMG_SIDE_A\",\"ATLAS_STATUS\",0);  //
   fwFsmTree_setNodeLabel(\"MMG_SIDE_A\",\"Side A\");
-  fwFsmTree_setNodePanel(\"MMG_SIDE_A\", \"fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl\");
+//   fwFsmTree_setNodePanel(\"MMG_SIDE_A\", \"fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl\");
 
 
   fwFsmTree_addNode(\"MMG_SIDE_A\",\"MMG_SIDE_A_SECTOR_01\",\"ATLAS_STATUS\",0);      // MMG_SIDE_A_SECTOR_1
@@ -762,30 +835,35 @@ mmgEltx_createFsmTree()
   fwFsmTree_addNode(\"MMG_SIDE_A_SECTOR_01\",\"STATUS_MMG_SIDE_A_SECTOR_01\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"STATUS_MMG_SIDE_A_SECTOR_01\",\"MMG_ELTX::STATUS_EIZ2R1A01\",\"ATLAS_STATUS\",0);
   fwFsmTree_setNodeLabel(\"MMG_SIDE_A_SECTOR_01\",\"Sector 01\");
-  fwFsmTree_setNodePanel(\"MMG_SIDE_A_SECTOR_01\", \"fwAtlasMainPanels/ATL_MMG_ELTX_SECTOR.pnl\");
+//   fwFsmTree_setNodePanel(\"MMG_SIDE_A_SECTOR_01\", \"fwAtlasMainPanels/ATL_MMG_ELTX_SECTOR.pnl\");
 
 
 
   fwFsmTree_addNode(\"EIZ2R1A01\",\"STATUS_EIZ2R1A01\",\"ATLAS_STATUS\",0);
-  fwFsmTree_setNodePanel(\"EIZ2R1A01\", \"fwAtlasMainPanels/ATL_MMG_ELTX_CHAMBER.pnl\");
+//   fwFsmTree_setNodePanel(\"EIZ2R1A01\", \"fwAtlasMainPanels/ATL_MMG_ELTX_CHAMBER.pnl\");
 
   fwFsmTree_addNode(\"EIZ2R1A01\",\"LAYER1\",\"ATLAS_STATUS\",0);
 
 
   fwFsmTree_addNode(\"LAYER1\",\"PCB1\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"LAYER1\",\"STATUS_LAYER1\",\"ATLAS_STATUS\",0);
+//   fwFsmTree_setNodePanel(\"LAYER1\", \"fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl\");
 
-  fwFsmTree_addNode(\"PCB1\",\"LAYER1\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"PCB1\",\"STATUS_PCB1\",\"ATLAS_STATUS\",0);
+//   fwFsmTree_setNodePanel(\"PCB1\", \"fwAtlasMainPanels/ATL_MMG_ELTX_PCB.pnl\");
 
-  fwFsmTree_addNode(\"LAYER1\",\"BOARD1\",\"ATLAS_STATUS\",0);
+  fwFsmTree_addNode(\"PCB1\",\"BOARD1\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"BOARD1\",\"STATUS_BOARD1\",\"ATLAS_STATUS\",0);
-  fwFsmTree_addNode(\"LAYER1\",\"BOARD2\",\"ATLAS_STATUS\",0);
+//   fwFsmTree_setNodePanel(\"BOARD1\", \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
+  fwFsmTree_addNode(\"PCB1\",\"BOARD2\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"BOARD2\",\"STATUS_BOARD2\",\"ATLAS_STATUS\",0);
-  fwFsmTree_addNode(\"LAYER1\",\"BOARD3\",\"ATLAS_STATUS\",0);
+//   fwFsmTree_setNodePanel(\"BOARD2\", \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
+  fwFsmTree_addNode(\"PCB1\",\"BOARD3\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"BOARD3\",\"STATUS_BOARD3\",\"ATLAS_STATUS\",0);
-  fwFsmTree_addNode(\"LAYER1\",\"BOARD4\",\"ATLAS_STATUS\",0);
+//   fwFsmTree_setNodePanel(\"BOARD3\", \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
+  fwFsmTree_addNode(\"PCB1\",\"BOARD4\",\"ATLAS_STATUS\",0);
   fwFsmTree_addNode(\"BOARD4\",\"STATUS_BOARD4\",\"ATLAS_STATUS\",0);
+//   fwFsmTree_setNodePanel(\"BOARD4\", \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
 
 }
 
