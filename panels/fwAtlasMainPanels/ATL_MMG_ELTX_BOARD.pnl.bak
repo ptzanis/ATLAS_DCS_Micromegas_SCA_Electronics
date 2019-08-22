@@ -113,7 +113,7 @@ E E 0 1 1 2 1 E  -2 35 857.0000000000001 35
 14 6
 "TEXT_FIELD3"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 6 0 0 0 0 0
 E E E
@@ -125,7 +125,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 54 841 77
+0  727 50 841 73
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getDetector());
@@ -134,7 +134,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 7
 "TEXT_FIELD4"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 7 0 0 0 0 0
 E E E
@@ -146,7 +146,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 74 841 97
+0  727 70 841 93
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSide());
@@ -155,7 +155,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 8
 "TEXT_FIELD5"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 8 0 0 0 0 0
 E E E
@@ -167,7 +167,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 94 841 117
+0  727 90 841 113
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSector());
@@ -176,7 +176,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 9
 "TEXT_FIELD6"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -188,7 +188,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 114 841 137
+0  727 110 841 133
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getChamber());
@@ -197,7 +197,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 10
 "TEXT_FIELD7"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 10 0 0 0 0 0
 E E E
@@ -209,7 +209,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 134 841 157
+0  727 130 841 153
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getLayer());
@@ -218,7 +218,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 11
 "TEXT_FIELD8"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 11 0 0 0 0 0
 E E E
@@ -230,7 +230,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 154 841 177
+0  727 150 841 173
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getPCB());
@@ -239,7 +239,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 12
 "TEXT_FIELD9"
 ""
-1 759 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 759 218 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 12 0 0 0 0 0
 E E E
@@ -251,7 +251,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 174 841 197
+0  727 170 841 193
 3 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getBoard());
@@ -272,7 +272,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.3097515527950311 0 2.441176470588235 623.783850931677 -114.3529411764706 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.3097515527950311 0 2.441176470588235 623.783850931677 -118.3529411764706 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -280,7 +280,7 @@ LANG:10001 4 Info
 2 15
 "PRIMITIVE_TEXT2"
 ""
-1 649 59 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 55 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 15 0 0 0 0 0
 E E E
@@ -293,8 +293,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 59 727 74
-0 2 2 "0s" 0 0 0 192 0 0  649 59 1
+E E 0 1 1 2 1 E U  0 E 649 55 727 70
+0 2 2 "0s" 0 0 0 192 0 0  649 55 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -302,7 +302,7 @@ LANG:10001 16 Detector      :
 2 16
 "PRIMITIVE_TEXT3"
 ""
-1 649 78 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 74 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 16 0 0 0 0 0
 E E E
@@ -315,8 +315,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 78 727 93
-0 2 2 "0s" 0 0 0 192 0 0  649 78 1
+E E 0 1 1 2 1 E U  0 E 649 74 727 89
+0 2 2 "0s" 0 0 0 192 0 0  649 74 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -324,7 +324,7 @@ LANG:10001 22 Side                :
 2 17
 "PRIMITIVE_TEXT4"
 ""
-1 649 98 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 94 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 17 0 0 0 0 0
 E E E
@@ -337,8 +337,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 98 726 113
-0 2 2 "0s" 0 0 0 192 0 0  649 98 1
+E E 0 1 1 2 1 E U  0 E 649 94 726 109
+0 2 2 "0s" 0 0 0 192 0 0  649 94 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -346,7 +346,7 @@ LANG:10001 19 Sector           :
 2 18
 "PRIMITIVE_TEXT5"
 ""
-1 649 118 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 114 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 18 0 0 0 0 0
 E E E
@@ -359,8 +359,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 118 726 133
-0 2 2 "0s" 0 0 0 192 0 0  649 118 1
+E E 0 1 1 2 1 E U  0 E 649 114 726 129
+0 2 2 "0s" 0 0 0 192 0 0  649 114 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -368,7 +368,7 @@ LANG:10001 13 Chamber    :
 2 19
 "PRIMITIVE_TEXT6"
 ""
-1 649 138 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 134 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 19 0 0 0 0 0
 E E E
@@ -381,8 +381,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 138 724 153
-0 2 2 "0s" 0 0 0 192 0 0  649 138 1
+E E 0 1 1 2 1 E U  0 E 649 134 724 149
+0 2 2 "0s" 0 0 0 192 0 0  649 134 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -390,7 +390,7 @@ LANG:10001 19 Layer            :
 2 20
 "PRIMITIVE_TEXT7"
 ""
-1 649 157 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 153 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 20 0 0 0 0 0
 E E E
@@ -403,8 +403,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 157 724 172
-0 2 2 "0s" 0 0 0 192 0 0  649 157 1
+E E 0 1 1 2 1 E U  0 E 649 153 724 168
+0 2 2 "0s" 0 0 0 192 0 0  649 153 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -412,7 +412,7 @@ LANG:10001 20 PCB               :
 2 21
 "PRIMITIVE_TEXT8"
 ""
-1 649 176 E E E 1 E 1 E N "White" E N "_Window" E E
+1 649 172 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 21 0 0 0 0 0
 E E E
@@ -425,8 +425,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649 176 724 191
-0 2 2 "0s" 0 0 0 192 0 0  649 176 1
+E E 0 1 1 2 1 E U  0 E 649 172 724 187
+0 2 2 "0s" 0 0 0 192 0 0  649 172 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
