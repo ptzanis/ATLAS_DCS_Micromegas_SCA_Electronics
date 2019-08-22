@@ -11,7 +11,8 @@ PANEL,-1 -1 776 614 N "FwAtlasBg" 0
 ""0  1
 E "#uses \"CtrlXml\"
 #uses \"mmgEltx.ctl\"
-#uses \"scripts/libs/fwSca/fwScaConfigParser.ctl\"
+#uses \"fwSca/fwScaConfigParser.ctl\"
+#uses \"fwSca/fwScaCreateDpts.ctl\"
 
 dyn_int getChildNodesWithName (int docNum, int parentNode, string name)
 {
