@@ -41,10 +41,10 @@ void assignPWVoltDPEs(string dpe)
        strreplace (address, \"/\", \".\");
 
        fwPeriphAddress_setOPCUA (dpe /*dpe */ ,
- 				\"OpcUaScaServer\" /* server name */ ,
- 				15,
+ 				\"SCA_OPC_UA_SERVER\" /* server name */ ,
+ 				65,
  				\"ns=2;s=\" + address,
- 				\"OpcUaScaServerSub\" /* subscription */ ,
+ 				\"SCA_OPC_UA_SUBSCRIPTION\" /* subscription */ ,
  				1 /* kind */ ,
  				1 /* variant */ ,
  				750 /* datatype */ ,
@@ -735,24 +735,24 @@ LANG:10001 25 Add power/Temp to ai DPEs
 LANG:1 25 Add power/Temp to ai DPEs
 "main(mapping event)
 {
-   
-dyn_dyn_string elements;
-dyn_dyn_int types;  
 
-     elements[1]=makeDynString(\"OpcUaScaServerAnalogInput\",\"\");
+dyn_dyn_string elements;
+dyn_dyn_int types;
+
+     elements[1]=makeDynString(\"fwScaAnalogInput\",\"\");
      elements[2]=makeDynString(\"\",\"value\");
      elements[3]=makeDynString(\"\",\"rawValue\");
      elements[4]=makeDynString(\"\",\"power\");
      elements[5]=makeDynString(\"\",\"temperature\");
-     
+
      types[1]=makeDynInt(DPEL_STRUCT);
      types[2]=makeDynInt(0,DPEL_FLOAT);
      types[3]=makeDynInt(0,DPEL_UINT);
      types[4]=makeDynInt(0,DPEL_FLOAT);
-     types[5]=makeDynInt(0,DPEL_FLOAT);     
-     
-    dpTypeChange(elements,types); 
-   
+     types[5]=makeDynInt(0,DPEL_FLOAT);
+
+    dpTypeChange(elements,types);
+
 }" 0
  E E E
 13 5
