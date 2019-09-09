@@ -1370,7 +1370,7 @@ LANG:1 0
 13 43
 "PUSH_BUTTON9"
 ""
-1 382 174 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 397 174 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 43 0 0 0 0 0
 E E E
@@ -1382,11 +1382,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  380 167 637 201
+0  395 167 652 201
 
 T 
 1
-LANG:10001 12 PUSH_BUTTON9
+LANG:10001 12 Create [dev]
 "main(mapping event)
 {
   int dpeStatus=fwSca_parseConfig(filePath.text(),TRUE,TRUE,FALSE);
