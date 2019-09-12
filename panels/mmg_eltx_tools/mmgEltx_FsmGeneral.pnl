@@ -352,7 +352,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.240601503759398 0 0.5403508771929825 -9.89473684210509 3.989473684210509 0 E 357 87 624 373
+E E 0 1 1 2 1 E 1.240601503759398 0 1.235087719298246 -9.89473684210509 -56.45263157894739 0 E 357 87 624 373
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0 1
@@ -360,7 +360,7 @@ LANG:10001 3 DPT
 13 23
 "createChamberDPSButton"
 ""
-1 519.0000000000002 153 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 519.0000000000002 160 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -374,11 +374,11 @@ LANG:1 0
 2
 LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  517.0000000000002 136.695306122449 683.0000000000002 175.2238775510204
+0  517.0000000000002 143.695306122449 683.0000000000002 182.2238775510204
 
 T 
 2
-LANG:10001 29 MMG _ELTX
+LANG:10001 37 MMG _ELTX_Chamber
 Create Chambers DPs
 LANG:1 9 Create DP
 "main(mapping event)
@@ -420,7 +420,7 @@ LANG:1 9 Create DP
 13 24
 "createChamberDPTButton"
 ""
-1 519.0000000000002 102 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 519.0000000000002 109 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 23 0 0 0 0 0
 E E E
@@ -434,11 +434,11 @@ LANG:1 0
 2
 LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  517.0000000000002 85.69530612244898 683.0000000000002 124.2238775510204
+0  517.0000000000002 92.69530612244898 683.0000000000002 131.2238775510204
 
 T 
 2
-LANG:10001 24 MMG _ELTX
+LANG:10001 32 MMG _ELTX_Chamber
 Create DP type
 LANG:1 9 Create DP
 "main(mapping event)
@@ -673,6 +673,184 @@ mmgEltx_createFsmTree()
 
 
 " 0
+ E E E
+30 32
+"FRAME2"
+""
+1 357 87 E E E 1 E 1 E N "FwAtlasFg" E N {0,0,0} E E
+ E E
+31 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.744360902255639 0 0.4210526315789473 238.2631578947369 37.36842105263159 0 E 357 87 624 373
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Chamber
+30 33
+"FRAME3"
+""
+1 357 87 E E E 1 E 1 E N "FwAtlasFg" E N {0,0,0} E E
+ E E
+32 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.744360902255639 0 0.4210526315789473 238.2631578947369 199.3684210526316 0 E 357 87 624 373
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Board
+13 34
+"PUSH_BUTTON6"
+""
+1 518 273 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0  516 256.695306122449 682 295.2238775510204
+
+T 
+2
+LANG:10001 30 MMG _ELTX_Board
+Create DP type
+LANG:1 9 Create DP
+"main(mapping event)
+{
+  MMG_ELTX_CreateBoardDpType();
+}
+
+MMG_ELTX_CreateBoardDpType()
+{
+
+dyn_dyn_string elements;
+dyn_dyn_int types;
+
+int i=1;
+int j=1;
+elements[i]=makeDynString(\"MMG_ELTX_Board\",\"\");
+types[j]=makeDynInt(DPEL_STRUCT);
+
+    i=i+1; elements[i]=makeDynString(\"\",\"AnalogItems\");
+    j=j+1; types[j]=makeDynInt(0,DPEL_DYN_STRING);
+    i=i+1; elements[i]=makeDynString(\"\",\"DigitalItems\");
+    j=j+1; types[j]=makeDynInt(0,DPEL_DYN_STRING);
+
+
+
+int x=dpTypeCreate(elements,types);
+
+ if (x == 0){
+    DebugN(\"MMG_ELTX_Board - CREATED\");
+    this.enabled(FALSE);
+  }
+  else {
+   DebugN(\"MMG_ELTX_Board - FAILED\");
+  }
+
+
+}
+
+
+" 0
+ E E "main()
+{
+//   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
+}" 0
+
+13 35
+"PUSH_BUTTON7"
+""
+1 517 318 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0  515 301.695306122449 681 340.2238775510204
+
+T 
+2
+LANG:10001 37 MMG _ELTX_Chamber
+Create Chambers DPs
+LANG:1 9 Create DP
+"main(mapping event)
+{
+   string dpType;
+   dpType = \"MMG_ELTX_Board\";
+
+   dyn_string boardName=makeDynString(\"MMFE8\",\"L1DDC\",\"ADDC\");
+
+   for(int i=1;i<=dynlen(boardName);i++)
+   {
+   dpCreate(\"MMG_ELTX_\"+boardName[i],dpType);
+   }
+
+
+  DebugTN(\"DONE\",\"DPs of MMG_ELTX_Board created\");
+
+
+}
+" 0
+ E E E
+13 36
+"closeButton"
+""
+1 701 577 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+35 0 0 0 0 0
+E E E
+8
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
+LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
+0  699 567.3 761.25 593.3
+
+T 
+2
+LANG:10001 5 Close
+LANG:1 5 Close
+"main(mapping event)
+{
+  PanelOff();
+}" 0
  E E E
 0
 LAYER, 1 
