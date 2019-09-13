@@ -3,10 +3,10 @@
       <AnalogInput id="1" name="GBTX2_TEMP" enableCurrentSource="true" > <CalculatedVariable name="temperature" value="$applyGenericFormula(thermistorTemperature)" /> </AnalogInput>
       <AnalogInput id="2" name="GBTX3_TEMP" enableCurrentSource="true" > <CalculatedVariable name="temperature" value="$applyGenericFormula(thermistorTemperature)" /> </AnalogInput>
       <AnalogInput id="3" name="1V5_PTAT">                               <CalculatedVariable name="temperature" value="$applyGenericFormula(feastTemperature)" />      </AnalogInput>
-      <AnalogInput id="4" name="2V5_PTAT"> 			         			 <CalculatedVariable name="temperature" value="$applyGenericFormula(feastTemperature)" />      </AnalogInput>
-      <AnalogInput id="5" name="P1V5_SCA"> 								 <CalculatedVariable name="power" value="$_.value*3.0" />				   				       </AnalogInput>
-      <AnalogInput id="6" name="P2V5_SCA"> 				 				 <CalculatedVariable name="power" value="$_.value*5.0" />				       </AnalogInput>
-      <AnalogInput id="7" name="VTRX1_RSSI"> <CalculatedVariable name="power" value="$applyGenericFormula(rssiCurrentmA)" /> </AnalogInput>
+      <AnalogInput id="4" name="2V5_PTAT"> 			         <CalculatedVariable name="temperature" value="$applyGenericFormula(feastTemperature)" />      </AnalogInput>
+      <AnalogInput id="5" name="P1V5_SCA"> 				 <CalculatedVariable name="power" value="$_.value*3.0" />				       </AnalogInput>
+      <AnalogInput id="6" name="P2V5_SCA"> 				 <CalculatedVariable name="power" value="$_.value*5.0" />				       </AnalogInput>
+      <AnalogInput id="7" name="VTRX1_RSSI">                             <CalculatedVariable name="power" value="$applyGenericFormula(rssiCurrentmA)" />	       </AnalogInput>
       <AnalogInput id="31" name="internalTemperature">                    <CalculatedVariable name="temperature" value="$applyGenericFormula(scaTemperature)" />       </AnalogInput>
     </AnalogInputSystem>    
     <I2cMaster sclPadCmosOutput="false" name="gbtx2" masterId="0" busSpeed="100">
