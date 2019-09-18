@@ -1,4 +1,4 @@
-<SCA>
+
     <AnalogInputSystem generalRefreshRate="1" name="ai">
       <AnalogInput id="1" name="vmmPdo0">    <CalculatedVariable name="temperature" value="$applyGenericFormula(vmmTemperature)"  />  </AnalogInput>
       <AnalogInput id="2" name="vmmPdo1">    <CalculatedVariable name="temperature" value="$applyGenericFormula(vmmTemperature)"  />  </AnalogInput>
@@ -159,4 +159,3 @@
       <I2cSlave address="124" addressingMode="10" name="reg124vmmTpInv" numberOfBytes="1"/>
     </I2cMaster>
 	
-</SCA>
