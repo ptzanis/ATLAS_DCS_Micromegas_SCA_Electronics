@@ -1,0 +1,202 @@
+[general]
+pvss_path = "/opt/WinCC_OA/3.15"
+proj_path = "/winccoa/fwInstallation/fwInstallation-3.15"
+proj_path = "/winccoa/linuxScripts/template/fwComponents_ATLTEMPLATE_GPN"
+proj_path = "/winccoa/linuxScripts/template/ATLTEMPLATE_GPN"
+proj_version = "3.15"
+## Switch off multiplexing proxy to enable connectivity with v.311 projects (CERN modification)
+mxProxy = "none"
+langs = "en_US.iso88591"
+distributed = 1
+pmonPort = 7890
+dataPort = 7891
+eventPort = 7892
+[dist]
+distPort = 7893
+userRDBArchive = 1
+userRDBGroups = 1
+[sim[]
+distributed = 0
+[ui]
+#begin fwTrending
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwTrending/fwTrending.ctl"
+LoadCtrlLibs = "fwTrending/fwTrendingTree.ctl"
+#end fwTrending
+
+#begin fwAccessControl
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwAccessControl/fwAccessControl.ctc"
+#end fwAccessControl
+#begin unDistributedControl
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+#unicos DistributedControl component
+LoadCtrlLibs = "unDistributedControl.ctl"
+#end unDistributedControl
+#begin fwAlarmHandling
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+aesShowDistDisconnections = 0
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmHandling.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmHandlingScreen.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmHandlingScreenGroups.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmScreen.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmScreenGeneric.ctl"
+#end fwAlarmHandling
+#begin fwDeviceEditorNavigator
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwDeviceEditorNavigator/fwDeviceEditorNavigator.ctl"
+#end fwDeviceEditorNavigator
+#begin fwFSM
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwFsm"
+LoadCtrlLibs = "fwCU"
+LoadCtrlLibs = "fwDU"
+LoadCtrlLibs = "fwUi"
+LoadCtrlLibs = "fwTree.ctl"
+LoadCtrlLibs = "fwFsmUtil.ctl"
+LoadCtrlLibs = "fwTreeDisplay.ctl"
+LoadCtrlLibs = "fwFsmTreeDisplay.ctl"
+LoadCtrlLibs = "fwFsmUi.ctl"
+#end fwFSM
+#begin fwNode
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwNode/fwNode.ctl"
+#end fwNode
+#begin fwDevice
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwDevice/fwDevice.ctl"
+LoadCtrlLibs = "fwDevice/fwDeviceFrontEndConfigFile.ctl"
+#end fwDevice
+#begin fwConfigs
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwConfigs/fwAlertConfig.ctl"
+LoadCtrlLibs = "fwConfigs/fwArchive.ctl"
+LoadCtrlLibs = "fwConfigs/fwConfigConversion.ctl"
+LoadCtrlLibs = "fwConfigs/fwConfigs.ctl"
+LoadCtrlLibs = "fwConfigs/fwDpFunction.ctl"
+LoadCtrlLibs = "fwConfigs/fwDPELock.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddress.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddressS7.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddressCMW.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddressBACnet.ctl"
+LoadCtrlLibs = "fwConfigs/fwOriginal.ctl"
+LoadCtrlLibs = "fwConfigs/fwPvRange.ctl"
+LoadCtrlLibs = "fwConfigs/fwSmoothing.ctl"
+LoadCtrlLibs = "fwConfigs/fwUnit.ctl"
+LoadCtrlLibs = "fwConfigs/fwFormat.ctl"
+LoadCtrlLibs = "fwConfigs/fwConfigConstants.ctl"
+#end fwConfigs
+#begin fwGeneral
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+visionResizeMode = "Zoom"
+LoadCtrlLibs = "fwGeneral/fwBusyBarButton.ctl"
+LoadCtrlLibs = "fwGeneral/fwColour.ctl"
+LoadCtrlLibs = "fwGeneral/fwColourTable.ctl"
+LoadCtrlLibs = "fwGeneral/fwException.ctl"
+LoadCtrlLibs = "fwGeneral/fwExceptionHandling.ctl"
+LoadCtrlLibs = "fwGeneral/fwListManipulation.ctl"
+LoadCtrlLibs = "fwGeneral/fwProgressBar.ctl"
+LoadCtrlLibs = "fwGeneral/fwGeneral.ctl"
+LoadCtrlLibs = "fwGeneral/fwManager.ctl"
+#end fwGeneral
+queryRDBdirect = 1
+LoadCtrlLibs = "fwInstallation.ctl"
+[ctrl]
+#begin fwTrending
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwTrending/fwTrending.ctl"
+#end fwTrending
+
+#begin unDistributedControl
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+#unicos DistributedControl component
+LoadCtrlLibs = "unDistributedControl.ctl"
+#end unDistributedControl
+#begin fwAlarmHandling
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmHandling.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmHandlingScreen.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmHandlingScreenGroups.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmScreen.ctl"
+LoadCtrlLibs = "fwAlarmHandling/fwAlarmScreenGeneric.ctl"
+#end fwAlarmHandling
+#begin fwFSM
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwFsm"
+LoadCtrlLibs = "fwCU"
+LoadCtrlLibs = "fwDU"
+LoadCtrlLibs = "fwUi"
+LoadCtrlLibs = "fwTree.ctl"
+LoadCtrlLibs = "fwFsmUtil.ctl"
+LoadCtrlLibs = "fwTreeDisplay.ctl"
+LoadCtrlLibs = "fwFsmTreeDisplay.ctl"
+LoadCtrlLibs = "fwFsmUi.ctl"
+#[ctrl_50]
+#distributed = 0
+#end fwFSM
+#begin fwNode
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwNode/fwNode.ctl"
+#end fwNode
+#begin fwDevice
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwDevice/fwDevice.ctl"
+LoadCtrlLibs = "fwDevice/fwDeviceFrontEndConfigFile.ctl"
+#end fwDevice
+#begin fwConfigs
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwConfigs/fwAlertConfig.ctl"
+LoadCtrlLibs = "fwConfigs/fwArchive.ctl"
+LoadCtrlLibs = "fwConfigs/fwConfigConversion.ctl"
+LoadCtrlLibs = "fwConfigs/fwConfigs.ctl"
+LoadCtrlLibs = "fwConfigs/fwDpFunction.ctl"
+LoadCtrlLibs = "fwConfigs/fwDPELock.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddress.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddressS7.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddressCMW.ctl"
+LoadCtrlLibs = "fwConfigs/fwPeriphAddressBACnet.ctl"
+LoadCtrlLibs = "fwConfigs/fwOriginal.ctl"
+LoadCtrlLibs = "fwConfigs/fwPvRange.ctl"
+LoadCtrlLibs = "fwConfigs/fwSmoothing.ctl"
+LoadCtrlLibs = "fwConfigs/fwUnit.ctl"
+LoadCtrlLibs = "fwConfigs/fwFormat.ctl"
+LoadCtrlLibs = "fwConfigs/fwConfigConstants.ctl"
+#end fwConfigs
+#begin fwGeneral
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwGeneral/fwException.ctl"
+LoadCtrlLibs = "fwGeneral/fwListManipulation.ctl"
+LoadCtrlLibs = "fwGeneral/fwGeneral.ctl"
+LoadCtrlLibs = "fwGeneral/fwManager.ctl"
+#end fwGeneral
+LoadCtrlLibs = "fwInstallation.ctl"
+[valarch]
+#begin fwGeneral
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+deleteNotArchivedFileSets = 0
+#end fwGeneral
+[event]
+#begin fwFSM
+#This should not be edited manually
+#if the component is empty it means that the parametrization is already done in the section
+LoadCtrlLibs = "fwFsmEvent.ctl"
+#end fwFSM

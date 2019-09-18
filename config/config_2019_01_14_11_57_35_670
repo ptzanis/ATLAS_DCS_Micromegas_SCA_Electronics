@@ -1,0 +1,27 @@
+[general]
+pvss_path = "/opt/WinCC_OA/3.16"
+proj_path = "/winccoa/Development/ATLAS_DCS_CIC"
+proj_path = "/winccoa/Development/ATLAS_DCS_GCS"
+proj_path = "/winccoa/fwInstallation/fwInstallation-3.16"
+proj_path = "/winccoa/linuxScripts/template/fwComponenet_ATLTEMPLATE_GPN"
+proj_path = "/winccoa/linuxScripts/template/ATLTEMPLATE_GPN"
+proj_version = "3.16"
+## Uncomment to switch-off multiplexing proxy and enable connectivity with v.311 projects (CERN modification)
+mxProxy = "none"
+langs = "en_US.utf8"
+distributed = 1
+pmonPort = 7890
+dataPort = 7891
+eventPort = 7892
+useRDBArchive = 1
+useRDBGroups = 1
+userName = "root"
+password = ""
+[dist]
+distPort = 7893
+[sim]
+distributed = 0
+[ui]
+LoadCtrlLibs = "fwInstallation.ctl"
+[ctrl]
+LoadCtrlLibs = "fwInstallation.ctl"

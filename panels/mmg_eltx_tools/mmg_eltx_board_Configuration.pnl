@@ -8,7 +8,72 @@ PANEL,-1 -1 771 623 N "FwAtlasBg" 0
 }" 0
  E E E E 1 -1 -1 0  3.25 2.34375
 ""0  1
-E "#uses \"mmgEltx.ctl\"" 0
+E "#uses \"mmgEltx.ctl\"
+
+dyn_int getChildNodesWithName (int docNum, int parentNode, string name)
+{
+//   DebugN(\"Inside \"+name,docNum);
+  dyn_int result;
+  int node = xmlFirstChild (docNum, parentNode);
+  while (node >= 0)
+    {
+      if (xmlNodeName (docNum, node) == name)
+	dynAppend (result, node);
+      node = xmlNextSibling (docNum, node);
+    }
+
+
+  return result;
+
+}
+
+ dyn_string returnConfigAnalogItems(string boardType, string systemSearch ){
+
+  string configFile=PROJ_PATH+\"config/SCA_\"+boardType+\".xml\";
+
+  string errMsg;
+  int errLine;
+  int errColumn;
+  int docNum =
+    xmlDocumentFromFile(configFile, errMsg, errLine, errColumn);
+
+
+ int firstNode = xmlFirstChild (docNum);
+  if (firstNode < 0)
+    {
+      DebugN (\"Cant get the first child of the config file.\");
+      return -1;
+    }
+  while (xmlNodeName (docNum, firstNode) != \"SCA\")
+    {
+      firstNode = xmlNextSibling (docNum, firstNode);
+      if (firstNode < 0)
+	{
+	  DebugTN (\"configuration node not found, sorry.\");
+	  return -1;
+	}
+    }
+
+  dyn_int scaBoard = getChildNodesWithName (docNum, firstNode, systemSearch);
+
+  string itemName;
+  dyn_string itemsList;
+  dyn_uint items;
+
+
+       xmlChildNodes(docNum, scaBoard[1],items);
+
+       for(int z=1;z<=dynlen(items);z++)
+         {
+         xmlGetElementAttribute (docNum,items[z], \"name\", itemName);
+         dynAppend(itemsList,\"ai/\"+itemName);
+        }
+
+      xmlCloseDocument(docNum);
+
+
+      return itemsList;
+}" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -198,9 +263,9 @@ LANG:1 5 Close
 }" 0
  E E E
 19 20
-"RADIO_BOX1"
+"boardSelection"
 ""
-1 87 87 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 316.0000000000001 63.99999999999999 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 20 0 0 0 0 0
 E E E
@@ -213,7 +278,7 @@ LANG:10001 0
 "horizontal" ""
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  85 85 384.9999999999999 115
+0  314.0000000000001 61.99999999999999 594 92
 3
 T 
 1
@@ -243,7 +308,50 @@ LANG:10001 0
 E E
 0 0 0 0 0
 1
-E E
+E "main(int button)
+{
+
+  dyn_string boards=makeDynString(\"MMFE8\",\"L1DDC\",\"ADDC\");
+  int choice=this.number();
+  dyn_string configAnalogItems;
+  configAnalogItems=returnConfigAnalogItems(boards[choice+1],\"AnalogInputSystem\");
+
+
+      analogItemsTable.deleteAllLines();
+
+      for(int i=1;i<=dynlen(configAnalogItems);i++)
+      {
+      analogItemsTable.appendLine(\"Num\",i,\"Item\",configAnalogItems[i]);
+      }
+
+
+  dyn_string setupAnalogItems;
+  dpGet(\"MMG_ELTX_\"+boards[choice+1]+\".AnalogItems\",setupAnalogItems);
+
+  setupAnalogItemsTable.deleteAllLines();
+
+  for(int i=1;i<=dynlen(setupAnalogItems);i++)
+  {
+    setupAnalogItemsTable.appendLine(\"Num\",i,\"Item\",setupAnalogItems[i]);
+  }
+
+
+  bool checkManager=TRUE;
+
+  for(int i=1;i<=dynlen(setupAnalogItems);i++)
+  {
+    if(setupAnalogItems[i]!=configAnalogItems[i])
+      checkManager=FALSE;
+  }
+
+
+  if(checkManager)
+    setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"green\");
+  else
+    setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"red\");
+
+}" 0
+
 30 21
 "FRAME1"
 ""
@@ -259,15 +367,15 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1 0 1 -16 -12 0 E 74 78 403 141
+E E 0 1 1 2 1 E 1.496951219512195 0 0.8548387096774193 40.22560975609761 -19.6774193548387 0 E 74 78 403 141
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
 0 1
-LANG:10001 12 Choose board
+LANG:10001 10 Board Type
 25 22
-"TABLE1"
+"analogItemsTable"
 ""
-1 61 150 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 39 124 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -278,24 +386,24 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  59 148 388 488.0000000000001
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  37 122 352 383
 EE 1 0 1 2 0 "Num" 6 1 0 "s" 1
 LANG:10001 3 Num
 E
 1
 LANG:10001 0 
 
-40 "Item" 6 1 0 "s" 1
+40 "Item" 6 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
 LANG:10001 4 Item
 E
 1
 LANG:10001 0 
 
-282 
+270 
 15 15 10 0
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 0 1 1 1 7
 1 0
 30 23
@@ -313,11 +421,236 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.8536585365853658 0 2.112903225806452 358.8292682926829 -16.80645161290321 0 E 74 78 403 141
+E E 0 1 1 2 1 E 0.8628048780487805 0 2.290322580645162 190.1524390243902 226.3548387096774 0 E 74 78 403 141
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
 0 1
-LANG:10001 15 Configure Items
+LANG:10001 13 Check manager
+14 27
+"statusManagerMMFE8"
+""
+1 289 446 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  287 439 380 469
+3 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(\"MMFE8\");
+}" 0
+ E
+14 28
+"statusManagerL1DDC"
+""
+1 289 475 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  287 468 380 498
+3 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(\"L1DDC\");
+}" 0
+ E
+14 29
+"statusManagerADDC"
+""
+1 289 504 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  287 497 380 527
+3 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(\"ADDC\");
+}" 0
+ E
+30 30
+"FRAME3"
+""
+1 74 78 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+30 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.036585365853659 0 4.677419354838709 -49.70731707317074 -258.8387096774193 0 E 74 78 403 141
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0 1
+LANG:10001 11 Config File
+25 33
+"setupAnalogItemsTable"
+""
+1 407 125 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  405 123 720 384
+EE 1 0 1 2 0 "Num" 6 1 0 "s" 1
+LANG:10001 3 Num
+E
+1
+LANG:10001 0 
+
+40 "Item" 6 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:10001 4 Item
+E
+1
+LANG:10001 0 
+
+270 
+15 15 10 0
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 0 1 1 1 7
+1 0
+30 34
+"FRAME5"
+""
+1 74 78 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+34 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.036585365853659 0 4.677419354838709 316.2926829268293 -259.8387096774193 0 E 74 78 403 141
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0 1
+LANG:10001 5 Setup
+13 35
+"PUSH_BUTTON4"
+""
+1 412.0000000000001 478.0625 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+35 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  410.0000000000001 469 525 501.25
+
+T 
+1
+LANG:10001 9 Configure
+"main(mapping event)
+{
+  dyn_string boards=makeDynString(\"MMFE8\",\"L1DDC\",\"ADDC\");
+  int choice=boardSelection.number();
+
+  dyn_string configAnalogItems;
+  configAnalogItems=returnConfigAnalogItems(boards[choice+1],\"AnalogInputSystem\");
+
+  dpSet(\"MMG_ELTX_\"+boards[choice+1]+\".AnalogItems\",configAnalogItems);
+
+   analogItemsTable.deleteAllLines();
+
+  for(int i=1;i<=dynlen(configAnalogItems);i++)
+    {
+      analogItemsTable.appendLine(\"Num\",i,\"Item\",configAnalogItems[i]);
+    }
+
+
+  dyn_string setupAnalogItems;
+  dpGet(\"MMG_ELTX_\"+boards[choice+1]+\".AnalogItems\",setupAnalogItems);
+
+  setupAnalogItemsTable.deleteAllLines();
+
+  for(int i=1;i<=dynlen(setupAnalogItems);i++)
+  {
+    setupAnalogItemsTable.appendLine(\"Num\",i,\"Item\",setupAnalogItems[i]);
+  }
+
+
+  bool checkManager=TRUE;
+
+  for(int i=1;i<=dynlen(setupAnalogItems);i++)
+  {
+    if(setupAnalogItems[i]!=configAnalogItems[i])
+      checkManager=FALSE;
+  }
+
+
+  if(checkManager)
+    setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"green\");
+  else
+    setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"red\");
+
+
+}" 0
+ E E E
+2 36
+"PRIMITIVE_TEXT16"
+""
+1 173 66 E E E 1 E 1 E N "white" E N "_Window" E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 173 66 303 88
+0 2 2 "0s" 0 0 0 192 0 0  173 66 1
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,1,0,0,0,Bold
+0 1
+LANG:10001 13 Choose board:
 0
 LAYER, 1 
 1
