@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://cern.ch/quasar/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
+	<StandardMetaData>
+		<Log>
+			<GeneralLogLevel logLevel="INF" /></Log></StandardMetaData>
+	<SCA address="simple-netio://direct/pcatlnswfelix01.cern.ch/12340/12345/88" name="SCA on ADDCv4" idConstraint="dont_care" supervised="true" recoveryActionScaStayedPowered="do_nothing" recoveryActionScaWasRepowered="reset_and_configure" managementFromAddressSpace="only_if_kaputt">
+	
+		<AnalogInputSystem name="ai" generalRefreshRate="0">
+			<AnalogInput name="1v5TP1" id="0"></AnalogInput>
+			<AnalogInput name="1v5TP2" id="1"></AnalogInput>
+			<AnalogInput name="2v5TP0" id="2"></AnalogInput>
+			<AnalogInput name="2v5TP1" id="3"></AnalogInput>
+			<AnalogInput name="boardTemp" id="24"></AnalogInput>
+			<AnalogInput name="feastTemp1v5" id="26"></AnalogInput>
+			<AnalogInput name="feastTemp2v5" id="27"></AnalogInput>
+			<AnalogInput name="gbtx0NTC" id="28"></AnalogInput>
+			<AnalogInput name="gbtx1NTC" id="29"></AnalogInput>
+			<AnalogInput name="internalTemperature" id="31"></AnalogInput>
+		</AnalogInputSystem>
+
+		<DigitalIOSystem name="gpio">
+			<DigitalIO name="art0Rstn" isInput="false" id="1"></DigitalIO>
+			<DigitalIO name="art0CRstn" isInput="false" id="2"></DigitalIO>
+			<DigitalIO name="art0SRstn" isInput="false" id="3"></DigitalIO>
+			<DigitalIO name="art1Rstn" isInput="false" id="4"></DigitalIO>
+			<DigitalIO name="art1CRstn" isInput="false" id="5"></DigitalIO>
+			<DigitalIO name="art1SRstn" isInput="false" id="6"></DigitalIO>
+			<DigitalIO name="gbtx0Rstn" isInput="false" id="7"></DigitalIO>
+			<DigitalIO name="gbtx1Rstn" isInput="false" id="8"></DigitalIO>
+			<DigitalIO name="gbtx0Rdy" isInput="true" id="10"></DigitalIO>
+			<DigitalIO name="gbtx1Rdy" isInput="true" id="11"></DigitalIO>
+			<DigitalIO name="art0DllLocked" isInput="true" id="16"></DigitalIO>
+			<DigitalIO name="art0TtcErr" isInput="true" id="17"></DigitalIO>
+			<DigitalIO name="art0SeuErr" isInput="true" id="18"></DigitalIO>
+			<DigitalIO name="art1DllLocked" isInput="true" id="19"></DigitalIO>
+			<DigitalIO name="art1TtcErr" isInput="true" id="20"></DigitalIO>
+			<DigitalIO name="art1SeuErr" isInput="true" id="21"></DigitalIO>
+			<DigitalIO name="gbtx0EfuseProgPulseSca" isInput="false" id="24"></DigitalIO>
+			<DigitalIO name="gbtx1EfuseProgPulseSca" isInput="false" id="25"></DigitalIO>
+			<DigitalIO name="feast25vPwrGood" isInput="true" id="26"></DigitalIO>
+		</DigitalIOSystem>
+		
+		<I2cMaster sclPadCmosOutput="false" name="gbtx0" masterId="0" busSpeed="100">
+			<I2cSlave numberOfBytes="3" address="2" addressingMode="7" name="gbtx0"></I2cSlave>
+		</I2cMaster>
+		<I2cMaster sclPadCmosOutput="false" name="gbtx1" masterId="1" busSpeed="100">
+			<I2cSlave numberOfBytes="3" address="3" addressingMode="7" name="gbtx1"></I2cSlave>
+		</I2cMaster>
+		<I2cMaster sclPadCmosOutput="false" name="art0Ps" masterId="4" busSpeed="100">
+			<I2cSlave numberOfBytes="2" address="24" addressingMode="7" name="art0Ps"></I2cSlave>
+		</I2cMaster>
+		<I2cMaster sclPadCmosOutput="false" name="art0Core" masterId="4" busSpeed="100">
+			<I2cSlave numberOfBytes="2" address="16" addressingMode="7" name="art0Core"></I2cSlave>
+		</I2cMaster>
+		<I2cMaster sclPadCmosOutput="false" name="art1Ps" masterId="6" busSpeed="100">
+			<I2cSlave numberOfBytes="2" address="24" addressingMode="7" name="art1Ps"></I2cSlave>
+		</I2cMaster>
+		<I2cMaster sclPadCmosOutput="false" name="art1Core" masterId="6" busSpeed="100">
+			<I2cSlave numberOfBytes="2" address="16" addressingMode="7" name="art1Core"></I2cSlave>
+		</I2cMaster>
+
+	</SCA>
+
+</configuration>
+
