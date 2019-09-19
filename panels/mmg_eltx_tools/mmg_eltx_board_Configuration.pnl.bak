@@ -1,7 +1,7 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 771 623 N "FwAtlasBg" 0
+PANEL,-1 -1 764 623 N "FwAtlasBg" 0
 "main()
 {
       addLogoNTUABNL(580,550);
@@ -27,7 +27,7 @@ dyn_int getChildNodesWithName (int docNum, int parentNode, string name)
 
 }
 
- dyn_string returnConfigAnalogItems(string boardType, string systemSearch ){
+  dyn_string returnConfigAnalogItems(string boardType, string systemSearch ){
 
   string configFile=PROJ_PATH+\"config/SCA_\"+boardType+\".xml\";
 
@@ -59,14 +59,23 @@ dyn_int getChildNodesWithName (int docNum, int parentNode, string name)
   string itemName;
   dyn_string itemsList;
   dyn_uint items;
-
+  int CalculatedVariableChild;
+  string CalculatedVariableItem;
 
        xmlChildNodes(docNum, scaBoard[1],items);
 
        for(int z=1;z<=dynlen(items);z++)
          {
          xmlGetElementAttribute (docNum,items[z], \"name\", itemName);
-         dynAppend(itemsList,\"ai/\"+itemName);
+         CalculatedVariableChild=xmlFirstChild (docNum, items[z]);
+         if(CalculatedVariableChild!=-1)
+          {
+         xmlGetElementAttribute (docNum,CalculatedVariableChild, \"name\", CalculatedVariableItem);
+         dynAppend(itemsList,\"ai/\"+itemName+\".\"+CalculatedVariableItem);
+
+          }
+
+//          dynAppend(itemsList,\"ai/\"+itemName);
         }
 
       xmlCloseDocument(docNum);
@@ -388,13 +397,13 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  37 122 352 383
-EE 1 0 1 2 0 "Num" 6 1 0 "s" 1
+EE 1 0 1 2 0 "Num" 2 1 0 "s" 1
 LANG:10001 3 Num
 E
 1
 LANG:10001 0 
 
-40 "Item" 6 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+40 "Item" 21 1 0 "[0s,,,AlignHCenter]" 1
 LANG:10001 4 Item
 E
 1
@@ -442,7 +451,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0  287 439 380 469
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(\"MMFE8\");
 }" 0
@@ -463,7 +472,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0  287 468 380 498
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(\"L1DDC\");
 }" 0
@@ -484,7 +493,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0  287 497 380 527
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(\"ADDC\");
 }" 0
@@ -525,13 +534,13 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  405 123 720 384
-EE 1 0 1 2 0 "Num" 6 1 0 "s" 1
+EE 1 0 1 2 0 "Num" 2 1 0 "s" 1
 LANG:10001 3 Num
 E
 1
 LANG:10001 0 
 
-40 "Item" 6 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+40 "Item" 21 1 0 "[0s,,,AlignHCenter]" 1
 LANG:10001 4 Item
 E
 1

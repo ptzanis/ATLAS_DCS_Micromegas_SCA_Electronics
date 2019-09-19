@@ -630,56 +630,55 @@ LANG:1 22 Display SCA-Boards IDs
    int l1ddcCounter=0;
    int addcCounter=0;
    int boardTypeCounter=0;
-   
+
    totalBoardList.deleteAllLines();
    boardSumTable.deleteAllLines();
-       
-   dyn_bool flagBoard=FALSE;   
-   
 
-   int analogItems;
-   int digitalItems;
-   
+   dyn_bool flagBoard=FALSE;
+
+
+
+
    for(int i=1;i<=dynlen(boards);i++)
     {
-        analogItems=countInputItemsPerSystemPerBoard(path,\"AnalogInput\",boards[i]);
-        digitalItems=countInputItemsPerSystemPerBoard(path,\"DigitalIO\",boards[i]);
-        
-        totalBoardList.appendLine(\"Num\",i,\"Boards\",boards[i],\"ai\",analogItems,\"gpio\",digitalItems); 
+
+        totalBoardList.appendLine(\"Num\",i,\"Boards\",boards[i]);
+
+
         if(uniPatternMatch(\"*MMFE8*\",boards[i]))
         {
           mmfe8Counter++;
           boardCounter[1]=mmfe8Counter;
-          boardSum[1]=\"MMFE8\"; 
-          flagBoard[1]=TRUE;         
+          boardSum[1]=\"MMFE8\";
+          flagBoard[1]=TRUE;
         }
-        
-        if(uniPatternMatch(\"*LTX*\",boards[i]))
+
+        if(uniPatternMatch(\"*ADDC*\",boards[i]))
         {
           l1ddcCounter++;
           boardCounter[2]=l1ddcCounter;
-          boardSum[2]=\"L1DDC\"; 
-          flagBoard[2]=TRUE;                  
+          boardSum[2]=\"L1DDC\";
+          flagBoard[2]=TRUE;
         }
-        
-        if(uniPatternMatch(\"*LTT*\",boards[i]))
+
+        if(uniPatternMatch(\"*L1DDC*\",boards[i]))
         {
           addcCounter++;
           boardCounter[3]=addcCounter;
-          boardSum[3]=\"ADDC\";  
-          flagBoard[3]=TRUE;                 
-        }        
-        
+          boardSum[3]=\"ADDC\";
+          flagBoard[3]=TRUE;
+        }
+
     }
-    
-   totalBoards.text(dynlen(boards));  
-     
+
+   totalBoards.text(dynlen(boards));
+
    for(int i=1;i<=dynlen(boardSum);i++)
     {
-      if(flagBoard[i]) boardSumTable.appendLine(\"Board\",boardSum[i],\"Sum\",boardCounter[i]); 
+      if(flagBoard[i]) boardSumTable.appendLine(\"Board\",boardSum[i],\"Sum\",boardCounter[i]);
      }
-       
-    
+
+
 }" 0
  E E E
 13 3
@@ -713,7 +712,7 @@ LANG:1 5 Close
 13 4
 "PUSH_BUTTON2"
 ""
-1 397 238 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 391 201 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 4 0 0 0 0 0
 E E E
@@ -727,7 +726,7 @@ LANG:1 0
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  395.3460199119295 228 652.3460199119295 262
+0  389.3460199119295 191 646.3460199119295 225
 
 T 
 2
@@ -758,7 +757,7 @@ dyn_dyn_int types;
 13 5
 "PUSH_BUTTON3"
 ""
-1 397 313 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 285 599 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 5 0 0 0 0 0
 E E E
@@ -772,7 +771,7 @@ LANG:1 0
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  394.9375 302.925 651.9375 336.925
+0  282.9375 588.925 539.9375 622.925
 
 T 
 2
@@ -799,7 +798,7 @@ LANG:1 32 Assign OPC UA to power/temp DPEs
 13 7
 "PUSH_BUTTON5"
 ""
-1 378 376 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 266 662 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 7 0 0 0 0 0
 E E E
@@ -813,7 +812,7 @@ LANG:1 0
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  376 363.275 524 400.275
+0  264 649.275 412 686.275
 
 T 
 2
@@ -850,7 +849,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1 0 0.8831168831168831 89.18507462686557 298.3198051948052 0 E 280 53 601 131
+E E 0 1 3 2 1 E 1 0 0.8831168831168831 -22.81492537313443 584.3198051948052 0 E 280 53 601 131
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
@@ -860,7 +859,7 @@ LANG:1 0
 22 10
 "parameterBox"
 ""
-1 539.625 373.125 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 427.625 659.125 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 10 0 0 0 0 0
 E E E
@@ -874,7 +873,7 @@ LANG:1 0
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  537.625 367.125 661.625 393.125
+0  425.625 653.125 549.625 679.125
 2
 2
 LANG:10001 5 value
@@ -909,7 +908,7 @@ LANG:1 0
 LANG:10001 27 Utopia,-1,12,5,50,0,0,0,0,0
 LANG:1 27 Utopia,-1,12,5,50,0,0,0,0,0
 0  27 140 337.9999999999999 413.0000000000001
-EE 1 0 1 4 0 "Num" 2 1 0 "s" 2
+EE 1 0 1 2 0 "Num" 2 1 0 "s" 2
 LANG:10001 3 Num
 LANG:1 3 Num
 E
@@ -917,7 +916,7 @@ E
 LANG:10001 0 
 LANG:1 0 
 
-32 "Boards" 15 1 0 "[0s,,,ALIGNMENT_CENTER]" 2
+32 "Boards" 24 1 0 "[0s,,,AlignHCenter]" 2
 LANG:10001 6 Boards
 LANG:1 6 Boards
 E
@@ -925,23 +924,7 @@ E
 LANG:10001 0 
 LANG:1 0 
 
-177 "ai" 2 1 0 "[0s,,,ALIGNMENT_CENTER]" 2
-LANG:10001 2 ai
-LANG:1 2 ai
-E
-2
-LANG:10001 0 
-LANG:1 0 
-
-40 "gpio" 2 1 0 "[0s,,,ALIGNMENT_CENTER]" 2
-LANG:10001 4 gpio
-LANG:1 4 gpio
-E
-2
-LANG:10001 0 
-LANG:1 0 
-
-40 
+275 
 15 15 10 0
 2
 LANG:10001 27 Utopia,-1,12,5,50,0,0,0,0,0
@@ -964,7 +947,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1.00274953358209 0 1.818181818181818 87.72527985074591 109.6363636363636 0 E 280 53 601 131
+E E 0 1 3 2 1 E 1.00274953358209 0 1.818181818181818 -24.27472014925409 395.6363636363636 0 E 280 53 601 131
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
@@ -1066,7 +1049,7 @@ LANG:1 9 XML File:
 14 27
 "filePath"
 ""
-1 92 60 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 91 60 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -1080,7 +1063,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,12,5,50,0,0,0,0,0
 LANG:1 27 Utopia,-1,12,5,50,0,0,0,0,0
-0  90 53 613 78
+0  89 53 612 78
 3 "0s" 0 0 0 0 0 -1  E "main()
 {
   this.text(PROJ_PATH+\"config/\");
@@ -1125,7 +1108,7 @@ LANG:1 12 PUSH_BUTTON7
 13 29
 "PUSH_BUTTON8"
 ""
-1 396 280 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 284 566 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 29 0 0 0 0 0
 E E E
@@ -1139,7 +1122,7 @@ LANG:1 0
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  394 266 650 300
+0  282 552 538 586
 
 T 
 2
@@ -1370,7 +1353,7 @@ LANG:1 0
 13 43
 "PUSH_BUTTON9"
 ""
-1 397 127 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 396 127 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 43 0 0 0 0 0
 E E E
@@ -1382,7 +1365,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  395 120 652 154
+0  394 120 651 154
 
 T 
 1
@@ -1391,9 +1374,110 @@ LANG:10001 12 Create [dev]
 {
   int dpeStatus=fwSca_parseConfig(filePath.text(),TRUE,TRUE,FALSE);
 
-  DebugN(dpeStatus);
+  DebugN(\"********* SCA Datapoint Creation ------> \"+dpeStatus);
 
 }" 0
+ E E E
+30 44
+"FRAME5"
+""
+1 280 53 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+44 0 0 0 0 0
+E E E
+1
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.00274953358209 0 1.818181818181818 88.23013059701482 78.63636363636363 0 E 280 53 601 131
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0 2
+LANG:10001 0 
+LANG:1 0 
+13 45
+"PUSH_BUTTON10"
+""
+1 393 251 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+45 0 0 0 0 0
+E E E
+8
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0  391 237 647 271
+
+T 
+2
+LANG:10001 18 Display Calculated
+LANG:1 18 Display Calculated
+"main()
+{
+
+   string path=filePath.text();
+   dyn_string boards=boardsTotal(path);
+
+   dyn_string analogItemsMMFE8,analogItemsL1DDC,analogItemsADDC;
+
+   dpGet(\"MMG_ELTX_MMFE8.AnalogItems\",analogItemsMMFE8);
+   dpGet(\"MMG_ELTX_L1DDC.AnalogItems\",analogItemsL1DDC);
+   dpGet(\"MMG_ELTX_ADDC.AnalogItems\",analogItemsADDC);
+
+   string dpeToAssignAdress;
+
+
+   for(int i=1;i<=dynlen(boards);i++)
+    {
+
+
+        if(uniPatternMatch(\"*MMFE8*\",boards[i]))
+        {
+           for(int z=1;z<=dynlen(analogItemsMMFE8);z++)
+           {
+            dpeToAssignAdress=boards[i]+\"/\"+analogItemsMMFE8[z];
+//             DebugN(dpeToAssignAdress);
+           }
+
+        }
+
+        if(uniPatternMatch(\"*ADDC*\",boards[i]))
+        {
+           for(int z=1;z<=dynlen(analogItemsADDC);z++)
+           {
+            dpeToAssignAdress=boards[i]+\"/\"+analogItemsADDC[z];
+             DebugN(dpeToAssignAdress);
+           }
+        }
+
+        if(uniPatternMatch(\"*L1DDC*\",boards[i]))
+        {
+           for(int z=1;z<=dynlen(analogItemsL1DDC);z++)
+           {
+            dpeToAssignAdress=boards[i]+\"/\"+analogItemsL1DDC[z];
+//             DebugN(dpeToAssignAdress);
+           }
+        }
+
+    }
+
+
+
+
+}
+" 0
  E E E
 0
 LAYER, 1 
