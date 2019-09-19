@@ -1422,7 +1422,7 @@ LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 
 T 
 2
-LANG:10001 18 Display Calculated
+LANG:10001 10 Assign OPC
 LANG:1 18 Display Calculated
 "main()
 {
@@ -1436,7 +1436,7 @@ LANG:1 18 Display Calculated
    dpGet(\"MMG_ELTX_L1DDC.AnalogItems\",analogItemsL1DDC);
    dpGet(\"MMG_ELTX_ADDC.AnalogItems\",analogItemsADDC);
 
-   string dpeToAssignAdress;
+   string dpe,address;
 
 
    for(int i=1;i<=dynlen(boards);i++)
@@ -1447,8 +1447,10 @@ LANG:1 18 Display Calculated
         {
            for(int z=1;z<=dynlen(analogItemsMMFE8);z++)
            {
-            dpeToAssignAdress=boards[i]+\"/\"+analogItemsMMFE8[z];
-//             DebugN(dpeToAssignAdress);
+            dpe=boards[i]+\"/\"+analogItemsMMFE8[z];
+            address=dpe;
+            strreplace(address, \"/\", \".\");
+            fwSca_addressConfigWrapper(dpe,address,DPATTR_ADDR_MODE_INPUT_SPONT);
            }
 
         }
@@ -1457,8 +1459,10 @@ LANG:1 18 Display Calculated
         {
            for(int z=1;z<=dynlen(analogItemsADDC);z++)
            {
-            dpeToAssignAdress=boards[i]+\"/\"+analogItemsADDC[z];
-             DebugN(dpeToAssignAdress);
+            dpe=boards[i]+\"/\"+analogItemsADDC[z];
+            address=dpe;
+            strreplace(address, \"/\", \".\");
+            fwSca_addressConfigWrapper(dpe,address,DPATTR_ADDR_MODE_INPUT_SPONT);
            }
         }
 
@@ -1466,8 +1470,10 @@ LANG:1 18 Display Calculated
         {
            for(int z=1;z<=dynlen(analogItemsL1DDC);z++)
            {
-            dpeToAssignAdress=boards[i]+\"/\"+analogItemsL1DDC[z];
-//             DebugN(dpeToAssignAdress);
+            dpe=boards[i]+\"/\"+analogItemsL1DDC[z];
+            address=dpe;
+            strreplace(address, \"/\", \".\");
+            fwSca_addressConfigWrapper(dpe,address,DPATTR_ADDR_MODE_INPUT_SPONT);
            }
         }
 
