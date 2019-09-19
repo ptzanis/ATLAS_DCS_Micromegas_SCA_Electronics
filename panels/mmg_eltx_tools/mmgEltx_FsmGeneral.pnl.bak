@@ -824,6 +824,34 @@ LANG:1 9 Create DP
 }
 " 0
  E E E
+13 36
+"closeButton"
+""
+1 701 530 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+35 0 0 0 0 0
+E E E
+8
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
+LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
+0  699 520.3 761.25 546.3
+
+T 
+2
+LANG:10001 5 Close
+LANG:1 5 Close
+"main(mapping event)
+{
+  PanelOff();
+}" 0
+ E E E
 0
 LAYER, 1 
 1
