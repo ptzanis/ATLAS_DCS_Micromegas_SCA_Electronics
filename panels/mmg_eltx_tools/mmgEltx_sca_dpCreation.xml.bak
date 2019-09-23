@@ -649,7 +649,7 @@ LANG:1 5 Close
 13 4
 "PUSH_BUTTON2"
 ""
-1 391 200 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 391 213 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 4 0 0 0 0 0
 E E E
@@ -663,11 +663,11 @@ LANG:1 0
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  389.3460199119295 190 646.3460199119295 224
+0  389.3460199119295 203 646.3460199119295 237
 
 T 
 2
-LANG:10001 25 Add power/Temp to ai DPEs
+LANG:10001 22 Add PW/Temp to ai DPEs
 LANG:1 25 Add power/Temp to ai DPEs
 "main(mapping event)
 {
@@ -1153,12 +1153,12 @@ E E 0 1 3 2 1 E 1.00274953358209 0 1.818181818181818 88.23013059701482 78.636363
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 2
-LANG:10001 0 
+LANG:10001 22 Power/Temperature DPEs
 LANG:1 0 
 13 45
 "PUSH_BUTTON10"
 ""
-1 392 242 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 392 266 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 45 0 0 0 0 0
 E E E
@@ -1172,7 +1172,7 @@ LANG:1 0
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  390 228 646 262
+0  390 252 646 286
 
 T 
 2

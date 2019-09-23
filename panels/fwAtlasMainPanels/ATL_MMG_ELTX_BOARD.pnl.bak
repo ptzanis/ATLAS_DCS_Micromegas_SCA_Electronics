@@ -1,82 +1,29 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 859 866 N "FwAtlasBg" 1
-"$obj"
+PANEL,-1 -1 859 866 N "FwAtlasBg" 0
 "main()
 {
+    string boardType= getBoardType();
+    string channel=getBoardChannel();
+
     addLogoNTUABNL(670,800);
 
-    parameterDisplay(\"MMFE8_ML1P4_IPL/ai/0V65for1V3A.value\",\"test\",\"V\",200,200,2,2);
+    int x=110;
+    int y=240;
+
+
+    addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/\"+boardType+\".pnl\", \"Board \"+boardType,
+              makeDynString(\"$channel:\"+channel,\"$boardType:\"+boardType,\"$x:\"+x,\"$y:\"+y), x, y, 0, 1, 1);
+
+
 
 
 }" 0
  E E E E 1 -1 -1 0  139 162
 ""0  1
-E "#uses \"mmgEltx.ctl\"
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
-string getDetector(){
-    return substr($obj,0,3);
-}
-
-string getSide(){
-    return substr($obj,9,1);
-}
-
-string getSector(){
-    return substr($obj,18,2);
-}
-
-string getChamber(){
-    return substr($obj,21,9);
-}
-
-string getLayer(){
-    return substr($obj,36,1);
-}
-
-string getPCB(){
-    return substr($obj,41,1);
-}
-
-string getBoard(){
-    return substr($obj,48,1);
-}
-
-string getBoardChannel(){
-
-  string channel;
-  dpGet(getDetector()+\"_ELTX_\"+getChamber()+\".Layer\"+getLayer()+\".PCB\"+getPCB()+\".Board\"+getBoard()+\".info.channel\",channel);
-  return channel;
-
-}
-
-string getBoardType(){
-
-  string type;
-  dpGet(getDetector()+\"_ELTX_\"+getChamber()+\".Layer\"+getLayer()+\".PCB\"+getPCB()+\".Board\"+getBoard()+\".info.type\",type);
-  return type;
-
-}
-
-void parameterDisplay(string dpe,string parameter,string unit,int x,int y,int digitsBeforeComma,int digitsAfterComma){
-
-     dyn_string parameters;
-    parameters = makeDynString(\"$dpe:\" + dpe, \"$format:[\"+digitsBeforeComma+\".\"+digitsAfterComma+\"f]\",
-                                        \"$parameter:\"+parameter,
-                                        \"$unit:\"+unit,
-                                        \"$width:\",
-                                        \"$color:white\",
-                                        \"$bgcolor:_Transparent\",
-                                        \"$qualityEl:\"+\"\");
-
-
-
-    addSymbol(myModuleName(), myPanelName(), \"objects/fsmAtlas/parameter.pnl\", \"parameter_pnl_Ref_\"+dpe,
-              parameters, x, y, 0, 1, 1);
-
-
-}
 " 0
  3
 "CBRef" "1"
@@ -166,7 +113,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 54 841 77
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getDetector());
 }" 0
@@ -187,7 +134,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 74 841 97
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSide());
 }" 0
@@ -208,7 +155,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 94 841 117
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSector());
 }" 0
@@ -229,7 +176,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 114 841 137
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getChamber());
 }" 0
@@ -250,7 +197,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 134 841 157
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getLayer());
 }" 0
@@ -271,7 +218,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 154 841 177
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getPCB());
 }" 0
@@ -292,7 +239,7 @@ LANG:10001 0
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 174 841 197
-3 "0s" 0 0 0 1 0 -1  E "main()
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getBoard());
 }" 0
@@ -518,7 +465,7 @@ LANG:10001 7 Type :
 14 24
 "TEXT_FIELD10"
 ""
-1 159.5454545454545 233 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 168 233 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -530,8 +477,8 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  112 65 283 88
-3 "0s" 0 0 0 1 0 -1  E "main()
+0  112 65 314 88
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getBoardChannel());
 }" 0
@@ -539,7 +486,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 14 25
 "TEXT_FIELD11"
 ""
-1 159.5454545454545 272 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 168 272 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 25 0 0 0 0 0
 E E E
@@ -551,8 +498,8 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  112 104 283 127
-3 "0s" 0 0 0 1 0 -1  E "main()
+0  112 104 314 127
+2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getBoardType());
 }" 0
@@ -572,7 +519,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.7333333333333333 0 3.573529411764707 89.33333333333334 22.44117647058817 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.8971014492753623 0 3.132352941176471 49.1449275362319 18.79411764705879 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1

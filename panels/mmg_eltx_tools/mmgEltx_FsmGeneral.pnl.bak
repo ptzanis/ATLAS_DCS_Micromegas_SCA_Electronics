@@ -42,6 +42,9 @@ void generateFsm() {
 void startFsm() {
     prBar(\"Starting MMG_ELTX FSM tree ...\");
     fwFsmTree_startTree();
+    prBar(\"Done!\");
+    viewButton.backCol(\"green\");
+    list.appendItem = \"To view the newly created FSM, click on View button!\";
 }
 void stopFsm() {
     prBar(\"Stopping MMG_ELTX FSM tree...\");
@@ -302,7 +305,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  21.72180451127815 79 99.72180451127815 103
+0  22 79 130 103
 
 T 
 1
@@ -315,7 +318,7 @@ LANG:10001 8 Stop FSM
 13 20
 "removeFSMButton"
 ""
-1 -46 111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 -76.03704828423926 111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 19 0 0 0 0 0
 E E E
@@ -327,7 +330,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 105 100 129
+0  22 105 130 129
 
 T 
 1
@@ -511,7 +514,7 @@ int x=dpTypeCreate(elements,types);
 13 28
 "PUSH_BUTTON3"
 ""
-1 318 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 167 96 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -523,7 +526,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  316 79 394 103
+0  165 90 243 114
 
 T 
 1
@@ -536,7 +539,7 @@ LANG:10001 12 Generate FSM
 13 29
 "PUSH_BUTTON4"
 ""
-1 248 111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 97 122 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 28 0 0 0 0 0
 E E E
@@ -548,7 +551,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  316 105 394 129
+0  165 116 243 140
 
 T 
 1
@@ -561,7 +564,7 @@ LANG:10001 9 Start FSM
 13 30
 "PUSH_BUTTON5"
 ""
-1 100 69 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 -11 122 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 29 0 0 0 0 0
 E E E
@@ -573,7 +576,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  132.5591376621325 78 243.1164787870412 102
+0  22 131 130 155
 
 T 
 1
@@ -827,7 +830,7 @@ LANG:1 9 Create DP
 13 36
 "closeButton"
 ""
-1 701 530 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 701 517 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 35 0 0 0 0 0
 E E E
@@ -841,7 +844,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
-0  699 520.3 761.25 546.3
+0  699 507.3 761.25 533.3
 
 T 
 2
@@ -850,6 +853,31 @@ LANG:1 5 Close
 "main(mapping event)
 {
   PanelOff();
+}" 0
+ E E E
+13 37
+"viewButton"
+""
+1 267 110 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+36 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  265 101 393 134
+
+T 
+1
+LANG:10001 4 View
+"main(mapping event)
+{
+      fwFsmUi_view(\"MMG_ELTX\", \"MMG_ELTX\");
 }" 0
  E E E
 0
