@@ -2,10 +2,10 @@ V 14
 2
 LANG:10001 0 
 LANG:1 0 
-PANEL,-1 -1 810 760 N "FwAtlasBg" 0
+PANEL,-1 -1 775 559 N "FwAtlasBg" 0
 "main()
 {
-    addLogoNTUABNL(580,550);
+    addLogoNTUABNL(580,490);
 }" 0
  E E E E 1 -1 -1 0  -191.3149253731343 0
 ""0  1
@@ -13,47 +13,6 @@ E "#uses \"CtrlXml\"
 #uses \"mmgEltx.ctl\"
 #uses \"fwSca/fwScaConfigParser.ctl\"
 #uses \"fwSca/fwScaCreateDpts.ctl\"
-
-dyn_int getChildNodesWithName (int docNum, int parentNode, string name)
-{
-//   DebugN(\"Inside \"+name,docNum);
-  dyn_int result;
-  int node = xmlFirstChild (docNum, parentNode);
-  while (node >= 0)
-    {
-      if (xmlNodeName (docNum, node) == name)
-	dynAppend (result, node);
-      node = xmlNextSibling (docNum, node);
-    }
-
-
-  return result;
-
-}
-
-
-void assignPWVoltDPEs(string dpe)
-{
-      string address;
-      dyn_string dsExceptionInfo;
-
-       address = dpe;		// address can be generated from dpe after some mods ...
-       strreplace (address, \"/\", \".\");
-
-       fwPeriphAddress_setOPCUA (dpe /*dpe */ ,
- 				\"SCA_OPC_UA_SERVER\" /* server name */ ,
- 				65,
- 				\"ns=2;s=\" + address,
- 				\"SCA_OPC_UA_SUBSCRIPTION\" /* subscription */ ,
- 				1 /* kind */ ,
- 				1 /* variant */ ,
- 				750 /* datatype */ ,
- 				DPATTR_ADDR_MODE_INPUT_SPONT /* mode */ ,
- 				\"\" /*poll group */ ,
- 				dsExceptionInfo);
-
-}
-
 
 dyn_string analogItemsWithCalculatedVariable(string configFileName)
 {
@@ -84,7 +43,7 @@ dyn_string analogItemsWithCalculatedVariable(string configFileName)
 	}
     }
   // now firstNode holds configuration node
-  dyn_int numberOfBoards = getChildNodesWithName (docNum, firstNode, \"SCA\");
+  dyn_int numberOfBoards = fwSca_getChildNodesWithName (docNum, firstNode, \"SCA\");
   dyn_int numberOfInput;
 
   int inputSystemChild;
@@ -128,7 +87,7 @@ dyn_string analogItemsWithCalculatedVariable(string configFileName)
        if(didFindSystem)
        {
 
-       numberOfInput=getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
+       numberOfInput=fwSca_getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
 
        dynClear(inputChildItem);
        dynClear(allInputsItems);
@@ -207,7 +166,7 @@ dyn_string inputItemsListPerSystem(string configFileName,string xmlSectionToSear
 	}
     }
   // now firstNode holds configuration node
-  dyn_int numberOfBoards = getChildNodesWithName (docNum, firstNode, \"SCA\");
+  dyn_int numberOfBoards = fwSca_getChildNodesWithName (docNum, firstNode, \"SCA\");
   dyn_int numberOfInput;
 
   int inputSystemChild;
@@ -246,7 +205,7 @@ dyn_string inputItemsListPerSystem(string configFileName,string xmlSectionToSear
        if(didFindSystem)
        {
 
-       numberOfInput=getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
+       numberOfInput=fwSca_getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
 
        dynClear(inputChildItem);
        dynClear(allInputsItems);
@@ -313,7 +272,7 @@ int countInputItemsPerSystemPerBoard(string configFileName,string xmlSectionToSe
 	}
     }
   // now firstNode holds configuration node
-  dyn_int numberOfBoards = getChildNodesWithName (docNum, firstNode, \"SCA\");
+  dyn_int numberOfBoards = fwSca_getChildNodesWithName (docNum, firstNode, \"SCA\");
   dyn_int numberOfInput;
 
   int inputSystemChild;
@@ -358,7 +317,7 @@ int countInputItemsPerSystemPerBoard(string configFileName,string xmlSectionToSe
       if(didFindSystem)
        {
 
-       numberOfInput=getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
+       numberOfInput=fwSca_getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
 
        }
       else
@@ -417,7 +376,7 @@ dyn_string inputItemsPerSystemPerBoard(string configFileName,string xmlSectionTo
 	}
     }
   // now firstNode holds configuration node
-  dyn_int numberOfBoards = getChildNodesWithName (docNum, firstNode, \"SCA\");
+  dyn_int numberOfBoards = fwSca_getChildNodesWithName (docNum, firstNode, \"SCA\");
   dyn_int numberOfInput;
 
   int inputSystemChild;
@@ -462,7 +421,7 @@ dyn_string inputItemsPerSystemPerBoard(string configFileName,string xmlSectionTo
       if(didFindSystem)
        {
 
-       numberOfInput=getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
+       numberOfInput=fwSca_getChildNodesWithName(docNum, nodeToSearchIn, xmlSectionToSearch);
 
        dynClear(inputChildItem);
        dynClear(allInputsItems);
@@ -517,7 +476,7 @@ dyn_string boardsTotal(string configFileName)
 	}
     }
   // now firstNode holds configuration node
-  dyn_int numberOfBoards = getChildNodesWithName (docNum, firstNode, \"SCA\");
+  dyn_int numberOfBoards = fwSca_getChildNodesWithName (docNum, firstNode, \"SCA\");
 
   string boardName;
   dyn_string boardsTotalList;
@@ -535,28 +494,6 @@ dyn_string boardsTotal(string configFileName)
 
 }
 
- void assignOPCUAAdress(string dpe,string type)
-  {
-      string address;
-      dyn_string dsExceptionInfo;
-
-      dpe = dpe + \".\"+type;
-      address = dpe;		// address can be generated from dpe after some mods ...
-      strreplace (address, \"/\", \".\");
-      fwPeriphAddress_setOPCUA (dpe /*dpe */ ,
-				\"SCA_OPC_UA_SERVER\" /* server name */ ,
-				65,
-				\"ns=2;s=\" + address,
-				\"SCA_OPC_UA_SUBSCRIPTION\" /* subscription */ ,
-				1 /* kind */ ,
-				1 /* variant */ ,
-				750 /* datatype */ ,
-				DPATTR_ADDR_MODE_INPUT_SPONT /* mode */ ,
-				\"\" /*poll group */ ,
-				dsExceptionInfo);
-
-
-  }
 
 
 " 0
@@ -598,7 +535,7 @@ LANG:1 25 XML->Analog Items DPT Fix
 13 2
 "PUSH_BUTTON1"
 ""
-1 29 112.1125 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 29 113 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 2 0 0 0 0 0
 E E E
@@ -610,9 +547,9 @@ LANG:1 0
 1
 "layoutAlignment" "AlignNone"
 2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  27 98.11250000000001 338 132.1125
+0  27 99.00000000000001 338 133
 
 T 
 2
@@ -684,7 +621,7 @@ LANG:1 22 Display SCA-Boards IDs
 13 3
 "closeButton"
 ""
-1 622 493 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 629 428 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 3 0 0 0 0 0
 E E E
@@ -698,7 +635,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
-0  620 483.3 682.25 509.3
+0  627 418.3 689.25 444.3
 
 T 
 2
@@ -712,7 +649,7 @@ LANG:1 5 Close
 13 4
 "PUSH_BUTTON2"
 ""
-1 391 201 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 391 200 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 4 0 0 0 0 0
 E E E
@@ -724,9 +661,9 @@ LANG:1 0
 1
 "layoutAlignment" "AlignNone"
 2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  389.3460199119295 191 646.3460199119295 225
+0  389.3460199119295 190 646.3460199119295 224
 
 T 
 2
@@ -754,142 +691,6 @@ dyn_dyn_int types;
 
 }" 0
  E E E
-13 5
-"PUSH_BUTTON3"
-""
-1 285 599 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-5 0 0 0 0 0
-E E E
-8
-2
-LANG:10001 0 
-LANG:1 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  282.9375 588.925 539.9375 622.925
-
-T 
-2
-LANG:10001 32 Assign OPC UA to power/temp DPEs
-LANG:1 32 Assign OPC UA to power/temp DPEs
-"main(mapping event)
-{
-    
-  dyn_string analogItemsWithCalculatedVariableList=analogItemsWithCalculatedVariable(filePath.text());
-
-  for(int i=1;i<=dynlen(analogItemsWithCalculatedVariableList);i++)
-  {   
-   assignPWVoltDPEs(analogItemsWithCalculatedVariableList[i]);             
-  }
- 
-   
-  DebugTN(\"Assign of Power/Temperature OPC UA Address:\",\"READY\");
-  
-  
-
-  
-}" 0
- E E E
-13 7
-"PUSH_BUTTON5"
-""
-1 266 662 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-7 0 0 0 0 0
-E E E
-8
-2
-LANG:10001 0 
-LANG:1 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  264 649.275 412 686.275
-
-T 
-2
-LANG:10001 20 Assign OPC UA Adress
-LANG:1 20 Assign OPC UA Adress
-"main(mapping event)
-{
-
-  dyn_string analogItemsTotalList=analogItemsTotal();
-  string dpElement=parameterBox.text();
-  
-  for(int i=1;i<=dynlen(analogItemsTotalList);i++)
-  {     
-  assignOPCUAAdress(analogItemsTotalList[i],dpElement);      
-  }
-  
-    DebugTN(\"Assign of \"+dpElement+\" OPC UA Address:\",\"READY\");
-  
-}" 0
- E E E
-30 8
-"FRAME1"
-""
-1 280 53 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
- E E
-8 0 0 0 0 0
-E E E
-1
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 3 2 1 E 1 0 0.8831168831168831 -22.81492537313443 584.3198051948052 0 E 280 53 601 131
-2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0 2
-LANG:10001 0 
-LANG:1 0 
-22 10
-"parameterBox"
-""
-1 427.625 659.125 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
- E E
-10 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  425.625 653.125 549.625 679.125
-2
-2
-LANG:10001 5 value
-LANG:1 5 value
-
-0
-2
-LANG:10001 8 rawValue
-LANG:1 8 rawValue
-
-0
-
-E
-E
-E
- 0 0
 25 11
 "totalBoardList"
 ""
@@ -931,33 +732,10 @@ LANG:10001 27 Utopia,-1,12,5,50,0,0,0,0,0
 LANG:1 27 Utopia,-1,12,5,50,0,0,0,0,0
 0 0 1 0 1 7
 1 0
-30 12
-"FRAME2"
-""
-1 280 53 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
- E E
-12 0 0 0 0 0
-E E E
-1
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 3 2 1 E 1.00274953358209 0 1.818181818181818 -24.27472014925409 395.6363636363636 0 E 280 53 601 131
-2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0 2
-LANG:10001 0 
-LANG:1 0 
 2 13
 "PRIMITIVE_TEXT8"
 ""
-1 65 525 E E E 1 E 1 E N "White" E N "_Window" E E
+1 120 525 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 13 0 0 0 0 0
 E E E
@@ -971,8 +749,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E U  0 E 65 525 108 542
-0 2 2 "0s" 0 0 0 192 0 0  65 525 1
+E E 0 1 3 2 1 E U  0 E 120 525 163 542
+0 2 2 "0s" 0 0 0 192 0 0  120 525 1
 2
 LANG:10001 27 Utopia,-1,15,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,15,5,75,0,0,0,0,0
@@ -982,7 +760,7 @@ LANG:1 6 Total:
 14 14
 "totalBoards"
 ""
-1 132 524 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 187 524 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -996,7 +774,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,15,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,15,5,75,0,0,0,0,0
-0  130 519 184 548
+0  185 519 239 548
 3 "0s" 0 0 0 1 0 -1  E E E
 30 24
 "FRAME3"
@@ -1014,7 +792,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 0.4656250000000001 0 0.5454545454545453 -76.37499999999997 480.0909090909091 0 E 280 53 601 131
+E E 0 1 3 2 1 E 0.4656250000000001 0 0.5454545454545453 -21.37499999999997 480.0909090909091 0 E 280 53 601 131
 2
 LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
@@ -1105,41 +883,10 @@ LANG:1 12 PUSH_BUTTON7
 
 }" 0
  E E E
-13 29
-"PUSH_BUTTON8"
-""
-1 284 566 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-29 0 0 0 0 0
-E E E
-8
-2
-LANG:10001 0 
-LANG:1 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  282 552 538 586
-
-T 
-2
-LANG:10001 18 Display Calculated
-LANG:1 18 Display Calculated
-"main()
-{
-   
-  DebugN(analogItemsWithCalculatedVariable(filePath.text()));
-  
-}
-    " 0
- E E E
 25 33
 "boardSumTable"
 ""
-1 30 111 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 85 111 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 33 0 0 0 0 0
 E E E
@@ -1153,7 +900,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,12,5,50,0,0,0,0,0
 LANG:1 27 Utopia,-1,12,5,50,0,0,0,0,0
-0  27 415 241 512
+0  82 415 296 512
 EE 1 0 1 2 0 "Board" 10 1 0 "s" 2
 LANG:10001 5 Board
 LANG:1 5 Board
@@ -1364,7 +1111,7 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  394 120 651 154
 
 T 
@@ -1372,7 +1119,14 @@ T
 LANG:10001 12 Create [dev]
 "main(mapping event)
 {
-  int dpeStatus=fwSca_parseConfig(filePath.text(),TRUE,TRUE,FALSE);
+
+  string source=filePath.text();
+  string fileOriginal=source;
+  string fileNew=source;
+  strreplace(fileNew,\".xml\",\"_EXTENDED.xml\");
+  system(\"xmllint --noent \"+fileOriginal+\" > \"+fileNew);
+
+  int dpeStatus=fwSca_parseConfig(fileNew,TRUE,TRUE,FALSE);
 
   DebugN(\"********* SCA Datapoint Creation ------> \"+dpeStatus);
 
@@ -1404,7 +1158,7 @@ LANG:1 0
 13 45
 "PUSH_BUTTON10"
 ""
-1 393 251 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 392 242 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 45 0 0 0 0 0
 E E E
@@ -1416,13 +1170,13 @@ LANG:1 0
 1
 "layoutAlignment" "AlignNone"
 2
-LANG:10001 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  391 237 647 271
+0  390 228 646 262
 
 T 
 2
-LANG:10001 10 Assign OPC
+LANG:10001 22 Assign OPC to PW/Temp 
 LANG:1 18 Display Calculated
 "main()
 {
@@ -1479,9 +1233,7 @@ LANG:1 18 Display Calculated
 
     }
 
-
-
-
+  DebugTN(\"Assign of Power/Temperature OPC UA Address:\",\"READY\");
 }
 " 0
  E E E
