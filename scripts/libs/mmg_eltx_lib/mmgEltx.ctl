@@ -34,6 +34,22 @@ string getBoardChannel(){
 
 }
 
+string getSCAID(string channel){
+
+  string id;
+  dpGet(channel+".id",id);
+  return id;
+
+}
+
+string getSCAAddress(string channel){
+
+  string address;
+  dpGet(channel+".address",address);
+  return address;
+
+}
+
 string getBoardType(){
 
   string type;
