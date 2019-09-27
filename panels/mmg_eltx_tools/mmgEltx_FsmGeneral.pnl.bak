@@ -805,8 +805,8 @@ LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 
 T 
 2
-LANG:10001 37 MMG _ELTX_Chamber
-Create Chambers DPs
+LANG:10001 32 MMG _ELTX_Board
+Create Board DPs
 LANG:1 9 Create DP
 "main(mapping event)
 {
