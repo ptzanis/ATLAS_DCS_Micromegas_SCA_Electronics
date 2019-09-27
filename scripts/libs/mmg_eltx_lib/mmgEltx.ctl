@@ -1,3 +1,9 @@
+string eltxProjectName(){
+
+  return "ATLMMGELTX:";
+}
+
+
 string getDetector(){
     return substr($obj,0,3);
 }
@@ -29,7 +35,7 @@ string getBoard(){
 string getBoardChannel(){
 
   string channel;
-  dpGet(getDetector()+"_ELTX_"+getChamber()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.channel",channel);
+  dpGet(eltxProjectName()+getDetector()+"_ELTX_"+getChamber()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.channel",channel);
   return channel;
 
 }
@@ -37,7 +43,7 @@ string getBoardChannel(){
 string getSCAID(string channel){
 
   string id;
-  dpGet(channel+".id",id);
+  dpGet(eltxProjectName()+channel+".id",id);
   return id;
 
 }
@@ -45,7 +51,7 @@ string getSCAID(string channel){
 string getSCAAddress(string channel){
 
   string address;
-  dpGet(channel+".address",address);
+  dpGet(eltxProjectName()+channel+".address",address);
   return address;
 
 }
@@ -53,7 +59,7 @@ string getSCAAddress(string channel){
 string getBoardType(){
 
   string type;
-  dpGet(getDetector()+"_ELTX_"+getChamber()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.type",type);
+  dpGet(eltxProjectName()+getDetector()+"_ELTX_"+getChamber()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.type",type);
   return type;
 
 }
@@ -83,3 +89,29 @@ void parameterDisplay(string dpe,string parameter,string unit,int x,int y,int di
 
 
 }
+
+
+string getOPCServer()
+{
+
+  string opcServer="_SCA_OPC_UA_SERVER";
+
+  return opcServer;
+
+}
+/*
+dyn_string getAnalogItemsOfBoard(string board){
+
+  dyn_string analogItemsOfBoard;
+
+  analogItemsOfBoard=dpNames(board+"/ai/*","fwScaAnalogInput");
+
+  for(int i=1;i<=dynlen(analogItemsOfBoard);i++)
+  {
+   strreplace(analogItemsOfBoard[i],getSystemName()+board+"/ai/","");
+  }
+
+  return analogItemsOfBoard;
+
+}
+*/
