@@ -99,19 +99,16 @@ string getOPCServer()
   return opcServer;
 
 }
-/*
-dyn_string getAnalogItemsOfBoard(string board){
+
+dyn_string getAnalogItemsOfBoard(string board,string boardType){
 
   dyn_string analogItemsOfBoard;
 
-  analogItemsOfBoard=dpNames(board+"/ai/*","fwScaAnalogInput");
+  dpGet("MMG_ELTX_"+boardType+".AnalogItems",analogItemsOfBoard);
 
-  for(int i=1;i<=dynlen(analogItemsOfBoard);i++)
-  {
-   strreplace(analogItemsOfBoard[i],getSystemName()+board+"/ai/","");
-  }
+
 
   return analogItemsOfBoard;
 
 }
-*/
+

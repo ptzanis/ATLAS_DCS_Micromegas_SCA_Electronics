@@ -1,21 +1,14 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 859 866 N "FwAtlasBg" 0
+PANEL,-1 -1 859 866 N "FwAtlasBg" 1
+"$obj"
 "main()
 {
     string boardType= getBoardType();
     string channel=getBoardChannel();
 
     addLogoNTUABNL(670,800);
-
-    int x=20;
-    int y=220;
-
-
-    addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/\"+boardType+\".pnl\", \"Board \"+boardType,
-              makeDynString(\"$channel:\"+channel,\"$boardType:\"+boardType,\"$x:\"+x,\"$y:\"+y), x, y, 0, 1, 1);
-
 
 
 
@@ -474,7 +467,23 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.873913043478261 0 2.970588235294118 -31.69565217391306 18.82352941176467 0 E 50 62 741 131
+"main()
+{
+
+    string boardType= getBoardType();
+    string channel=getBoardChannel();
+
+    int xFrame, yFrame;
+    getValue(\"\",\"position\",xFrame,yFrame);
+
+
+    xFrame=xFrame+8;
+    yFrame=yFrame+20;
+    addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/\"+boardType+\".pnl\", \"Board \"+boardType,
+              makeDynString(\"$channel:\"+channel,\"$boardType:\"+boardType,\"$x:\"+xFrame,\"$y:\"+yFrame), xFrame, yFrame, 0, 1, 1);
+
+}" 0
+ E 0 1 1 2 1 E 0.8695652173913044 0 2.970588235294118 53.52173913043477 54.82352941176467 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -889,6 +898,107 @@ void updateStatus(string dpeServerState, string serverState)
 
 " 0
  E
+30 51
+"FRAME10"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+51 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+    string boardType= getBoardType();
+    string channel=getBoardChannel();
+
+
+    dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
+
+    dyn_string  powerItems;
+
+    for(int i=1;i<=dynlen(analogItems);i++)
+    {
+
+       if(uniPatternMatch(\"*power*\",analogItems[i]) && !uniPatternMatch(\"*RSS*\",analogItems[i]))
+        {
+          dynAppend(powerItems,channel+\"/\"+analogItems[i]);
+        }
+
+    }
+
+
+    int xFrame, yFrame;
+    getValue(\"\",\"position\",xFrame,yFrame);
+
+
+    dyn_string exceptionInfo;
+
+    fwTrending_addQuickFaceplate(myModuleName(),myPanelName(), \"Voltage Sensors\" +$obj, powerItems, xFrame+5, yFrame+12, exceptionInfo,\"_FwTrendingQuickPlotDefaults\", 0.8, 0.8);
+
+
+}" 0
+ E 0 1 1 2 1 E 0.6144927536231886 0 3.529411764705883 -28.72463768115943 260.1764705882352 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Voltage
+30 52
+"FRAME11"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+52 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+    string boardType= getBoardType();
+    string channel=getBoardChannel();
+
+
+    dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
+
+    dyn_string temperatureItems;
+
+    for(int i=1;i<=dynlen(analogItems);i++)
+    {
+       if(uniPatternMatch(\"*temperature*\",analogItems[i]))
+        {
+          dynAppend(temperatureItems,channel+\"/\"+analogItems[i]);
+        }
+
+    }
+
+
+    int xFrame, yFrame;
+    getValue(\"\",\"position\",xFrame,yFrame);
+
+
+    dyn_string exceptionInfo;
+
+    fwTrending_addQuickFaceplate(myModuleName(),myPanelName(), \"Temperature Sensors\" +$obj, temperatureItems, xFrame+5, yFrame+12, exceptionInfo,\"_FwTrendingQuickPlotDefaults\", 0.8, 0.8);
+
+
+}" 0
+ E 0 1 1 2 1 E 0.6144927536231886 0 3.529411764705883 398.2753623188406 260.1764705882352 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 11 Temperature
 0
 LAYER, 1 
 1
