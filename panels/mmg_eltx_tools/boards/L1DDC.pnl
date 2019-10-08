@@ -11,6 +11,8 @@ PANEL,-1 -1 611 206 N "FwAtlasBg" 4
      dyn_string analogItemsOfBoard;
      dpGet(eltxProjectName()+\"MMG_ELTX_\"+boardType+\".AnalogItems\",analogItemsOfBoard);
 
+
+
        //PW FEAST 2.5V
       parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[V]\",x+420,y+20,2,2);
       parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+420,y+42,2,2);
@@ -30,6 +32,7 @@ PANEL,-1 -1 611 206 N "FwAtlasBg" 4
 
       //GBTX3
       parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[C]\",x+280,y+125,2,2);
+
 
 
 }" 0

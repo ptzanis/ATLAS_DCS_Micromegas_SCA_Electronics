@@ -5,9 +5,8 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "$obj"
 "main()
 {
-    string boardType= getBoardType();
-    string channel=getBoardChannel();
-
+//     string boardType= getBoardType();
+//     string channel=getBoardChannel();
     addLogoNTUABNL(670,800);
 
 
@@ -15,7 +14,39 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 }" 0
  E E E E 1 -1 -1 0  139 162
 ""0  1
-E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"" 0
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
+
+void retrieveSensorsPlot(string type, string search){
+
+    string boardType= getBoardType();
+    string channel=getBoardChannel();
+
+    dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
+
+    dyn_string  items;
+    for(int i=1;i<=dynlen(analogItems);i++)
+    {
+//        if(uniPatternMatch(\"*\"+type+\"*\",analogItems[i]) && !uniPatternMatch(\"*RSS*\",analogItems[i]))
+          if(uniPatternMatch(\"*\"+type+\"*\",analogItems[i]) && uniPatternMatch(\"*\"+search+\"*\",analogItems[i]) )
+        {
+          dynAppend(items,channel+\"/\"+analogItems[i]);
+
+        }
+
+    }
+
+    int xFrame, yFrame;
+
+
+    shape frame=getShape(type+\"Frame\");
+    getValue(frame,\"position\",xFrame,yFrame);
+
+
+    dyn_string exceptionInfo;
+
+    fwTrending_addQuickFaceplate(myModuleName(),myPanelName(), type+\" sensors\" +$obj, items, xFrame+5, yFrame+50, exceptionInfo,\"_scaBoardPlot\", 0.8, 1.1);
+
+}" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -483,7 +514,7 @@ LANG:10001 0
               makeDynString(\"$channel:\"+channel,\"$boardType:\"+boardType,\"$x:\"+xFrame,\"$y:\"+yFrame), xFrame, yFrame, 0, 1, 1);
 
 }" 0
- E 0 1 1 2 1 E 0.8695652173913044 0 2.970588235294118 53.52173913043477 54.82352941176467 0 E 50 62 741 131
+ E 0 1 1 2 1 E 0.8695652173913044 0 2.970588235294118 75.52173913043478 31.82352941176467 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -899,7 +930,7 @@ void updateStatus(string dpeServerState, string serverState)
 " 0
  E
 30 51
-"FRAME10"
+"powerFrame"
 ""
 1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
  E E
@@ -915,42 +946,18 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-    string boardType= getBoardType();
-    string channel=getBoardChannel();
 
-
-    dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
-
-    dyn_string  powerItems;
-
-    for(int i=1;i<=dynlen(analogItems);i++)
-    {
-
-       if(uniPatternMatch(\"*power*\",analogItems[i]) && !uniPatternMatch(\"*RSS*\",analogItems[i]))
-        {
-          dynAppend(powerItems,channel+\"/\"+analogItems[i]);
-        }
-
-    }
-
-
-    int xFrame, yFrame;
-    getValue(\"\",\"position\",xFrame,yFrame);
-
-
-    dyn_string exceptionInfo;
-
-    fwTrending_addQuickFaceplate(myModuleName(),myPanelName(), \"Voltage Sensors\" +$obj, powerItems, xFrame+5, yFrame+12, exceptionInfo,\"_FwTrendingQuickPlotDefaults\", 0.8, 0.8);
+   retrieveSensorsPlot(\"power\",\"SCA\");
 
 
 }" 0
- E 0 1 1 2 1 E 0.6144927536231886 0 3.529411764705883 -28.72463768115943 260.1764705882352 0 E 50 62 741 131
+ E 0 1 1 2 1 E 0.6072463768115941 0 5.23529411764706 402.6376811594203 97.41176470588232 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 7 Voltage
+LANG:10001 5 Power
 30 52
-"FRAME11"
+"temperatureFrame"
 ""
 1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
  E E
@@ -966,39 +973,98 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-    string boardType= getBoardType();
-    string channel=getBoardChannel();
-
-
-    dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
-
-    dyn_string temperatureItems;
-
-    for(int i=1;i<=dynlen(analogItems);i++)
-    {
-       if(uniPatternMatch(\"*temperature*\",analogItems[i]))
-        {
-          dynAppend(temperatureItems,channel+\"/\"+analogItems[i]);
-        }
-
-    }
-
-
-    int xFrame, yFrame;
-    getValue(\"\",\"position\",xFrame,yFrame);
-
-
-    dyn_string exceptionInfo;
-
-    fwTrending_addQuickFaceplate(myModuleName(),myPanelName(), \"Temperature Sensors\" +$obj, temperatureItems, xFrame+5, yFrame+12, exceptionInfo,\"_FwTrendingQuickPlotDefaults\", 0.8, 0.8);
-
+//   retrieveSensorsPlot(\"temperature\",\"GBTX\");
 
 }" 0
- E 0 1 1 2 1 E 0.6144927536231886 0 3.529411764705883 398.2753623188406 260.1764705882352 0 E 50 62 741 131
+ E 0 1 1 2 1 E 0.6072463768115943 0 5.23529411764706 -24.36231884057972 98.41176470588232 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 11 Temperature
+13 64
+"PUSH_BUTTON2"
+""
+1 34 452.5762711864407 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+64 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  32 442.0000000000001 143 469.0000000000001
+
+T 
+1
+LANG:10001 5 FEAST
+"main(mapping event)
+{
+  removeSymbol(myModuleName(),myPanelName(),\"temperature\"+\" sensors\" +$obj);
+  retrieveSensorsPlot(\"temperature\",\"PTAT\");
+
+
+}" 0
+ E E E
+13 67
+"PUSH_BUTTON3"
+""
+1 164 452 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+67 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  162 441.4237288135593 273 468.4237288135593
+
+T 
+1
+LANG:10001 4 GBTX
+"main(mapping event)
+{
+  removeSymbol(myModuleName(),myPanelName(),\"temperature\"+\" sensors\" +$obj);
+  retrieveSensorsPlot(\"temperature\",\"GBTX\");
+
+
+}" 0
+ E E E
+13 68
+"PUSH_BUTTON4"
+""
+1 288 452 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+68 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  286 441.4237288135593 397 468.4237288135593
+
+T 
+1
+LANG:10001 3 SCA
+"main(mapping event)
+{
+  removeSymbol(myModuleName(),myPanelName(),\"temperature\"+\" sensors\" +$obj);
+  retrieveSensorsPlot(\"temperature\",\"internal\");
+
+
+}" 0
+ E E E
 0
 LAYER, 1 
 1
