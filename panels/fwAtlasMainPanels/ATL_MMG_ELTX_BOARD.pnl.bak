@@ -5,8 +5,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "$obj"
 "main()
 {
-//     string boardType= getBoardType();
-//     string channel=getBoardChannel();
+
     addLogoNTUABNL(670,800);
 
 
@@ -16,7 +15,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 ""0  1
 E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
-void retrieveSensorsPlot(string type, string search){
+void retrieveSensorsPlot(string type, string search1, string search2){
 
     string boardType= getBoardType();
     string channel=getBoardChannel();
@@ -26,12 +25,14 @@ void retrieveSensorsPlot(string type, string search){
     dyn_string  items;
     for(int i=1;i<=dynlen(analogItems);i++)
     {
-//        if(uniPatternMatch(\"*\"+type+\"*\",analogItems[i]) && !uniPatternMatch(\"*RSS*\",analogItems[i]))
-          if(uniPatternMatch(\"*\"+type+\"*\",analogItems[i]) && uniPatternMatch(\"*\"+search+\"*\",analogItems[i]) )
+       if(uniPatternMatch(\"*\"+type+\"*\",analogItems[i]) )
+      {
+       if( uniPatternMatch(\"*\"+search1+\"*\",analogItems[i]) || uniPatternMatch(\"*\"+search2+\"*\",analogItems[i]))
         {
           dynAppend(items,channel+\"/\"+analogItems[i]);
 
         }
+      }
 
     }
 
@@ -45,6 +46,22 @@ void retrieveSensorsPlot(string type, string search){
     dyn_string exceptionInfo;
 
     fwTrending_addQuickFaceplate(myModuleName(),myPanelName(), type+\" sensors\" +$obj, items, xFrame+5, yFrame+50, exceptionInfo,\"_scaBoardPlot\", 0.8, 1.1);
+
+}
+
+
+void switchTemperatureButtonEnabled()
+{
+
+ shape temperatureButton;
+ for(int i=1;i<=3;i++)
+ {
+  temperatureButton=getShape(\"buttonTemperature\"+i);
+  temperatureButton.enabled(TRUE);
+ }
+
+ this.enabled(FALSE);
+
 
 }" 0
  3
@@ -973,16 +990,16 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-//   retrieveSensorsPlot(\"temperature\",\"GBTX\");
-
+    buttonTemperature3.enabled(FALSE);
+    retrieveSensorsPlot(\"temperature\",\"internal\",\"internal\");
 }" 0
- E 0 1 1 2 1 E 0.6072463768115943 0 5.23529411764706 -24.36231884057972 98.41176470588232 0 E 50 62 741 131
+ E 0 1 1 2 1 E 0.6072463768115943 0 5.23529411764706 -24.36231884057972 97.41176470588232 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 11 Temperature
 13 64
-"PUSH_BUTTON2"
+"buttonTemperature1"
 ""
 1 34 452.5762711864407 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
@@ -995,24 +1012,32 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  32 442.0000000000001 143 469.0000000000001
 
 T 
 1
-LANG:10001 12 PUSH_BUTTON2
+LANG:10001 5 FEAST
 "main(mapping event)
 {
+  string boardType= getBoardType();
+
+  switchTemperatureButtonEnabled();
+
   removeSymbol(myModuleName(),myPanelName(),\"temperature\"+\" sensors\" +$obj);
-  retrieveSensorsPlot(\"temperature\",\"PTAT\");
+
+  if(boardType==\"ADDC\")
+    retrieveSensorsPlot(\"temperature\",\"feast\",\"feast\");
+  else
+    retrieveSensorsPlot(\"temperature\",\"PTAT\",\"PTAT\");
 
 
 }" 0
  E E E
 13 67
-"PUSH_BUTTON3"
+"buttonTemperature2"
 ""
-1 164 452 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 162 453 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 67 0 0 0 0 0
 E E E
@@ -1023,24 +1048,43 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  162 441.4237288135593 273 468.4237288135593
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  160 442.4237288135593 271 469.4237288135593
 
 T 
 1
-LANG:10001 12 PUSH_BUTTON2
+LANG:10001 4 GBTX
 "main(mapping event)
 {
+  string boardType= getBoardType();
+  switchTemperatureButtonEnabled();
+
   removeSymbol(myModuleName(),myPanelName(),\"temperature\"+\" sensors\" +$obj);
-  retrieveSensorsPlot(\"temperature\",\"GBTX\");
+
+
+
+  if(boardType==\"MMFE8\")
+    retrieveSensorsPlot(\"temperature\",\"vmm\",\"Pdo\");
+  else
+    retrieveSensorsPlot(\"temperature\",\"gbtx\",\"GBTX\");
 
 
 }" 0
- E E E
+ E E "main()
+{
+     string boardType= getBoardType();
+
+     if(boardType==\"MMFE8\")
+       this.text(\"VMM\");
+     else
+       this.text(\"GBTX\");
+
+}" 0
+
 13 68
-"PUSH_BUTTON4"
+"buttonTemperature3"
 ""
-1 288 452 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 287 453 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 68 0 0 0 0 0
 E E E
@@ -1051,16 +1095,18 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  286 441.4237288135593 397 468.4237288135593
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  285 442.4237288135593 396 469.4237288135593
 
 T 
 1
-LANG:10001 12 PUSH_BUTTON2
+LANG:10001 3 SCA
 "main(mapping event)
 {
+  switchTemperatureButtonEnabled();
+
   removeSymbol(myModuleName(),myPanelName(),\"temperature\"+\" sensors\" +$obj);
-  retrieveSensorsPlot(\"temperature\",\"internal\");
+  retrieveSensorsPlot(\"temperature\",\"internal\",\"internal\");
 
 
 }" 0
