@@ -963,9 +963,12 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
+  string boardType= getBoardType();
 
-   retrieveSensorsPlot(\"power\",\"SCA\");
-
+  if(boardType==\"MMFE8\")
+     retrieveSensorsPlot(\"power\",\"0V6\",\"0V6\");
+  else
+     retrieveSensorsPlot(\"power\",\"SCA\",\"TP0\");
 
 }" 0
  E 0 1 1 2 1 E 0.6072463768115941 0 5.23529411764706 402.6376811594203 97.41176470588232 0 E 50 62 741 131
@@ -992,6 +995,8 @@ LANG:10001 0
 {
     buttonTemperature3.enabled(FALSE);
     retrieveSensorsPlot(\"temperature\",\"internal\",\"internal\");
+
+
 }" 0
  E 0 1 1 2 1 E 0.6072463768115943 0 5.23529411764706 -24.36231884057972 97.41176470588232 0 E 50 62 741 131
 1
@@ -1029,11 +1034,15 @@ LANG:10001 5 FEAST
   if(boardType==\"ADDC\")
     retrieveSensorsPlot(\"temperature\",\"feast\",\"feast\");
   else
-    retrieveSensorsPlot(\"temperature\",\"PTAT\",\"PTAT\");
+    retrieveSensorsPlot(\"temperature\",\"pTat\",\"PTAT\");
 
 
 }" 0
- E E E
+ E E "main()
+{
+  this.enabled(TRUE);
+}" 0
+
 13 67
 "buttonTemperature2"
 ""
@@ -1072,6 +1081,8 @@ LANG:10001 4 GBTX
 }" 0
  E E "main()
 {
+     this.enabled(TRUE);
+
      string boardType= getBoardType();
 
      if(boardType==\"MMFE8\")

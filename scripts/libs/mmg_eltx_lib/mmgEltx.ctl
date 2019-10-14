@@ -71,7 +71,7 @@ addSymbol(myModuleName(),myPanelName(),"mmg_eltx_tools/logoNTUABNL.pnl","logoNTU
 
 }
 
-void parameterDisplay(string dpe,string parameter,string unit,int x,int y,int digitsBeforeComma,int digitsAfterComma){
+void parameterDisplay(string dpe,string parameter,string unit,int x,int y,int digitsBeforeComma,int digitsAfterComma,float xScale=1.0, float yScale=1.0){
 
     dyn_string parameters;
     parameters = makeDynString("$dpe:" + dpe, "$format:["+digitsBeforeComma+"."+digitsAfterComma+"f]",
@@ -85,7 +85,7 @@ void parameterDisplay(string dpe,string parameter,string unit,int x,int y,int di
 
 
     addSymbol(myModuleName(), myPanelName(), "objects/fsmAtlas/parameter.pnl", "parameter_pnl_Ref_"+dpe,
-              parameters, x, y, 0, 1, 1);
+              parameters, x, y, 0, xScale, yScale);
 
 
 }

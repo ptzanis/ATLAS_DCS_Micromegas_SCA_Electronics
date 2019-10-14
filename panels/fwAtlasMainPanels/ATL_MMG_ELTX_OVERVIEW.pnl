@@ -52,6 +52,31 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 E E 0 1 1 2 1 E U  1 E 92 66 202 98
+13 3
+"PUSH_BUTTON1"
+""
+1 41 268 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  39 250 119 301
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON1
+"main(mapping event)
+{
+    fwFsmAtlas_navigate(\"MMG_ELTX\",\"MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1\");
+}" 0
+ E E E
 0
 LAYER, 1 
 1
