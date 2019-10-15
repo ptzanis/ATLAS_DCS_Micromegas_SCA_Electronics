@@ -90,11 +90,11 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.038081395348837 0 1 -0.9619186046511627 -6 4 "[linear,reflect,0.494,1.45,0.47,-0.482,0,{0,0,0},0.537,{255,255,255}]" E -1 -1 859 41
+E E 0 1 1 2 1 E 1.038081395348837 0 0.6904761904761904 -0.9619186046511636 -2.309523809523806 4 "[linear,reflect,0.458,1.45,0.47,-0.482,0.0201,{0,0,0},0.453,{255,255,255}]" E -1 -1 859 41
 2 4
 "titleLabel"
 ""
-1 0 2 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
+1 207 0 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
  E E
 4 0 0 0 0 0
 E E E
@@ -109,12 +109,13 @@ LANG:1 0
 "antiAliased" "0"
 "main()
 {
-//   this.text(getDetector()+\" | Endcap \"+getSide()+\" | Sector \"+getSector()+\" | Chamber \"+getChamber()+\" | Layer \"+getLayer()+\" | PCB \"+getPCB()+\" | Board \"+getBoard());
+  this.text(\"Board \"+getBoardType()+\" | Chamber \"+getChamber()+\" | Layer \"+getLayer()+\" | PCB \"+getPCB());
+ //    this.text(\"Board View: \"getDetector()+\" | Endcap \"+getSide()+\" | Sector \"+getSector()+\" | Chamber \"+getChamber()+\" | Layer \"+getLayer()+\" | PCB \"+getPCB()+\" | Board \"+getBoard());
 }" 0
- E 0 1 1 2 1 E U  0 E 0 2 854.5 33
-0 2 2 "0s" 0 0 0 65 0 0  0 2 1
+ E 0 1 1 2 1 E U  0 E 207 0 882 31
+0 2 2 "0s" 0 0 0 64 0 0  207 0 1
 2
-LANG:10001 32 Utopia,-1,27,5,75,0,0,0,0,0,Bold
+LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
 LANG:10001 10 Board View
@@ -122,7 +123,7 @@ LANG:1 4 ATCA
 4 5
 "LINE4"
 ""
-1 10.27142857142857 49 E E E 1 E 1 E N "FwAtlasFg" E N {255,255,255} E E
+1 10 38 E E E 1 E 1 E N "FwAtlasFg" E N {255,255,255} E E
  E E
 5 0 0 0 0 0
 E E E
@@ -135,7 +136,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E  -2 35 857.0000000000001 35
+E E 0 1 1 2 1 E  -2.27142857142857 24 856.7285714285715 24
 14 6
 "TEXT_FIELD3"
 ""
@@ -1122,6 +1123,54 @@ LANG:10001 3 SCA
 
 }" 0
  E E E
+2 69
+"PRIMITIVE_TEXT17"
+""
+1 8 -5 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
+ E E
+69 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 8 -5 153 26
+0 2 2 "0s" 0 0 0 64 0 0  8 -5 1
+2
+LANG:10001 32 Utopia,-1,27,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
+0 2
+LANG:10001 10 Board View
+LANG:1 4 ATCA
+2 72
+"PRIMITIVE_TEXT20"
+""
+1 805 0 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
+ E E
+72 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 805 0 870 31
+0 2 2 "0s" 0 0 0 64 0 0  805 0 1
+2
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
+0 2
+LANG:10001 3 MMG
+LANG:1 4 ATCA
 0
 LAYER, 1 
 1

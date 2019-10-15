@@ -10,26 +10,39 @@ PANEL,-1 -1 611 206 N "FwAtlasBg" 4
 {
      dyn_string analogItemsOfBoard;
      dpGet(eltxProjectName()+\"MMG_ELTX_\"+boardType+\".AnalogItems\",analogItemsOfBoard);
-/*
-       //PW FEAST 2.5V
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[V]\",x+420,y+20,2,2);
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+420,y+42,2,2);
+
+     DebugN(analogItemsOfBoard);
+
+
+
 
        //PW FEAST 1.5V
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[V]\",x+420,y+88,2,2);
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[4],\"\",\"[C]\",x+420,y+110,2,2);
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[V]\",x+118,y+110,2,2);
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[C]\",x+118,y+132,2,2);
 
-      //SCA
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[9],\"\",\"[C]\",x+132,y+30,2,2);
+       //PW FEAST 2.5V
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[V]\",x+417,y+110,2,2);
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[C]\",x+417,y+132,2,2);
+
+       //GBTX0
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[8],\"\",\"[C]\",x+13,y+116,2,2);
 
       //GBTX1
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[C]\",x+94,y+125,2,2);
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[9],\"\",\"[C]\",x+309,y+116,2,2);
 
-      //GBTX2
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[2],\"\",\"[C]\",x+186,y+125,2,2);
+      //SCA
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[10],\"\",\"[C]\",x+172,y+30,2,2);
 
-      //GBTX3
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[C]\",x+280,y+125,2,2);
+
+      //BOARD TEMP
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+290,y+42,2,2);
+
+/*
+      //SCA
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[10],\"\",\"[C]\",x+132,y+30,2,2);
+
+      //BOARD TEMP
+      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+280,y+125,2,2);
 */
 
 }" 0
@@ -83,7 +96,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1.499335106382979 0 1.145454545454545 122.1967166745033 -104.1818181818182 1 E 31 180 89 235
+E E 0 1 3 2 1 E 1.499335106382979 0 1.145454545454545 42.19671667450331 -104.1818181818182 1 E 31 180 89 235
 6 5
 "sca"
 ""
@@ -100,7 +113,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1.50985477667599 0 1.145454545454546 161.6229248758369 -192.1818181818184 1 E 31 180 89 235
+E E 0 1 3 2 1 E 1.50985477667599 0 1.145454545454546 200.6229248758369 -192.1818181818184 1 E 31 180 89 235
 6 7
 "1V3A"
 ""
@@ -117,11 +130,11 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1.173333333333332 0 1.702702702702702 467.84 -152.1621621621621 1 E 24 97 99 134
+E E 0 1 3 2 1 E 1.173333333333332 0 1.702702702702702 463.84 -63.1621621621621 1 E 24 97 99 134
 2 9
 "PRIMITIVE_TEXT9"
 ""
-1 506 16 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 502 105 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -135,8 +148,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 2 1 3 2 1 E U  0 E 506 16 578 31
-0 2 2 "0s" 0 0 0 192 0 0  506 16 1
+E E 2 1 3 2 1 E U  0 E 502 105 574 120
+0 2 2 "0s" 0 0 0 192 0 0  502 105 1
 2
 LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
@@ -159,11 +172,11 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1.173333333333332 0 1.702702702702702 467.84 -84.1621621621621 1 E 24 97 99 134
+E E 0 1 3 2 1 E 1.173333333333332 0 1.702702702702702 165.84 -63.1621621621621 1 E 24 97 99 134
 2 35
 "PRIMITIVE_TEXT10"
 ""
-1 506 84 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 204.0000000000001 105 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 32 0 0 0 0 0
 E E E
@@ -177,8 +190,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 2 1 3 2 1 E U  0 E 506 84 578 99
-0 2 2 "0s" 0 0 0 192 0 0  506 84 1
+E E 2 1 3 2 1 E U  0 E 204.0000000000001 105 276.0000000000001 120
+0 2 2 "0s" 0 0 0 192 0 0  204.0000000000001 105 1
 2
 LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
@@ -188,7 +201,7 @@ LANG:1 3 2V5
 2 36
 "PRIMITIVE_TEXT11"
 ""
-1 238 16 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 277 16 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 33 0 0 0 0 0
 E E E
@@ -202,8 +215,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 2 1 3 2 1 E U  0 E 238 16 266 31
-0 2 2 "0s" 0 0 0 192 0 0  238 16 1
+E E 2 1 3 2 1 E U  0 E 277 16 305 31
+0 2 2 "0s" 0 0 0 192 0 0  277 16 1
 2
 LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
@@ -213,7 +226,7 @@ LANG:1 3 2V5
 2 37
 "PRIMITIVE_TEXT12"
 ""
-1 178 106 E E E 1 E 1 E N "black" E N "_Window" E E
+1 98 106 E E E 1 E 1 E N "black" E N "_Window" E E
  E E
 34 0 0 0 0 0
 E E E
@@ -227,13 +240,13 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 2 1 3 2 1 E U  0 E 178 106 225 121
-0 2 2 "0s" 0 0 0 192 0 0  178 106 1
+E E 2 1 3 2 1 E U  0 E 98 106 145 121
+0 2 2 "0s" 0 0 0 192 0 0  98 106 1
 2
 LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
 0 2
-LANG:10001 6 GBTX 1
+LANG:10001 6 GBTX 0
 LANG:1 3 2V5
 6 38
 "RECTANGLE7"
@@ -251,11 +264,11 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 1.499335106382979 0 1.145454545454545 215.5206117021276 -104.1818181818181 1 E 31 180 89 235
+E E 0 1 3 2 1 E 1.499335106382979 0 1.145454545454545 338.5206117021276 -104.1818181818181 1 E 31 180 89 235
 2 39
 "PRIMITIVE_TEXT13"
 ""
-1 271.3238950276243 106.0000000000001 E E E 1 E 1 E N "black" E N "_Window" E E
+1 394.3238950276243 106.0000000000001 E E E 1 E 1 E N "black" E N "_Window" E E
  E E
 36 0 0 0 0 0
 E E E
@@ -269,55 +282,13 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 2 1 3 2 1 E U  0 E 271.3238950276243 106.0000000000001 318 121
-0 2 2 "0s" 0 0 0 192 0 0  271.3238950276243 106.0000000000001 1
+E E 2 1 3 2 1 E U  0 E 394.3238950276243 106.0000000000001 441 121
+0 2 2 "0s" 0 0 0 192 0 0  394.3238950276243 106.0000000000001 1
 2
 LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
 0 2
-LANG:10001 6 GBTX 2
-LANG:1 3 2V5
-6 40
-"RECTANGLE8"
-""
-1 31 180 E E E 1 E 1 E N {0,0,0} E N "STD_state" E E
- E E
-37 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 3 2 1 E 1.499335106382979 0 1.145454545454545 308.5206117021277 -104.1818181818181 1 E 31 180 89 235
-2 41
-"PRIMITIVE_TEXT14"
-""
-1 364.3238950276243 106.0000000000001 E E E 1 E 1 E N "black" E N "_Window" E E
- E E
-38 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-4
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 2 1 3 2 1 E U  0 E 364.3238950276243 106.0000000000001 411 121
-0 2 2 "0s" 0 0 0 192 0 0  364.3238950276243 106.0000000000001 1
-2
-LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
-LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
-0 2
-LANG:10001 6 GBTX 3
+LANG:10001 6 GBTX 1
 LANG:1 3 2V5
 14 42
 "TEXT_FIELD11"
@@ -340,6 +311,23 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
   this.text(boardType);
 }" 0
  E
+6 43
+"RECTANGLE14"
+""
+1 31 180 E E E 1 E 1 E N {0,0,0} E N "WF_ParamIncorrect" E E
+ E E
+40 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.551724137931034 0 0.6000000000000003 317.8965517241379 -64.00000000000006 1 E 31 180 89 235
 0
 LAYER, 1 
 1

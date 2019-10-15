@@ -74,7 +74,7 @@ T
 LANG:10001 12 PUSH_BUTTON1
 "main(mapping event)
 {
-    fwFsmAtlas_navigate(\"MMG_ELTX\",\"MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1\");
+    fwFsmAtlas_navigate(\"MMG_ELTX\",\"MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1\");
 }" 0
  E E E
 0

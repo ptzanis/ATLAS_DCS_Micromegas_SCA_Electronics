@@ -16,9 +16,20 @@ PANEL,-1 -1 625 206 N "FwAtlasBg" 4
 
      x=x-46;
 
+    //FEAST 1V3AE
     parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[13],\"\",\"[V]\",x-15,y+20,2,2,1.0,1.0);
     parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[10],\"\",\"[C]\",x-15,y+42,2,2,1.0,1.0);
 
+    //FEAST 1V2D
+    parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[14],\"\",\"[V]\",x+81,y+20,2,2,1.0,1.0);
+    parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[11],\"\",\"[C]\",x+81,y+42,2,2,1.0,1.0);
+
+    //SCA Temperature
+    parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[15],\"\",\"[C]\",x+205,y+30,2,2,1.0,1.0);
+
+    //FEAST 1V3A
+    parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[12],\"\",\"[V]\",x+463,y+20,2,2,1.0,1.0);
+    parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[9],\"\",\"[C]\",x+463,y+42,2,2,1.0,1.0);
 
      y=y+120;
      //VMM0
@@ -303,13 +314,13 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 2 1 3 2 1 E U  0 E 118 17 199 32
+E E 2 1 3 2 1 E U  0 E 118 17 196 32
 0 2 2 "0s" 0 0 0 192 0 0  118 17 1
 2
 LANG:10001 27 Utopia,-1,13,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,13,5,75,0,0,0,0,0
 0 2
-LANG:10001 11 FEAST 1.2VD
+LANG:10001 10 FEAST 1V2D
 LANG:1 3 2V5
 2 55
 "PRIMITIVE_TEXT21"
