@@ -9,29 +9,29 @@ PANEL,-1 -1 611 206 N "FwAtlasBg" 4
 "main()
 {
      dyn_string analogItemsOfBoard;
-     dpGet(eltxProjectName()+\"MMG_ELTX_\"+boardType+\".AnalogItems\",analogItemsOfBoard);
+     dpGet(eltxProjectName()+detectorTechnology+\"_ELTX_\"+boardType+\".AnalogItems\",analogItemsOfBoard);
 
 
 
        //PW FEAST 2.5V
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[V]\",x+420,y+20,2,2);
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+420,y+42,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[V]\",x+420,y+20,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+420,y+42,2,2);
 
        //PW FEAST 1.5V
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[V]\",x+420,y+88,2,2);
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[4],\"\",\"[C]\",x+420,y+110,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[V]\",x+420,y+88,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[4],\"\",\"[C]\",x+420,y+110,2,2);
 
       //SCA
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[9],\"\",\"[C]\",x+132,y+30,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[9],\"\",\"[C]\",x+132,y+30,2,2);
 
       //GBTX1
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[C]\",x+94,y+125,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[C]\",x+94,y+125,2,2);
 
       //GBTX2
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[2],\"\",\"[C]\",x+186,y+125,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[2],\"\",\"[C]\",x+186,y+125,2,2);
 
       //GBTX3
-      parameterDisplay(eltxProjectName()+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[C]\",x+280,y+125,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[C]\",x+280,y+125,2,2);
 
 
 
@@ -42,7 +42,7 @@ E "string channel=$channel;
 string boardType=$boardType;
 int x=$x;
 int y=$y;
-" 0
+string detectorTechnology=\"MMG\";" 0
  3
 "CBRef" "1"
 "EClose" E

@@ -19,6 +19,7 @@ void retrieveSensorsPlot(string type, string search1, string search2){
 
     string boardType= getBoardType();
     string channel=getBoardChannel();
+    string detectorTechnology=getDetector();
 
     dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
 
@@ -29,7 +30,7 @@ void retrieveSensorsPlot(string type, string search1, string search2){
       {
        if( uniPatternMatch(\"*\"+search1+\"*\",analogItems[i]) || uniPatternMatch(\"*\"+search2+\"*\",analogItems[i]))
         {
-          dynAppend(items,channel+\"/\"+analogItems[i]);
+          dynAppend(items,detectorTechnology+\"_\"+channel+\"/\"+analogItems[i]);
 
         }
       }

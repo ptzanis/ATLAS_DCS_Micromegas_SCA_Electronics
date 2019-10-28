@@ -16,7 +16,7 @@ E "#uses \"CtrlXml\"
 #uses \"fwSca/fwScaCreateDpts.ctl\"
 
 
-string detectortTechnology=\"MMG\";
+string detectorTechnology=\"MMG\";
 
 dyn_string analogItemsWithCalculatedVariable(string configFileName)
 {
@@ -1198,7 +1198,7 @@ LANG:1 18 Display Calculated
 }
 " 0
  E E E
-1 46 0 "" 2
+1 50 0 "" 2
 0
 13 49
 "PUSH_BUTTON11"
@@ -1248,7 +1248,7 @@ LANG:10001 31 Create Calculated Variables DPs
 
   for(int i=1;i<=dynlen(analogItemListofAllSCA);i++)
   {
-    dpCreate(detectortTechnology+\"_\"+analogItemListofAllSCA[i],dpType);
+    dpCreate(detectorTechnology+\"_\"+analogItemListofAllSCA[i],dpType);
   }
 
 
