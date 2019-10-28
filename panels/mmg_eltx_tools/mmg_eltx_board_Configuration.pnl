@@ -1,14 +1,14 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 764 623 N "FwAtlasBg" 0
+PANEL,-1 -1 774 623 N "FwAtlasBg" 0
 "main()
 {
       addLogoNTUABNL(580,550);
 }" 0
  E E E E 1 -1 -1 0  3.25 2.34375
 ""0  1
-E "#uses \"mmgEltx.ctl\"
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
 dyn_int getChildNodesWithName (int docNum, int parentNode, string name)
 {

@@ -11,9 +11,6 @@ PANEL,-1 -1 611 206 N "FwAtlasBg" 4
      dyn_string analogItemsOfBoard;
      dpGet(eltxProjectName()+\"MMG_ELTX_\"+boardType+\".AnalogItems\",analogItemsOfBoard);
 
-     DebugN(analogItemsOfBoard);
-
-
 
 
        //PW FEAST 1.5V

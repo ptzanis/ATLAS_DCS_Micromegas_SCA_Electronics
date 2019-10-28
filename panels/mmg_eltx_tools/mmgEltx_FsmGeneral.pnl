@@ -293,7 +293,7 @@ E
 13 19
 "stopFSMButton"
 ""
-1 23.72180451127815 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 23.72180451127815 89 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 18 0 0 0 0 0
 E E E
@@ -305,7 +305,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 79 130 103
+0  22 83 130 107
 
 T 
 1
@@ -318,7 +318,7 @@ LANG:10001 8 Stop FSM
 13 20
 "removeFSMButton"
 ""
-1 -76.03704828423926 111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 -76.03704828423926 115 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 19 0 0 0 0 0
 E E E
@@ -330,7 +330,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 105 130 129
+0  22 109 130 133
 
 T 
 1
@@ -514,7 +514,7 @@ int x=dpTypeCreate(elements,types);
 13 28
 "PUSH_BUTTON3"
 ""
-1 167 96 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 167 101 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -526,7 +526,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  165 90 243 114
+0  165 95 243 119
 
 T 
 1
@@ -539,7 +539,7 @@ LANG:10001 12 Generate FSM
 13 29
 "PUSH_BUTTON4"
 ""
-1 97 122 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 97 127 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 28 0 0 0 0 0
 E E E
@@ -551,7 +551,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  165 116 243 140
+0  165 121 243 145
 
 T 
 1
@@ -564,7 +564,7 @@ LANG:10001 9 Start FSM
 13 30
 "PUSH_BUTTON5"
 ""
-1 -11 122 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 -12 126 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 29 0 0 0 0 0
 E E E
@@ -576,7 +576,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 131 130 155
+0  21 135 129 159
 
 T 
 1
@@ -652,8 +652,9 @@ mmgEltx_createFsmTree()
 
                   for(int board=1;board<=1;board++)
                     {
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_STATUS\",0);
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_STATUS\",0);
+                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
+//                     fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
+                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
                     fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
                     fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
                     }//board
@@ -858,7 +859,7 @@ LANG:1 5 Close
 13 37
 "viewButton"
 ""
-1 267 110 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 267 115 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 36 0 0 0 0 0
 E E E
@@ -870,7 +871,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  265 101 393 134
+0  265 106 393 139
 
 T 
 1
@@ -880,6 +881,8 @@ LANG:10001 4 View
       fwFsmUi_view(\"MMG_ELTX\", \"MMG_ELTX\");
 }" 0
  E E E
+1 38 0 "" 2
+0
 0
 LAYER, 1 
 1
@@ -908,5 +911,10 @@ LANG:10001 0
 LAYER, 7 
 1
 LANG:10001 0 
+0
+3 0 "PANEL_REF1" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 275 475 T 37 1 0 1 284 -79
 0
 0

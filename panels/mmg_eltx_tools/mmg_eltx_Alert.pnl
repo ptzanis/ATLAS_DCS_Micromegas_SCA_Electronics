@@ -1,0 +1,473 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 775 620 N "FwAtlasBg" 0
+"main()
+{
+   addLogoNTUABNL(580,550);
+}" 0
+ E E E E 1 -1 -1 0  7.25 3.34375
+""0  1
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+2 0
+"PRIMITIVE_TEXT7"
+""
+1 188 8 E E E 1 E 1 E N "FwAtlasBg" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 188 8 468 33
+0 2 2 "0s" 0 0 0 192 0 0  188 8 1
+2
+LANG:10001 27 Utopia,-1,21,5,75,0,0,0,0,0
+LANG:1 27 Utopia,-1,21,5,75,0,0,0,0,0
+0 2
+LANG:10001 25 XML->Analog Items DPT Fix
+LANG:1 25 XML->Analog Items DPT Fix
+2 1
+"PRIMITIVE_TEXT6"
+""
+1 21.25 11.34375 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 21.25 11.34375 657 36
+0 2 2 "0s" 0 0 0 192 0 0  21.25 11.34375 1
+2
+LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,19,5,75,0,0,0,0,0
+0 2
+LANG:10001 59 ATLAS MMG  DCS  ---  ELTX PROJECT   :  Alerts CONFIGURATION
+LANG:1 56 ATLAS MDT  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
+4 2
+"LINE2"
+""
+1 7.25 3.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  7.25 3.34375 727.25 3.34375
+4 3
+"LINE3"
+""
+1 7.25 3.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  7.25 3.34375 7.25 43.34375
+4 4
+"LINE4"
+""
+1 7.25 43.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  7.25 43.34375 767.25 43.34375
+4 5
+"LINE6"
+""
+1 727.25 3.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  727.25 3.34375 727.25 23.34375
+4 6
+"LINE7"
+""
+1 727.25 23.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  727.25 23.34375 767.25 23.34375
+4 7
+"LINE8"
+""
+1 767.25 23.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  767.25 23.34375 767.25 43.34375
+2 8
+"PRIMITIVE_TEXT15"
+""
+1 734.25 5.34375 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 734.25 5.34375 766 18
+0 2 2 "0s" 0 0 0 192 0 0  734.25 5.34375 1
+2
+LANG:10001 39 Utopia,-1,11,5,75,1,0,0,0,0,Bold Italic
+LANG:1 33 MS Shell Dlg,-1,11,5,75,1,0,0,0,0
+0 2
+LANG:10001 3 MMG
+LANG:1 3 MDT
+17 9
+"dpList"
+""
+1 129 113 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  127 111 355.0000000000001 494
+0
+
+E
+E
+E
+
+0 0
+17 10
+"dpActionList"
+""
+1 422 109 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  421 111 649 494
+0
+
+E
+E
+E
+
+0 0
+2 11
+"listTitle"
+""
+1 131 88 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 131 88 336 99
+0 2 2 "0s" 0 0 0 64 0 0  131 88 1
+2
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 12 Current List
+LANG:1 12 Current List
+2 12
+"PRIMITIVE_TEXT16"
+""
+1 424 87 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 424 87 629 98
+0 2 2 "0s" 0 0 0 64 0 0  424 87 1
+2
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 11 Action List
+LANG:1 12 Current List
+13 13
+"PUSH_BUTTON1"
+""
+1 378 170 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  376 168 409 201
+
+P 
+4294967295
+"pictures/right.xpm"
+1
+LANG:10001 0 
+"main()
+{
+ int n;
+ string s;
+ 
+ n=dpList.selectedPos;
+ s=dpList.selectedText;
+ 
+ if(s!=\"\")
+ {
+  dpActionList.appendItem(s);
+  dpList.deletePos(n);
+ }
+ 
+ //setValue(\"ChambersFound\",\"selectedPos\",n);
+
+}" 0
+ E E E
+13 14
+"PUSH_BUTTON2"
+""
+1 378 204 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  376 202 409 235
+
+P 
+4294967295
+"pictures/right2x_en.gif"
+1
+LANG:10001 0 
+"main()
+{
+  dyn_string allDpes = dpList.items;
+  dpList.deleteAllItems();
+  
+  for (int i=1;i<=dynlen(allDpes);i++) {
+   dpActionList.appendItem(allDpes[i]);
+  }
+}" 0
+ E E E
+13 15
+"PUSH_BUTTON3"
+""
+1 378 315 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  376 313 409 346
+
+P 
+4294967295
+"pictures/left.xpm"
+1
+LANG:10001 0 
+"main()
+{
+ int n;
+ string s;
+ 
+ n=dpActionList.selectedPos;
+ s=dpActionList.selectedText;
+ 
+ if(s!=\"\")
+ {
+  dpList.appendItem(s);
+  dpActionList.deletePos(n);
+ }
+}" 0
+ E E E
+13 16
+"PUSH_BUTTON4"
+""
+1 378 350 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0  376 348 409 381
+
+P 
+4294967295
+"pictures/left2x_en.gif"
+1
+LANG:10001 0 
+"main()
+{
+  dyn_string allDpes = dpActionList.items;
+  dpActionList.deleteAllItems();
+  
+  for (int i=1;i<=dynlen(allDpes);i++) {
+   dpList.appendItem(allDpes[i]);
+  }
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="en_US.utf8"></prop>
+   <prop name="en_US.iso88591"></prop>
+  </prop>
+  <prop name="Size">592 525</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">73 45</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[void initializeLists()
+{
+  dpList.deleteAllItems();
+  dpActionList.deleteAllItems();
+
+  bool configExists,isActive;
+  string archiveClass;
+  int archiveType,smoothProcedure;
+  float deadband,timeInterval;
+  dyn_string channels, exceptionInfo;
+  dyn_string dpWithConfigEnabled, dpWithConfigDisabled,dpWithoutConfig;
+  
+  string sys = getSystemName();
+  dyn_string tails,dpesToCheck;
+  
+  if (radioBox1.number == 0) {
+   tails[1] = &quot;.actual.vMon&quot;;
+   tails[2] = &quot;.actual.iMon&quot;;
+   tails[3] = &quot;.actual.status&quot;;
+   tails[4] = &quot;.Status.On&quot;;
+   tails[5] = &quot;.MeasurementCurrent&quot;;
+   tails[6] = &quot;.MeasurementSenseVoltage&quot;;
+  
+   channels = dpNames(sys+&quot;*&quot;,&quot;FwCaenChannel&quot;);
+   
+   dyn_string lvChannels = dpNames(sys+&quot;*&quot;,&quot;FwWienerMarathonChannel&quot;);
+  
+   dynAppend(channels,lvChannels);
+  }
+  
+  if (radioBox1.number == 1) {
+    
+   tails[1] = &quot;.Sensor01&quot;;
+   tails[2] = &quot;.Sensor02&quot;;
+   tails[3] = &quot;.Sensor03&quot;;
+   
+   channels = dpNames(&quot;*&quot;,&quot;CSC_TSensorControl&quot;);
+  }
+ for (int i=1;i&lt;=dynlen(channels);i++) {
+   
+    for (int j=1;j&lt;=dynlen(tails);j++) {
+      
+      dpesToCheck[j]=channels[i]+tails[j];
+      if (dpExists(dpesToCheck[j])) { 
+        fwArchive_get(dpesToCheck[j], configExists, archiveClass, archiveType, smoothProcedure, deadband, timeInterval,isActive,exceptionInfo);  
+        if (configExists == 0)
+          dynAppend(dpWithoutConfig,dpesToCheck[j]);
+        if ((configExists == 1) &amp;&amp; (isActive == 0) )
+          dynAppend(dpWithConfigDisabled,dpesToCheck[j]);
+        if ((configExists == 1) &amp;&amp; (isActive == 1) )
+          dynAppend(dpWithConfigEnabled,dpesToCheck[j]); 
+      } 
+    }
+ }
+
+ if (radioBox.number == 0) {
+  listTitle.text(&quot;Chambers with Archive Enabled&quot;);
+  createConfigButton.enabled(0);
+  deleteConfigButton.enabled(1);
+  startArchivingButton.enabled(0);
+  stopArchivingButton.enabled(1);
+  updateList(dpWithConfigEnabled);
+ }
+
+ if (radioBox.number == 1) {
+  listTitle.text(&quot;Chambers with Archive Disabled&quot;);
+  createConfigButton.enabled(0);
+  deleteConfigButton.enabled(1);
+  startArchivingButton.enabled(1);
+  stopArchivingButton.enabled(0);
+  updateList(dpWithConfigDisabled);
+ }
+ 
+ if (radioBox.number == 2) {
+  listTitle.text(&quot;Chambers without Archive config&quot;);
+  createConfigButton.enabled(1);
+  deleteConfigButton.enabled(0);
+  startArchivingButton.enabled(0);
+  stopArchivingButton.enabled(0);
+  updateList(dpWithoutConfig);
+ }
+ 
+}
+
+
+
+//update the list
+void updateList (dyn_string channels)
+{
+  string chamber,chamb_layer;
+  dyn_string existingChambers;
+  
+  existingChambers = dpList.items;
+  
+  for (int i=1;i&lt;=dynlen(channels);i++)
+  {
+    channels[i] = dpSubStr(channels[i],DPSUB_DP);
+      
+    existingChambers = dpList.items;
+    
+    if (radioBox1.number == 0) {
+      //chamber = getChamberAndLayer(channels[i]);
+     chamber = getChamberLayer(channels[i]);
+    }
+    if (radioBox1.number == 1) {
+      chamber = dpSubStr(channels[i],DPSUB_DP);
+      chamber = substr(chamber,5,4);
+    }
+    
+    if (chamber != &quot;&quot;) {
+     if (dynlen(existingChambers) == 0)
+       dpList.appendItem(chamber);
+     else {
+       bool Exists;
+       for (int j=1;j&lt;=dynlen(existingChambers);j++) {
+         if (existingChambers[j] == chamber) {
+           Exists = TRUE;
+         } 
+       }
+       if (Exists == FALSE)
+         dpList.appendItem(chamber);
+     }
+    }   
+  
+  }
+  
+}
+
+
+//this function takes the alias from the channel,
+//splits the alias (ATLAS_CSC/ENDCAP_A/AL01/L1) and returns at the end the 4 parts of the alias
+//in the variable with the name hierarchy 
+string getAliasFromTheChannel(string channel)
+{
+  string chamber; 
+ string alias = dpGetAlias(channel+&quot;.&quot;);
+ dyn_string hierarchy;
+ if (alias != &quot;&quot; ) {
+   hierarchy = strsplit(alias,&quot;/&quot;);
+ }
+ //DebugN(channel);
+ if (dynlen(hierarchy) != 0) {
+   chamber = hierarchy[3]+&quot;_&quot;+hierarchy[4];
+ }
+ return chamber;
+ 
+}
+
+
+//this function takes the channel from the alias (ATLAS_CSC/ENDCAP_A/AL01/L1)
+string getChannelFromTheAlias(string alias)
+{
+  string channel = dpAliasToName(alias);
+  channel = dpSubStr(channel,DPSUB_DP);
+ 
+  return channel;
+}
+
+
+string getChamberLayer(string channel)
+{
+  channel = dpSubStr(channel,DPSUB_DP);
+  string alias;
+  
+  if (channel[0] == &quot;C&quot;)
+   alias = dpGetAlias(&quot;ATLCSCSCS:&quot;+channel+&quot;.actual.status&quot;);
+  else 
+   alias = dpGetAlias(&quot;ATLCSCSCS:&quot;+channel+&quot;.Status.On&quot;);
+
+//  if (alias == &quot;&quot;)
+//    alias = &quot;SPARE&quot;;
+    
+  return alias;
+}
+
+string getChamberAndLayer(string channel)
+{
+channel = dpSubStr(channel,DPSUB_DP);
+
+string l1,l2,l3,l4,lv;
+dyn_string chambers = dpNames(&quot;*&quot;,&quot;CSC_PSmapping&quot;);
+string chamb_layer;
+
+for (int i=1;i&lt;=dynlen(chambers);i++) {
+  chambers[i] = dpSubStr(chambers[i],DPSUB_DP);
+  dpGet(chambers[i]+&quot;.L1.channel&quot;,l1);
+  dpGet(chambers[i]+&quot;.L2.channel&quot;,l2);
+  dpGet(chambers[i]+&quot;.L3.channel&quot;,l3);
+  dpGet(chambers[i]+&quot;.L4.channel&quot;,l4);
+  dpGet(chambers[i]+&quot;.LV.channel&quot;,lv);
+
+  switch(channel)
+  {
+   case l1:
+     chamb_layer = chambers[i]+&quot;_L1&quot;;
+     break;
+   case l2:
+     chamb_layer = chambers[i]+&quot;_L2&quot;;
+     break;
+   case l3:
+     chamb_layer = chambers[i]+&quot;_L3&quot;;
+     break;
+   case l4:
+     chamb_layer = chambers[i]+&quot;_L4&quot;;
+     break;
+   case lv:
+     chamb_layer = chambers[i]+&quot;_LV&quot;;
+     break;
+   }
+}
+
+return chamb_layer;
+}
+
+
+string getChannel(string chamb_layer)
+{
+ string chamber = substr(chamb_layer,0,4);
+ string layer = substr(chamb_layer,5,2);
+ string channel;
+ 
+ string dpeName = chamber + &quot;.&quot; + layer + &quot;.channel&quot;;
+ dpGet(dpeName,channel);
+ 
+ return channel;
+}]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  initializeLists();
+}]]></script>
+ </events>
+ <shapes>
+  <shape Name="dpList" shapeType="SELECTION_LIST" layerId="0">
+   <properties>
+    <prop name="serialId">0</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">203 73</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">203 73</prop>
+    <prop name="Size">152 380</prop>
+    <prop name="Listitems"/>
+    <prop name="SelectionMode">SingleSelection</prop>
+    <prop name="alternatingRowColors">False</prop>
+   </properties>
+   <events>
+    <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  string archive;
+  string sys = getSystemName();
+  dyn_string sysNames = makeDynString(sys);
+  dyn_string archiveClasses, archiveGroups,exceptionInfo;    
+  dyn_string tails,dpesToCheck;
+  dyn_bool areArchived;
+  int k = 1;
+  
+  tails[1] = &quot;.actual.vMon&quot;;
+  tails[2] = &quot;.actual.iMon&quot;;
+  tails[3] = &quot;.actual.status&quot;;
+  
+ //dyn_string channels = dpNames(&quot;dist_1:CAEN/cscCAEN/board02/channel*&quot;,&quot;FwCaenChannel&quot;);
+  
+  /*for (int i=1;i&lt;=dynlen(channels);i++) {
+    for (int j=1;j&lt;=dynlen(tails);j++) {
+     dpesToCheck[k]=channels[i]+tails[j];
+     dpGet(dpesToCheck[k],archive);
+      DebugN(&quot;prin :&quot;+archive);
+      if (archive == &quot;45&quot;) {
+        channels[i] = dpSubStr(channels[i],DPSUB_DP);
+        //this.appendItem(channels[i]);
+      }
+      else {
+        DebugN(&quot;kdkldvkgdkfjghskj&quot;);
+      }
+     DebugN(dpesToCheck[k]);
+     k = k+1;
+    }
+  }*/
+  
+ // dpGet(&quot;dist_1:CAEN/cscCAEN/board01/channel000.actual.iMon:_archive.._type&quot;,a);
+
+  //fwArchive_getAllRDBArchiveClasses(sysNames,archiveClasses, archiveGroups,exceptionInfo,FALSE);
+  //Debug(archiveClasses, archiveGroups);
+
+  //the variable: archiveClasses[1] =  &quot;RDB-99) EVENT&quot;
+  //fwArchive_checkDpesArchived(archiveClasses[1], dpesToCheck, areArchived, exceptionInfo);
+  //DebugN(dpesToCheck,areArchived);
+
+  /*  for (int i=1;i&lt;=dynlen(channels);i++) {
+    string chamber = dpGetAlias(channels[i]+&quot;.&quot;);
+    dyn_string hierarchy = strsplit(chamber,&quot;/&quot;);
+    //channels[i] = dpSubStr(channels[i],DPSUB_DP);
+    if (chamber != &quot;&quot;) {
+     this.appendItem(hierarchy[3]+&quot;_&quot;+hierarchy[4]);
+    }
+  }*/
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="dpActionList" shapeType="SELECTION_LIST" layerId="0">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">407 73</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">407 73</prop>
+    <prop name="Size">152 380</prop>
+    <prop name="Listitems"/>
+    <prop name="SelectionMode">SingleSelection</prop>
+    <prop name="alternatingRowColors">False</prop>
+   </properties>
+  </shape>
+  <shape Name="PUSH_BUTTON1" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">365 116</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">365 116</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">right_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+ int n;
+ string s;
+ 
+ n=dpList.selectedPos;
+ s=dpList.selectedText;
+ 
+ if(s!=&quot;&quot;)
+ {
+  dpActionList.appendItem(s);
+  dpList.deletePos(n);
+ }
+ 
+ //setValue(&quot;ChambersFound&quot;,&quot;selectedPos&quot;,n);
+
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON2" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">5</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">365 150</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">365 150</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">right2x_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string allDpes = dpList.items;
+  dpList.deleteAllItems();
+  
+  for (int i=1;i&lt;=dynlen(allDpes);i++) {
+   dpActionList.appendItem(allDpes[i]);
+  }
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON3" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">365 261</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">9</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">365 261</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">left_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+ int n;
+ string s;
+ 
+ n=dpActionList.selectedPos;
+ s=dpActionList.selectedText;
+ 
+ if(s!=&quot;&quot;)
+ {
+  dpList.appendItem(s);
+  dpActionList.deletePos(n);
+ }
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON4" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">7</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">365 296</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">11</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">365 296</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">left2x_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string allDpes = dpActionList.items;
+  dpActionList.deleteAllItems();
+  
+  for (int i=1;i&lt;=dynlen(allDpes);i++) {
+   dpList.appendItem(allDpes[i]);
+  }
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="createConfigButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">10</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 294</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">16</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">16 294</prop>
+    <prop name="Size">124 39</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">create archive config
+and start archiving</prop>
+     <prop name="en_US.iso88591">create archive config
+and start archiving</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  string sys = getSystemName();
+  dyn_string sysNames = makeDynString(sys);
+  dyn_string archiveClasses, archiveGroups,exceptionInfo;    
+  string chamber,layer,side,alias;
+    
+  fwArchive_getAllRDBArchiveClasses(sysNames,archiveClasses, archiveGroups,exceptionInfo,FALSE);
+  
+  dyn_int archiveType; 
+  archiveType[1] = DPATTR_ARCH_PROC_SIMPLESM; 
+  archiveType[2] = DPATTR_ARCH_PROC_VALARCH; 
+  int  smoothProcedure = DPATTR_TIME_AND_VALUE_SMOOTH;  
+  float  deadband = 0.5;  
+  float  timeInterval=900;  
+  dyn_string   exceptionInfo; 
+  
+  dyn_string chambers = dpActionList.items;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        if (layer != &quot;LV&quot;) {
+         fwArchive_set(channel+&quot;.actual.vMon&quot;, archiveClasses[1], archiveType[1],smoothProcedure, deadband, timeInterval, exceptionInfo,TRUE); 
+         fwArchive_set(channel+&quot;.actual.iMon&quot;, archiveClasses[1], archiveType[1],smoothProcedure, deadband, timeInterval, exceptionInfo,TRUE); 
+         fwArchive_set(channel+&quot;.actual.status&quot;, archiveClasses[1], archiveType[2],&quot;&quot;, &quot;&quot;, &quot;&quot;, exceptionInfo,TRUE); 
+        }
+        else {
+         fwArchive_set(channel+&quot;.Status.On&quot;, archiveClasses[1], archiveType[2],&quot;&quot;, &quot;&quot;, &quot;&quot;, exceptionInfo,TRUE);
+         fwArchive_set(channel+&quot;.MeasurementCurrent&quot;, archiveClasses[1], archiveType[1],smoothProcedure, deadband, timeInterval, exceptionInfo,TRUE); 
+         fwArchive_set(channel+&quot;.MeasurementSenseVoltage&quot;, archiveClasses[1], archiveType[1],smoothProcedure, deadband, timeInterval, exceptionInfo,TRUE); 
+        }
+     }
+    }
+    
+    else if (radioBox1.number == 1) {
+       fwArchive_set(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor01&quot;, archiveClasses[1], archiveType[1],smoothProcedure, 0.2, timeInterval, exceptionInfo,TRUE); 
+       fwArchive_set(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor02&quot;, archiveClasses[1], archiveType[1],smoothProcedure, 0.2, timeInterval, exceptionInfo,TRUE); 
+       fwArchive_set(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor03&quot;, archiveClasses[1], archiveType[1],smoothProcedure, 0.2, timeInterval, exceptionInfo,TRUE); 
+    }
+    
+  }
+  initializeLists(); 
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="deleteConfigButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">11</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 338</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">17</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">16 338</prop>
+    <prop name="Size">124 39</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">delete archive config</prop>
+     <prop name="en_US.iso88591">delete archive config</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;    
+  string chamber,layer,side,alias;
+ 
+  dyn_string chambers = dpActionList.items;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        if (layer != &quot;LV&quot;) {
+         fwArchive_delete(channel+&quot;.actual.vMon&quot;,exceptionInfo);
+         fwArchive_delete(channel+&quot;.actual.iMon&quot;,exceptionInfo);
+         fwArchive_delete(channel+&quot;.actual.status&quot;,exceptionInfo);
+        }
+        else {
+         fwArchive_delete(channel+&quot;.Status.On&quot;,exceptionInfo);
+         fwArchive_delete(channel+&quot;.MeasurementSenseVoltage&quot;,exceptionInfo);
+         fwArchive_delete(channel+&quot;.MeasurementCurrent&quot;,exceptionInfo);
+        }
+      }
+    }
+    
+    else if (radioBox1.number == 1) {
+      fwArchive_delete(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor01&quot;,exceptionInfo);
+      fwArchive_delete(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor02&quot;,exceptionInfo);
+      fwArchive_delete(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor03&quot;,exceptionInfo);
+    }
+    
+  }
+  initializeLists(); 
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT4" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">17</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">406 57</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">23</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">406 57</prop>
+    <prop name="Size">109 20</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Action List</prop>
+     <prop name="en_US.iso88591">Action List</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">False</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="startArchivingButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">19</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 381</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">26</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">16 381</prop>
+    <prop name="Size">123 39</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">start archiving</prop>
+     <prop name="en_US.iso88591">start archiving</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{ 
+  string chamber,layer,side,alias;
+  dyn_string exceptionInfo;
+  dyn_string chambers = dpActionList.items;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        if (layer != &quot;LV&quot;) {
+         fwArchive_start(channel+&quot;.actual.vMon&quot;,exceptionInfo);
+         fwArchive_start(channel+&quot;.actual.iMon&quot;,exceptionInfo);
+         fwArchive_start(channel+&quot;.actual.status&quot;,exceptionInfo);
+        }
+        else {
+         fwArchive_start(channel+&quot;.Status.On&quot;,exceptionInfo);
+         fwArchive_start(channel+&quot;.MeasurementSenseVoltage&quot;,exceptionInfo);
+         fwArchive_start(channel+&quot;.MeasurementCurrent&quot;,exceptionInfo);
+        }
+     }
+    }
+    
+    else if (radioBox1.number == 1) {
+      fwArchive_start(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor01&quot;,exceptionInfo);
+      fwArchive_start(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor02&quot;,exceptionInfo);
+      fwArchive_start(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor03&quot;,exceptionInfo);
+    } 
+    
+  }
+  initializeLists();  
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="stopArchivingButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">20</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 426</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">28</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">16 426</prop>
+    <prop name="Size">123 39</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">stop archiving</prop>
+     <prop name="en_US.iso88591">stop archiving</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{ 
+  string chamber,layer,side,alias;
+  dyn_string exceptionInfo;
+  dyn_string chambers = dpActionList.items;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        if (layer != &quot;LV&quot;) {
+         fwArchive_stop(channel+&quot;.actual.vMon&quot;,exceptionInfo);
+         fwArchive_stop(channel+&quot;.actual.iMon&quot;,exceptionInfo);
+         fwArchive_stop(channel+&quot;.actual.status&quot;,exceptionInfo);
+        }
+        else {
+         fwArchive_stop(channel+&quot;.Status.On&quot;,exceptionInfo);
+         fwArchive_stop(channel+&quot;.MeasurementSenseVoltage&quot;,exceptionInfo);
+         fwArchive_stop(channel+&quot;.MeasurementCurrent&quot;,exceptionInfo);
+        }
+     }
+    }
+    
+    else if (radioBox1.number == 1) {
+      fwArchive_stop(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor01&quot;,exceptionInfo);
+      fwArchive_stop(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor02&quot;,exceptionInfo);
+      fwArchive_stop(&quot;TEMP_&quot;+chambers[i]+&quot;.Sensor03&quot;,exceptionInfo);
+    }
+    
+  }  
+  initializeLists();
+    
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="radioBox" shapeType="RADIO_BOX" layerId="0">
+   <properties>
+    <prop name="serialId">21</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">12 194</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_3DText</prop>
+    <prop name="BackColor">_3DFace</prop>
+    <prop name="TabOrder">29</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">12 194</prop>
+    <prop name="Size">174 73</prop>
+    <prop name="Listitems">
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">With Archive Config Enabled</prop>
+       <prop name="en_US.iso88591">With Archive Config Enabled</prop>
+      </prop>
+      <prop name="Select">True</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">With Archive Config Disabled</prop>
+       <prop name="en_US.iso88591">With Archive Config Disabled</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">Without Archive Config</prop>
+       <prop name="en_US.iso88591">Without Archive Config</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(int button)
+{
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="listTitle" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">22</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">196 57</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">30</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">196 57</prop>
+    <prop name="Size">206 33</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Current List</prop>
+     <prop name="en_US.iso88591">Current List</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">False</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="PUSH_BUTTON13" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">23</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">472 468</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">31</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">472 468</prop>
+    <prop name="Size">83 36</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Close</prop>
+     <prop name="en_US.iso88591">Close</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  PanelOff();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT7" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">24</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">11 179</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">32</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">11 179</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,12,5,75,0,1,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,12,5,75,0,1,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Select Chambers To Monitor</prop>
+     <prop name="en_US.iso88591">Select Chambers To Monitor</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT8" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">25</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">23 15</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">Blue</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">33</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">23 15</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,21,5,75,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,21,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Expert Panel - Archiving Options</prop>
+     <prop name="en_US.iso88591">Expert Panel - Archiving Options</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="radioBox1" shapeType="RADIO_BOX" layerId="0">
+   <properties>
+    <prop name="serialId">27</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">19 88</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_3DText</prop>
+    <prop name="BackColor">_3DFace</prop>
+    <prop name="TabOrder">35</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,13,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,13,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">19 88</prop>
+    <prop name="Size">117 54</prop>
+    <prop name="Listitems">
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">Power Supply</prop>
+       <prop name="en_US.iso88591">Power Supply</prop>
+      </prop>
+      <prop name="Select">True</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">Temperature</prop>
+       <prop name="en_US.iso88591">Temperature</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(int button)
+{
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT9" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">28</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">17 72</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_3DText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">36</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">17 72</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,13,5,75,0,1,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,13,5,75,0,1,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Select DataPoints</prop>
+     <prop name="en_US.iso88591">Select DataPoints</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>

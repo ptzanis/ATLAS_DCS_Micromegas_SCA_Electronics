@@ -1,0 +1,1680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="en_US.utf8"></prop>
+   <prop name="en_US.iso88591"></prop>
+  </prop>
+  <prop name="Size">681 700</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[void initializeLists()
+{
+  dpList.deleteAllItems();
+  dpActionList.deleteAllItems();
+  
+  bool configExists,isActive;
+  int alertConfigType;
+  dyn_string alertText, alertClasses,summaryDpeList,exceptionInfo,alertPanelParameters;
+  dyn_float alertLimits;
+  string alertPanel,alertHelp;
+  
+  dyn_string channels, exceptionInfo;
+  dyn_string dpWithConfigEnabled, dpWithConfigDisabled,dpWithoutConfig;
+  dynClear(dpWithoutConfig);
+  dynClear(dpWithConfigDisabled);
+  dynClear(dpWithConfigEnabled);
+  string sys = getSystemName();
+  dyn_string tails,dpesToCheck;
+  
+  if (radioBox1.number == 0) {
+    tails = makeDynString(&quot;.actual.OvC&quot;, &quot;.actual.OvV&quot;, &quot;.actual.UnV&quot;, &quot;.actual.overHvMax&quot;, 
+                                                              &quot;.actual.Trip&quot;, &quot;.actual.calibrationError&quot;, &quot;.actual.unplugged&quot;, 
+                                                              &quot;.actual.UnC&quot;, &quot;.actual.powerFail&quot;, &quot;.actual.temperatureError&quot;);
+  
+   channels = dpNames(&quot;*&quot;,&quot;FwCaenChannel&quot;);
+  }
+  
+  if (radioBox1.number == 1) {
+    tails = makeDynString(&quot;.Status.FailureMaxSenseVoltage&quot;,&quot;.Status.FailureMaxTerminalVoltage&quot;,&quot;.Status.FailureMinSenseVoltage&quot;,&quot;.Status.FailureMaxCurrent&quot;,
+                                                             &quot;.Status.FailureMaxPower&quot;,&quot;.Status.FailureMaxTemperature&quot;,
+                                                             &quot;.Status.FailureTimeout&quot;);
+  
+    channels = dpNames(&quot;*&quot;,&quot;FwWienerMarathonChannel&quot;);
+  }
+  
+  if (radioBox1.number == 2) {
+    
+   tails[1] = &quot;.Sensor01&quot;;
+   tails[2] = &quot;.Sensor02&quot;;
+   tails[3] = &quot;.Sensor03&quot;;
+   
+   channels = dpNames(&quot;*&quot;,&quot;CSC_TSensorControl&quot;);
+  }
+
+ for (int i=1;i&lt;=dynlen(channels);i++) {
+   
+    for (int j=1;j&lt;=dynlen(tails);j++) {
+      
+      dpesToCheck[j]=channels[i]+tails[j];
+      if (dpExists(dpesToCheck[j])) { 
+        fwAlertConfig_get(dpesToCheck[j], configExists, alertConfigType, alertText, alertLimits, alertClasses, summaryDpeList, alertPanel, alertPanelParameters, alertHelp, isActive, exceptionInfo);
+        if (configExists == 0)
+          dynAppend(dpWithoutConfig,dpesToCheck[j]);
+        if ((configExists == 1) &amp;&amp; (isActive == 0) )
+          dynAppend(dpWithConfigDisabled,dpesToCheck[j]);
+        if ((configExists == 1) &amp;&amp; (isActive == 1) )
+          dynAppend(dpWithConfigEnabled,dpesToCheck[j]); 
+      } 
+    }
+   // DebugN(dpesToCheck);
+ }
+
+//DebugN(&quot;dpWithoutConfig&quot;);
+//    DebugN(dpWithoutConfig);
+//DebugN(&quot;dpWithConfigDisabled&quot;);
+//    DebugN(dpWithConfigDisabled);
+//DebugN(&quot;dpWithConfigEnabled&quot;);
+//    DebugN(dpWithConfigEnabled);
+
+ if (radioBox.number == 0) {
+  listTitle.text(&quot;Chambers with Alarm Enabled&quot;);
+  createConfigButton.enabled(0);
+  deleteConfigButton.enabled(1);
+  startAlertButton.enabled(0);
+  stopAlertButton.enabled(1);
+//  HVDescriptionButton.enabled(1);
+//  LVDescriptionButton.enabled(0);
+//  TempDescriptionButton.enabled(0);
+  updateList(dpWithConfigEnabled);
+ }
+
+ if (radioBox.number == 1) {
+  listTitle.text(&quot;Chambers with Alarm Disabled&quot;);
+  createConfigButton.enabled(0);
+  deleteConfigButton.enabled(1);
+  startAlertButton.enabled(1);
+  stopAlertButton.enabled(0);
+//  HVDescriptionButton.enabled(0);
+//  LVDescriptionButton.enabled(1);
+//  TempDescriptionButton.enabled(0);
+  updateList(dpWithConfigDisabled);
+ }
+ 
+ if (radioBox.number == 2) {
+  listTitle.text(&quot;Chambers without Alert config&quot;);
+  createConfigButton.enabled(1);
+  deleteConfigButton.enabled(0);
+  startAlertButton.enabled(0);
+  stopAlertButton.enabled(0);
+//  HVDescriptionButton.enabled(0);
+//  LVDescriptionButton.enabled(0);
+//  TempDescriptionButton.enabled(1);
+  updateList(dpWithoutConfig);
+ }
+ 
+}
+
+
+
+//update the list
+void updateList (dyn_string channels)
+{
+  string chamber;
+  dyn_string existingChambers;
+  DebugN(channels);
+  
+  
+  for (int i=1;i&lt;=dynlen(channels);i++)
+  {
+    channels[i] = dpSubStr(channels[i],DPSUB_DP);
+    
+    existingChambers = dpList.items;
+      
+    if (radioBox1.number == 0) {
+     //chamber = getChamberAndLayer(channels[i]);//getAliasFromTheChannel(channels[i]);
+     chamber = getChamberLayer(channels[i]);
+    }
+    else if (radioBox1.number == 1){
+      //chamber = substr(getChamberAndLayer(channels[i]),0,4);
+      chamber = substr(getChamberLayer(channels[i]),0,4);
+    }
+    else if (radioBox1.number == 2) {
+      chamber = dpSubStr(channels[i],DPSUB_DP);
+      chamber = substr(chamber,5,4);
+    }
+    //DebugN(chamber);
+    if (chamber != &quot;&quot;) {
+     if (dynlen(existingChambers) == 0)
+       dpList.appendItem(chamber);
+     else {
+       bool Exists;
+       for (int j=1;j&lt;=dynlen(existingChambers);j++) {
+         if (existingChambers[j] == chamber) {
+           Exists = TRUE;
+         } 
+       }
+       if (Exists == FALSE)
+
+         dpList.appendItem(chamber);
+     }
+    }   
+  
+  }
+  
+}
+
+string getChamberAndLayer(string channel)
+{
+channel = dpSubStr(channel,DPSUB_DP);
+
+string l1,l2,l3,l4,lv;
+dyn_string chambers = dpNames(&quot;*&quot;,&quot;CSC_PSmapping&quot;);
+string chamb_layer;
+
+for (int i=1;i&lt;=dynlen(chambers);i++) {
+  chambers[i] = dpSubStr(chambers[i],DPSUB_DP);
+  dpGet(chambers[i]+&quot;.L1.channel&quot;,l1);
+  dpGet(chambers[i]+&quot;.L2.channel&quot;,l2);
+  dpGet(chambers[i]+&quot;.L3.channel&quot;,l3);
+  dpGet(chambers[i]+&quot;.L4.channel&quot;,l4);
+  dpGet(chambers[i]+&quot;.LV.channel&quot;,lv);
+
+  switch(channel)
+  {
+   case l1:
+     chamb_layer = chambers[i]+&quot;_L1&quot;;
+     break;
+   case l2:
+     chamb_layer = chambers[i]+&quot;_L2&quot;;
+     break;
+   case l3:
+     chamb_layer = chambers[i]+&quot;_L3&quot;;
+     break;
+   case l4:
+     chamb_layer = chambers[i]+&quot;_L4&quot;;
+     break;
+   case lv:
+     chamb_layer = chambers[i]+&quot;_LV&quot;;
+     break;
+   }
+//  if (l1==channel)
+//    chamb_layer = chambers[i]+&quot;_L1&quot;;
+//  if (l2==channel)
+//    chamb_layer = chambers[i]+&quot;_L2&quot;;
+//  if (l3==channel)
+//    chamb_layer = chambers[i]+&quot;_L3&quot;;
+//  if (l4==channel)
+//    chamb_layer = chambers[i]+&quot;_L4&quot;;
+//  if (lv==channel)
+//    chamb_layer = chambers[i]+&quot;_LV&quot;;
+}
+
+return chamb_layer;
+}
+
+string getChamberLayer(string channel)
+{
+  channel = dpSubStr(channel,DPSUB_DP);
+  string alias;
+  
+  if (channel[0] == &quot;C&quot;)
+   alias = dpGetAlias(&quot;ATLCSCSCS:&quot;+channel+&quot;.actual.status&quot;);
+  else 
+   alias = dpGetAlias(&quot;ATLCSCSCS:&quot;+channel+&quot;.Status.On&quot;);
+
+
+  
+//  if (alias == &quot;&quot;)
+//    alias = &quot;SPARE&quot;;
+    
+  return alias;
+}
+
+string getChannel(string chamb_layer)
+{
+ string chamber = substr(chamb_layer,0,4);
+ string layer = substr(chamb_layer,5,2);
+ string channel;
+ 
+ string dpeName = chamber + &quot;.&quot; + layer + &quot;.channel&quot;;
+ dpGet(dpeName,channel);
+ 
+ return channel;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//this function takes the alias from the channel,
+//splits the alias (ATLAS_CSC/ENDCAP_A/AL01/L1) and returns at the end the 4 parts of the alias
+//in the variable with the name hierarchy 
+string getAliasFromTheChannel(string channel)
+{
+  string chamber; 
+ string alias = dpGetAlias(channel+&quot;.&quot;);
+ dyn_string hierarchy;
+ if (alias != &quot;&quot; ) {
+   hierarchy = strsplit(alias,&quot;/&quot;);
+ }
+ //DebugN(channel);
+ if (dynlen(hierarchy) != 0) {
+   if (hierarchy[4] != &quot;LV&quot;)
+     chamber = hierarchy[3]+&quot;_&quot;+hierarchy[4];
+   else 
+     chamber = hierarchy[3];
+ }
+ return chamber;
+ 
+}
+
+
+//this function takes the channel from the alias (ATLAS_CSC/ENDCAP_A/AL01/L1)
+string getChannelFromTheAlias(string alias)
+{
+  string channel = dpAliasToName(alias);
+  channel = dpSubStr(channel,DPSUB_DP);
+ 
+  return channel;
+}
+
+]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  initializeLists();
+}]]></script>
+ </events>
+ <shapes>
+  <shape Name="PRIMITIVE_TEXT8" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">0</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">26 17</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">Blue</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">26 17</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,21,5,75,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,21,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Expert Panel - Alarm Options</prop>
+     <prop name="en_US.iso88591">Expert Panel - Alarm Options</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="dpList" shapeType="SELECTION_LIST" layerId="0">
+   <properties>
+    <prop name="serialId">9</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">198 81</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">19</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">198 81</prop>
+    <prop name="Size">152 380</prop>
+    <prop name="Listitems"/>
+    <prop name="SelectionMode">SingleSelection</prop>
+    <prop name="alternatingRowColors">False</prop>
+   </properties>
+  </shape>
+  <shape Name="dpActionList" shapeType="SELECTION_LIST" layerId="0">
+   <properties>
+    <prop name="serialId">10</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">402 81</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">21</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">402 81</prop>
+    <prop name="Size">152 380</prop>
+    <prop name="Listitems"/>
+    <prop name="SelectionMode">SingleSelection</prop>
+    <prop name="alternatingRowColors">False</prop>
+   </properties>
+  </shape>
+  <shape Name="PUSH_BUTTON1" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">11</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">360 124</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">23</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">360 124</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">right_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+ int n;
+ string s;
+ 
+ n=dpList.selectedPos;
+ s=dpList.selectedText;
+ 
+ if(s!=&quot;&quot;)
+ {
+  dpActionList.appendItem(s);
+  dpList.deletePos(n);
+ }
+ 
+ //setValue(&quot;ChambersFound&quot;,&quot;selectedPos&quot;,n);
+
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON2" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">12</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">360 158</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">25</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">360 158</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">right2x_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string allDpes = dpList.items;
+  dpList.deleteAllItems();
+  
+  for (int i=1;i&lt;=dynlen(allDpes);i++) {
+   dpActionList.appendItem(allDpes[i]);
+  }
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON3" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">13</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">360 269</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">27</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">360 269</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">left_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+ int n;
+ string s;
+ 
+ n=dpActionList.selectedPos;
+ s=dpActionList.selectedText;
+ 
+ if(s!=&quot;&quot;)
+ {
+  dpList.appendItem(s);
+  dpActionList.deletePos(n);
+ }
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON4" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">14</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">360 304</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">29</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">360 304</prop>
+    <prop name="Size">30 30</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Image" SharedPixmap="1">
+     <prop name="BackgroundPixmap">left2x_en.gif</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string allDpes = dpActionList.items;
+  dpActionList.deleteAllItems();
+  
+  for (int i=1;i&lt;=dynlen(allDpes);i++) {
+   dpList.appendItem(allDpes[i]);
+  }
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT4" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">15</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">401 65</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">31</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">401 65</prop>
+    <prop name="Size">109 20</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Action List</prop>
+     <prop name="en_US.iso88591">Action List</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">False</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="listTitle" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">16</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">191 65</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">33</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">191 65</prop>
+    <prop name="Size">206 33</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Current List</prop>
+     <prop name="en_US.iso88591">Current List</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">False</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="radioBox1" shapeType="RADIO_BOX" layerId="0">
+   <properties>
+    <prop name="serialId">17</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">18 99</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_3DText</prop>
+    <prop name="BackColor">_3DFace</prop>
+    <prop name="TabOrder">35</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,13,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,13,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">18 99</prop>
+    <prop name="Size">117 62</prop>
+    <prop name="Listitems">
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">High Voltage</prop>
+       <prop name="en_US.iso88591">High Voltage</prop>
+      </prop>
+      <prop name="Select">True</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">Low Voltage</prop>
+       <prop name="en_US.iso88591">Low Voltage</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">Temperatures</prop>
+       <prop name="en_US.iso88591">Temperatures</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(int button)
+{
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT9" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">18</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 83</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_3DText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">37</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">16 83</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,13,5,75,0,1,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,13,5,75,0,1,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Select DataPoints</prop>
+     <prop name="en_US.iso88591">Select DataPoints</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="radioBox" shapeType="RADIO_BOX" layerId="0">
+   <properties>
+    <prop name="serialId">19</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">15 191</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_3DText</prop>
+    <prop name="BackColor">_3DFace</prop>
+    <prop name="TabOrder">39</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">15 191</prop>
+    <prop name="Size">174 73</prop>
+    <prop name="Listitems">
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">With Alert Config Enabled</prop>
+       <prop name="en_US.iso88591">With Alert Config Enabled</prop>
+      </prop>
+      <prop name="Select">True</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">With Alert Config Disabled</prop>
+       <prop name="en_US.iso88591">With Alert Config Disabled</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+     <prop name="Item">
+      <prop name="Text">
+       <prop name="en_US.utf8">Without Alert Config</prop>
+       <prop name="en_US.iso88591">Without Alert Config</prop>
+      </prop>
+      <prop name="Select">False</prop>
+     </prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(int button)
+{
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT7" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">20</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">14 176</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">41</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Location">14 176</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,12,5,75,0,1,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,12,5,75,0,1,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Select Chambers To Monitor</prop>
+     <prop name="en_US.iso88591">Select Chambers To Monitor</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="createConfigButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">22</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">19 293</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">44</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">19 293</prop>
+    <prop name="Size">149 34</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Create and Activate
+      Alert Config</prop>
+     <prop name="en_US.iso88591">Create and Activate
+      Alert Config</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  bool configExists,isActive;
+  int alertConfigType;
+  dyn_string alertText, alertClasses,summaryDpeList,exceptionInfo;
+  dyn_float alertLimits;
+ 
+  dyn_string chambers = dpActionList.items;
+
+  string chamber,layer,side,alias;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        activateHVChannelsBooleanAlarms(channel);
+      }
+    }
+    else if (radioBox1.number == 1) {
+      chamber = substr(chambers[i],0,4);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/LV&quot;;
+      string channel = getChannel(chamber+&quot;_LV&quot;);
+      DebugN(channel);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        activateLVChannelsBooleanAlarms(channel);
+      }
+    }        
+    else if (radioBox1.number == 2) {
+      activateTemperatureAlarms (&quot;TEMP_&quot;+chambers[i]);
+    }
+    
+  }
+  initializeLists();  
+}
+
+activateHVChannelsBooleanAlarms(string dp)
+{
+  dyn_string exceptionInfo;
+
+  //OVER_CURRENT...
+  fwAlertConfig_set(dp+&quot;.actual.OvC&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Over Current&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwWarningNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.actual.OvC&quot;, exceptionInfo, 1, 0);
+  //OVER_VOLTAGE...
+  fwAlertConfig_set(dp+&quot;.actual.OvV&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Over Voltage&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwErrorNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.actual.OvV&quot;, exceptionInfo, 1, 0);
+  //UNDER_VOLTAGE...
+  fwAlertConfig_set(dp+&quot;.actual.UnV&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Under voltage&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwWarningNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.actual.UnV&quot;, exceptionInfo, 1, 0);
+  //OVER_HV_MAX...
+  fwAlertConfig_set(dp+&quot;.actual.overHvMax&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Over Hv Max&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwErrorNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.actual.overHvMax&quot;, exceptionInfo, 1, 0); 
+  //TRIP...
+  fwAlertConfig_set(dp+&quot;.actual.Trip&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Tripped&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwErrorNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.actual.Trip&quot;, exceptionInfo, 1, 0);
+  //CALIBRATION_ERROR...
+  fwAlertConfig_set(dp+&quot;.actual.calibrationError&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Calibration Error&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwWarningNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.actual.calibrationError&quot;, exceptionInfo, 1, 0); 
+  //UNPLUGGED...
+  //string board = substr(dp,0,64)+&quot;.&quot;;
+  //fwAlertConfig_set(dp+&quot;.actual.unplugged&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;NORMAL&quot;,&quot;UNPLUGGED&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,board,1);
+  fwAlertConfig_set(dp+&quot;.actual.unplugged&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Unplugged&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.actual.unplugged&quot;, exceptionInfo, 1, 0); 
+  //UNDER_CURRENT...
+  fwAlertConfig_set(dp+&quot;.actual.UnC&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Under Current&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwWarningNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.actual.UnC&quot;, exceptionInfo, 1, 0);
+  //POWER_FAIL...
+  fwAlertConfig_set(dp+&quot;.actual.powerFail&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Power Fail&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.actual.powerFail&quot;, exceptionInfo, 1, 0);
+  //TEMPERATURE ERROR...
+  fwAlertConfig_set(dp+&quot;.actual.temperatureError&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Temperature Error&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.actual.temperatureError&quot;, exceptionInfo, 1, 0);
+}
+
+
+activateLVChannelsBooleanAlarms(string dp)
+{
+  dyn_string exceptionInfo;
+  
+  //OVER_CURRENT...
+  fwAlertConfig_set(dp+&quot;.Status.FailureMaxCurrent&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Over Current&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwWarningNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.Status.FailureMaxCurrent&quot;, exceptionInfo, 1, 0);
+  //SENSE OVER_VOLTAGE...
+  fwAlertConfig_set(dp+&quot;.Status.FailureMaxSenseVoltage&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Over Sense Voltage&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwErrorNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.Status.FailureMaxSenseVoltage&quot;, exceptionInfo, 1, 0);
+  //TERMINAL OVER_VOLTAGE...
+  fwAlertConfig_set(dp+&quot;.Status.FailureMaxTerminalVoltage&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Over Terminal Voltage&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwErrorNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.Status.FailureMaxTerminalVoltage&quot;, exceptionInfo, 1, 0);
+  //UNDER_VOLTAGE...
+  fwAlertConfig_set(dp+&quot;.Status.FailureMinSenseVoltage&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Under voltage&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwWarningNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.Status.FailureMinSenseVoltage&quot;, exceptionInfo, 1, 0);
+  //POWER_FAIL...
+  fwAlertConfig_set(dp+&quot;.Status.FailureMaxPower&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Power Fail&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  fwAlertConfig_activate(dp+&quot;.Status.FailureMaxPower&quot;, exceptionInfo, 1, 0);
+  //TEMPERATURE ERROR...
+  fwAlertConfig_set(dp+&quot;.Status.FailureMaxTemperature&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Max Temperature&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.Status.FailureMaxTemperature&quot;, exceptionInfo, 1, 0);
+  //TIMEOUT ERROR
+  fwAlertConfig_set(dp+&quot;.Status.FailureTimeout&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;normal&quot;,&quot;Communication Timeout&quot;),&quot;&quot;,makeDynString(&quot;&quot;,&quot;_fwFatalNack&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);  
+  fwAlertConfig_activate(dp+&quot;.Status.FailureTimeout&quot;, exceptionInfo, 1, 0);
+}
+
+activateTemperatureAlarms (string dp)
+{
+  dyn_string exceptionInfo;
+  for (int i=1;i&lt;=3;i++) {
+   fwAlertConfig_set(dp+&quot;.Sensor0&quot;+i,DPCONFIG_ALERT_NONBINARYSIGNAL,
+                     makeDynString(&quot;OK&quot;,&quot;Over temperature&quot;,&quot;Over max limit&quot;),makeDynFloat(30,35),makeDynString(&quot;&quot;,&quot;_fwErrorAck.&quot;,&quot;_fwFatalAck.&quot;),
+                     makeDynString(),&quot;&quot;,makeDynString(),&quot;&quot;,exceptionInfo);
+   fwAlertConfig_activate(dp+&quot;.Sensor0&quot;+i,exceptionInfo,1,0);
+   fwAlertConfig_set(dp+&quot;.sigma.Sensor0&quot;+i,DPCONFIG_ALERT_NONBINARYSIGNAL,
+                     makeDynString(&quot;OK&quot;,&quot;Possibly unreliable&quot;,&quot;Unreliable&quot;),makeDynFloat(.035,.045),makeDynString(&quot;&quot;,&quot;_fwWarningNack.&quot;,&quot;_fwErrorAck.&quot;),
+                     makeDynString(),&quot;&quot;,makeDynString(),&quot;&quot;,exceptionInfo);
+   fwAlertConfig_activate(dp+&quot;.sigma.Sensor0&quot;+i,exceptionInfo,1,0);
+  }
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="startAlertButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">23</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">19 373</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">46</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">19 373</prop>
+    <prop name="Size">148 34</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Activate</prop>
+     <prop name="en_US.iso88591">Activate</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  
+  dyn_string chambers = dpActionList.items;
+  dyn_string tails;
+  
+  if (radioBox1.number == 0)
+    tails = makeDynString(&quot;.actual.OvC&quot;, &quot;.actual.OvV&quot;, &quot;.actual.UnV&quot;, &quot;.actual.overHvMax&quot;, 
+                                                              &quot;.actual.Trip&quot;, &quot;.actual.calibrationError&quot;, &quot;.actual.unplugged&quot;, 
+                                                              &quot;.actual.UnC&quot;, &quot;.actual.powerFail&quot;, &quot;.actual.temperatureError&quot;);
+  if (radioBox1.number == 1)
+    tails = makeDynString(&quot;.Status.FailureMaxSenseVoltage&quot;,&quot;.Status.FailureMaxTerminalVoltage&quot;,&quot;.Status.FailureMinSenseVoltage&quot;,&quot;.Status.FailureMaxCurrent&quot;,
+                                                             &quot;.Status.FailureMaxPower&quot;,&quot;.Status.FailureMaxTemperature&quot;,
+                                                             &quot;.Status.FailureTimeout&quot;);
+  if (radioBox1.number == 2)
+    tails = makeDynString(&quot;.Sensor01&quot;,&quot;.Sensor02&quot;,&quot;.Sensor03&quot;);
+   
+  
+  string chamber,layer,side,alias;
+
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_activate(channel+tails[j],exceptionInfo,1,0);
+        }
+      }
+    } 
+    else if (radioBox1.number == 1) {
+      chamber = substr(chambers[i],0,4);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/LV&quot;;
+      string channel = getChannel(chamber+&quot;_LV&quot;);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_activate(channel+tails[j],exceptionInfo,1,0);
+        }
+      }
+    }             
+    else if (radioBox1.number == 2) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_activate(&quot;TEMP_&quot;+chambers[i]+tails[j],exceptionInfo,1,0);
+            fwAlertConfig_activate(&quot;TEMP_&quot;+chambers[i]+&quot;.sigma&quot;+tails[j],exceptionInfo,1,0);
+        }  
+    }
+    
+  }
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="stopAlertButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">24</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">19 412</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">48</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">19 412</prop>
+    <prop name="Size">148 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Deactivate</prop>
+     <prop name="en_US.iso88591">Deactivate</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  
+  dyn_string chambers = dpActionList.items;
+
+  dyn_string tails;
+  
+  if (radioBox1.number == 0)
+    tails = makeDynString(&quot;.actual.OvC&quot;, &quot;.actual.OvV&quot;, &quot;.actual.UnV&quot;, &quot;.actual.overHvMax&quot;, 
+                                                              &quot;.actual.Trip&quot;, &quot;.actual.calibrationError&quot;, &quot;.actual.unplugged&quot;, 
+                                                              &quot;.actual.UnC&quot;, &quot;.actual.powerFail&quot;, &quot;.actual.temperatureError&quot;);
+  if (radioBox1.number == 1)
+    tails = makeDynString(&quot;.Status.FailureMaxSenseVoltage&quot;,&quot;.Status.FailureMaxTerminalVoltage&quot;,&quot;.Status.FailureMinSenseVoltage&quot;,&quot;.Status.FailureMaxCurrent&quot;,
+                                                             &quot;.Status.FailureMaxPower&quot;,&quot;.Status.FailureMaxTemperature&quot;,
+                                                             &quot;.Status.FailureTimeout&quot;);   
+
+  if (radioBox1.number == 2)
+    tails = makeDynString(&quot;.Sensor01&quot;,&quot;.Sensor02&quot;,&quot;.Sensor03&quot;);
+
+  string chamber,layer,side,alias;
+
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_deactivate(channel+tails[j],exceptionInfo,1,1,0);
+        }
+      }
+    }  
+    else if (radioBox1.number == 1) {
+      chamber = substr(chambers[i],0,4);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/LV&quot;;
+      string channel = getChannel(chamber+&quot;_LV&quot;);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_deactivate(channel+tails[j],exceptionInfo,1,1,0);
+        }
+      }
+    }               
+    else if (radioBox1.number == 2) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_deactivate(&quot;TEMP_&quot;+chambers[i]+tails[j],exceptionInfo,1,1,0);
+            fwAlertConfig_deactivate(&quot;TEMP_&quot;+chambers[i]+&quot;.sigma&quot;+tails[j],exceptionInfo,1,1,0);
+        }  
+    }
+    
+  }
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="deleteConfigButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">25</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">19 333</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">50</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">19 333</prop>
+    <prop name="Size">148 34</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Delete Alert Config</prop>
+     <prop name="en_US.iso88591">Delete Alert Config</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  
+  dyn_string chambers = dpActionList.items;
+  dyn_string tails;
+  
+  if (radioBox1.number == 0)
+    tails = makeDynString(&quot;.actual.OvC&quot;, &quot;.actual.OvV&quot;, &quot;.actual.UnV&quot;, &quot;.actual.overHvMax&quot;, 
+                                                              &quot;.actual.Trip&quot;, &quot;.actual.calibrationError&quot;, &quot;.actual.unplugged&quot;, 
+                                                              &quot;.actual.UnC&quot;, &quot;.actual.powerFail&quot;, &quot;.actual.temperatureError&quot;);
+  if (radioBox1.number == 1)
+    tails = makeDynString(&quot;.Status.FailureMaxSenseVoltage&quot;,&quot;.Status.FailureMaxTerminalVoltage&quot;,&quot;.Status.FailureMinSenseVoltage&quot;,&quot;.Status.FailureMaxCurrent&quot;,
+                                                             &quot;.Status.FailureMaxPower&quot;,&quot;.Status.FailureMaxTemperature&quot;,
+                                                             &quot;.Status.FailureTimeout&quot;);
+  if (radioBox1.number == 2)
+    tails = makeDynString(&quot;.Sensor01&quot;,&quot;.Sensor02&quot;,&quot;.Sensor03&quot;);
+
+  string chamber,layer,side,alias;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++)
+  {
+    
+    if (radioBox1.number == 0) {
+      chamber = substr(chambers[i],0,4);
+      layer = substr(chambers[i],5,2);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/&quot;+layer;
+      string channel = getChannel(chamber+&quot;_&quot;+layer);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_delete(channel+tails[j],exceptionInfo,&quot;&quot;,1);
+        }
+      }
+    }
+    else if (radioBox1.number == 1) {
+      chamber = substr(chambers[i],0,4);
+      side = substr(chamber,0,1);
+      //alias = &quot;ATLAS_CSC/ENDCAP_&quot;+side+&quot;/&quot;+chamber+&quot;/LV&quot;;
+      string channel = getChannel(chamber+&quot;_LV&quot;);//getChannelFromTheAlias(alias);
+      if (channel != &quot;&quot;) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_delete(channel+tails[j],exceptionInfo,&quot;&quot;,1);
+        }
+      }
+    }          
+    else if (radioBox1.number == 2) {
+        for (int j=1;j&lt;=dynlen(tails);j++) {
+            fwAlertConfig_delete(&quot;TEMP_&quot;+chambers[i]+tails[j],exceptionInfo,&quot;&quot;,1);
+            fwAlertConfig_delete(&quot;TEMP_&quot;+chambers[i]+&quot;.sigma&quot;+tails[j],exceptionInfo,&quot;&quot;,1);
+        }  
+    }
+    
+  }
+  initializeLists();
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="HVDescriptionButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">26</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">568 87</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">52</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">568 87</prop>
+    <prop name="Size">115 35</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Set HVChannel 
+DPE description</prop>
+     <prop name="en_US.iso88591">Set HVChannel 
+DPE description</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string dpeList = makeDynString(&quot;.actual.iMon&quot;, &quot;.actual.isOn&quot;, &quot;.actual.vMon&quot;, &quot;.actual.status&quot;,
+                                     &quot;.actual.Trip&quot;, &quot;.actual.OvC&quot;, &quot;.actual.OvV&quot;, &quot;.actual.UnV&quot;,
+                                     &quot;.actual.overHvMax&quot;, &quot;.actual.calibrationError&quot;, &quot;.actual.unplugged&quot;,
+                                     &quot;.actual.UnC&quot;, &quot;.actual.powerFail&quot;, &quot;.actual.temperatureError&quot;);
+  
+  dyn_string descriptionList = makeDynString(&quot;Imon&quot;, &quot;On&quot;, &quot;Vmon&quot;, &quot;Status&quot;,
+                                       &quot;Tripped&quot;, &quot;OverCurrent&quot;, &quot;OverVoltage&quot;, &quot;UnderVoltage&quot;,
+                                       &quot;HVmaxError&quot;, &quot;CalibrationError&quot;, &quot;Unplugged&quot;, &quot;UnderCurrent&quot;,
+                                       &quot;PowerFail&quot;, &quot;TemperatureError&quot;);
+
+  dyn_string chambers;
+  string side;
+  dyn_string channels;
+  string description;
+  
+  //Take all the chambers from the temperature dps (TEMP_AL01...).
+  //When we want to describe all the chambers
+  //chamebrs = dpNames(&quot;*&quot;,&quot;CSC_TSensorControl&quot;);
+  
+  chambers = dpActionList.items;
+/*  channels = makeDynString(&quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel004&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel005&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel006&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel007&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel008&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel009&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel010&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController12/easyCrate4/easyBoard11/channel011&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel004&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel005&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel006&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel007&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel008&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel009&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel010&quot;,
+                           &quot;ATLCSCSCS:CAEN/PSMDT01/branchController13/easyCrate4/easyBoard11/channel011&quot;);
+*/                           
+  for (int i=1;i&lt;=dynlen(chambers);i++) {
+    //chambers[i] = substr(chambers[i],5,4); //when we use the temp dps
+    chambers[i] = substr(chambers[i],0,4);
+    channels[1] = getChannel(chambers[i]+&quot;_L1&quot;);
+    channels[2] = getChannel(chambers[i]+&quot;_L2&quot;);
+    channels[3] = getChannel(chambers[i]+&quot;_L3&quot;);
+    channels[4] = getChannel(chambers[i]+&quot;_L4&quot;);
+    for (int j=1;j&lt;=dynlen(channels);j++)
+    {
+      //description = &quot;CSC PS HV Spare Channels &quot;;
+      description = &quot;CSC PS HV &quot; + chambers[i] + &quot; L&quot; + j + &quot; &quot;; 
+      for (int k=1; k&lt;=dynlen(dpeList); k++)
+      {
+        dpSetDescription(channels[j] + dpeList[k], description + descriptionList[k]);
+      }
+    }
+  }
+}
+      
+]]></script>
+   </events>
+  </shape>
+  <shape Name="LVDescriptionButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">27</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">569 131</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">54</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">569 131</prop>
+    <prop name="Size">115 35</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Set LVChannel 
+DPE description</prop>
+     <prop name="en_US.iso88591">Set LVChannel 
+DPE description</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string dpeList = makeDynString(&quot;.Status.On&quot;,&quot;.MeasurementCurrent&quot;,&quot;.MeasurementSenseVoltage&quot;,
+                                     &quot;.Status.FailureMaxSenseVoltage&quot;,&quot;.Status.FailureMaxTerminalVoltage&quot;,&quot;.Status.FailureMinSenseVoltage&quot;,&quot;.Status.FailureMaxCurrent&quot;,
+                                                             &quot;.Status.FailureMaxPower&quot;,&quot;.Status.FailureMaxTemperature&quot;,
+                                                             &quot;.Status.FailureTimeout&quot;);
+
+  
+  dyn_string descriptionList = makeDynString(&quot;On&quot;,&quot;Current&quot;,&quot;Voltage&quot;,&quot;OverSenseVoltage&quot;,&quot;OverTerminalVoltage&quot;, &quot;UnderVoltage&quot;, &quot;OverCurrent&quot;, &quot;MaxPower&quot;, &quot;MaxTemperature&quot;, &quot;Timeout&quot;);
+
+  dyn_string chambers;
+  string side;
+  string channel;
+  string description;
+  
+  //Take all the chambers from the temperature dps (TEMP_AL01...).
+  //When we want to describe all the chambers
+  //chamebrs = dpNames(&quot;*&quot;,&quot;CSC_TSensorControl&quot;);
+  
+  chambers = dpActionList.items;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++) {
+    //chambers[i] = substr(chambers[i],5,4);
+    chambers[i] = substr(chambers[i],0,4);
+    channel = getChannel(chambers[i]+&quot;_LV&quot;);
+    description = &quot;CSC PS LV &quot; + chambers[i] + &quot; &quot;; 
+      for (int k=1; k&lt;=dynlen(dpeList); k++)
+      {
+        dpSetComment(channel + dpeList[k], description + descriptionList[k]);
+      }
+  }
+}
+      
+]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON5" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">28</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">20 490</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">55</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">20 490</prop>
+    <prop name="Size">171 101</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Create and Activate 
+  Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+     <prop name="en_US.iso88591">Create and Activate 
+  Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  fwAlertConfig_set(&quot;ATLCSCSCS:_CAENOPCServer.Connected&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;DISCONNECTED&quot;,&quot;CONNECTED&quot;),&quot;&quot;,makeDynString(&quot;_fwErrorNack&quot;,&quot;&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  
+  fwAlertConfig_set(&quot;ATLCSCSCS:_WienerMarathonOPCServer.Connected&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;DISCONNECTED&quot;,&quot;CONNECTED&quot;),&quot;&quot;,makeDynString(&quot;_fwErrorNack&quot;,&quot;&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+  
+  fwAlertConfig_set(&quot;ATLCSCSCS:_RDBArchive.dbConnection.connected&quot;,DPCONFIG_ALERT_BINARYSIGNAL,makeDynString(&quot;DISCONNECTED&quot;,&quot;CONNECTED&quot;),&quot;&quot;,makeDynString(&quot;_fwErrorNack&quot;,&quot;&quot;),&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,exceptionInfo,0,0,&quot;&quot;,1);
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON6" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">29</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">220 490</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">57</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">220 490</prop>
+    <prop name="Size">171 101</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Delete Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+     <prop name="en_US.iso88591">Delete Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  fwAlertConfig_delete(&quot;ATLCSCSCS:_CAENOPCServer.Connected&quot;,exceptionInfo,&quot;&quot;,1);
+  fwAlertConfig_delete(&quot;ATLCSCSCS:_WienerMarathonOPCServer.Connected&quot;,exceptionInfo,&quot;&quot;,1);
+  fwAlertConfig_delete(&quot;ATLCSCSCS:_RDBArchive.dbConnection.connected&quot;,exceptionInfo,&quot;&quot;,1);
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON7" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">30</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">20 600</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">59</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">20 600</prop>
+    <prop name="Size">171 101</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Activate Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+     <prop name="en_US.iso88591">Activate Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  fwAlertConfig_activate(&quot;ATLCSCSCS:_CAENOPCServer.Connected&quot;,exceptionInfo,1,0);
+  fwAlertConfig_activate(&quot;ATLCSCSCS:_WienerMarathonOPCServer.Connected&quot;,exceptionInfo,1,0);
+  fwAlertConfig_activate(&quot;ATLCSCSCS:_RDBArchive.dbConnection.connected&quot;,exceptionInfo,1,0);
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON8" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">31</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">220 600</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">61</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">220 600</prop>
+    <prop name="Size">171 101</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Deactivate Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+     <prop name="en_US.iso88591">Deactivate Alarm for the 
+CAEN and WIENER OPC Servers
+  and the RDB manager</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string exceptionInfo;
+  fwAlertConfig_deactivate(&quot;ATLCSCSCS:_CAENOPCServer.Connected&quot;,exceptionInfo,1,1,0);
+  fwAlertConfig_deactivate(&quot;ATLCSCSCS:_WienerMarathonOPCServer.Connected&quot;,exceptionInfo,1,1,0);
+  fwAlertConfig_deactivate(&quot;ATLCSCSCS:_RDBArchive.dbConnection.connected&quot;,exceptionInfo,1,1,0);
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="TempDescriptionButton" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">32</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">570 180</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">63</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">570 180</prop>
+    <prop name="Size">115 35</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Set Temps 
+DPE description</prop>
+     <prop name="en_US.iso88591">Set Temps 
+DPE description</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dyn_string dpeList = makeDynString(&quot;.Sensor01&quot;,&quot;.Sensor02&quot;,&quot;.Sensor03&quot;);  
+  dyn_string descriptionList = makeDynString(&quot;Sensor01&quot;, &quot;Sensor02&quot;, &quot;Sensor03&quot;);
+
+  dyn_string chambers;
+  string description, description2;
+  
+  
+  chambers = dpActionList.items;
+  
+  for (int i=1;i&lt;=dynlen(chambers);i++) {
+      description = &quot;CSC temperature &quot; + chambers[i];
+      description2 = &quot;CSC temperature data from &quot; + chambers[i];
+      for (int k=1; k&lt;=dynlen(dpeList); k++)
+      {
+        dpSetComment(&quot;TEMP_&quot;+chambers[i] + dpeList[k], description + &quot; &quot;+descriptionList[k]);
+        dpSetComment(&quot;TEMP_&quot;+chambers[i] + &quot;.sigma&quot; + dpeList[k], description2 + &quot; &quot;+descriptionList[k]);
+      }
+  }
+  
+  
+}
+      
+]]></script>
+   </events>
+  </shape>
+  <shape Name="PUSH_BUTTON10" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">33</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">570 230</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">65</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="en_US.iso88591"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+     <prop name="en_US.iso88591">MS Shell Dlg,-1,11,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">570 230</prop>
+    <prop name="Size">115 61</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Set description for
+the OPC Servers and 
+RDB Manager</prop>
+     <prop name="en_US.iso88591">Set description for
+the OPC Servers and 
+RDB Manager</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  dpSetComment(&quot;ATLCSCSCS:_CAENOPCServer.Connected&quot;,&quot;CSC CAENOPCServer Connected&quot;);
+  dpSetComment(&quot;ATLCSCSCS:_WienerMarathonOPCServer.Connected&quot;,&quot;CSC WienerMarathonOPCServer Connected&quot;);
+  dpSetComment(&quot;ATLCSCSCS:_RDBArchive.dbConnection.connected&quot;,&quot;CSC RDBArchive Connected&quot;);
+}
+      
+]]></script>
+   </events>
+  </shape>
+ </shapes>
+</panel>
