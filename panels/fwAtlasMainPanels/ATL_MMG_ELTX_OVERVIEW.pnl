@@ -1,11 +1,76 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 483 372 N "_3DFace" 1
+PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "$obj"
 E E E E E 1 -1 -1 0  117 143
 ""0  1
-E E 3
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
+
+void mmgGeneral_drawChambers(int x_center, int y_center,int layer,float sc,string side, string type)
+{
+  float x ,y, phi, phiRad, scale, a, b, c1,c2, d1,d2, x_circle, y_circle;
+  string channel;
+  int rackNum;
+
+  if (side == \"A\")
+   rackNum = 1;
+  else if (side == \"C\")
+   rackNum = 2;
+
+  scale = sc*12.20; //since 610.1 = 5 pvss squares
+  b =  610.1/scale;//50;
+  c1 =  1170.9/scale;//130;
+  c2 = 753.5/scale;
+  d1 =  1149.6/scale;//110;
+  d2 = 1197.3/scale;
+  a = 74/sc;//8*(b+402.9/scale)/6.28;//74; //127.5; //100;//2000/scale;
+
+  phi=22.5;
+
+    //create the large chambers
+    for (int n=1; n<=16; n++)
+    {
+      if (n%2!=0) {  //take the odd numbers
+        phi = (n-1)*22.5;
+        phiRad = deg2rad(phi);
+        x = x_center - (a+d1)*cos(phiRad) - c1/2.*sin(phiRad);
+        y = y_center - (a+d1)*sin(phiRad) + c1/2.*cos(phiRad);
+        x_circle = x_center - (a+d1/2)*cos(phiRad)-10/sc;
+        y_circle  = y_center - (a+d1/2)*sin(phiRad)-10/sc;
+
+
+             addSymbol(myModuleName(),myPanelName(),\"/objects/LargeChamber.pnl\",\"\",makeDynString(\"$name:\"+side,\"$domain:MMG_ELTX\",\"$obj:\"+\"MMG_SIDE_A_SECTOR_01_EIZ2R1A01\"), x, y, 90.-phi, 1/sc, 1/sc);
+
+          }
+    }
+
+    //create the small chamners
+    for (int n=1; n<=16; n++)
+    {
+      if (n%2==0) {
+        phi = (n-2)*22.5+22.5;
+        phiRad = deg2rad(phi);
+        x = x_center - (a+d2)*cos(phiRad) - c2/2.*sin(phiRad);
+        y = y_center - (a+d2)*sin(phiRad) + c2/2.*cos(phiRad);
+        x_circle = x_center - (a+d2/2)*cos(phiRad)-10/sc;
+        y_circle  = y_center - (a+d2/2)*sin(phiRad)-10/sc;
+
+
+        addSymbol(myModuleName(),myPanelName(),\"/objects/SmallChamber.pnl\",\"\",makeDynString(\"$name:\"+side,\"$domain:MMG_ELTX\",\"$obj:\"+\"MMG_SIDE_A_SECTOR_01_EIZ2R1A01\"), x, y, 90.-phi, 1/sc, 1/sc);
+
+        }
+      }
+
+/*
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:1\"), x_center-60/sc, y_center, 0, 1/sc, 1/sc);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:5\"), x_center, y_center-65/sc, 0, 1/sc, 1/sc);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:9\"), x_center+60/sc, y_center, 0, 1/sc, 1/sc);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:13\"), x_center, y_center+55/sc, 0, 1/sc, 1/sc);
+*/
+
+}" 0
+ 3
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
@@ -18,7 +83,7 @@ LANG:10001 0
 14 1
 "TEXT_FIELD2"
 ""
-1 128 128 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 539 830 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 1 0 0 0 0 0
 E E E
@@ -30,32 +95,16 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  126 114 285 156
+0  537 816 824 858
 3 "0s" 0 0 0 0 0 -1  E "main()
 {
   this.text($obj);
 }" 0
  E
-6 2
-"RECTANGLE1"
-""
-1 92 66 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
- E E
-2 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 92 66 202 98
 13 3
 "PUSH_BUTTON1"
 ""
-1 41 268 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 429 808 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 3 0 0 0 0 0
 E E E
@@ -67,7 +116,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  39 250 119 301
+0  427 790 507 841
 
 T 
 1
@@ -77,6 +126,79 @@ LANG:10001 12 PUSH_BUTTON1
     fwFsmAtlas_navigate(\"MMG_ELTX\",\"MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1\");
 }" 0
  E E E
+13 4
+"PUSH_BUTTON2"
+""
+1 25 808 E E E 1 E 1 E N "violett" E N "_Button" E E
+ E E
+4 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,24,5,75,0,0,0,0,0,Bold
+0  23 791 249 840
+
+T 
+1
+LANG:10001 16 Chamber creation
+"main(mapping event)
+{
+  mmgGeneral_drawChambers(180,220,1,1.0,\"A\",\"ELTX\");
+  mmgGeneral_drawChambers(180,580,1,1.0,\"C\",\"ELTX\");
+}
+" 0
+ E E E
+6 5
+"RECTANGLE7"
+""
+1 97 155 E E E 1 E 1 E N "_Transparent" E N "FwAtlasBg" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.038081395348837 0 0.6904761904761904 -0.6938953488372022 -2.02380952380949 4 "[linear,reflect,0.458,1.45,0.47,-0.482,0.0201,{0,0,0},0.453,{255,255,255}]" E -1 -1 859 41
+2 6
+"PRIMITIVE_TEXT20"
+""
+1 805 0 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(getDetector());
+
+}" 0
+ E 0 1 1 2 1 E U  0 E 805 0 870 31
+0 2 2 "0s" 0 0 0 64 0 0  805 0 1
+2
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
+0 2
+LANG:10001 3 DEC
+LANG:1 4 ATCA
 0
 LAYER, 1 
 1
