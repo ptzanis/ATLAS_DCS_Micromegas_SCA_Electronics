@@ -62,12 +62,10 @@ void mmgGeneral_drawChambers(int x_center, int y_center,int layer,float sc,strin
         }
       }
 
-/*
    addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:1\"), x_center-60/sc, y_center, 0, 1/sc, 1/sc);
    addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:5\"), x_center, y_center-65/sc, 0, 1/sc, 1/sc);
    addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:9\"), x_center+60/sc, y_center, 0, 1/sc, 1/sc);
    addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:13\"), x_center, y_center+55/sc, 0, 1/sc, 1/sc);
-*/
 
 }" 0
  3
@@ -101,31 +99,6 @@ LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
   this.text($obj);
 }" 0
  E
-13 3
-"PUSH_BUTTON1"
-""
-1 429 808 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-3 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  427 790 507 841
-
-T 
-1
-LANG:10001 12 PUSH_BUTTON1
-"main(mapping event)
-{
-    fwFsmAtlas_navigate(\"MMG_ELTX\",\"MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1\");
-}" 0
- E E E
 13 4
 "PUSH_BUTTON2"
 ""
@@ -148,8 +121,8 @@ T
 LANG:10001 16 Chamber creation
 "main(mapping event)
 {
-  mmgGeneral_drawChambers(180,220,1,1.0,\"A\",\"ELTX\");
-  mmgGeneral_drawChambers(180,580,1,1.0,\"C\",\"ELTX\");
+  mmgGeneral_drawChambers(200,220,1,1.0,\"A\",\"ELTX\");
+  mmgGeneral_drawChambers(200,590,1,1.0,\"C\",\"ELTX\");
 }
 " 0
  E E E
@@ -199,6 +172,70 @@ LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
 LANG:10001 3 DEC
 LANG:1 4 ATCA
+2 7
+"PRIMITIVE_TEXT17"
+""
+1 8 -5 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 8 -5 803 26
+0 2 2 "0s" 0 0 0 64 0 0  8 -5 1
+2
+LANG:10001 32 Utopia,-1,27,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
+0 2
+LANG:10001 32 Micromegas Chamber - Electronics
+LANG:1 4 ATCA
+30 9
+"FRAME1"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+9 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.147826086956522 0 5.338235294117648 -48.39130434782585 -296.9705882352941 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 8 EndCap A
+30 10
+"FRAME2"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+10 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.147826086956522 0 5.338235294117648 -48.39130434782553 74.02941176470591 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 8 EndCap C
 0
 LAYER, 1 
 1

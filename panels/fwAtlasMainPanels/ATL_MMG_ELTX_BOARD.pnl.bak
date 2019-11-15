@@ -110,8 +110,9 @@ LANG:1 0
 "antiAliased" "0"
 "main()
 {
-  this.text(\"Board \"+getBoardType()+\" | Chamber \"+getChamber()+\" | Layer \"+getLayer()+\" | PCB \"+getPCB());
- //    this.text(\"Board View: \"getDetector()+\" | Endcap \"+getSide()+\" | Sector \"+getSector()+\" | Chamber \"+getChamber()+\" | Layer \"+getLayer()+\" | PCB \"+getPCB()+\" | Board \"+getBoard());
+
+  this.text(\"Chamber \"+getChamber()+\" | Layer \"+getBoardType()+\" | PCB \"+getPCB()+\" | Board \"+getLayer());
+
 }" 0
  E 0 1 1 2 1 E U  0 E 207 0 882 31
 0 2 2 "0s" 0 0 0 64 0 0  207 0 1
@@ -137,7 +138,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E  -2.27142857142857 24 856.7285714285715 24
+E E 0 1 1 2 1 E  -2.27142857142857 24 856.7285714285714 24
 14 6
 "TEXT_FIELD3"
 ""
@@ -153,7 +154,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  727 41 841 64
+0  727 40.99999999999999 841 64
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getDetector());
@@ -496,7 +497,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
-0  89 45 387 68
+0  88.99999999999999 45 386.9999999999999 67.99999999999999
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getBoardChannel());
@@ -575,7 +576,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  89 71 387 94
+0  88.99999999999999 71 386.9999999999999 94
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSCAAddress(getBoardChannel()));
@@ -618,7 +619,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  516 41 598 64
+0  515.9999999999999 40.99999999999999 598 64
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSCAID(getBoardChannel()));
@@ -659,7 +660,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.3405797101449275 0 1.411764705882352 382.9710144927536 -61.52941176470581 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.3405797101449275 0 1.411764705882352 382.9710144927536 -62.52941176470581 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -1060,7 +1061,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  160 442.4237288135593 271 469.4237288135593
+0  160 442.4237288135593 270.9999999999999 469.4237288135593
 
 T 
 1
@@ -1209,7 +1210,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  516 91 598 114
+0  515.9999999999999 91 598 114
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 

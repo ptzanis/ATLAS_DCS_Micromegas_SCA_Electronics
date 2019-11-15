@@ -38,7 +38,7 @@
     <prop name="FillType">[solid]</prop>
     <prop name="Location">3 5</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Utopia,-1,13,5,75,0,0,0,0,0,Bold</prop>
+     <prop name="en_US.utf8">Utopia,-1,15,5,75,0,0,0,0,0,Bold</prop>
      <prop name="en_US.iso88591">MS Shell Dlg,-1,12,5,75,0,0,0,0,0</prop>
     </prop>
     <prop name="Text">

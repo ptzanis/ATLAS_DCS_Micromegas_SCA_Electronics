@@ -1,8 +1,16 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 859 866 N "FwAtlasBg" 0
-E E E E E 1 -1 -1 0  131 141
+PANEL,-1 -1 859 866 N "_3DFace" 0
+"main()
+{
+
+    addLogoNTUABNL(670,800);
+
+
+
+}" 0
+ E E E E 1 -1 -1 0  131 141
 ""0  1
 E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"" 0
  3

@@ -1,47 +1,4 @@
 #uses "FwDevMode.ctl"
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM_install()
-{
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(!globalExists("FwDevMode_CurrDUActions"))
-   {
-      addGlobal("FwDevMode_CurrDUActions",DYN_STRING_VAR);
-      fwDU_getAllActions("FwDevMode",FwDevMode_CurrDUActions);
-   }
-   FwDevMode_initialize("MMG_ELTX", devdp);
-   fwDU_setDefaultParameters("MMG_ELTX", devdp);
-   if(dpConnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpConnect state");
-}
-
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM_uninstall(string dp, int running)
-{
-   string devdp;
-
-DebugN("uninstalling MMG_ELTX MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(running) return;
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(dpDisconnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpDisconnect state");
-}
-
-cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged(
-      string dp1, dyn_string x1   )
-{
-   string state;
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   FwDevMode_valueChanged("MMG_ELTX", devdp,
-      x1, state );
-   fwDU_setState("MMG_ELTX", devdp, state);
-}
-
 MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB1_FWDM_install()
 {
    string devdp;
@@ -166,49 +123,6 @@ cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R2A01_FWDM_valueChanged(
    string devdp;
 
    devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R2A01_FWDM");
-   FwDevMode_valueChanged("MMG_ELTX", devdp,
-      x1, state );
-   fwDU_setState("MMG_ELTX", devdp, state);
-}
-
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM_install()
-{
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(!globalExists("FwDevMode_CurrDUActions"))
-   {
-      addGlobal("FwDevMode_CurrDUActions",DYN_STRING_VAR);
-      fwDU_getAllActions("FwDevMode",FwDevMode_CurrDUActions);
-   }
-   FwDevMode_initialize("MMG_ELTX", devdp);
-   fwDU_setDefaultParameters("MMG_ELTX", devdp);
-   if(dpConnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpConnect state");
-}
-
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM_uninstall(string dp, int running)
-{
-   string devdp;
-
-DebugN("uninstalling MMG_ELTX MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(running) return;
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(dpDisconnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpDisconnect state");
-}
-
-cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged(
-      string dp1, dyn_string x1   )
-{
-   string state;
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_FWDM");
    FwDevMode_valueChanged("MMG_ELTX", devdp,
       x1, state );
    fwDU_setState("MMG_ELTX", devdp, state);
@@ -343,49 +257,6 @@ cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ3R1A01_FWDM_valueChanged(
    fwDU_setState("MMG_ELTX", devdp, state);
 }
 
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM_install()
-{
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(!globalExists("FwDevMode_CurrDUActions"))
-   {
-      addGlobal("FwDevMode_CurrDUActions",DYN_STRING_VAR);
-      fwDU_getAllActions("FwDevMode",FwDevMode_CurrDUActions);
-   }
-   FwDevMode_initialize("MMG_ELTX", devdp);
-   fwDU_setDefaultParameters("MMG_ELTX", devdp);
-   if(dpConnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpConnect state");
-}
-
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM_uninstall(string dp, int running)
-{
-   string devdp;
-
-DebugN("uninstalling MMG_ELTX MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(running) return;
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(dpDisconnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpDisconnect state");
-}
-
-cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged(
-      string dp1, dyn_string x1   )
-{
-   string state;
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_BOARD1_FWDM");
-   FwDevMode_valueChanged("MMG_ELTX", devdp,
-      x1, state );
-   fwDU_setState("MMG_ELTX", devdp, state);
-}
-
 MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB1_FWDM_install()
 {
    string devdp;
@@ -510,49 +381,6 @@ cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R2A01_FWDM_valueChanged(
    string devdp;
 
    devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R2A01_FWDM");
-   FwDevMode_valueChanged("MMG_ELTX", devdp,
-      x1, state );
-   fwDU_setState("MMG_ELTX", devdp, state);
-}
-
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM_install()
-{
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(!globalExists("FwDevMode_CurrDUActions"))
-   {
-      addGlobal("FwDevMode_CurrDUActions",DYN_STRING_VAR);
-      fwDU_getAllActions("FwDevMode",FwDevMode_CurrDUActions);
-   }
-   FwDevMode_initialize("MMG_ELTX", devdp);
-   fwDU_setDefaultParameters("MMG_ELTX", devdp);
-   if(dpConnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpConnect state");
-}
-
-MMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM_uninstall(string dp, int running)
-{
-   string devdp;
-
-DebugN("uninstalling MMG_ELTX MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(running) return;
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM");
-   if(dpDisconnect("cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged",
-      devdp+".disabled:_online.._value"
-     ) == -1 )
-      DebugN("Bad dpDisconnect state");
-}
-
-cbMMG_ELTX_MMG_ELTX_MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM_valueChanged(
-      string dp1, dyn_string x1   )
-{
-   string state;
-   string devdp;
-
-   devdp = ""+fwDU_getPhysicalName("MMG_ELTX/MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_FWDM");
    FwDevMode_valueChanged("MMG_ELTX", devdp,
       x1, state );
    fwDU_setState("MMG_ELTX", devdp, state);

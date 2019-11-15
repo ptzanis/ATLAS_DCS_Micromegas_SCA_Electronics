@@ -22,7 +22,7 @@
     <prop name="RefPoint">3 5</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
-    <prop name="ForeColor">_WindowText</prop>
+    <prop name="ForeColor">White</prop>
     <prop name="BackColor">_Transparent</prop>
     <prop name="TabOrder">0</prop>
     <prop name="ToolTipText">

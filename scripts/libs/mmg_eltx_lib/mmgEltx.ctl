@@ -112,3 +112,26 @@ dyn_string getAnalogItemsOfBoard(string board,string boardType){
 
 }
 
+dyn_string getTotalScaNames(){
+
+  dyn_string scaNamesList;
+  scaNamesList=dpNames("*","fwScaSCA");
+  for(int i=1;i<=dynlen(scaNamesList);i++)
+  {
+    strreplace(scaNamesList[i],getSystemName(),"");
+  }
+  return scaNamesList;
+}
+
+string mmgGeneral_Fsm_getState(string domain, string obj)
+{
+ int isDU = fwFsm_isDU($domain, $obj);
+ string state;
+
+ if (isDU == 0)
+    fwCU_getState(obj, state);
+  else
+    fwDU_getState(domain, obj, state);
+
+ return state;
+}

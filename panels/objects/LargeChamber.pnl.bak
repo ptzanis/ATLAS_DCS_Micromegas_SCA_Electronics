@@ -5,7 +5,7 @@
    <prop name="en_US.utf8"></prop>
    <prop name="en_US.iso88591"></prop>
   </prop>
-  <prop name="Size">120 104</prop>
+  <prop name="Size">119 104</prop>
   <prop name="BackColor">_3DFace</prop>
   <prop name="RefPoint">0 0</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -16,7 +16,9 @@
   <prop name="layoutType">None</prop>
  </properties>
  <events>
-  <script name="ScopeLib" isEscaped="1"><![CDATA[void checkLayersInterlock(string interlockedDp,bool interlocked)
+  <script name="ScopeLib" isEscaped="1"><![CDATA[#uses &quot;mmg_eltx_lib/mmgEltx.ctl&quot;
+
+void checkLayersInterlock(string interlockedDp,bool interlocked)
 {
   if (interlocked)
     interlockedRectangle.visible=true;
@@ -74,19 +76,19 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
 {
   string state,status;
   string name = $name;
-  
+
   if (substr(name,0,2)!= &quot;C_&quot;)
     fwFsmAtlas_connectStateButton($domain,$obj,FALSE, &quot;none&quot;,&quot;&quot;);
-  else 
+  else
     name = substr(name,2);
-  
+
   this.name(name);
 
-  fwFsmAtlas_getStatus($domain,$obj,status); 
+  fwFsmAtlas_getStatus($domain,$obj,status);
 
-  state = cscGeneral_Fsm_getState($domain, $obj);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
 
-  this.toolTipText(name+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);    
+  this.toolTipText(name+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
   if (strpos($domain,&quot;PS&quot;)&gt;2) //Check if the layer drawn is PS and not Temperature related
   {
     string layer=name;
@@ -145,18 +147,18 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
 {
   string state,status;
   string name = $name;
-  
+
   if (substr(name,0,2)== &quot;C_&quot;)
     name = substr(name,2);
-  
-  fwFsmAtlas_connectStateButton($domain,&quot;STATUS_&quot; + $obj,FALSE, &quot;none&quot;,&quot;&quot;);
-  
-  this.name(name);
-  
-  fwFsmAtlas_getStatus($domain,$obj,status);    
-  state = cscGeneral_Fsm_getState($domain, $obj);
 
-  this.toolTipText(name+&quot; State: &quot;+state+&quot;, Status: &quot;+status+&quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);  
+  fwFsmAtlas_connectStateButton($domain,&quot;STATUS_&quot; + $obj,FALSE, &quot;none&quot;,&quot;&quot;);
+
+  this.name(name);
+
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(name+&quot; State: &quot;+state+&quot;, Status: &quot;+status+&quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);
 }]]></script>
     <script name="RightMousePressed" isEscaped="1"><![CDATA[main()
 {
