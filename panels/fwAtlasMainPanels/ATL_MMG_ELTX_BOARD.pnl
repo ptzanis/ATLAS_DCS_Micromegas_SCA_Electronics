@@ -5,11 +5,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "$obj"
 "main()
 {
-
-    addLogoNTUABNL(670,800);
-
-
-
+  addLogoNTUABNL(670,800);
 }" 0
  E E E E 1 -1 -1 0  139 162
 ""0  1

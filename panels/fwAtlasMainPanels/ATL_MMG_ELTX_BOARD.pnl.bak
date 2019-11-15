@@ -5,11 +5,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "$obj"
 "main()
 {
-
-    addLogoNTUABNL(670,800);
-
-
-
+  addLogoNTUABNL(670,800);
 }" 0
  E E E E 1 -1 -1 0  139 162
 ""0  1
@@ -120,7 +116,7 @@ LANG:1 0
 LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
-LANG:10001 37 Board X | Chamber X | Layer X | PCB X
+LANG:10001 37 Chamber X | Layer X | PCB X | Board X
 LANG:1 4 ATCA
 4 5
 "LINE4"
