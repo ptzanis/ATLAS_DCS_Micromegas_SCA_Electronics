@@ -650,20 +650,33 @@ mmgEltx_createFsmTree()
                     fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"PCB \"+pcb);
                     fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"fwAtlasMainPanels/ATL_MMG_ELTX_PCB.pnl\");
 
-                  for(int board=1;board<=4;board++)
+
+                   if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
                     {
+                      for(int board=1;board<=4;board++)
+                      {
+
+                      fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
+                      fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
+                      fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
+                      fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
+                      }
+                    }
+                      else // MMFE8(Analog)
+                    {
+                    int board=1;
                     fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
-//                     fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
                     fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
                     fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
                     fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
-                    }//board
-
-                }//pcb
-             }//layer
-
-
-
+                    int board=1;
+                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
+                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
+                    fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
+                    fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
+                    }
+            }//pcb
+         }//layer
         }//radial R1,R2
       }//axial Z2,Z3
      }//sector
