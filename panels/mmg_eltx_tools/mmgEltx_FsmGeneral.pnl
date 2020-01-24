@@ -274,7 +274,7 @@ E17 18
 E E E
 0
 2
-LANG:10001 145 To build up the ATCA FSM tree from scratch make sure you have stopped and THEN removed the previous ATCA FSM tree before applying these actions. 
+LANG:10001 0 
 LANG:1 145 To build up the ATCA FSM tree from scratch make sure you have stopped and THEN removed the previous ATCA FSM tree before applying these actions. 
 
 1
@@ -313,6 +313,7 @@ LANG:10001 8 Stop FSM
 "main(mapping event)
 {
   stopFsm();
+  DebugTN(\"Stop ELTX FSM Tree\",\"READY\");
 }" 0
  E E E
 13 20
@@ -338,6 +339,7 @@ LANG:10001 10 Remove FSM
 "main(mapping event)
 {
   removeFsm();
+  DebugTN(\"Remove ELTX FSM Tree\",\"READY\");
 }" 0
  E E E
 30 22
@@ -381,136 +383,27 @@ LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 
 T 
 2
-LANG:10001 37 MMG _ELTX_Chamber
+LANG:10001 35 MMG _ELTX_Board
 Create Chambers DPs
 LANG:1 9 Create DP
 "main(mapping event)
 {
    string dpType;
-   dpType = \"MMG_ELTX_Chamber\";
+   dpType = \"MMG_ELTX_Board\";
 
-  string chamberName;
-
-  int numberOfChambers=0;
-  string prefix = \"EI\";
-  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
   dyn_string side = makeDynString(\"A\",\"C\");
-  dyn_string radial= makeDynString(\"R1\",\"R2\");
-  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
 
-  for(int i_side = 1; i_side <=2 ; i_side++)
+  for(int i_side = 1; i_side <=1 ; i_side++)
   {
-      for(int i_axial = 1; i_axial <= 2; i_axial++)
-      {
-        for(int i_radial =1 ; i_radial <= 2; i_radial++)
-        {
-          for(int i_sector = 1; i_sector <=16; i_sector++)
-          {
-            chamberName = prefix  + axial[i_axial] + radial[i_radial] + side[i_side] + sector[i_sector];
-            numberOfChambers++;
-            dpCreate(\"MMG_ELTX_\"+chamberName,dpType);
-          }
-        }
-      }
-    }
+      dpCreate(getDetector()+\"_\"+\"Side\"+side[i_side],dpType);
+  }
 
-  DebugTN(\"DONE\",\"DPs of [\"+numberOfChambers+\"] chamber created\");
+  DebugTN(\"DONE\",\"MMG_ELTX_Chamber DPs created\");
 
 
 }
 " 0
  E E E
-13 24
-"createChamberDPTButton"
-""
-1 519.0000000000002 109 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-23 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  517.0000000000002 92.69530612244898 683.0000000000002 131.2238775510204
-
-T 
-2
-LANG:10001 32 MMG _ELTX_Chamber
-Create DP type
-LANG:1 9 Create DP
-"main(mapping event)
-{
-  MMG_ELTX_CreateChamberDpType();
-}
-
-MMG_ELTX_CreateChamberDpType()
-{
-
-dyn_dyn_string elements;
-dyn_dyn_int types;
-
-int i=1;
-int j=1;
-elements[i]=makeDynString(\"MMG_ELTX_Chamber\",\"\",\"\",\"\");
-types[j]=makeDynInt(DPEL_STRUCT);
-for(int layer=1;layer<=4;layer++)
-{
-    i=i+1; elements[i]=makeDynString(\"\",\"Layer\"+layer,\"\");
-    j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
-  for(int pcb=1;pcb<=8;pcb++)
-  {
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"PCB\"+pcb);
-    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
-    for(int board=1;board<=4;board++)
-    {
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"Board\"+board);
-    j=j+1; types[j]=makeDynInt(0,0,0,DPEL_STRUCT);
-
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"info\");
-    j=j+1; types[j]=makeDynInt(0,0,0,0,DPEL_STRUCT);
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"channel\");
-    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"type\");
-    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
-
-   i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"power\");
-    j=j+1; types[j]=makeDynInt(0,0,0,0,DPEL_STRUCT);
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"channel\");
-    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
-    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"isLVOn\");
-    j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRING);
-    }
-  }
-
-}//layer loop
-
-
-int x=dpTypeCreate(elements,types);
-
- if (x == 0){
-    DebugN(\"MMG_ELTX_Chamber - CREATED\");
-    this.enabled(FALSE);
-  }
-  else {
-   DebugN(\"MMG_ELTX_Chamber - FAILED\");
-  }
-
-
-}
-
-
-" 0
- E E "main()
-{
-//   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
-}" 0
-
 13 28
 "PUSH_BUTTON3"
 ""
@@ -534,6 +427,7 @@ LANG:10001 12 Generate FSM
 "main(mapping event)
 {
   generateFsm();
+  DebugTN(\"Generate ELTX FSM Tree\",\"READY\");
 }" 0
  E E E
 13 29
@@ -559,137 +453,8 @@ LANG:10001 9 Start FSM
 "main(mapping event)
 {
   startFsm();
+  DebugTN(\"Start ELTX FSM Tree\",\"READY\");
 }" 0
- E E E
-13 30
-"PUSH_BUTTON5"
-""
-1 -12 126 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-29 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  21 135 129 159
-
-T 
-1
-LANG:10001 16 Create ELTX Tree
-"main(){
-
-  prBar(\"Creating MMG_ELTX FSM tree...\");
-
-  mmgEltx_createFsmTree();
-
-}
-mmgEltx_createFsmTree()
-{
-
-  string prefix = \"EI\";
-  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
-  dyn_string side = makeDynString(\"A\",\"C\");
-  dyn_string radial= makeDynString(\"R1\",\"R2\");
-  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
-  string chamberName;
-
-    fwFsmTree_addNode(\"FSM\", \"MMG_ELTX\", \"ATLAS_CU\", 1);   // Create general FSM
-    fwFsmTree_addNode(\"MMG_ELTX\",\"STATUS_MMG_ELTX\",\"ATLAS_STATUS\",0);
-    fwFsmTree_setNodeLabel(\"MMG_ELTX\",\"ELTX\");
-    fwFsmTree_setNodePanel(\"MMG_ELTX\", \"fwAtlasMainPanels/ATL_MMG_ELTX_OVERVIEW.pnl\");
-
-  for(int i_side = 1; i_side <=1 ; i_side++)
-  {
-
-   fwFsmTree_addNode(\"MMG_ELTX\",\"MMG_SIDE_\"+side[i_side],\"ATLAS_STATUS\",0);
-   fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side],\"STATUS_MMG_SIDE_\"+side[i_side],\"ATLAS_STATUS\",0);    //
-   fwFsmTree_addNode(\"STATUS_MMG_ELTX\",\"MMG_ELTX::STATUS_MMG_SIDE_\"+side[i_side],\"ATLAS_STATUS\",0);
-   fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side],\"Side \"+side[i_side]);
-   fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side], \"fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl\");
-
-
-     for(int i_sector = 1; i_sector <=16; i_sector++)
-    {
-           fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side],\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"ATLAS_STATUS\",0);
-           fwFsmTree_addNode(\"STATUS_MMG_SIDE_\"+side[i_side],\"MMG_ELTX::STATUS_MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"ATLAS_STATUS\",0);
-           fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"ATLAS_STATUS\",0);
-           fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"Sector \"+sector[i_sector]);
-           fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector], \"fwAtlasMainPanels/ATL_MMG_ELTX_SECTOR.pnl\");
-
-      for(int i_axial = 1; i_axial <= 2; i_axial++)
-      {
-        for(int i_radial =1 ; i_radial <= 2; i_radial++)
-        {
-
-
-            chamberName = prefix  + axial[i_axial] + radial[i_radial] + side[i_side] + sector[i_sector];
-
-              fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName,\"ATLAS_STATUS\",0);
-              fwFsmTree_addNode(\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],\"MMG_ELTX::STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName,\"ATLAS_STATUS\",0);
-
-              fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName,\"ATLAS_STATUS\",0);
-              fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName,chamberName);
-              fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName, \"fwAtlasMainPanels/ATL_MMG_ELTX_CHAMBER.pnl\");
-
-               for(int layer=1;layer<=4;layer++)
-              {
-                fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer,\"ATLAS_STATUS\",0);
-                fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer,\"ATLAS_STATUS\",0);
-                fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer,\"Layer \"+layer);
-                fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer, \"fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl\");
-
-                for(int pcb=1;pcb<=8;pcb++)
-                {
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"ATLAS_STATUS\",0);
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"ATLAS_STATUS\",0);
-                    fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"PCB \"+pcb);
-                    fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"fwAtlasMainPanels/ATL_MMG_ELTX_PCB.pnl\");
-
-
-                   if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
-                    {
-                      for(int board=1;board<=4;board++)
-                      {
-
-                      fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
-                      fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
-                      fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
-                      fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
-                      }
-                    }
-                      else // MMFE8(Analog)
-                    {
-                    int board=1;
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
-                    fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
-                    fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
-                    int board=1;
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"MMG_ELTX_Board\",0);
-                    fwFsmTree_addNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,\"STATUS_\"+\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"ATLAS_DU_STATUS\",0);
-                    fwFsmTree_setNodeLabel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board,\"Board \"+board);
-                    fwFsmTree_setNodePanel(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"fwAtlasMainPanels/ATL_MMG_ELTX_BOARD.pnl\");
-                    }
-            }//pcb
-         }//layer
-        }//radial R1,R2
-      }//axial Z2,Z3
-     }//sector
-    }//side A,C
-
-    prBar(\"MMG ELTX FSM Tree: READY\");
-    DebugTN(\"MMG ELTX FSM Tree\",\"READY\");
-
-
-}
-
-
-" 0
  E E E
 30 32
 "FRAME2"
@@ -710,7 +475,7 @@ E E 0 1 1 2 1 E 0.744360902255639 0 0.4210526315789473 238.2631578947369 37.3684
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 7 Chamber
+LANG:10001 5 Board
 30 33
 "FRAME3"
 ""
@@ -734,7 +499,7 @@ LANG:10001 5 Board
 13 34
 "PUSH_BUTTON6"
 ""
-1 519 273 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 520 271 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 33 0 0 0 0 0
 E E E
@@ -748,14 +513,20 @@ LANG:1 0
 2
 LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  517 256.695306122449 683 295.2238775510204
+0  518 254.695306122449 684 293.2238775510204
 
 T 
 2
-LANG:10001 30 MMG _ELTX_Board
+LANG:10001 39 MMG _ELTX_Board_Settings
 Create DP type
 LANG:1 9 Create DP
-"main(mapping event)
+"global int i=1;
+global int j=1;
+
+global dyn_dyn_string elements;
+global dyn_dyn_int types;
+
+main(mapping event)
 {
   MMG_ELTX_CreateBoardDpType();
 }
@@ -763,31 +534,123 @@ LANG:1 9 Create DP
 MMG_ELTX_CreateBoardDpType()
 {
 
-dyn_dyn_string elements;
-dyn_dyn_int types;
-
-int i=1;
-int j=1;
-elements[i]=makeDynString(\"MMG_ELTX_Board\",\"\");
+elements[i]=makeDynString(\"MMG_ELTX_Board_Settings\",\"\");
 types[j]=makeDynInt(DPEL_STRUCT);
 
-    i=i+1; elements[i]=makeDynString(\"\",\"AnalogItems\");
-    j=j+1; types[j]=makeDynInt(0,DPEL_DYN_STRING);
-    i=i+1; elements[i]=makeDynString(\"\",\"DigitalItems\");
-    j=j+1; types[j]=makeDynInt(0,DPEL_DYN_STRING);
+// MMFE8
+    i=i+1; elements[i]=makeDynString(\"\",\"MMFE8\");
+    j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+
+    for(int vmm=0;vmm<=7;vmm++)
+    {
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"vmmPdo\"+vmm);
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    }
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"pTat1V3A\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"pTat1V3AE\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"pTat1V2D\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"0V65for1V3A\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"0V65for1V3E\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"0V6for1V2D\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"internalTemperature\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+
+ // L1DDC
+    i=i+1; elements[i]=makeDynString(\"\",\"L1DDC\");
+    j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"GBTX1_TEMP\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"GBTX2_TEMP\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"GBTX3_TEMP\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"1V5_PTAT\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"2V5_PTAT\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"P1V5_SCA\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"P2V5_SCA\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"internalTemperature\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+
+ // ADDC
+    i=i+1; elements[i]=makeDynString(\"\",\"ADDC\");
+    j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"1v5TP0\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"2v5TP0\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"boardTemp\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"feastTemp1v5\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"feastTemp2v5\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"gbtx0NTC\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"gbtx1NTC\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"internalTemperature\");
+    j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+    addLimits();
+
+
 
 
 
 int x=dpTypeCreate(elements,types);
 
  if (x == 0){
-    DebugN(\"MMG_ELTX_Board - CREATED\");
+    DebugN(\"MMG_ELTX_Board_Settings - CREATED\");
     this.enabled(FALSE);
   }
   else {
-   DebugN(\"MMG_ELTX_Board - FAILED\");
+   DebugN(\"MMG_ELTX_Board_Settings - FAILED\");
   }
 
+
+}
+
+
+void addLimits(){
+
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"downLimit\");
+    j=j+1; types[j]=makeDynInt(0,0,0,DPEL_FLOAT);
+    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"upLimit\");
+    j=j+1; types[j]=makeDynInt(0,0,0,DPEL_FLOAT);
 
 }
 
@@ -819,23 +682,18 @@ LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 
 T 
 2
-LANG:10001 32 MMG _ELTX_Board
+LANG:10001 41 MMG _ELTX_Board_Settings
 Create Board DPs
 LANG:1 9 Create DP
 "main(mapping event)
 {
    string dpType;
-   dpType = \"MMG_ELTX_Board\";
+   dpType = \"MMG_ELTX_Board_Settings\";
 
-   dyn_string boardName=makeDynString(\"MMFE8\",\"L1DDC\",\"ADDC\");
-
-   for(int i=1;i<=dynlen(boardName);i++)
-   {
-   dpCreate(\"MMG_ELTX_\"+boardName[i],dpType);
-   }
+   dpCreate(\"Board_Settings\",dpType);
 
 
-  DebugTN(\"DONE\",\"DPs of MMG_ELTX_Board created\");
+  DebugTN(\"DONE\",\"DPs of MMG_ELTX_Board_Settings created\");
 
 
 }
@@ -894,8 +752,302 @@ LANG:10001 4 View
       fwFsmUi_view(\"MMG_ELTX\", \"MMG_ELTX\");
 }" 0
  E E E
-1 38 0 "" 2
+1 52 0 "" 2
 0
+13 50
+"PUSH_BUTTON9"
+""
+1 -11 125 E E E 1 E 1 E N "black" E N "_Button" E E
+ E E
+40 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  22 134 130 158
+
+T 
+1
+LANG:10001 16 Create ELTX Tree
+"main(){
+
+  prBar(\"Creating MMG_ELTX FSM tree...\");
+
+  mmgEltx_createFsmTree();
+
+}
+mmgEltx_createFsmTree()
+{
+
+  string prefix = \"EI\";
+  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string radial= makeDynString(\"R1\",\"R2\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  string chamberName;
+  int board;
+  int pcbStart, pcbEnd;
+  int countObjects;
+
+  fwFsmAtlas_createNode(\"FSM\", \"MMG_ELTX\", \"MMG_ELTX\", \"ELTX\", \"ATL_MMG_ELTX_OVERVIEW.pnl\", 1);
+
+  for(int i_side = 1; i_side <=1 ; i_side++)
+  {
+   fwFsmAtlas_createNode(\"MMG_ELTX\", \"MMG_SIDE_\"+side[i_side], \"MMG_ELTX_Side\", \"Side \"+side[i_side], \"ATL_MMG_ELTX_SIDE.pnl\", 1);
+
+     for(int i_sector = 1; i_sector <= 16; i_sector++)
+    {
+       fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side],\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector], \"MMG_ELTX_Sector\", \"Sector \"+sector[i_sector], \"ATL_MMG_ELTX_SECTOR.pnl\", 1);
+
+      for(int i_axial = 1; i_axial <= 2; i_axial++)
+      {
+        for(int i_radial =1 ; i_radial <= 2; i_radial++)
+        {
+            chamberName = prefix  + axial[i_axial] + radial[i_radial] + side[i_side] + sector[i_sector];
+            fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],chamberName, \"MMG_ELTX_CHAMBER\",chamberName, \"ATL_MMG_ELTX_CHAMBER.pnl\", 0);
+
+          for(int layer=1;layer<=4;layer++)
+            {
+               fwFsmAtlas_createNode(chamberName,chamberName+\"_\"+\"LAYER\"+layer, \"MMG_ELTX_Layer\",\"Layer \"+layer,\"ATL_MMG_ELTX_LAYER.pnl\", 0);
+
+                if(i_radial==1)  //XM1
+                {
+                  pcbStart=1;
+                  pcbEnd=5;
+                }
+                if(i_radial==2)  //XM2
+                {
+                  pcbStart=6;
+                  pcbEnd=8;
+                }
+
+            if(layer==1 || layer==4)
+              {
+                 for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                  {
+//                    if(countObjects>993)
+//                    { break;}
+                 fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"MMG_ELTX_Pcb\",\"PCB \"+pcb, \"ATL_MMG_ELTX_PCB.pnl\", 0);
+                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
+                    {
+                      for(int board=1;board<=4;board++)
+                      {
+                      fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
+                      countObjects++;
+                      }
+                    }
+                      else // MMFE8(Analog)
+                    {
+                    board=1; //Left
+                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
+                    countObjects++;
+                    board=3; //Right
+                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
+                    countObjects++;
+                    }
+              }
+            }//layer 1/4
+            if(layer==2 || layer==3)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"MMG_ELTX_Pcb\",\"PCB \"+pcb, \"ATL_MMG_ELTX_PCB.pnl\", 0);
+
+                    board=1; //Left
+                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
+                    countObjects++;
+                    board=3; //Right
+                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
+                    countObjects++;
+                }
+              }//layer 2/3
+
+         }//layer
+        }//radial R1,R2
+      }//axial Z2,Z3
+     }//sector
+    }//side A,C
+
+    prBar(\"MMG ELTX FSM Tree: READY\");
+    DebugTN(\"MMG ELTX FSM Tree\",\"READY\");
+
+DebugN(\"DU Objects:\",countObjects);
+
+
+
+
+}
+
+
+" 0
+ E E E
+13 51
+"PUSH_BUTTON10"
+""
+1 517 105 E E E 1 E 1 E N "black" E N "_Button" E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
+LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
+0  515 88.69530612244898 681 127.2238775510204
+
+T 
+2
+LANG:10001 30 MMG _ELTX_Board
+Create DP type
+LANG:1 9 Create DP
+" global int i=1;
+ global int j=1;
+
+ global dyn_dyn_string elements;
+ global dyn_dyn_int types;
+
+main(mapping event)
+{
+  MMG_ELTX_CreateChamberDpType();
+}
+
+MMG_ELTX_CreateChamberDpType()
+{
+
+  elements[i]=makeDynString(\"MMG_ELTX_Board\",\"\");
+  types[j]=makeDynInt(DPEL_STRUCT);
+
+  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
+  dyn_string radial= makeDynString(\"R1\",\"R2\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  int pcbStart, pcbEnd;
+  int board;
+
+   for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
+    {
+        i=i+1; elements[i]=makeDynString(\"\",\"Sector\"+sector[i_sector],\"\");
+        j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
+
+     for(int i_axial = 1; i_axial <= dynlen(axial); i_axial++)
+      {
+        i=i+1; elements[i]=makeDynString(\"\",\"\",axial[i_axial],\"\");
+        j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
+
+        for(int i_radial =1 ; i_radial <= dynlen(radial); i_radial++)
+        {
+          i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",radial[i_radial],\"\");
+          j=j+1; types[j]=makeDynInt(0,0,0,DPEL_STRUCT);
+        for(int layer=1;layer<=4;layer++)
+          {
+            i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"Layer\"+layer,\"\");
+            j=j+1; types[j]=makeDynInt(0,0,0,0,DPEL_STRUCT);
+
+            if(i_radial==1)  //XM1
+             {
+              pcbStart=1;
+              pcbEnd=5;
+             }
+            if(i_radial==2)  //XM2
+             {
+              pcbStart=6;
+              pcbEnd=8;
+             }
+
+            if(layer==1 || layer==4)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                  i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"PCB\"+pcb,\"\");
+                  j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRUCT);
+                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
+                    {
+                     for(int board=1;board<=4;board++)
+                      {
+                        i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
+                        j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
+                       addBoardPart();
+                      }
+                     }
+                   else // MMFE8(Analog)
+                    {
+                    board=1; //Left
+                   i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
+                   j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
+                   addBoardPart();
+                   board=3; //Right
+                   i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
+                   j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
+                   addBoardPart();
+                    }
+                }
+              }//layer 1 || 4
+            if(layer==2 || layer==3)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                 i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"PCB\"+pcb,\"\");
+                 j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRUCT);
+                 board=1; //Left
+                 i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
+                 j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
+                 addBoardPart();
+                 board=3; //Right
+                 i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
+                 j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
+                 addBoardPart();
+                }
+              }//layer 2 || 3
+          }//layer
+        }//radial
+      }//axial
+    }//sector
+
+int x=dpTypeCreate(elements,types);
+
+ if (x == 0){
+    DebugN(\"MMG_ELTX_Board - CREATED\");
+    this.enabled(FALSE);
+  }
+  else {
+   DebugN(\"MMG_ELTX_Board - FAILED\");
+  }
+
+}
+
+void addBoardPart(){
+
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"info\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,DPEL_STRUCT);
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"channel\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"type\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
+
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"power\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,DPEL_STRUCT);
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"channel\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"isLVOn\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_BOOL);
+
+}
+
+" 0
+ E E "main()
+{
+//   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
+}" 0
+
 0
 LAYER, 1 
 1

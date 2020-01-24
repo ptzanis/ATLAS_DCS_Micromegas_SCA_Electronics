@@ -358,6 +358,8 @@ E "main(int button)
   else
     setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"red\");
 
+  DebugN(setupAnalogItems);
+
 }" 0
 
 30 21

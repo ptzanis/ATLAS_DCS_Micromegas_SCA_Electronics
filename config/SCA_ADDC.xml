@@ -1,4 +1,4 @@
-
+<SCA>
 	    <AnalogInputSystem name="ai" generalRefreshRate="1">
 		<AnalogInput id="0" name="1v5TP0"> <CalculatedVariable name="power" value="$_.value*2.0" /> </AnalogInput>
 		<AnalogInput id="1" name="1v5TP1"> <CalculatedVariable name="power" value="$_.value*2.0" /> </AnalogInput>
@@ -52,4 +52,4 @@
 		<I2cMaster sclPadCmosOutput="false" name="art1Core" masterId="6" busSpeed="100">
 			<I2cSlave numberOfBytes="2" address="16" addressingMode="7" name="art1Core"></I2cSlave>
 		</I2cMaster>
-	
+</SCA>

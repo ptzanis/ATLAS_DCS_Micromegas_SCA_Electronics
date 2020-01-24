@@ -1,11 +1,11 @@
 string eltxProjectName(){
 
-  return "ATLMMGELTX:";
+  return getSystemName();
 }
 
 
 string getDetector(){
-    return substr($obj,0,3);
+    return "MMG";
 }
 
 string getSide(){
@@ -17,25 +17,46 @@ string getSector(){
 }
 
 string getChamber(){
-    return substr($obj,21,9);
+    return substr($obj,0,9);
 }
 
+string getChamberSide(){
+    return substr($obj,6,1);
+}
+
+string getChamberZaxis(){
+    return substr($obj,3,1);
+}
+
+string getChamberRaxis(){
+    return substr($obj,5,1);
+}
+
+string getChamberSector(){
+    return substr($obj,7,2);
+}
+
+string getChamberDomain(){
+  string domain;
+  domain=getDetector()+"_SIDE_"+getChamberSide()+"_SECTOR_"+getChamberSector();
+  return domain;
+}
 string getLayer(){
-    return substr($obj,36,1);
+    return substr($obj,15,1);
 }
 
 string getPCB(){
-    return substr($obj,41,1);
+    return substr($obj,20,1);
 }
 
 string getBoard(){
-    return substr($obj,48,1);
+    return substr($obj,27,1);
 }
 
 string getBoardChannel(){
 
   string channel;
-  dpGet(eltxProjectName()+getDetector()+"_ELTX_"+getChamber()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.channel",channel);
+  dpGet(eltxProjectName()+getDetector()+"_Side"+getChamberSide()+".Sector"+getChamberSector()+".Z"+getChamberZaxis()+".R"+getChamberRaxis()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.channel",channel);
   return channel;
 
 }
@@ -59,7 +80,7 @@ string getSCAAddress(string channel){
 string getBoardType(){
 
   string type;
-  dpGet(eltxProjectName()+getDetector()+"_ELTX_"+getChamber()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.type",type);
+  dpGet(eltxProjectName()+getDetector()+"_Side"+getChamberSide()+".Sector"+getChamberSector()+".Z"+getChamberZaxis()+".R"+getChamberRaxis()+".Layer"+getLayer()+".PCB"+getPCB()+".Board"+getBoard()+".info.type",type);
   return type;
 
 }
@@ -100,14 +121,14 @@ string getOPCServer()
 
 }
 
-dyn_string getAnalogItemsOfBoard(string board,string boardType){
+dyn_string getAnalogItemsOfBoard(string boardType){
 
   dyn_string analogItemsOfBoard;
-
-  dpGet("MMG_ELTX_"+boardType+".AnalogItems",analogItemsOfBoard);
-
-
-
+  analogItemsOfBoard=dpNames("Board_Settings."+boardType+".*","MMG_ELTX_Board_Settings");
+  for(int i=1;i<=dynlen(analogItemsOfBoard);i++)
+  {
+    strreplace(analogItemsOfBoard[i],eltxProjectName()+"Board_Settings."+boardType+".","");
+  }
   return analogItemsOfBoard;
 
 }
