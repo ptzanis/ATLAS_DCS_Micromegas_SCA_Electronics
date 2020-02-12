@@ -1,7 +1,7 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 500 412 N "_3DFace" 0
+PANEL,-1 -1 1014 717 N "_3DFace" 0
 E E E E E 1 -1 -1 0  9 38
 ""0  1
 E E 3
@@ -14,12 +14,1099 @@ DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
 LAYER, 0 
 1
 LANG:10001 0 
-13 0
+4 2
+"LINE9"
+""
+1 74.75 273 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  74.75 273 186.75 273
+4 3
+"LINE11"
+""
+1 37.75 81 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  37.75 81 224.7499999999999 82
+4 4
+"LINE12"
+""
+1 44.75 111 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  44.75 111 218.7499999999999 112
+4 5
+"LINE13"
+""
+1 68.75 242 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  68.75 242 191.75 242
+4 6
+"LINE14"
+""
+1 63.74999999999994 212 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  63.74999999999994 212 196.7499999999999 212
+4 7
+"LINE15"
+""
+1 57.75 180 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  57.75 180 203.7500000000001 180
+4 8
+"LINE18"
+""
+1 129.75 51 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  129.75 51 129.75 301
+10 9
+"POLYGON8"
+""
+1 404 90 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -39 1 E 5 404 90
+405.5 120.5
+312 120
+304.625 91
+404 90
+ 1
+10 10
+"POLYGON9"
+""
+1 405.5 120.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -39 1 E 4 405.5 120.5
+498.9999999999999 121
+504.625 91
+404 90
+ 1
+10 11
+"POLYGON10"
+""
+1 405.5 120.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -39 1 E 4 405.5 120.5
+406 150.5
+319.0000000000001 150
+312 120
+ 1
+10 12
+"POLYGON11"
+""
+1 493 151 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -39 1 E 4 493 151
+498.9999999999999 121
+405.5 120.5
+406 150.5
+ 1
+10 13
+"POLYGON12"
+""
+1 406 150.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -39 1 E 4 406 150.5
+404.625 181
+324.625 181
+319.0000000000001 150
+ 1
+10 14
+"POLYGON13"
+""
+1 406 150.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -39 1 E 4 406 150.5
+493 151
+484.625 181
+404.625 181
+ 1
+10 15
+"POLYGON14"
+""
+1 404.625 181 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 404.625 181
+404 215
+332 214
+324.625 181
+ 1
+10 16
+"POLYGON15"
+""
+1 484.625 181 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 484.625 181
+478.0000000000001 214
+404 215
+404.625 181
+ 1
+10 17
+"POLYGON16"
+""
+1 478.0000000000001 214 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 478.0000000000001 214
+470.9999999999999 246
+404.4999999999999 246
+404 215
+ 1
+10 18
+"POLYGON17"
+""
+1 404.4999999999999 246 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 404.4999999999999 246
+337.9999999999999 246
+332 214
+404 215
+ 1
+10 19
+"POLYGON18"
+""
+1 404.4999999999999 246 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 404.4999999999999 246
+404.5 276
+343 276
+337.9999999999999 246
+ 1
+10 20
+"POLYGON19"
+""
+1 404.5 276 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 404.5 276
+466 276
+470.9999999999999 246
+404.4999999999999 246
+ 1
+10 21
+"POLYGON20"
+""
+1 405 307 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 405 307
+349 307
+343 276
+404.5 276
+ 1
+10 22
+"POLYGON21"
+""
+1 405 307 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 405 307
+461 307
+466 276
+404.5 276
+ 1
+10 51
+"8"
+""
+1 30.375 52 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+51 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 5 30.375 52
+230.375 52
+224.7499999999999 82
+37.75 81
+30.375 52
+ 1
+10 52
+"7"
+""
+1 224.7499999999999 82 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 224.7499999999999 82
+218.75 112
+44.75000000000011 111
+37.75 81
+ 1
+10 53
+"6"
+""
+1 210.375 142 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 210.375 142
+218.75 112
+44.75000000000011 111
+50.375 142
+ 1
+10 54
+"5"
+""
+1 210.375 147 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 210.375 147
+203.7500000000001 180
+57.75 180
+50.375 147
+ 1
+10 55
+"4"
+""
+1 203.7500000000001 180 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+55 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 203.7500000000001 180
+196.7499999999999 212
+63.74999999999989 212
+57.75 180
+ 1
+10 56
+"3"
+""
+1 196.7499999999999 212 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 196.7499999999999 212
+191.75 242
+68.75 242
+63.74999999999989 212
+ 1
+10 57
+"2"
+""
+1 191.75 242 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 191.75 242
+186.75 273
+74.75 273
+68.75 242
+ 1
+10 23
+"POLYGON22"
+""
+1 354.625 341 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 354.625 341
+404 340
+405 307
+349 307
+ 1
+10 24
+"POLYGON23"
+""
+1 404 340 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 -274.25 -34 1 E 4 404 340
+454.625 341
+461 307
+405 307
+ 1
+10 25
+"POLYGON4"
+""
+1 580 180 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 2 1 2 1 E 1 0 1 -134.25 -38 1 E 4 580 180
+600 90
+400 90
+420 180
+ 1
+10 26
+"POLYGON3"
+""
+1 580 180 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 2 1 2 1 E 1 0 1 -134.25 -38 1 E 4 580 180
+550 340
+450 340
+420 180
+ 1
+10 27
+"POLYGON7"
+""
+1 304.625 91 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 2 1 2 1 E 1 0 1 176.375 -40.5 1 E 4 304.625 91
+504.625 91
+454.625 341
+354.625 341
+ 1
+4 28
+"LINE19"
+""
+1 210.95712890625 419.7250996015936 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  210.95712890625 419.7250996015936 280.09962890625 419.7250996015936
+4 29
+"LINE20"
+""
+1 188.11541015625 346.7131474103585 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  188.11541015625 346.7131474103585 303.5586914062499 347.1035856573705
+4 30
+"LINE21"
+""
+1 192.43681640625 358.4262948207171 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  192.43681640625 358.4262948207171 299.85462890625 358.8167330677291
+4 31
+"LINE22"
+""
+1 207.25306640625 407.6215139442232 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  207.25306640625 407.6215139442232 283.18634765625 407.6215139442232
+4 32
+"LINE23"
+""
+1 204.16634765625 395.9083665338646 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  204.16634765625 395.9083665338646 286.27306640625 395.9083665338646
+4 33
+"LINE24"
+""
+1 200.46228515625 383.4143426294821 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  200.46228515625 383.4143426294821 290.59447265625 383.4143426294821
+4 34
+"LINE25"
+""
+1 244.91103515625 335 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  244.91103515625 335 244.91103515625 432.609561752988
+10 35
+"POLYGON24"
+""
+1 404 90 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 5 404 90
+405.5 120.5
+312 120
+304.625 91
+404 90
+ 1
+10 36
+"POLYGON25"
+""
+1 405.5 120.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 405.5 120.5
+498.9999999999999 121
+504.625 91
+404 90
+ 1
+10 37
+"POLYGON26"
+""
+1 405.5 120.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 405.5 120.5
+406 150.5
+319.0000000000001 150
+312 120
+ 1
+10 38
+"POLYGON27"
+""
+1 493 151 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+38 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 493 151
+498.9999999999999 121
+405.5 120.5
+406 150.5
+ 1
+10 39
+"POLYGON28"
+""
+1 406 150.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+39 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 406 150.5
+404.625 181
+324.625 181
+319.0000000000001 150
+ 1
+10 40
+"POLYGON29"
+""
+1 406 150.5 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+40 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 406 150.5
+493 151
+484.625 181
+404.625 181
+ 1
+10 41
+"POLYGON30"
+""
+1 404.625 181 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 404.625 181
+404 215
+332 214
+324.625 181
+ 1
+10 42
+"POLYGON31"
+""
+1 484.625 181 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+42 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 484.625 181
+478.0000000000001 214
+404 215
+404.625 181
+ 1
+10 43
+"POLYGON32"
+""
+1 478.0000000000001 214 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+43 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 478.0000000000001 214
+470.9999999999999 246
+404.4999999999999 246
+404 215
+ 1
+10 44
+"POLYGON33"
+""
+1 404.4999999999999 246 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+44 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 404.4999999999999 246
+337.9999999999999 246
+332 214
+404 215
+ 1
+10 45
+"POLYGON34"
+""
+1 404.4999999999999 246 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+45 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 404.4999999999999 246
+404.5 276
+343 276
+337.9999999999999 246
+ 1
+10 46
+"POLYGON35"
+""
+1 404.5 276 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+46 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 404.5 276
+466 276
+470.9999999999999 246
+404.4999999999999 246
+ 1
+10 47
+"POLYGON36"
+""
+1 405 307 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 405 307
+349 307
+343 276
+404.5 276
+ 1
+10 48
+"POLYGON37"
+""
+1 405 307 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 405 307
+461 307
+466 276
+404.5 276
+ 1
+10 49
+"POLYGON38"
+""
+1 354.625 341 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 354.625 341
+404 340
+405 307
+349 307
+ 1
+10 50
+"POLYGON39"
+""
+1 404 340 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+50 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 0.61734375 0 0.3904382470119522 -4.49583984374998 299.8605577689243 1 E 4 404 340
+454.625 341
+461 307
+405 307
+ 1
+10 58
+"1"
+""
+1 186.75 273 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 186.75 273
+180.375 307
+80.375 307
+74.75 273
+ 1
+13 59
 "PUSH_BUTTON1"
 ""
-1 62 62 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 720 188 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
-0 0 0 0 0 0
+59 0 0 0 0 0
 E E E
 8
 1
@@ -29,36 +1116,31 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  60 40 233 98
+0  718 94 949 297
 
 T 
 1
 LANG:10001 12 PUSH_BUTTON1
 "main(mapping event)
 {
-  mapping root;
-  mapping child_map;
-  dyn_string child_dyn;
-  child_map[\"one\"] = 1;
-  child_map[\"two\"] = 2;
-  child_map[\"three\"] = 3;
-  child_dyn[1] = \"one\";
-  child_dyn[2] = \"two\";
-  child_dyn[3] = \"three\";
-  root[\"c1\"] = child_map;
-  root[\"c2\"] = child_dyn;
-  DebugN(\"root =>child1 =>element2:\" + root[\"c1\"][\"two\"]); //Output: 2
-  DebugN(\"root =>child2 =>element1:\" + root[\"c2\"][1]); //Output: one
-}" 0
+
+  DebugN(getAnalogItemsOfBoard(\"MMFE8\"));
+
+
+
+
+}
+
+" 0
  E E E
-14 1
-"TEXT_FIELD1"
+13 60
+"PUSH_BUTTON2"
 ""
-1 60 172 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 173 645 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
-1 0 0 0 0 0
+60 0 0 0 0 0
 E E E
-0
+8
 1
 LANG:10001 0 
 
@@ -66,12 +1148,35 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  58 146 452 213
-3 "0s" 0 0 0 0 0 -1  E "main()
+0  171 617 300 688
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON2
+"main(mapping event)
 {
-  this.text(getSystemName());
+  dyn_string dpe=makeDynString(\"ATLMMGELTX:MMG_MMFE8_L1P1_IPL/ai/internalTemperature.temperature\");
+
+  bool configExists;
+ 	int alertConfigType;
+  dyn_string alertTexts;
+	dyn_float alertLimits;
+	dyn_string alertClasses;
+ dyn_string summaryDpeList;
+					string alertPanel;
+					dyn_string alertPanelParameters;
+					string alertHelp;
+					bool isActive;
+					dyn_string exceptionInfo;
+
+  fwAlertConfig_get(dpe, configExists, alertConfigType, alertTexts, alertLimits, alertClasses, summaryDpeList, alertPanel,alertPanelParameters,alertHelp,isActive,exceptionInfo);
+
+
+ DebugN(configExists,isActive,alertTexts,alertLimits);
+
+
 }" 0
- E
+ E E E
 0
 LAYER, 1 
 1
@@ -101,4 +1206,10 @@ LAYER, 7
 1
 LANG:10001 0 
 0
+1 0 "SHAPE_GROUP1" -1
+23 0 
+28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 
+
+"layoutAlignment" "AlignNone"
+"" ""
 0

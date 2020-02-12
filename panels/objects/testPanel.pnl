@@ -1101,6 +1101,82 @@ E E 0 1 1 2 1 E 1 0 1 536.2499999999999 302.609561752988 1 E 4 186.75 273
 80.375 307
 74.75 273
  1
+13 59
+"PUSH_BUTTON1"
+""
+1 720 188 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+59 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  718 94 949 297
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON1
+"main(mapping event)
+{
+
+  DebugN(getAnalogItemsOfBoard(\"MMFE8\"));
+
+
+
+
+}
+
+" 0
+ E E E
+13 60
+"PUSH_BUTTON2"
+""
+1 173 645 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+60 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  171 617 300 688
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON2
+"main(mapping event)
+{
+  dyn_string dpe=makeDynString(\"ATLMMGELTX:MMG_MMFE8_L1P1_IPL/ai/internalTemperature.temperature\");
+
+  bool configExists;
+ 	int alertConfigType;
+  dyn_string alertTexts;
+	dyn_float alertLimits;
+	dyn_string alertClasses;
+ dyn_string summaryDpeList;
+					string alertPanel;
+					dyn_string alertPanelParameters;
+					string alertHelp;
+					bool isActive;
+					dyn_string exceptionInfo;
+
+  fwAlertConfig_get(dpe, configExists, alertConfigType, alertTexts, alertLimits, alertClasses, summaryDpeList, alertPanel,alertPanelParameters,alertHelp,isActive,exceptionInfo);
+
+
+ DebugN(configExists,isActive,alertTexts,alertLimits);
+
+
+}" 0
+ E E E
 0
 LAYER, 1 
 1
