@@ -1,0 +1,373 @@
+V 14
+1
+LANG:1 0 
+PANEL,-1 -1 406 156 N "_3DFace" 0
+"main()
+{
+  init();
+}
+" 0
+ E E E E 1 -1 -1 0  251 55
+""0  1
+E "#uses \"fwInstallation.ctl\"
+
+/** Dollar parameters:
+  * $text
+  * $okLabel = \"Ok\"
+  * $cancelLabel = \"Cancel\"
+  * $icon = \"INFO\" [allowed: \"INFO\", \"WARNING\", <pathToCustonIcon>]
+  * $help = \"\"
+  */
+
+/** Returned values:
+  * btnCancel, panelClose -> 0.0, \"CANCEL\"
+  * btnOk -> 1.0, \"OK\"
+  */
+
+const string DOLLAR_PARAM_TEXT = \"$text\";
+const string DOLLAR_PARAM_OK_LABEL = \"$okLabel\";
+const string DOLLAR_PARAM_CANCEL_LABEL = \"$cancelLabel\";
+const string DOLLAR_PARAM_ICON = \"$icon\";
+const string DOLLAR_PARAM_HELP = \"$help\";
+
+const string ICON_ID_INFO = \"INFO\";
+const string ICON_ID_WARNING = \"WARNING\";
+
+const string DEFAULT_OK_LABEL = \"OK\";
+const string DEFAULT_CANCEL_LABEL = \"Cancel\";
+const string DEFAULT_ICON = ICON_ID_INFO;
+const string DEFAULT_TITLE = \"Info\";
+
+
+void init(){
+  if(!isDollarDefined(DOLLAR_PARAM_TEXT)){
+    fwInstallation_throw(\"Text to display in the messageInfo2 panel is not provided. Cannot continue panel initialization\", \"ERROR\");
+    return;
+  }
+  string text = getDollarValue(DOLLAR_PARAM_TEXT);
+  string okLabel = isDollarDefined(DOLLAR_PARAM_OK_LABEL)?getDollarValue(DOLLAR_PARAM_OK_LABEL):DEFAULT_OK_LABEL;
+  string cancelLabel = isDollarDefined(DOLLAR_PARAM_CANCEL_LABEL)?getDollarValue(DOLLAR_PARAM_CANCEL_LABEL):DEFAULT_CANCEL_LABEL;
+  string iconId = isDollarDefined(DOLLAR_PARAM_ICON)?getDollarValue(DOLLAR_PARAM_ICON):DEFAULT_ICON;
+  string help = isDollarDefined(DOLLAR_PARAM_HELP)?getDollarValue(DOLLAR_PARAM_HELP):\"\";
+  
+  showTextMessage(text);
+  setButtonsLabel(okLabel, cancelLabel);
+  loadIcon(getIcon(iconId));
+  initHelp(help);
+}
+
+void showTextMessage(string text){
+  textMessage.text = text;
+}
+
+void setButtonsLabel(string okLabel, string cancelLabel){
+  btnOk.text = okLabel;
+  btnCancel.text = cancelLabel;
+}
+
+string getIcon(string iconId){
+  switch(iconId){
+    case \"INFO\":    return getPath(PICTURES_REL_PATH, \"StandardIcons/info_40.png\");
+    case \"WARNING\": return getPath(PICTURES_REL_PATH, \"StandardIcons/Attention_40.png\");
+  } // default: return iconId (assume that this is a path to custom icon)
+  return iconId;
+}
+
+void loadIcon(string icon){
+  if(icon == \"\" || access(icon, R_OK) != 0){
+    fwInstallation_throw(\"Icon file: \" + icon + \" does not exist, default icon is displayed\", \"WARNING\");
+  }
+  rectIconPlaceholder.fill(\"[pattern,[fit,any,\" + icon + \"]]\");
+}
+
+string helpLink;
+
+void initHelp(string help){
+  if(help == \"\"/* || access(helpLink, R_OK) != 0*/){ // help path is relative, cannot be tested with access()
+    btnHelp.visible = false; // note that spacer has minimum&maximum size + size policy set in order to prevent expansion of text box to the top of the panel when help button is hidden.
+    return;
+  }
+  helpLink = help;
+}
+
+const int SELECTED_CANCEL = 0;
+const int SELECTED_OK = 1;
+
+const string TEXT_CANCEL = \"CANCEL\";
+const string TEXT_OK = \"OK\";
+
+string getSelectionString(int selection){
+  switch(selection){
+    case SELECTED_CANCEL: return TEXT_CANCEL;
+    case SELECTED_OK:     return TEXT_OK;
+  } // default
+  return \"\";
+}
+
+
+void panelCloseWithReturn(int selection){
+  if(isEvConnOpen()){
+    PanelOffReturn(makeDynFloat(selection), makeDynString(getSelectionString(selection)));
+  }else{
+    panelOff(makeDynAnytype(myModuleName(), myPanelName(),
+                            makeDynAnytype(selection, getSelectionString(selection))                            
+                            ));
+  }
+}
+
+" 0
+ 3
+"CBRef" "0"
+"EClose" "main()
+{
+  panelCloseWithReturn(SELECTED_CANCEL);
+}
+" 0
+
+"dpi" "96"
+1 1 0 0 0 0 1 0
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 6 Layer1
+13 8
+"btnCancel"
+""
+1 242.5 87.08333333333334 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 27 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+0  320.5 121.5 398.5 148.5
+
+T 
+1
+LANG:1 6 Cancel
+"main()
+{
+  panelCloseWithReturn(SELECTED_CANCEL);
+}
+" 0
+ E E E
+13 0
+"btnOk"
+""
+1 239.4999999999999 121.5833333333333 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+0  239.5 121.5 317.5 148.5
+
+T 
+1
+LANG:1 2 OK
+"main()
+{
+  panelCloseWithReturn(SELECTED_OK);
+}
+" 0
+ E E E
+6 16
+"rectBackground"
+""
+1 0 -5 E E E 1 E 1 E N "_Transparent" E N "FwInstallationCorporateColor" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"sizePolicy" "Preferred Expanding"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.8108108108108109 0 0.9748427672955975 0 0 1 E 0 0 74 159
+6 10
+"rectIconPlaceholder"
+""
+1 14 14 E E E 1 E 1 E N "_3DFace" E N "_3DFace" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"minimumSize" "41 41"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E -1 0 1 0 1 E 1 0 1 -4.5 23 2  1 3  "pictures/StandardIcons/info_40.png" 13434828 E 15 35 55 75
+13 17
+"btnHelp"
+""
+1 363.02 13.18 E E E 1 E 1 E N {0,0,0} E N "_Button" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 26 Arial,-1,13,5,50,0,0,0,0,0
+0  367.5 7.5 398.5 34.5
+
+P 
+14215660
+"pictures/help_2.xpm"
+1
+LANG:1 0 
+"main()
+{
+  std_help(helpLink);
+}
+
+" 0
+ E E E
+29 18
+"textMessage"
+""
+1 70 39 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"readOnly" "bool TRUE"
+"textInteractionFlags" "enum 0"
+"layoutAlignment" "AlignNone"
+1
+LANG:1 26 Arial,-1,13,5,50,0,0,0,0,0
+0  70 39 396 116
+15 PVSS.TextEdit.1
+0
+E32 19
+"SPACER1"
+""
+1 70 123 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"transparentForMouse" ""
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 70 123 234 146 1
+32 20
+"SPACER2"
+""
+1 70 9 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "24 -1"
+"maximumSize" "-1 24"
+"sizePolicy" "Expanding Fixed"
+"layoutAlignment" "AlignNone"
+ 70 9 362 32 1
+0
+LAYER, 1 
+1
+LANG:1 6 Layer2
+0
+LAYER, 2 
+1
+LANG:1 6 Layer3
+0
+LAYER, 3 
+1
+LANG:1 6 Layer4
+0
+LAYER, 4 
+1
+LANG:1 6 Layer5
+0
+LAYER, 5 
+1
+LANG:1 6 Layer6
+0
+LAYER, 6 
+1
+LANG:1 6 Layer7
+0
+LAYER, 7 
+1
+LANG:1 6 Layer8
+0
+4 0 "LEFT_BAR" -1
+2 0 
+16 10 
+
+"S 10" "0 0 1 1"
+"" ""
+1 1 0 0
+4 1 "LAYOUT_GROUP2" 4
+3 0 
+19 0 8 
+
+"S 19" "0 0 1 1"
+"S 0" "1 0 1 1"
+"S 8" "2 0 1 1"
+"" ""
+0 1 0 0
+4 2 "LAYOUT_GROUP3" 4
+2 0 
+20 17 
+
+"S 20" "0 0 1 1"
+"S 17" "1 0 1 1"
+"" ""
+0 1 0 0
+4 3 "LAYOUT_GROUP4" 4
+1 0 
+18 
+
+"S 18" "0 0 1 1"
+"" ""
+0 2 0 0
+4 4 "CONTENT" -1
+0 3 
+
+1 2 3 
+"G 1" "2 0 1 1"
+"G 2" "0 0 1 1"
+"G 3" "1 0 1 1"
+"" ""
+0 2 1 9 9 9 9 0
+0

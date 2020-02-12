@@ -1,0 +1,3681 @@
+#uses "MMG_ELTX_Board.ctl"
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB1_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB1_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB1_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB1_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB1_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB1_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB1_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB2_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB2_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB2_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB2_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB2_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB2_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB2_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB2_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB2_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB2_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB3_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB3_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB3_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB3_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB3_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB3_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB4_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB4_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB4_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB4_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB4_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB4_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB5_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB5_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB5_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER1_PCB5_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER1_PCB5_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER1_PCB5_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB1_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB1_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB1_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB1_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB1_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB1_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB1_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB1_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB1_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB1_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB2_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB2_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB2_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB2_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB2_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB2_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB2_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB2_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB2_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB2_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB3_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB3_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB3_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB3_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB3_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB3_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB3_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB3_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB3_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB3_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB4_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB4_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB4_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB4_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB4_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB4_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB4_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB4_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB4_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB4_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB5_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB5_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB5_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB5_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB5_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB5_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB5_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER2_PCB5_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER2_PCB5_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER2_PCB5_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB1_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB1_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB1_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB1_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB1_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB1_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB1_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB1_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB1_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB1_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB2_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB2_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB2_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB2_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB2_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB2_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB2_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB2_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB2_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB2_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB3_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB3_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB3_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB3_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB3_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB3_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB3_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB3_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB3_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB3_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB4_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB4_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB4_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB4_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB4_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB4_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB4_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB4_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB4_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB4_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB5_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB5_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB5_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB5_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB5_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB5_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB5_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER3_PCB5_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER3_PCB5_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER3_PCB5_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB1_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB1_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB1_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB1_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB1_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB1_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB1_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB1_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB1_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB1_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB2_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB2_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB2_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB2_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB2_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB2_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB2_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB2_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB2_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB2_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB3_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB3_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB3_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB3_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB3_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB3_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB4_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB4_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB4_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB4_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB4_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB4_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB5_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB5_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB5_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R1A01_LAYER4_PCB5_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R1A01_LAYER4_PCB5_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R1A01_LAYER4_PCB5_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB6_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB6_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB6_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB6_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB6_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB6_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB7_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB7_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB7_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB7_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB7_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB7_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB7_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB7_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB7_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB7_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB8_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB8_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB8_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB8_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB8_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB8_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB8_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER1_PCB8_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER1_PCB8_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER1_PCB8_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB6_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB6_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB6_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER2_PCB6_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB6_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB6_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB6_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB6_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER2_PCB6_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB6_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB7_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB7_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB7_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER2_PCB7_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB7_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB7_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB7_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB7_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER2_PCB7_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB7_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB8_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB8_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB8_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER2_PCB8_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB8_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB8_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB8_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER2_PCB8_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER2_PCB8_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER2_PCB8_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB6_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB6_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB6_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER3_PCB6_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB6_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB6_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB6_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB6_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER3_PCB6_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB6_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB7_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB7_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB7_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER3_PCB7_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB7_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB7_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB7_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB7_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER3_PCB7_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB7_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB8_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB8_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB8_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER3_PCB8_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB8_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB8_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB8_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER3_PCB8_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER3_PCB8_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER3_PCB8_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB6_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB6_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB6_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB6_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB6_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB6_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB7_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB7_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB7_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB7_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB7_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB7_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB7_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB7_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB7_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB7_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB8_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB8_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB8_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB8_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB8_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB8_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB8_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ2R2A01_LAYER4_PCB8_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ2R2A01_LAYER4_PCB8_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ2R2A01_LAYER4_PCB8_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB1_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB1_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB1_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB1_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB1_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB1_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB1_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB2_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB2_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB2_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB2_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB2_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB2_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB2_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB2_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB2_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB2_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB3_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB3_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB3_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB3_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB3_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB3_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB4_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB4_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB4_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB4_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB4_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB4_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB5_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB5_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB5_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER1_PCB5_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER1_PCB5_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER1_PCB5_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB1_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB1_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB1_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB1_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB1_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB1_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB1_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB1_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB1_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB1_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB2_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB2_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB2_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB2_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB2_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB2_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB2_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB2_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB2_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB2_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB3_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB3_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB3_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB3_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB3_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB3_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB3_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB3_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB3_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB3_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB4_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB4_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB4_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB4_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB4_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB4_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB4_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB4_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB4_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB4_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB5_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB5_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB5_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB5_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB5_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB5_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB5_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER2_PCB5_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER2_PCB5_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER2_PCB5_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB1_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB1_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB1_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB1_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB1_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB1_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB1_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB1_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB1_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB1_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB2_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB2_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB2_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB2_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB2_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB2_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB2_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB2_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB2_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB2_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB3_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB3_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB3_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB3_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB3_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB3_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB3_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB3_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB3_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB3_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB4_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB4_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB4_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB4_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB4_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB4_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB4_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB4_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB4_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB4_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB5_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB5_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB5_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB5_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB5_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB5_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB5_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER3_PCB5_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER3_PCB5_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER3_PCB5_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB1_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB1_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB1_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB1_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB1_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB1_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB1_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB1_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB1_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB1_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB2_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB2_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB2_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB2_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB2_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB2_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB2_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB2_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB2_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB2_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB3_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB3_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB3_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB3_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB3_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB3_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB4_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB4_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB4_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB4_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB4_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB4_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB5_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB5_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB5_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R1A01_LAYER4_PCB5_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R1A01_LAYER4_PCB5_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R1A01_LAYER4_PCB5_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB6_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB6_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB6_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB6_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB6_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB6_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB7_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB7_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB7_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB7_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB7_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB7_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB7_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB7_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB7_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB7_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB8_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB8_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB8_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB8_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB8_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB8_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB8_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER1_PCB8_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER1_PCB8_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER1_PCB8_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB6_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB6_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB6_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER2_PCB6_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB6_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB6_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB6_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB6_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER2_PCB6_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB6_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB7_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB7_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB7_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER2_PCB7_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB7_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB7_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB7_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB7_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER2_PCB7_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB7_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB8_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB8_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB8_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER2_PCB8_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB8_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB8_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB8_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER2_PCB8_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER2_PCB8_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER2_PCB8_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB6_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB6_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB6_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER3_PCB6_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB6_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB6_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB6_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB6_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER3_PCB6_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB6_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB7_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB7_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB7_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER3_PCB7_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB7_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB7_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB7_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB7_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER3_PCB7_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB7_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB8_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB8_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB8_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER3_PCB8_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB8_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB8_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB8_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER3_PCB8_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER3_PCB8_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER3_PCB8_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD1_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD1");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD1_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB6_BOARD1");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD1");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB6_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB6_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD4_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD4");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB6_BOARD4_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB6_BOARD4");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB6_BOARD4");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB7_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB7_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB7_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB7_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB7_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB7_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB7_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB7_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB7_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB7_BOARD3");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB8_BOARD2_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB8_BOARD2");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB8_BOARD2_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB8_BOARD2");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB8_BOARD2");
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB8_BOARD3_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB8_BOARD3");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_01", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_01", devdp);
+}
+
+MMG_SIDE_A_SECTOR_01_EIZ3R2A01_LAYER4_PCB8_BOARD3_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_01 EIZ3R2A01_LAYER4_PCB8_BOARD3");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("EIZ3R2A01_LAYER4_PCB8_BOARD3");
+}
+
