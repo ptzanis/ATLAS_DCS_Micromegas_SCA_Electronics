@@ -1,7 +1,7 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 776 614 N "FwAtlasBg" 0
+PANEL,-1 -1 770 614 N "FwAtlasBg" 0
 "main()
 {
   addLogoNTUABNL(580,550);
@@ -75,7 +75,7 @@ LANG:10001 0
 2 2
 "PRIMITIVE_TEXT6"
 ""
-1 20 15 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 20 15 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 1 0 0 0 0 0
 E E E
@@ -99,7 +99,7 @@ LANG:1 56 ATLAS MDT  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
 4 3
 "LINE2"
 ""
-1 5 7 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 5 7 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 2 0 0 0 0 0
 E E E
@@ -116,7 +116,7 @@ E E 0 1 1 2 1 E  5 7 725 7
 4 4
 "LINE3"
 ""
-1 5 7 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 5 7 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 3 0 0 0 0 0
 E E E
@@ -133,7 +133,7 @@ E E 0 1 1 2 1 E  5 7 5 47
 4 5
 "LINE4"
 ""
-1 5 47 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 5 47 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 4 0 0 0 0 0
 E E E
@@ -150,7 +150,7 @@ E E 0 1 1 2 1 E  5 47 765 47
 4 6
 "LINE6"
 ""
-1 725 7 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 725 7 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 5 0 0 0 0 0
 E E E
@@ -167,7 +167,7 @@ E E 0 1 1 2 1 E  725 7 725 27
 4 7
 "LINE7"
 ""
-1 725 27 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 725 27 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 6 0 0 0 0 0
 E E E
@@ -184,7 +184,7 @@ E E 0 1 1 2 1 E  725 27 765 27
 4 8
 "LINE8"
 ""
-1 765 27 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 765 27 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 7 0 0 0 0 0
 E E E
@@ -757,7 +757,7 @@ LANG:10001 4 View
 13 50
 "PUSH_BUTTON9"
 ""
-1 -11 125 E E E 1 E 1 E N "black" E N "_Button" E E
+1 -10 124 E E E 1 E 1 E N "black" E N "_Button" E E
  E E
 40 0 0 0 0 0
 E E E
@@ -769,7 +769,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 134 130 158
+0  23 133 131 157
 
 T 
 1
@@ -800,7 +800,7 @@ mmgEltx_createFsmTree()
   {
    fwFsmAtlas_createNode(\"MMG_ELTX\", \"MMG_SIDE_\"+side[i_side], \"MMG_ELTX_Side\", \"Side \"+side[i_side], \"ATL_MMG_ELTX_SIDE.pnl\", 1);
 
-     for(int i_sector = 1; i_sector <= 16; i_sector++)
+     for(int i_sector = 1; i_sector <= 1; i_sector++)
     {
        fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side],\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector], \"MMG_ELTX_Sector\", \"Sector \"+sector[i_sector], \"ATL_MMG_ELTX_SECTOR.pnl\", 1);
 
@@ -843,10 +843,12 @@ mmgEltx_createFsmTree()
                     }
                       else // MMFE8(Analog)
                     {
-                    board=1; //Left
+                   if(layer==1)   board=1; //Left
+                   if(layer==4)   board=2; //Left
                     fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
                     countObjects++;
-                    board=3; //Right
+                   if(layer==1)   board=4; //Right
+                   if(layer==4)   board=3; //Right
                     fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
                     countObjects++;
                     }
@@ -858,10 +860,12 @@ mmgEltx_createFsmTree()
                 {
                     fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"MMG_ELTX_Pcb\",\"PCB \"+pcb, \"ATL_MMG_ELTX_PCB.pnl\", 0);
 
-                    board=1; //Left
+                 if(layer==2)   board=2; //Left
+                 if(layer==3)   board=1; //Left
                     fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
                     countObjects++;
-                    board=3; //Right
+                 if(layer==2)   board=3; //Right
+                 if(layer==3)   board=4; //Right
                     fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
                     countObjects++;
                 }
@@ -980,11 +984,13 @@ MMG_ELTX_CreateChamberDpType()
                      }
                    else // MMFE8(Analog)
                     {
-                    board=1; //Left
+                   if(layer==1)   board=1; //Left
+                   if(layer==4)   board=2; //Left
                    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
                    j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
                    addBoardPart();
-                   board=3; //Right
+                   if(layer==1)   board=4; //Right
+                   if(layer==4)   board=3; //Right
                    i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
                    j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
                    addBoardPart();
@@ -997,11 +1003,13 @@ MMG_ELTX_CreateChamberDpType()
                 {
                  i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"PCB\"+pcb,\"\");
                  j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRUCT);
-                 board=1; //Left
+                 if(layer==2)   board=2; //Left
+                 if(layer==3)   board=1; //Left
                  i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
                  j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
                  addBoardPart();
-                 board=3; //Right
+                 if(layer==2)   board=3; //Right
+                 if(layer==3)   board=4; //Right
                  i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
                  j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
                  addBoardPart();

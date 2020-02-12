@@ -1,7 +1,7 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 764 623 N "FwAtlasBg" 0
+PANEL,-1 -1 774 623 N "FwAtlasBg" 0
 "main()
 {
       addLogoNTUABNL(580,550);
@@ -357,6 +357,8 @@ E "main(int button)
     setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"green\");
   else
     setValue(\"statusManager\"+boards[choice+1],\"backCol\",\"red\");
+
+  DebugN(setupAnalogItems);
 
 }" 0
 

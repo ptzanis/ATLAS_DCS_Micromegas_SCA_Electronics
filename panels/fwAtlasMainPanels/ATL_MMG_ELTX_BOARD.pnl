@@ -6,7 +6,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "main()
 {
   addLogoNTUABNL(670,800);
-  string domain=getChamberDomain();
+  string domain=getChamberDomain($obj);
   addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),640,330,0,1.5,1);
 
 }" 0
@@ -20,7 +20,7 @@ void retrieveSensorsPlot(string type, string search1, string search2){
     string channel=getBoardChannel();
     string detectorTechnology=getDetector();
 
-    dyn_string analogItems=getAnalogItemsOfBoard(channel,boardType);
+    dyn_string analogItems=getAnalogItemsOfBoard(boardType);
 
     dyn_string  items;
     for(int i=1;i<=dynlen(analogItems);i++)
@@ -29,7 +29,7 @@ void retrieveSensorsPlot(string type, string search1, string search2){
       {
        if( uniPatternMatch(\"*\"+search1+\"*\",analogItems[i]) || uniPatternMatch(\"*\"+search2+\"*\",analogItems[i]))
         {
-          dynAppend(items,detectorTechnology+\"_\"+channel+\"/\"+analogItems[i]);
+          dynAppend(items,detectorTechnology+\"_\"+channel+analogItems[i]);
 
         }
       }
@@ -110,7 +110,7 @@ LANG:1 0
 "main()
 {
 
-  this.text(\"Chamber \"+getChamber()+\" | Layer \"+getLayer()+\" | PCB \"+getPCB()+\" | Board \"+getBoardType());
+  this.text(\"Chamber \"+getChamber($obj)+\" | Layer \"+getLayer($obj)+\" | PCB \"+getPCB($obj)+\" | Board \"+getBoardType($obj));
 
 }" 0
  E 0 1 1 2 1 E U  0 E 207 0 882 31
@@ -156,7 +156,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 40.99999999999999 841 64
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getDetector());
+  this.text(getDetector($obj));
 }" 0
  E
 14 7
@@ -177,7 +177,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 61 841 84
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberSide());
+  this.text(getChamberSide($obj));
 }" 0
  E
 14 8
@@ -198,7 +198,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 81 841 104
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberSector());
+  this.text(getChamberSector($obj));
 }" 0
  E
 14 9
@@ -219,7 +219,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 101 841 124
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamber());
+  this.text(getChamber($obj));
 }" 0
  E
 14 10
@@ -240,7 +240,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 121 841 144
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getLayer());
+  this.text(getLayer($obj));
 }" 0
  E
 14 11
@@ -261,7 +261,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 141 841 164
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getPCB());
+  this.text(getPCB($obj));
 }" 0
  E
 14 12
@@ -282,7 +282,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 161 841 184
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getBoard());
+  this.text(getBoard($obj));
 }" 0
  E
 30 13
@@ -484,7 +484,7 @@ LANG:10001 6 Name:
 14 24
 "TEXT_FIELD10"
 ""
-1 171 213 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 170 213 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -496,10 +496,10 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
-0  88.99999999999999 45 386.9999999999999 67.99999999999999
+0  87.99999999999999 45 385.9999999999999 67.99999999999999
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getBoardChannel());
+  this.text(getBoardChannel($obj));
 }" 0
  E
 30 26
@@ -520,8 +520,8 @@ LANG:10001 0
 "main()
 {
 
-    string boardType= getBoardType();
-    string channel=getBoardChannel();
+    string boardType= getBoardType($obj);
+    string channel=getBoardChannel($obj);
 
     int xFrame, yFrame;
     getValue(\"\",\"position\",xFrame,yFrame);
@@ -578,7 +578,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  88.99999999999999 71 386.9999999999999 94
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getSCAAddress(getBoardChannel()));
+  this.text(getSCAAddress(getBoardChannel($obj)));
 }" 0
  E
 2 29
@@ -621,7 +621,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  515.9999999999999 40.99999999999999 598 64
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getSCAID(getBoardChannel()));
+  this.text(getSCAID(getBoardChannel($obj)));
 }" 0
  E
 30 31
@@ -707,14 +707,14 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 
   dyn_errClass err;
 
-  if( !dpExists( eltxProjectName()+getBoardChannel()+\".online\"))
+  if( !dpExists( eltxProjectName()+getBoardChannel($obj)+\".online\"))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getBoardChannel()+\".online\",eltxProjectName()+getOPCServer()+\".State.ConnState\");
+             eltxProjectName()+getBoardChannel($obj)+\".online\",eltxProjectName()+getOPCServer()+\".State.ConnState\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -965,7 +965,7 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-  string boardType= getBoardType();
+  string boardType= getBoardType($obj);
 
   if(boardType==\"MMFE8\")
      retrieveSensorsPlot(\"power\",\"0V6\",\"0V6\");
@@ -1215,14 +1215,14 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 
   dyn_errClass err;
 
-  if( !dpExists( eltxProjectName()+getBoardChannel()+\".lastReplySecondsAgo\"))
+  if( !dpExists( eltxProjectName()+getBoardChannel($obj)+\".lastReplySecondsAgo\"))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getBoardChannel()+\".lastReplySecondsAgo\");
+             eltxProjectName()+getBoardChannel($obj)+\".lastReplySecondsAgo\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -1273,7 +1273,7 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649.9999999999999 273 732.9999999999999 288
+E E 0 1 1 2 1 E U  0 E 649.9999999999999 273 732 288
 0 2 2 "0s" 0 0 0 192 0 0  649.9999999999999 273 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
@@ -1295,7 +1295,7 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 762.9999999999999 273 803.9999999999999 288
+E E 0 1 1 2 1 E U  0 E 762.9999999999999 273 803 288
 0 2 2 "0s" 0 0 0 192 0 0  762.9999999999999 273 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold

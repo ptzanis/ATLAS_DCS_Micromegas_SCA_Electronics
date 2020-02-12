@@ -14,33 +14,25 @@ PANEL,-1 -1 611 206 N "FwAtlasBg" 4
 
 
        //PW FEAST 1.5V
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[V]\",x+118,y+110,2,2);
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[C]\",x+118,y+132,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[V]\",x+118,y+110,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[C]\",x+118,y+132,2,2);
 
        //PW FEAST 2.5V
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[V]\",x+417,y+110,2,2);
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[C]\",x+417,y+132,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[2],\"\",\"[V]\",x+417,y+110,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+417,y+132,2,2);
 
        //GBTX0
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[8],\"\",\"[C]\",x+13,y+116,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[C]\",x+13,y+116,2,2);
 
       //GBTX1
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[9],\"\",\"[C]\",x+309,y+116,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[C]\",x+309,y+116,2,2);
 
       //SCA
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[10],\"\",\"[C]\",x+172,y+30,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[8],\"\",\"[C]\",x+172,y+30,2,2);
 
 
       //BOARD TEMP
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+290,y+42,2,2);
-
-/*
-      //SCA
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[10],\"\",\"[C]\",x+132,y+30,2,2);
-
-      //BOARD TEMP
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+280,y+125,2,2);
-*/
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[C]\",x+290,y+42,2,2);
 
 }" 0
  E E E E 1 -1 -1 0  7.999999999999996 9

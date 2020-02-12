@@ -197,7 +197,7 @@ LANG:1 3 MDT
 17 9
 "dpList"
 ""
-1 129 113 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+1 116 203 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -211,7 +211,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  127 111 355.0000000000001 494
+0  114 201 342.0000000000001 376
 0
 
 E
@@ -222,7 +222,7 @@ E
 17 10
 "dpActionList"
 ""
-1 422 109 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+1 399 205 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
  E E
 10 0 0 0 0 0
 E E E
@@ -236,7 +236,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  421 111 649 494
+0  398 204.5197889182058 626 352.5197889182058
 0
 
 E
@@ -247,7 +247,7 @@ E
 2 11
 "listTitle"
 ""
-1 131 85 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 110 186 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 11 0 0 0 0 0
 E E E
@@ -260,8 +260,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 131 85 336 96
-0 2 2 "0s" 0 0 0 64 0 0  131 85 1
+E E 0 1 1 2 1 E U  1 E 110 186 315 197
+0 2 2 "0s" 0 0 0 64 0 0  110 186 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -271,7 +271,7 @@ LANG:1 12 Current List
 2 12
 "PRIMITIVE_TEXT16"
 ""
-1 424 84 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 403 185 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 12 0 0 0 0 0
 E E E
@@ -284,8 +284,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 424 84 629 95
-0 2 2 "0s" 0 0 0 64 0 0  424 84 1
+E E 0 1 1 2 1 E U  1 E 403 185 608 196
+0 2 2 "0s" 0 0 0 64 0 0  403 185 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -295,7 +295,7 @@ LANG:1 12 Current List
 13 13
 "PUSH_BUTTON1"
 ""
-1 378 170 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 357 221 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 13 0 0 0 0 0
 E E E
@@ -309,10 +309,10 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  376 168 409 201
+0  355 219 388 252
 
 P 
-4294967295
+15199215
 "pictures/right.xpm"
 1
 LANG:10001 0 
@@ -337,7 +337,7 @@ LANG:10001 0
 13 14
 "PUSH_BUTTON2"
 ""
-1 378 204 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 357 255 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -351,7 +351,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  376 202 409 235
+0  355 253 388 286
 
 P 
 4294967295
@@ -371,7 +371,7 @@ LANG:10001 0
 13 15
 "PUSH_BUTTON3"
 ""
-1 378 315 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 357 295 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 15 0 0 0 0 0
 E E E
@@ -385,10 +385,10 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  376 313 409 346
+0  355 293 388 326
 
 P 
-4294967295
+15199215
 "pictures/left.xpm"
 1
 LANG:10001 0 
@@ -410,7 +410,7 @@ LANG:10001 0
 13 16
 "PUSH_BUTTON4"
 ""
-1 378 350 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 357 330 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 16 0 0 0 0 0
 E E E
@@ -424,7 +424,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  376 348 409 381
+0  355 328 388 361
 
 P 
 4294967295
