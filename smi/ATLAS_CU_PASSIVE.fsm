@@ -1,0 +1,86 @@
+class: $FWPART_$TOP$ATLAS_CU_PASSIVE_CLASS
+!panel: ATLAS_CU_PASSIVE.pnl
+    state: READY	!color: FwStateOKPhysics
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {NOT_READY,STANDBY,SHUTDOWN} ) stay_in_state
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,SHUTDOWN} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {READY,NOT_READY,SHUTDOWN} ) move_to NOT_READY
+        
+
+    state: TRANSITION	!color: FwStateTransition
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) stay_in_state
+        
+when ( $ALL$FwCHILDREN not_in_state {NOT_READY,STANDBY,SHUTDOWN} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,SHUTDOWN} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {READY,NOT_READY,SHUTDOWN} ) move_to NOT_READY
+        
+
+    state: STANDBY	!color: FwStateStandby
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {NOT_READY,STANDBY,SHUTDOWN} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,SHUTDOWN} ) stay_in_state
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {READY,NOT_READY,SHUTDOWN} ) move_to NOT_READY
+        
+
+    state: NOT_READY	!color: FwStateOKNotPhysics
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {NOT_READY,STANDBY,SHUTDOWN} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,SHUTDOWN} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {READY,NOT_READY,SHUTDOWN} ) stay_in_state
+        
+
+    state: SHUTDOWN	!color: FwStateShutdown
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {NOT_READY,STANDBY,SHUTDOWN} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,SHUTDOWN} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,STANDBY} ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state {READY,NOT_READY,SHUTDOWN} ) move_to NOT_READY
+        
+
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {NOT_READY,STANDBY,SHUTDOWN} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,SHUTDOWN} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {READY,NOT_READY,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {READY,NOT_READY,SHUTDOWN} ) move_to NOT_READY
+        
+

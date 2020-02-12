@@ -1,0 +1,47 @@
+class: $FWPART_$TOP$ATLAS_DU_STATUS_CLASS
+!panel: ATLAS_DU_STATUS.pnl
+    state: UNINITIALIZED	!color: _3DFace
+        action: GOTO_OK	!visible: 1
+            move_to OK
+        action: GOTO_WARNING	!visible: 1
+            move_to WARNING
+        action: GOTO_ERROR	!visible: 1
+            move_to ERROR
+        action: GOTO_FATAL	!visible: 1
+            move_to FATAL
+    state: OK	!color: FwStateOKPhysics
+        action: GOTO_WARNING	!visible: 0
+            move_to WARNING
+        action: GOTO_ERROR	!visible: 0
+            move_to ERROR
+        action: GOTO_FATAL	!visible: 0
+            move_to FATAL
+        action: GOTO_UNINITIALIZED	!visible: 0
+            move_to UNINITIALIZED
+    state: WARNING	!color: FwStateAttention1
+        action: GOTO_OK	!visible: 1
+            move_to OK
+        action: GOTO_ERROR	!visible: 1
+            move_to ERROR
+        action: GOTO_FATAL	!visible: 1
+            move_to FATAL
+        action: GOTO_UNINITIALIZED	!visible: 1
+            move_to UNINITIALIZED
+    state: ERROR	!color: FwStateAttention2
+        action: GOTO_OK	!visible: 1
+            move_to OK
+        action: GOTO_WARNING	!visible: 1
+            move_to WARNING
+        action: GOTO_FATAL	!visible: 1
+            move_to FATAL
+        action: GOTO_UNINITIALIZED	!visible: 1
+            move_to UNINITIALIZED
+    state: FATAL	!color: FwStateAttention3
+        action: GOTO_OK	!visible: 1
+            move_to OK
+        action: GOTO_WARNING	!visible: 1
+            move_to WARNING
+        action: GOTO_ERROR	!visible: 1
+            move_to ERROR
+        action: GOTO_UNINITIALIZED	!visible: 1
+            move_to UNINITIALIZED

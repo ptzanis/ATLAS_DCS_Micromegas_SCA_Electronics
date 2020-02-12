@@ -1,0 +1,72 @@
+class: $FWPART_$TOP$ATLAS_STATUS_CLASS
+!panel: ATLAS_STATUS.pnl
+    state: UNINITIALIZED	!color: _3DFace
+        when ( $FwCHILDREN empty ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state {UNINITIALIZED,DEAD} ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state FATAL ) move_to FATAL
+        
+when ( $ANY$FwCHILDREN in_state ERROR ) move_to ERROR
+        
+when ( $ANY$FwCHILDREN in_state WARNING ) move_to WARNING
+        
+when ( $ALL$FwCHILDREN in_state OK ) move_to OK
+        
+
+    state: OK	!color: FwStateOKPhysics
+        when ( $FwCHILDREN empty ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state {UNINITIALIZED,DEAD} ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state FATAL ) move_to FATAL
+        
+when ( $ANY$FwCHILDREN in_state ERROR ) move_to ERROR
+        
+when ( $ANY$FwCHILDREN in_state WARNING ) move_to WARNING
+        
+when ( $ALL$FwCHILDREN in_state OK ) stay_in_state
+        
+
+    state: WARNING	!color: FwStateAttention1
+        when ( $FwCHILDREN empty ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state {UNINITIALIZED,DEAD} ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state FATAL ) move_to FATAL
+        
+when ( $ANY$FwCHILDREN in_state ERROR ) move_to ERROR
+        
+when ( $ANY$FwCHILDREN in_state WARNING ) stay_in_state
+        
+when ( $ALL$FwCHILDREN in_state OK ) move_to OK
+        
+
+    state: ERROR	!color: FwStateAttention2
+        when ( $FwCHILDREN empty ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state {UNINITIALIZED,DEAD} ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state FATAL ) move_to FATAL
+        
+when ( $ANY$FwCHILDREN in_state ERROR ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state WARNING ) move_to WARNING
+        
+when ( $ALL$FwCHILDREN in_state OK ) move_to OK
+        
+
+    state: FATAL	!color: FwStateAttention3
+        when ( $FwCHILDREN empty ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state {UNINITIALIZED,DEAD} ) move_to UNINITIALIZED
+        
+when ( $ANY$FwCHILDREN in_state FATAL ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state ERROR ) move_to ERROR
+        
+when ( $ANY$FwCHILDREN in_state WARNING ) move_to WARNING
+        
+when ( $ALL$FwCHILDREN in_state OK ) move_to OK
+        
+
