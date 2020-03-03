@@ -6,8 +6,12 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "main()
 {
   addLogoNTUABNL(670,800);
+
+
+  // state/status object
   string domain=getChamberDomain($obj);
   addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),640,330,0,1.5,1);
+
 
 }" 0
  E E E E 1 -1 -1 0  139 162
@@ -16,9 +20,9 @@ E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
 void retrieveSensorsPlot(string type, string search1, string search2){
 
-    string boardType= getBoardType();
-    string channel=getBoardChannel();
-    string detectorTechnology=getDetector();
+    string boardType= getBoardType($obj);
+    string channel=getBoardChannel($obj);
+    string detectorTechnology=getDetector($obj);
 
     dyn_string analogItems=getAnalogItemsOfBoard(boardType);
 
@@ -62,6 +66,19 @@ void switchTemperatureButtonEnabled()
 
  this.enabled(FALSE);
 
+
+}
+
+void updateBoardState(string mode, string dpeChannel, int value){
+
+  shape stateShape=getShape(mode+\"State\");
+
+  if(value==1)
+   stateShape.backCol(\"green\");
+  if(value==2)
+   stateShape.backCol(\"yellow\");
+  if(value==3)
+   stateShape.backCol(\"red\");
 
 }" 0
  3
@@ -689,7 +706,7 @@ LANG:10001 7 Status:
 14 36
 "TEXT_FIELD14"
 ""
-1 536 252 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
+1 535 252 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
  E E
 36 0 0 0 0 0
 E E E
@@ -701,7 +718,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  515 66 597 89
+0  514 66 596 89
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -714,7 +731,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getBoardChannel($obj)+\".online\",eltxProjectName()+getOPCServer()+\".State.ConnState\");
+             eltxProjectName()+getBoardChannel($obj)+\".online\",eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -798,9 +815,11 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0  91 119 389 142
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
+
+
   string connInfo;
 
-  dpGet(eltxProjectName()+getOPCServer()+\".Config.ConnInfo\",connInfo);
+  dpGet(eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".Config.ConnInfo\",connInfo);
 
   this.text(connInfo);
 }" 0
@@ -848,14 +867,14 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 
   dyn_errClass err;
 
-  if( !dpExists( eltxProjectName()+getOPCServer()+\".State.ConnState\"))
+  if( !dpExists( eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\"))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getOPCServer()+\".State.ConnState\");
+             eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -922,14 +941,14 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 
   dyn_errClass err;
 
-  if( !dpExists( eltxProjectName()+getOPCServer()+\".State.ServerState\"))
+  if( !dpExists( eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ServerState\"))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getOPCServer()+\".State.ServerState\");
+             eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ServerState\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -1085,7 +1104,7 @@ LANG:10001 4 GBTX
 {
      this.enabled(TRUE);
 
-     string boardType= getBoardType();
+     string boardType= getBoardType($obj);
 
      if(boardType==\"MMFE8\")
        this.text(\"VMM\");
@@ -1302,7 +1321,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 5 Power
 6 78
-"RECTANGLE8"
+"temperatureState"
 ""
 1 637 258 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
@@ -1316,9 +1335,18 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.164556962025316 0 1 -98.82278481012669 35.99999999999997 1 E 637 258 716 280
+"main()
+{
+  string mode=\"temperature\";
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1.164556962025316 0 1 -97.82278481012635 35.99999999999997 1 E 637 258 716 280
 6 79
-"RECTANGLE9"
+"powerState"
 ""
 1 637 258 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
@@ -1332,7 +1360,16 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.164556962025316 0 1 -6.822784810126691 35.99999999999997 1 E 637 258 716 280
+"main()
+{
+  string mode=\"power\";
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1.164556962025316 0 1 -6.822784810126691 35.99999999999997 1 E 637 258 716 280
 0
 LAYER, 1 
 1

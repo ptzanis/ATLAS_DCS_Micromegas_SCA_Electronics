@@ -77,19 +77,68 @@ string getBoardType(string obj){
 
 }
 
-string getSCAID(string channel){
+string getBoardLVChannel(string obj){
+
+  string channel=eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".power.isLVOn";
+//   dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".power.isLVOn",channel);
+  return channel;
+
+}
+
+int getBoardState(string obj, string mode){
+
+ int valueState;
+ dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".state."+mode, valueState);
+ return valueState;
+}
+
+void setBoardState(string obj, string mode, int valueToSet){
+
+ dpSet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".state."+mode, valueToSet);
+
+}
+
+
+
+
+string getSCAOnlineChannel(string boardChannel){
+
+  string scaChannel=eltxProjectName()+boardChannel+".online";
+  return scaChannel;
+
+}
+
+string getSCAID(string boardChannel){
 
   string id;
-  dpGet(eltxProjectName()+channel+".id",id);
+  dpGet(eltxProjectName()+boardChannel+".id",id);
   return id;
 
 }
 
-string getSCAAddress(string channel){
+string getSCAAddress(string boardChannel){
 
   string address;
-  dpGet(eltxProjectName()+channel+".address",address);
+  dpGet(eltxProjectName()+boardChannel+".address",address);
   return address;
+
+}
+
+string getBoardOPCServer(string boardChannel)
+{
+
+  string scaChannel=getSCAOnlineChannel(boardChannel);
+
+  bool configExists;
+  dyn_anytype config;
+  bool isActive;
+  dyn_string exceptionInfo;
+
+  fwPeriphAddress_get(scaChannel, configExists, config, isActive, exceptionInfo);
+
+  string opcServerOfBoard="_"+config[12];
+
+  return opcServerOfBoard;
 
 }
 
@@ -121,14 +170,6 @@ void parameterDisplay(string dpe,string parameter,string unit,int x,int y,int di
 }
 
 
-string getOPCServer()
-{
-
-  string opcServer="_SCA_OPC_UA_SERVER";
-
-  return opcServer;
-
-}
 
 dyn_string getAnalogItemsOfBoard(string boardType){
 

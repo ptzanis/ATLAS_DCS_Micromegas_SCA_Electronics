@@ -1157,22 +1157,16 @@ LANG:10001 12 PUSH_BUTTON2
 {
   dyn_string dpe=makeDynString(\"ATLMMGELTX:MMG_MMFE8_L1P1_IPL/ai/internalTemperature.temperature\");
 
-  bool configExists;
- 	int alertConfigType;
-  dyn_string alertTexts;
-	dyn_float alertLimits;
-	dyn_string alertClasses;
- dyn_string summaryDpeList;
-					string alertPanel;
-					dyn_string alertPanelParameters;
-					string alertHelp;
-					bool isActive;
-					dyn_string exceptionInfo;
+   bool configExists;
+   dyn_anytype config;
+   bool isActive;
+   dyn_string exceptionInfo;
 
-  fwAlertConfig_get(dpe, configExists, alertConfigType, alertTexts, alertLimits, alertClasses, summaryDpeList, alertPanel,alertPanelParameters,alertHelp,isActive,exceptionInfo);
+  fwPeriphAddress_get(dpe, configExists, config, isActive, exceptionInfo);
 
 
- DebugN(configExists,isActive,alertTexts,alertLimits);
+  DebugN(dpe, configExists, config[12], isActive, exceptionInfo);
+
 
 
 }" 0

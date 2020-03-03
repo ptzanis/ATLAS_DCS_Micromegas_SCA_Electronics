@@ -1,10 +1,10 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 1108 848 N "FwAtlasBg" 0
+PANEL,-1 -1 1115 869 N "FwAtlasBg" 0
 "main()
 {
-  addLogoNTUABNL(916,780);
+  addLogoNTUABNL(916,795);
 }" 0
  E E E E 1 -1 -1 0  7.25 3.34375
 ""0  1
@@ -16,19 +16,20 @@ void appendBoardTable(string boardType){
 
   dyn_string boardsItems=getAnalogItemsOfBoard(boardType);
   float upLimit, downLimit;
-
+  string boardItemFull;
   shape table=getShape(boardType);
 
   for(int i=1;i<=dynlen(boardsItems);i++)
   {
     strreplace(boardsItems[i],\"/ai/\",\"\");
+    boardItemFull=boardsItems[i];
     strreplace(boardsItems[i],\".power\",\"\");
     strreplace(boardsItems[i],\".temperature\",\"\");
 
     dpGet(\"Board_Settings.\"+boardType+\".\"+boardsItems[i]+\".downLimit\",downLimit);
     dpGet(\"Board_Settings.\"+boardType+\".\"+boardsItems[i]+\".upLimit\",upLimit);
 
-    table.appendLine(\"Item\",boardsItems[i],\"downLimit\",downLimit,\"upLimit\",upLimit);
+    table.appendLine(\"Item\",boardItemFull,\"downLimit\",downLimit,\"upLimit\",upLimit);
   }
 
 }
@@ -38,10 +39,13 @@ void changeValue(string boardType,int row, string column, string value){
 
     shape table=getShape(boardType);
     dyn_string parameters=table.getColumnN(0);
+    string parameter=parameters[row+1];
+    strreplace(parameter,\".power\",\"\");
+    strreplace(parameter,\".temperature\",\"\");
 
     if(column!=\"Item\")
     {
-    dpSet(\"Board_Settings.\"+boardType+\".\"+parameters[row+1]+\".\"+column,value);
+    dpSet(\"Board_Settings.\"+boardType+\".\"+parameter+\".\"+column,value);
     }
 
    table.deleteAllLines();
@@ -57,14 +61,24 @@ createBoardPowerTemperatureAlarms(string board, string boardType)
    string analogItemForEdit;
    dyn_string exceptionInfo;
    string dpe, dpeType;
+   dyn_string alarmColors;
+   dyn_string alarmText;
 
    for(int i=1;i<=dynlen(analogItemsOfBoard);i++)
    {
      analogItemForEdit=analogItemsOfBoard[i];
 
      strreplace(analogItemForEdit,\"/ai/\",\"\");
-     strreplace(analogItemForEdit,\".power\",\"\");
-     strreplace(analogItemForEdit,\".temperature\",\"\");
+     if(strreplace(analogItemForEdit,\".power\",\"\")!=0)
+     {
+      alarmColors=makeDynString(\"_fwWarningNack.\",\"\",\"_fwWarningNack.\");
+      alarmText=makeDynString(\"WARNING\",\"READY\",\"WARNING\");
+     }
+     if(strreplace(analogItemForEdit,\".temperature\",\"\")!=0)
+     {
+      alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\");
+      alarmText=makeDynString(\"READY\",\"OVER_TEMP\",\"HIGH_TEMP\");
+     }
 
      dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".downLimit\",downLimit);
      dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".upLimit\",upLimit);
@@ -72,7 +86,7 @@ createBoardPowerTemperatureAlarms(string board, string boardType)
      dpe=eltxProjectName()+detector+\"_\"+board+analogItemsOfBoard[i]+dpeType;
 
      fwAlertConfig_set(dpe,DPCONFIG_ALERT_NONBINARYSIGNAL,
-                     makeDynString(downText.text(),middleText.text(),upText.text()),makeDynFloat(downLimit,upLimit),makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\"),
+                     alarmText,makeDynFloat(downLimit,upLimit),alarmColors,
                      makeDynString(),\"\",makeDynString(),\"\",exceptionInfo);
 
    }
@@ -393,7 +407,7 @@ LANG:1 3 MDT
 17 9
 "dpList"
 ""
-1 423 303 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+1 377 480 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -407,7 +421,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  421 301 649.0000000000001 661.0000000000001
+0  375 478 603.0000000000001 838.0000000000001
 0
 
 E
@@ -418,7 +432,7 @@ E
 17 10
 "dpActionList"
 ""
-1 758 533.0000000000001 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+1 712 710.0000000000001 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
  E E
 10 0 0 0 0 0
 E E E
@@ -432,7 +446,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  700 301.0000000000001 928 661.0000000000001
+0  654 478.0000000000001 882 838.0000000000001
 0
 
 E
@@ -443,7 +457,7 @@ E
 2 11
 "listTitle"
 ""
-1 422.9999999999999 289.0000000000001 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 376.9999999999999 466.0000000000001 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 11 0 0 0 0 0
 E E E
@@ -456,8 +470,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 422.9999999999999 289.0000000000001 628 300.0000000000001
-0 2 2 "0s" 0 0 0 64 0 0  422.9999999999999 289.0000000000001 1
+E E 0 1 1 2 1 E U  1 E 376.9999999999999 466.0000000000001 582.0000000000001 477.0000000000001
+0 2 2 "0s" 0 0 0 64 0 0  376.9999999999999 466.0000000000001 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -467,7 +481,7 @@ LANG:1 12 Current List
 2 12
 "PRIMITIVE_TEXT16"
 ""
-1 703 289.0000000000001 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 657.0000000000001 466.0000000000001 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 12 0 0 0 0 0
 E E E
@@ -480,8 +494,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 703 289.0000000000001 908 300.0000000000001
-0 2 2 "0s" 0 0 0 64 0 0  703 289.0000000000001 1
+E E 0 1 1 2 1 E U  1 E 657.0000000000001 466.0000000000001 862.0000000000001 477.0000000000001
+0 2 2 "0s" 0 0 0 64 0 0  657.0000000000001 466.0000000000001 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -491,7 +505,7 @@ LANG:1 12 Current List
 13 13
 "PUSH_BUTTON1"
 ""
-1 660 381.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 614 558.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 13 0 0 0 0 0
 E E E
@@ -505,7 +519,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  658 379.0000000000001 691 412.0000000000001
+0  612 556.0000000000001 645 589.0000000000001
 
 P 
 15199215
@@ -533,7 +547,7 @@ LANG:10001 0
 13 14
 "PUSH_BUTTON2"
 ""
-1 660 415.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 614 592.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -547,7 +561,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  658 413.0000000000001 691 446.0000000000001
+0  612 590.0000000000001 645 623.0000000000001
 
 P 
 4294967295
@@ -567,7 +581,7 @@ LANG:10001 0
 13 15
 "PUSH_BUTTON3"
 ""
-1 660 475.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 614 652.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 15 0 0 0 0 0
 E E E
@@ -581,7 +595,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  658 473.0000000000001 691 506.0000000000001
+0  612 650.0000000000001 645 683.0000000000001
 
 P 
 15199215
@@ -606,7 +620,7 @@ LANG:10001 0
 13 16
 "PUSH_BUTTON4"
 ""
-1 660 510.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 614 687.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 16 0 0 0 0 0
 E E E
@@ -620,7 +634,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  658 508.0000000000001 691 541.0000000000001
+0  612 685.0000000000001 645 718.0000000000001
 
 P 
 4294967295
@@ -652,7 +666,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.7186858316221767 0 1.703703703703703 -553.8234086242303 60 0 E 804 54 1292 217
+E E 0 1 1 2 1 E 0.7186858316221767 0 1.703703703703703 -553.8234086242301 59.00000000000003 0 E 804 54 1292 217
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -671,7 +685,7 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 0  36 170 362 421.9999999999999
 "main()
 {
@@ -687,28 +701,28 @@ E
 1
 LANG:10001 0 
 
-160 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+200 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 9 downLimit
 E
 1
 LANG:10001 0 
 
-80 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+60 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 7 upLimit
 E
 1
 LANG:10001 0 
 
-80 
+60 
 15 15 10 0
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 0 0 1 1 1 7
 1 0
 25 21
 "L1DDC"
 ""
-1 38 454 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 395 207.0000000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 21 0 0 0 0 0
 E E E
@@ -719,8 +733,8 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  36 452 362 608
+LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
+0  393 205.0000000000001 719 361.0000000000001
 "main()
 {
   appendBoardTable(this.name());
@@ -735,28 +749,28 @@ E
 1
 LANG:10001 0 
 
-160 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+200 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 9 downLimit
 E
 1
 LANG:10001 0 
 
-80 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+60 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 7 upLimit
 E
 1
 LANG:10001 0 
 
-80 
+60 
 15 15 10 0
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 0 0 1 1 1 7
 1 0
 25 22
 "ADDC"
 ""
-1 38.00000000000001 645 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 760 206 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -767,8 +781,8 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  36.00000000000001 643 362 799
+LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
+0  758 204 1084 360
 "main()
 {
   appendBoardTable(this.name());
@@ -783,22 +797,22 @@ E
 1
 LANG:10001 0 
 
-160 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+200 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 9 downLimit
 E
 1
 LANG:10001 0 
 
-80 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+60 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 7 upLimit
 E
 1
 LANG:10001 0 
 
-80 
+60 
 15 15 10 0
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 0 0 1 1 1 7
 1 0
 30 23
@@ -816,7 +830,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.7186858316221767 0 1.141975308641975 -553.8234086242301 370.3333333333333 0 E 804 54 1292 217
+E E 0 1 1 2 1 E 0.7186858316221767 0 1.141975308641975 -196.8234086242301 123.3333333333334 0 E 804 54 1292 217
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -836,7 +850,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.7186858316221767 0 1.141975308641975 -553.8234086242301 560.3333333333335 0 E 804 54 1292 217
+E E 0 1 1 2 1 E 0.7186858316221767 0 1.141975308641975 168.1765913757699 121.3333333333335 0 E 804 54 1292 217
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -844,7 +858,7 @@ LANG:10001 4 ADDC
 13 25
 "PUSH_BUTTON5"
 ""
-1 978 322 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 958.2127659574467 453 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 25 0 0 0 0 0
 E E E
@@ -855,8 +869,8 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  943 372 1088 421
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+0  919 503 1082 552
 
 T 
 1
@@ -886,7 +900,7 @@ LANG:10001 34 Create and Activate
 13 27
 "closeButton"
 ""
-1 1038 743 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 1021 762 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -900,7 +914,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
-0  1036 733.3 1098.25 759.3
+0  1019 752.3 1081.25 778.3
 
 T 
 2
@@ -914,7 +928,7 @@ LANG:1 5 Close
 19 30
 "alertBox"
 ""
-1 957 202 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 341 748 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 30 0 0 0 0 0
 E E E
@@ -928,7 +942,7 @@ LANG:1 0
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  697 126.2183908045977 890 261.2183908045977
+0  81 672.2183908045977 274 807.2183908045977
 3
 T 
 2
@@ -974,7 +988,7 @@ E "main(int button)
 13 37
 "PUSH_BUTTON6"
 ""
-1 978 376 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 958.2127659574467 507 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 37 0 0 0 0 0
 E E E
@@ -985,8 +999,8 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  943 426 1088 475
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+0  919 557 1082 606
 
 T 
 1
@@ -1014,7 +1028,7 @@ LANG:10001 19 Delete Alert Config
 13 38
 "PUSH_BUTTON7"
 ""
-1 978 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 958.2127659574467 561 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 38 0 0 0 0 0
 E E E
@@ -1025,8 +1039,8 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  943 480 1088 529
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+0  919 611 1082 660
 
 T 
 1
@@ -1054,7 +1068,7 @@ LANG:10001 8 Activate
 13 39
 "PUSH_BUTTON8"
 ""
-1 978 484 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 958.2127659574467 615 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 39 0 0 0 0 0
 E E E
@@ -1065,8 +1079,8 @@ LANG:10001 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  943 534 1088 583
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+0  919 665 1082 714
 
 T 
 1
@@ -1106,7 +1120,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.5650000000000001 0 1.729166666666667 198.6549999999999 -42.21910919540224 0 E 413 87 814 184
+E E 0 1 1 2 1 E 0.5650000000000001 0 1.729166666666667 -165.345 316.5625 0 E 413 87 814 184
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -1114,7 +1128,7 @@ LANG:10001 15 Board Selection
 19 42
 "radioSideSelection"
 ""
-1 520 127.2183908045977 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 156.0000000000001 485.9999999999999 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 42 0 0 0 0 0
 E E E
@@ -1127,7 +1141,7 @@ LANG:10001 0
 "horizontal" ""
 1
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
-0  518 125.2183908045977 629 154.2183908045977
+0  154.0000000000001 483.9999999999999 265.0000000000001 512.9999999999999
 2
 T 
 1
@@ -1156,7 +1170,7 @@ E E
 2 43
 "PRIMITIVE_TEXT17"
 ""
-1 442 131.2183908045977 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 78.00000000000011 489.9999999999999 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 43 0 0 0 0 0
 E E E
@@ -1169,8 +1183,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 442 131.2183908045977 477 150.2183908045977
-0 2 2 "0s" 0 0 0 64 0 0  442 131.2183908045977 1
+E E 0 1 1 2 1 E U  1 E 78.00000000000011 489.9999999999999 113.0000000000001 508.9999999999999
+0 2 2 "0s" 0 0 0 64 0 0  78.00000000000011 489.9999999999999 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1180,7 +1194,7 @@ LANG:1 12 Current List
 22 46
 "comboSectorSelection"
 ""
-1 522 159.2183908045977 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 158.0000000000001 517.9999999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 46 0 0 0 0 0
 E E E
@@ -1192,7 +1206,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  520 152.3295019157088 584 178.3295019157088
+0  156.0000000000001 511.111111111111 220.0000000000001 537.111111111111
 0
 
 "main()
@@ -1255,7 +1269,7 @@ E
 2 48
 "PRIMITIVE_TEXT19"
 ""
-1 442 187.2183908045977 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 78.00000000000011 545.9999999999999 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 48 0 0 0 0 0
 E E E
@@ -1268,8 +1282,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 442 187.2183908045977 514 206.2183908045977
-0 2 2 "0s" 0 0 0 64 0 0  442 187.2183908045977 1
+E E 0 1 1 2 1 E U  1 E 78.00000000000011 545.9999999999999 150.0000000000002 564.9999999999999
+0 2 2 "0s" 0 0 0 64 0 0  78.00000000000011 545.9999999999999 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1279,7 +1293,7 @@ LANG:1 12 Current List
 22 49
 "comboChamberSelection"
 ""
-1 522 189.1072796934866 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+1 158.0000000000001 547.8888888888888 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
  E E
 49 0 0 0 0 0
 E E E
@@ -1291,7 +1305,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  520 182.2183908045977 653.0000000000005 208.2183908045977
+0  156.0000000000001 540.9999999999999 289.0000000000006 566.9999999999999
 0
 
 E
@@ -1332,7 +1346,7 @@ E
 2 50
 "PRIMITIVE_TEXT20"
 ""
-1 442 245.2183908045977 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 78.00000000000011 603.9999999999999 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 50 0 0 0 0 0
 E E E
@@ -1345,8 +1359,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 442 245.2183908045977 484 264.2183908045977
-0 2 2 "0s" 0 0 0 64 0 0  442 245.2183908045977 1
+E E 0 1 1 2 1 E U  1 E 78.00000000000011 603.9999999999999 120.0000000000001 622.9999999999999
+0 2 2 "0s" 0 0 0 64 0 0  78.00000000000011 603.9999999999999 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1356,7 +1370,7 @@ LANG:1 12 Current List
 22 51
 "comboPCBSelection"
 ""
-1 521.9999999999998 249.1072796934866 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+1 157.9999999999999 607.8888888888888 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
  E E
 51 0 0 0 0 0
 E E E
@@ -1368,7 +1382,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  519.9999999999998 242.2183908045977 583.9999999999998 268.2183908045977
+0  155.9999999999999 600.9999999999999 219.9999999999999 626.9999999999999
 0
 
 E
@@ -1382,7 +1396,7 @@ E
 2 52
 "PRIMITIVE_TEXT21"
 ""
-1 442 158.2183908045977 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 78.00000000000011 516.9999999999999 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 52 0 0 0 0 0
 E E E
@@ -1395,8 +1409,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 442 158.2183908045977 493 177.2183908045977
-0 2 2 "0s" 0 0 0 64 0 0  442 158.2183908045977 1
+E E 0 1 1 2 1 E U  1 E 78.00000000000011 516.9999999999999 129.0000000000002 535.9999999999999
+0 2 2 "0s" 0 0 0 64 0 0  78.00000000000011 516.9999999999999 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1406,7 +1420,7 @@ LANG:1 12 Current List
 22 54
 "comboLayerSelection"
 ""
-1 521.9999999999998 219.1072796934866 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+1 157.9999999999999 577.8888888888888 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
  E E
 54 0 0 0 0 0
 E E E
@@ -1418,7 +1432,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  519.9999999999998 212.2183908045977 583.9999999999998 238.2183908045977
+0  155.9999999999999 570.9999999999999 219.9999999999999 596.9999999999999
 0
 
 E
@@ -1465,7 +1479,7 @@ E
 2 55
 "PRIMITIVE_TEXT22"
 ""
-1 442 217.2183908045977 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 78.00000000000011 575.9999999999999 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 55 0 0 0 0 0
 E E E
@@ -1478,8 +1492,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 442 217.2183908045977 497 236.2183908045977
-0 2 2 "0s" 0 0 0 64 0 0  442 217.2183908045977 1
+E E 0 1 1 2 1 E U  1 E 78.00000000000011 575.9999999999999 133.0000000000002 594.9999999999999
+0 2 2 "0s" 0 0 0 64 0 0  78.00000000000011 575.9999999999999 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1501,7 +1515,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.5650000000000001 0 1.729166666666667 449.655 -43.2191091954023 0 E 413 87 814 184
+E E 0 1 1 2 1 E 0.5650000000000001 0 1.729166666666667 -166.345 502.7808908045977 0 E 413 87 814 184
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -1521,7 +1535,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.75 0 1 54.25 18 1 E 29 70 141 92
+E E 0 1 1 2 1 E 0.75 0 1 205.25 18 1 E 29 70 141 92
 6 59
 "RECTANGLE3"
 ""
@@ -1537,7 +1551,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.75 0 1 139.25 18 1 E 29 70 141 92
+E E 0 1 1 2 1 E 0.75 0 1 290.25 18 1 E 29 70 141 92
 6 60
 "RECTANGLE4"
 ""
@@ -1553,11 +1567,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.75 0 1 224.25 18 1 E 29 70 141 92
+E E 0 1 1 2 1 E 0.75 0 1 375.25 18 1 E 29 70 141 92
 2 61
 "PRIMITIVE_TEXT23"
 ""
-1 218 125 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 369 125 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 61 0 0 0 0 0
 E E E
@@ -1570,8 +1584,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 218 125 277 144
-0 2 2 "0s" 0 0 0 64 0 0  218 125 1
+E E 0 1 1 2 1 E U  1 E 369 125 428 144
+0 2 2 "0s" 0 0 0 64 0 0  369 125 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1581,7 +1595,7 @@ LANG:1 12 Current List
 2 62
 "PRIMITIVE_TEXT24"
 ""
-1 123 125 E E E 1 E 1 E N "White" E N "_Transparent" E E
+1 274 125 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 62 0 0 0 0 0
 E E E
@@ -1594,8 +1608,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 123 125 201 144
-0 2 2 "0s" 0 0 0 64 0 0  123 125 1
+E E 0 1 1 2 1 E U  1 E 274 125 352 144
+0 2 2 "0s" 0 0 0 64 0 0  274 125 1
 2
 LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1605,7 +1619,7 @@ LANG:1 12 Current List
 4 64
 "LINE10"
 ""
-1 161 111.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
+1 312 111.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 64 0 0 0 0 0
 E E E
@@ -1617,11 +1631,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  161 111.0000000000001 161 125.0000000000001
+E E 0 1 1 2 1 E  312 111.0000000000001 312 125.0000000000001
 4 65
 "LINE11"
 ""
-1 246 111.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
+1 397 111.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
  E E
 65 0 0 0 0 0
 E E E
@@ -1633,7 +1647,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  246 111.0000000000001 246 125.0000000000001
+E E 0 1 1 2 1 E  397 111.0000000000001 397 125.0000000000001
 30 66
 "FRAME11"
 ""
@@ -1649,11 +1663,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.675 0 0.75 -211.775 7.75 0 E 413 87 814 184
+E E 0 1 1 2 1 E 0.675 0 0.75 -60.77500000000001 7.75 0 E 413 87 814 184
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 10 Alarm info
+LANG:10001 22 Temperature alarm info
 30 67
 "FRAME12"
 ""
@@ -1669,11 +1683,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.9375 0 8.010416666666666 -378.1874999999999 -639.9062499999999 0 E 413 87 814 184
+E E 0 1 1 2 1 E 2.7525 0 3.9375 -1127.7825 -285.5625 0 E 413 87 814 184
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 0 
+LANG:10001 14 Limit Settings
 30 68
 "FRAME13"
 ""
@@ -1689,15 +1703,15 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.722499999999999 0 6.802083333333333 -300.3924999999998 -520.78125 0 E 413 87 814 184
+E E 0 1 1 2 1 E 2.7525 0 4.406249999999999 -1127.7825 56.6562500000001 0 E 413 87 814 184
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 0 
+LANG:10001 19 Alert Configuration
 2 69
 "downText"
 ""
-1 97 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
+1 248 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
  E E
 69 0 0 0 0 0
 E E E
@@ -1710,8 +1724,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 97 92 142 111
-0 2 2 "0s" 0 0 0 64 0 0  97 92 1
+E E 0 1 1 2 1 E U  1 E 248 92 293 111
+0 2 2 "0s" 0 0 0 64 0 0  248 92 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1721,7 +1735,7 @@ LANG:1 12 Current List
 2 70
 "middleText"
 ""
-1 164 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
+1 315 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
  E E
 70 0 0 0 0 0
 E E E
@@ -1734,8 +1748,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 164 92 243 111
-0 2 2 "0s" 0 0 0 64 0 0  164 92 1
+E E 0 1 1 2 1 E U  1 E 315 92 394 111
+0 2 2 "0s" 0 0 0 64 0 0  315 92 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1745,7 +1759,7 @@ LANG:1 12 Current List
 2 71
 "upText"
 ""
-1 249 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
+1 400 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
  E E
 71 0 0 0 0 0
 E E E
@@ -1758,13 +1772,233 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 249 92 341 111
-0 2 2 "0s" 0 0 0 64 0 0  249 92 1
+E E 0 1 1 2 1 E U  1 E 400 92 492 111
+0 2 2 "0s" 0 0 0 64 0 0  400 92 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
 0 2
 LANG:10001 9 HIGH_TEMP
+LANG:1 12 Current List
+6 72
+"RECTANGLE5"
+""
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmErrorAck" E E
+ E E
+72 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.75 0 1 602.25 21 1 E 29 70 141 92
+6 73
+"RECTANGLE6"
+""
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "green" E E
+ E E
+73 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.75 0 1 687.2500000000001 21 1 E 29 70 141 92
+6 74
+"RECTANGLE7"
+""
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmErrorAck" E E
+ E E
+74 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.8035714285714286 0 1 770.6964285714286 21 1 E 29 70 141 92
+2 75
+"PRIMITIVE_TEXT25"
+""
+1 766.0000000000001 128 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+75 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 766.0000000000001 128 825.0000000000001 147
+0 2 2 "0s" 0 0 0 64 0 0  766.0000000000001 128 1
+2
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 7 upLimit
+LANG:1 12 Current List
+2 76
+"PRIMITIVE_TEXT26"
+""
+1 671.0000000000001 128 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+76 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 671.0000000000001 128 749.0000000000001 147
+0 2 2 "0s" 0 0 0 64 0 0  671.0000000000001 128 1
+2
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 9 downLimit
+LANG:1 12 Current List
+4 77
+"LINE12"
+""
+1 709 114.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+77 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  709 114.0000000000001 709 128.0000000000001
+4 78
+"LINE13"
+""
+1 794 114.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+78 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  794 114.0000000000001 794 128.0000000000001
+30 79
+"FRAME14"
+""
+1 413 87 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+79 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.675 0 0.8020833333333333 336.225 1.21875 0 E 413 87 814 184
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 16 Power alarm info
+2 80
+"PRIMITIVE_TEXT27"
+""
+1 731.0000000000001 96 E E E 1 E 1 E N "black" E N "_Transparent" E E
+ E E
+80 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 731.0000000000001 96 776.0000000000001 115
+0 2 2 "0s" 0 0 0 64 0 0  731.0000000000001 96 1
+2
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 5 READY
+LANG:1 12 Current List
+2 84
+"PRIMITIVE_TEXT31"
+""
+1 635.0000000000001 95 E E E 1 E 1 E N "black" E N "_Transparent" E E
+ E E
+84 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 635.0000000000001 95 721.0000000000001 114
+0 2 2 "0s" 0 0 0 64 0 0  635.0000000000001 95 1
+2
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 7 WARNING
+LANG:1 12 Current List
+2 85
+"PRIMITIVE_TEXT32"
+""
+1 807.0000000000001 95 E E E 1 E 1 E N "black" E N "_Transparent" E E
+ E E
+85 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 807.0000000000001 95 893.0000000000001 114
+0 2 2 "0s" 0 0 0 64 0 0  807.0000000000001 95 1
+2
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
+0 2
+LANG:10001 7 WARNING
 LANG:1 12 Current List
 0
 LAYER, 1 
