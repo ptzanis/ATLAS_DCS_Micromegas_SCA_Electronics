@@ -413,6 +413,43 @@ mapping getBoardsListOfChannelAndTypeOfChamberLayerPCB(string chamber, int layer
 
 }
 
+
+// alternate mapping ChannelAndTypeOfChamberLayerPCB --------------------------------------------------------------------------------------------------------------------------------------------
+
+mapping getBoardsListOfChannelAndTypeOfPCB(string chamber, int layer, int pcb){
+
+  // EIZ2R1A01
+  string axial=substr(chamber,2,2);
+  string radial=substr(chamber,4,2);
+  string side=substr(chamber,6,1);
+  string sector=substr(chamber,7,2);
+
+  dyn_string objectsUnderBoard;
+
+  string channel, type;
+  dyn_string channelType;
+  mapping channelAndTypeList;
+
+              objectsUnderBoard=dpNames("MMG_Side"+side+".Sector"+sector+"."+axial+"."+radial+".Layer"+layer+".PCB"+pcb+".*");
+              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
+              {
+                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
+                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
+                channelType[1]=channel;
+                channelType[2]=type;
+
+                if(channel!="" && type!="")
+                  channelAndTypeList["Board"+objectsUnderBoard_i]=channelType;
+
+              }//objectsUnderBoard_i
+
+ return channelAndTypeList;
+
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 dyn_string getChannelListOfBoardTypeFromMappingList(mapping mappingList,string boardType)
 {
   dyn_string list;

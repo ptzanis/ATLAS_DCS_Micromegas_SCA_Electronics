@@ -1171,6 +1171,87 @@ LANG:10001 12 PUSH_BUTTON2
 
 }" 0
  E E E
+13 61
+"PUSH_BUTTON3"
+""
+1 364 522 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+61 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  362 488 497 570
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON3
+"main(mapping event)
+{
+
+  /*
+  mapping root;
+  dyn_string child_dyn;
+  child_dyn[1] = \"MMFE8_L1P1_IPL\";
+  child_dyn[2] = \"MMFE8\";
+
+  root[\"Board1\"] = child_dyn;
+  child_dyn[1] = \"ADDC_L1P1_IPL\";
+  child_dyn[2] = \"ADDC\";
+  root[\"Board2\"] = child_dyn;
+
+  DebugN(root);
+
+
+//   DebugN(mappinglen(root));
+
+
+  DebugN(root[mappingGetKey(root,1)][1]);
+//   DebugN(\"root =>child2 =>element1:\" + root[\"c2\"][1]); //Output: one
+
+*/
+
+  mapping boardList=getBoardsListOfChannelAndTypeOfChamberLayerPCB(\"EIZ2R1A01\", 1, 4);
+
+  DebugN(boardList);
+
+}
+
+mapping getBoardsListOfChannelAndTypeOfChamberLayerPCB(string chamber, int layer, int pcb){
+
+  // EIZ2R1A01
+  string axial=substr(chamber,2,2);
+  string radial=substr(chamber,4,2);
+  string side=substr(chamber,6,1);
+  string sector=substr(chamber,7,2);
+
+  dyn_string objectsUnderBoard;
+
+  string channel, type;
+  dyn_string channelType;
+  mapping channelAndTypeList;
+
+              for(int objectsUnderBoard_i=1; objectsUnderBoard_i<=4; objectsUnderBoard_i++)
+              {
+                dpGet(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+objectsUnderBoard_i+\".info.channel\",channel);
+                dpGet(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+objectsUnderBoard_i+\".info.type\",type);
+                channelType[1]=channel;
+                channelType[2]=type;
+
+                if(channel!=\"\" && type!=\"\")
+                   channelAndTypeList[\"Board\"+objectsUnderBoard_i]=channelType;
+
+              }//objectsUnderBoard_i
+
+ return channelAndTypeList;
+
+}" 0
+ E E E
 0
 LAYER, 1 
 1

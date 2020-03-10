@@ -159,8 +159,8 @@ dyn_string alertExistEnabled;
 
   for(int i=1; i<=mappinglen(listOfBoardsChannelAndType);i++)
   {
-   channel=mappingGetKey(listOfBoardsChannelAndType,i);
-   type=mappingGetValue(listOfBoardsChannelAndType,i);
+    channel=mappingGetKey(listOfBoardsChannelAndType,i);
+    type=mappingGetValue(listOfBoardsChannelAndType,i);
 
    alertExistEnabled=checkBoardAlertExistEnabledStatus(channel, type);
    if(alertBox.number==0 && alertExistEnabled[1]==TRUE && alertExistEnabled[2]==TRUE)
@@ -695,19 +695,19 @@ LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 {
  changeValue(this.name(),row,column,value);
 }" 0
- 1 0 1 3 0 "Item" 12 1 0 "[0s,,,AlignHCenter]" 1
+ 1 0 1 3 0 "Item" 17 1 0 "[0s,,,AlignHCenter]" 1
 LANG:10001 4 Item
 E
 1
 LANG:10001 0 
 
-200 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+200 "downLimit" 4 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 9 downLimit
 E
 1
 LANG:10001 0 
 
-60 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+60 "upLimit" 4 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 7 upLimit
 E
 1
@@ -743,19 +743,19 @@ LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 {
  changeValue(this.name(),row,column,value);
 }" 0
- 1 0 1 3 0 "Item" 12 1 0 "[0s,,,AlignHCenter]" 1
+ 1 0 1 3 0 "Item" 17 1 0 "[0s,,,AlignHCenter]" 1
 LANG:10001 4 Item
 E
 1
 LANG:10001 0 
 
-200 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+200 "downLimit" 4 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 9 downLimit
 E
 1
 LANG:10001 0 
 
-60 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+60 "upLimit" 4 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 7 upLimit
 E
 1
@@ -791,19 +791,19 @@ LANG:10001 35 Utopia,-1,12,5,50,0,0,0,0,0,Regular
 {
  changeValue(this.name(),row,column,value);
 }" 0
- 1 0 1 3 0 "Item" 12 1 0 "[0s,,,AlignHCenter]" 1
+ 1 0 1 3 0 "Item" 17 1 0 "[0s,,,AlignHCenter]" 1
 LANG:10001 4 Item
 E
 1
 LANG:10001 0 
 
-200 "downLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+200 "downLimit" 4 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 9 downLimit
 E
 1
 LANG:10001 0 
 
-60 "upLimit" 6 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
+60 "upLimit" 4 1 1 "[3.2f,False,False,AlignHCenter,False]" 1
 LANG:10001 7 upLimit
 E
 1

@@ -1020,7 +1020,7 @@ MMG_ELTX_CreateChamberDpType()
       }//axial
     }//sector
 
-int x=dpTypeCreate(elements,types);
+int x=dpTypeChange(elements,types);
 
  if (x == 0){
     DebugN(\"MMG_ELTX_Board - CREATED\");
@@ -1047,6 +1047,13 @@ void addBoardPart(){
       j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
       i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"isLVOn\");
       j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_BOOL);
+
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"state\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,DPEL_STRUCT);
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"power\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_INT);
+      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"temperature\");
+      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_INT);
 
 }
 

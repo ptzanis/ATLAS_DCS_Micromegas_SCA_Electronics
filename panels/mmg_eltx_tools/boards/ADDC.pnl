@@ -1,47 +1,47 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 611 206 N "FwAtlasBg" 4
-"$boardType"
-"$channel"
+PANEL,-1 -1 611 206 N "FwAtlasBg" 5
+"$obj"
 "$x"
+"$xScale"
 "$y"
+"$yScale"
 "main()
 {
-     dyn_string analogItemsOfBoard;
-     dpGet(eltxProjectName()+detectorTechnology+\"_ELTX_\"+boardType+\".AnalogItems\",analogItemsOfBoard);
-
-
+      dyn_string analogItemsOfBoard=getAnalogItemsOfBoard(\"ADDC\");
 
        //PW FEAST 1.5V
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[V]\",x+118,y+110,2,2);
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[1],\"\",\"[C]\",x+118,y+132,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[1],\"\",\"[V]\",x+118,y+110,xScale+1.0, yScale+1.0);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[4],\"\",\"[C]\",x+118,y+132,xScale+1.0, yScale+1.0);
 
        //PW FEAST 2.5V
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[2],\"\",\"[V]\",x+417,y+110,2,2);
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[5],\"\",\"[C]\",x+417,y+132,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[2],\"\",\"[V]\",x+417,y+110,xScale+1.0, yScale+1.0);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[5],\"\",\"[C]\",x+417,y+132,xScale+1.0, yScale+1.0);
 
        //GBTX0
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[6],\"\",\"[C]\",x+13,y+116,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[6],\"\",\"[C]\",x+13,y+116,xScale+1.0, yScale+1.0);
 
       //GBTX1
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[7],\"\",\"[C]\",x+309,y+116,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[7],\"\",\"[C]\",x+309,y+116,xScale+1.0, yScale+1.0);
 
       //SCA
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[8],\"\",\"[C]\",x+172,y+30,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[8],\"\",\"[C]\",x+172,y+30,xScale+1.0, yScale+1.0);
 
 
       //BOARD TEMP
-      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+\"/\"+analogItemsOfBoard[3],\"\",\"[C]\",x+290,y+42,2,2);
+      parameterDisplay(eltxProjectName()+detectorTechnology+\"_\"+channel+analogItemsOfBoard[3],\"\",\"[C]\",x+290,y+42,xScale+1.0, yScale+1.0);
 
 }" 0
  E E E E 1 -1 -1 0  7.999999999999996 9
 ""0  1
-E "string channel=$channel;
-string boardType=$boardType;
+E "string boardType= getBoardType($obj);
+string channel=getBoardChannel($obj);
 int x=$x;
 int y=$y;
-string detectorTechnology=\"MMG\";" 0
+string detectorTechnology=\"MMG\";
+int xScale=$xScale;
+int yScale=$yScale;" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -68,7 +68,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 3 3 2 1 E 1.111111111111111 0 1.804123711340206 -6.555555555555557 -29.08247422680412 1 E 14 20 536 117
+E E 0 3 3 2 1 E 1.111111111111111 0 1.690721649484536 -7.555555555555554 -26.81443298969072 1 E 14 20 536 117
 6 2
 "RECTANGLE3"
 ""
