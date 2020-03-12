@@ -5,7 +5,15 @@ PANEL,-1 -1 446 339 N "FwAtlasBg" 3
 "$obj"
 "$x"
 "$y"
-E E E E E 1 -1 -1 0  -4.000000000000027 10
+"main()
+{
+    int x=$x;
+    int y=$y;
+
+    string domain=getChamberDomain($obj);
+    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x+30, y+153, 0, 1.5, 1);
+}" 0
+ E E E E 1 -1 -1 0  -4.000000000000027 10
 ""0  1
 E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
@@ -55,7 +63,7 @@ LANG:10001 0
 
 }
 " 0
- E 0 1 1 2 1 E 1.164556962025316 0 1 -706.8227848101263 -148 1 E 637 258 716 280
+ E 0 1 1 2 1 E 1.164556962025316 0 1 -708.8227848101263 -123 1 E 637 258 716 280
 6 4
 "powerState"
 ""
@@ -80,7 +88,7 @@ LANG:10001 0
 
 }
 " 0
- E 0 1 1 2 1 E 1.164556962025316 0 1 -615.8227848101267 -148 1 E 637 258 716 280
+ E 0 1 1 2 1 E 1.164556962025316 0 1 -617.8227848101267 -123 1 E 637 258 716 280
 30 0
 "boardStatusFrame"
 ""
@@ -98,22 +106,17 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-    int x=$x;
-    int y=$y;
-
-    string domain=getChamberDomain($obj);
-    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x+30, y+130, 0, 1.5, 1);
-
+  this.text(\"Board \"+ substr($obj, strlen($obj)-1, 1));
 }" 0
- E 0 1 1 2 1 E 0.3101449275362319 0 2.176470588235294 1.492753623188406 -120.9411764705882 0 E 50 62 741 131
+ E 0 1 1 2 1 E 0.3101449275362319 0 2.485294117647058 1.492753623188406 -135.0882352941177 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 12 Board Status
+LANG:10001 7 Board X
 2 1
 "PRIMITIVE_TEXT22"
 ""
-1 41.99999999999991 113 E E E 1 E 1 E N "black" E N "_Window" E E
+1 39.99999999999991 138 E E E 1 E 1 E N "black" E N "_Window" E E
  E E
 1 0 0 0 0 0
 E E E
@@ -126,8 +129,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 41.99999999999991 113 124 128
-0 2 2 "0s" 0 0 0 192 0 0  41.99999999999991 113 1
+E E 0 1 1 2 1 E U  0 E 39.99999999999991 138 122 153
+0 2 2 "0s" 0 0 0 192 0 0  39.99999999999991 138 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -135,7 +138,7 @@ LANG:10001 11 Temperature
 2 2
 "PRIMITIVE_TEXT23"
 ""
-1 154.9999999999999 113 E E E 1 E 1 E N "black" E N "_Window" E E
+1 152.9999999999999 138 E E E 1 E 1 E N "black" E N "_Window" E E
  E E
 2 0 0 0 0 0
 E E E
@@ -148,8 +151,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 154.9999999999999 113 195 128
-0 2 2 "0s" 0 0 0 192 0 0  154.9999999999999 113 1
+E E 0 1 1 2 1 E U  0 E 152.9999999999999 138 193 153
+0 2 2 "0s" 0 0 0 192 0 0  152.9999999999999 138 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -157,7 +160,7 @@ LANG:10001 5 Power
 2 5
 "PRIMITIVE_TEXT12"
 ""
-1 73 37 E E E 1 E 1 E N "White" E N "_Window" E E
+1 71 65 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 5 0 0 0 0 0
 E E E
@@ -170,8 +173,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 73 37 117 52
-0 2 2 "0s" 0 0 0 192 0 0  73 37 1
+E E 0 1 1 2 1 E U  0 E 71 65 115 80
+0 2 2 "0s" 0 0 0 192 0 0  71 65 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -179,7 +182,7 @@ LANG:10001 7 Status:
 14 6
 "TEXT_FIELD14"
 ""
-1 137 219 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
+1 135 247 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
  E E
 6 0 0 0 0 0
 E E E
@@ -191,7 +194,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  116 33 198 56
+0  114 61 196 84
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -231,7 +234,7 @@ void updateStatus(string dpeOnlineStatus, bool onlineStatus, string dpeOPCConnec
 2 7
 "PRIMITIVE_TEXT21"
 ""
-1 35 62 E E E 1 E 1 E N "White" E N "_Window" E E
+1 31 90 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 7 0 0 0 0 0
 E E E
@@ -244,8 +247,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 35 62 118 77
-0 2 2 "0s" 0 0 0 192 0 0  35 62 1
+E E 0 1 1 2 1 E U  0 E 31 90 114 105
+0 2 2 "0s" 0 0 0 192 0 0  31 90 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -253,7 +256,7 @@ LANG:10001 15 Last reply [s]:
 14 8
 "TEXT_FIELD19"
 ""
-1 139 244 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 135 272 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 8 0 0 0 0 0
 E E E
@@ -265,7 +268,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  117.9999999999999 58 200 81
+0  113.9999999999999 86 196 109
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -296,7 +299,7 @@ void updateStatus(string dpeLastReply, ulong lastReplySeconds)
 2 9
 "PRIMITIVE_TEXT14"
 ""
-1 48 90 E E E 1 E 1 E N "White" E N "_Window" E E
+1 46 115 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -309,16 +312,16 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 48 90 118 105
-0 2 2 "0s" 0 0 0 192 0 0  48 90 1
+E E 0 1 1 2 1 E U  0 E 46 115 113 130
+0 2 2 "0s" 0 0 0 192 0 0  46 115 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 10 ConnState:
+LANG:10001 10 OPC State:
 14 10
 "TEXT_FIELD16"
 ""
-1 137 271 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
+1 135 296 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
  E E
 10 0 0 0 0 0
 E E E
@@ -330,7 +333,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  116 85 198 108
+0  114 110 196 133
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -363,6 +366,51 @@ void updateStatus(string dpeOPCConnectionStatus, bool OPCConnectionStatus)
     setValue(\"\", \"backCol\", \"Green\");
     this.text(\"TRUE\");
   }
+}
+
+" 0
+ E
+2 11
+"PRIMITIVE_TEXT24"
+""
+1 71 40 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 71 40 107 55
+0 2 2 "0s" 0 0 0 192 0 0  71 40 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Type:
+14 12
+"TEXT_FIELD20"
+""
+1 135 222 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  114 36 196 59
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getBoardType($obj));
 }
 
 " 0

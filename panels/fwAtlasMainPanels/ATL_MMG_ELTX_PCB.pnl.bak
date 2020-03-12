@@ -5,6 +5,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "$obj"
 "main()
 {
+  cleanLinesAndNumber();
   addLogoNTUABNL(670,800);
 
 
@@ -32,48 +33,41 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 
   string objBoard=$obj+\"_BOARD\";
 
-  /*
-  int xFrame, yFrame;
-  getValue(\"\",\"position\",xFrame,yFrame);
 
-
-  xFrame=xFrame+8;
-    yFrame=yFrame+20;
-
-    xFrame=xFrame+570;
-    addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/boardOverviewStatus.pnl\", \"Overview_Status_Board_\"+boardType,
-              makeDynString(\"$obj:\"+$obj,\"$x:\"+xFrame,\"$y:\"+yFrame), xFrame, yFrame-20, 0, 1, 1);
-
-    */
 
   for(int i=1; i<= numberOfBoardofPCB; i++)
   {
+
    boardNum=substr(boardsOfPcb[i], strlen(boardsOfPcb[i])-1, 1);
+
+   setValue(\"line\"+boardNum,\"visible\",1);
+   setValue(\"number\"+boardNum,\"visible\",1);
+
    dpGet(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+boardNum+\".info.channel\", channel);
    dpGet(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+boardNum+\".info.type\", type);
 
-//    addSymbol(myModuleName(),myPanelName(),\"/objects/boardStatusState.pnl\",\"StatusState_\"+objBoard+boardNum ,
-//              makeDynString(\"$domain:\"+domain,\"$obj:\"+objBoard+boardNum,\"$label:\"+\"\"),
-//              x,y,0,0.6,0.6);
-//
-   if(boardNum==1){ x=100; y=500; }
-   if(boardNum==2){ x=500; y=500; }
+   if(boardNum==1){ x=100; y=460; }
+   if(boardNum==2){ x=500; y=460; }
    if(boardNum==3){ x=100; y=100; }
    if(boardNum==4){ x=500; y=100; }
-
 
    addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/boardOverviewStatus.pnl\", \"Overview_Status_Board_\"+boardNum,
              makeDynString(\"$obj:\"+objBoard+boardNum,\"$x:\"+x,\"$y:\"+y), x, y, 0, 1, 1);
 
-//      addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/\"+type+\".pnl\", \"Board \"+type,
-//              makeDynString(\"$x:\"+x,\"$y:\"+y,\"$xScale:\"+1.0,\"$yScale:\"+1.0, \"$obj:\"+objBoard+boardNum), x, y, 0, 1.0, 1.0);
-
-   y=y+175;
   }
 
 
 
 
+}
+
+void cleanLinesAndNumber(){
+
+ for(int i=1; i<=4;i++)
+  {
+   setValue(\"line\"+i,\"visible\",0);
+   setValue(\"number\"+i,\"visible\",0);
+  }
 }" 0
  E E E E 1 -1 -1 0  131 141
 ""0  1
@@ -291,9 +285,9 @@ LANG:10001 0
 }" 0
  E 0 1 1 2 1 E 1.666666666666667 0 1.666666666666667 33.33333333333334 -377.051282051282 1 E 235 455 15 15
 2 21
-"PRIMITIVE_TEXT21"
+"number1"
 ""
-1 352.3181818181819 407.2820512820513 E E E 1 E 1 E N "black" E N "black" E E
+1 352.3181818181819 407.2820512820513 E E E 1 E 0 E N "black" E N "black" E E
  E E
 21 0 0 0 0 0
 E E E
@@ -313,9 +307,9 @@ LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 1 1
 2 22
-"PRIMITIVE_TEXT22"
+"number2"
 ""
-1 477.3181818181819 407.2820512820513 E E E 1 E 1 E N "black" E N "black" E E
+1 477.3181818181819 407.2820512820513 E E E 1 E 0 E N "black" E N "black" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -335,9 +329,9 @@ LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 1 2
 2 23
-"PRIMITIVE_TEXT23"
+"number3"
 ""
-1 352.3181818181819 324.2820512820513 E E E 1 E 1 E N "black" E N "black" E E
+1 352.3181818181819 324.2820512820513 E E E 1 E 0 E N "black" E N "black" E E
  E E
 23 0 0 0 0 0
 E E E
@@ -357,9 +351,9 @@ LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 1 3
 2 24
-"PRIMITIVE_TEXT24"
+"number4"
 ""
-1 477.3181818181819 324.2820512820513 E E E 1 E 1 E N "black" E N "black" E E
+1 477 323 E E E 1 E 0 E N "black" E N "black" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -372,108 +366,12 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 477.3181818181819 324.2820512820513 491 349.2820512820513
-0 2 2 "0s" 0 0 0 192 0 0  477.3181818181819 324.2820512820513 1
+E E 0 1 1 2 1 E U  0 E 477 323 490.6818181818181 348
+0 2 2 "0s" 0 0 0 192 0 0  477 323 1
 1
 LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 1 4
-4 30
-"LINE2"
-""
-1 212 296 E E E 1 E 1 E N "White" E N {255,255,255} E E
- E E
-30 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "1"
-E E 0 2 1 2 1 E  212 296 296.5723358707318 326.7818128993102
-4 32
-"LINE3"
-""
-1 212 252 E E E 1 E 1 E N "White" E N {255,255,255} E E
- E E
-32 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "1"
-E E 0 2 1 2 1 E  212 252 211.9999999999999 296.0000000000001
-4 33
-"LINE4"
-""
-1 544 326 E E E 1 E 1 E N "White" E N {255,255,255} E E
- E E
-33 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "1"
-E E 0 2 1 2 1 E  544 326 628.5723358707318 295.2181871006899
-4 34
-"LINE5"
-""
-1 629 252 E E E 1 E 1 E N "White" E N {255,255,255} E E
- E E
-34 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "1"
-E E 0 2 1 2 1 E  629 252 629 296.0000000000001
-4 35
-"LINE6"
-""
-1 544.0000000000003 434.9999999999998 E E E 1 E 1 E N "White" E N {255,255,255} E E
- E E
-35 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "1"
-E E 0 2 1 2 1 E  544.0000000000003 434.9999999999998 628.5723358707321 465.78181289931
-4 36
-"LINE7"
-""
-1 629 465 E E E 1 E 1 E N "White" E N {255,255,255} E E
- E E
-36 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "1"
-E E 0 2 1 2 1 E  629 465 629 514.0000000000001
 30 37
 "Frame4"
 ""
@@ -971,12 +869,12 @@ LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
 0 2
 LANG:10001 7 UNKNOWN
 LANG:1 2 OK
-4 61
-"LINE8"
+10 68
+"line1"
 ""
-1 212.0000000000002 467.0000000000001 E E E 1 E 1 E N "White" E N {255,255,255} E E
+1 210.9999999999999 513.0000000000001 E E E 1 E 0 E N "White" E N {255,255,255} E E
  E E
-61 0 0 0 0 0
+68 0 0 0 0 0
 E E E
 0
 1
@@ -986,13 +884,17 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 2 1 2 1 E  212.0000000000002 467.0000000000001 296.5723358707319 436.2181871006899
-4 62
-"LINE9"
+E E 0 2 1 2 1 E 1 0 1 -0.9999999999999432 -1.13686837721616e-13 1 E 4 210.9999999999999 513.0000000000001
+211 465.9999999999999
+296.5723358707319 436.2181871006899
+211 465.9999999999999
+ 1
+10 69
+"line2"
 ""
-1 211 466 E E E 1 E 1 E N "White" E N {255,255,255} E E
+1 210.9999999999999 513.0000000000001 E E E 1 E 0 E N "White" E N {255,255,255} E E
  E E
-62 0 0 0 0 0
+69 0 0 0 0 0
 E E E
 0
 1
@@ -1002,7 +904,83 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 2 1 2 1 E  211 466 210.9999999999999 512.0000000000001
+E E 0 2 1 2 1 E -1 -1.087338269720717e-15 -1.087338269720717e-15 1 838.0000000000006 -0.9999999999998437 1 E 4 210.9999999999999 513.0000000000001
+211 465.9999999999999
+296.5723358707319 436.2181871006899
+211 465.9999999999999
+ 1
+10 70
+"line3"
+""
+1 210.9999999999999 513.0000000000001 E E E 1 E 0 E N "White" E N {255,255,255} E E
+ E E
+70 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 2 1 2 1 E 1 0 -1 -0.9999999999999432 762.0000000000001 1 E 4 210.9999999999999 513.0000000000001
+211 465.9999999999999
+296.5723358707319 436.2181871006899
+211 465.9999999999999
+ 1
+10 71
+"line4"
+""
+1 210.9999999999999 513.0000000000001 E E E 1 E 0 E N "White" E N {255,255,255} E E
+ E E
+71 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 2 1 2 1 E -1 1.087338269720717e-15 -1.087338269720717e-15 -1 840.0000000000006 761.9999999999999 1 E 4 210.9999999999999 513.0000000000001
+211 465.9999999999999
+296.5723358707319 436.2181871006899
+211 465.9999999999999
+ 1
+6 72
+"RECTANGLE33"
+""
+1 67 170 E E E 1 E 1 E N "FwAtlasBg" E N "FwAtlasBg" E E
+ E E
+72 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 3.229299363057325 0 1.333333333333334 -42.36305732484075 -17.66666666666675 1 E 67 170 224 221
+6 73
+"RECTANGLE34"
+""
+1 67 170 E E E 1 E 1 E N "FwAtlasBg" E N "FwAtlasBg" E E
+ E E
+73 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 3.229299363057325 0 1.333333333333334 -58.36305732484075 252.3333333333333 1 E 67 170 224 221
 0
 LAYER, 1 
 1

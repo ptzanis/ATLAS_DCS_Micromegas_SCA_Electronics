@@ -40,8 +40,8 @@ string channel=getBoardChannel($obj);
 int x=$x;
 int y=$y;
 string detectorTechnology=\"MMG\";
-int xScale=$xScale;
-int yScale=$yScale;" 0
+float xScale=$xScale;
+float yScale=$yScale;" 0
  3
 "CBRef" "1"
 "EClose" E
