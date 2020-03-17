@@ -24,7 +24,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 
   string pcbNum;
 
-  int x;
+  int x=100;
   int y=120;
 
   string objPcb=$obj+\"_PCB\";
@@ -40,29 +40,33 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
    addSymbol(myModuleName(), myPanelName(), \"objects/pcbStatusState.pnl\", \"pcbStatusState_PCB_\"+pcbNum,
              makeDynString(\"$domain:\"+domain, \"$obj:\"+objPcb+pcbNum,\"\",\"$x:\"+x,\"$y:\"+y), x, y, 0, xScale, yScale);
 
-   yScale=yScale-0.12;
+//    yScale=yScale-0.12;
    x=x+21;
    if(i==1)
    {
      y=y+130;
     xScale=xScale-0.12;
+    yScale=yScale-0.12;
    }
    if(i==2)
    {
      y=y+113;
      x=x-2;
      xScale=xScale-0.11;
+    yScale=yScale-0.11;
    }
    if(i==3)
    {
-     y=y+96;
+     y=y+98;
      x=x-5;
      xScale=xScale-0.10;
+     yScale=yScale-0.10;
    }
    if(i==4)
    {
-     y=y+79;
+     y=y+84;
      x=x-7;
+     yScale=yScale-0.085;
      xScale=xScale-0.085;
    }
 

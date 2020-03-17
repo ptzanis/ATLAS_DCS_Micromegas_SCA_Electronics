@@ -1,0 +1,19 @@
+# ascii dump of database
+
+# Datapoint/DpId
+DpName	TypeName	ID
+fwInstallation_agentParametrization	_FwInstallation_agentParametrization	484
+
+# DpValue
+Manager/User	ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+UI (1)/0	fwInstallation_agentParametrization.db.connection.server	_FwInstallation_agentParametrization	"INTR"	0x8300000000000101	16.11.2016 09:46:17.227
+UI (1)/0	fwInstallation_agentParametrization.db.connection.username	_FwInstallation_agentParametrization	"ATLAS_PVSSSYSCONF_W"	0x8300000000000101	16.11.2016 09:46:17.227
+UI (1)/0	fwInstallation_agentParametrization.db.connection.password	_FwInstallation_agentParametrization	"WFWa8ACcRvkzo4nJe1Ihag=="	0x8300000000000101	16.11.2016 09:46:17.227
+UI (1)/0	fwInstallation_agentParametrization.db.connection.initialized	_FwInstallation_agentParametrization	1	0x8300000000000101	16.11.2016 09:46:17.228
+UI (1)/0	fwInstallation_agentParametrization.db.connection.schemaOwner	_FwInstallation_agentParametrization	"ATLAS_PVSSSYSCONF"	0x8300000000000101	16.11.2016 09:46:17.227
+UI (1)/0	fwInstallation_agentParametrization.db.useDB	_FwInstallation_agentParametrization	1	0x8300000000000101	16.11.2016 09:46:17.228
+UI (1)/0	fwInstallation_agentParametrization.db.projectStatus	_FwInstallation_agentParametrization	1, 1, 1, 1, 1, 1, 0, 0, 1	0x8300000000000101	14.07.2017 15:07:55.528
+UI (1)/0	fwInstallation_agentParametrization.lock	_FwInstallation_agentParametrization	0	0x8300000000000101	14.07.2017 15:07:59.300
+UI (1)/0	fwInstallation_agentParametrization.syncInterval	_FwInstallation_agentParametrization	300	0x8300000000000101	16.11.2016 08:46:30.716
+UI (1)/0	fwInstallation_agentParametrization.managers.protected	_FwInstallation_agentParametrization	"-m gedi", "-f pvss_scripts.lst", "-f fwInstallationAgent.lst", "-p fwInstallation/fwInstallation.pnl", "fwInstallationFakeScript.ctl", "fwInstallationAgentDBConsistencyChecker.ctl", "archiv_client.ctl", "calculateState.ctl", "libs/PVSSBootstrapper/PVSSBootstrapper_insider.ctl"	0x8300000000000101	16.11.2016 08:46:30.715
+UI (1)/0	fwInstallation_agentParametrization.fileIssuesSyncDisabled	_FwInstallation_agentParametrization	0	0x8300000000000101	16.11.2016 09:46:23.001

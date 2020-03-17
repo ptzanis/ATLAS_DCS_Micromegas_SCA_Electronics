@@ -11,7 +11,7 @@ PANEL,-1 -1 446 339 N "FwAtlasBg" 3
     int y=$y;
 
     string domain=getChamberDomain($obj);
-    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x+30, y+153, 0, 1.5, 1);
+    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"boardOveviewStateStatus_\"+$obj,makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x+30, y+153, 0, 1.5, 1);
 }" 0
  E E E E 1 -1 -1 0  -4.000000000000027 10
 ""0  1

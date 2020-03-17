@@ -11898,8 +11898,12 @@ object: EIZ2R1A01_LAYER1_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER1_PC
 class: EIZ2R1A01_LAYER1_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER1_PCB1_BOARD1 is_of_class EIZ2R1A01_LAYER1_PCB1MMG_ELTX_Board_CLASS
 
@@ -11944,8 +11948,12 @@ object: EIZ2R1A01_LAYER1_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER1_PC
 class: EIZ2R1A01_LAYER1_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER1_PCB2_BOARD1 is_of_class EIZ2R1A01_LAYER1_PCB2MMG_ELTX_Board_CLASS
 
@@ -11990,8 +11998,12 @@ object: EIZ2R1A01_LAYER1_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER1_PC
 class: EIZ2R1A01_LAYER1_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER1_PCB3_BOARD1 is_of_class EIZ2R1A01_LAYER1_PCB3MMG_ELTX_Board_CLASS
 
@@ -12044,8 +12056,12 @@ object: EIZ2R1A01_LAYER1_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER1_PC
 class: EIZ2R1A01_LAYER1_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER1_PCB4_BOARD1 is_of_class EIZ2R1A01_LAYER1_PCB4MMG_ELTX_Board_CLASS
 
@@ -12098,8 +12114,12 @@ object: EIZ2R1A01_LAYER1_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER1_PC
 class: EIZ2R1A01_LAYER1_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER1_PCB5_BOARD1 is_of_class EIZ2R1A01_LAYER1_PCB5MMG_ELTX_Board_CLASS
 
@@ -12194,8 +12214,12 @@ object: EIZ2R1A01_LAYER2_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER2_PC
 class: EIZ2R1A01_LAYER2_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER2_PCB1_BOARD2 is_of_class EIZ2R1A01_LAYER2_PCB1MMG_ELTX_Board_CLASS
 
@@ -12240,8 +12264,12 @@ object: EIZ2R1A01_LAYER2_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER2_PC
 class: EIZ2R1A01_LAYER2_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER2_PCB2_BOARD2 is_of_class EIZ2R1A01_LAYER2_PCB2MMG_ELTX_Board_CLASS
 
@@ -12286,8 +12314,12 @@ object: EIZ2R1A01_LAYER2_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER2_PC
 class: EIZ2R1A01_LAYER2_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER2_PCB3_BOARD2 is_of_class EIZ2R1A01_LAYER2_PCB3MMG_ELTX_Board_CLASS
 
@@ -12332,8 +12364,12 @@ object: EIZ2R1A01_LAYER2_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER2_PC
 class: EIZ2R1A01_LAYER2_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER2_PCB4_BOARD2 is_of_class EIZ2R1A01_LAYER2_PCB4MMG_ELTX_Board_CLASS
 
@@ -12378,8 +12414,12 @@ object: EIZ2R1A01_LAYER2_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER2_PC
 class: EIZ2R1A01_LAYER2_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER2_PCB5_BOARD2 is_of_class EIZ2R1A01_LAYER2_PCB5MMG_ELTX_Board_CLASS
 
@@ -12466,8 +12506,12 @@ object: EIZ2R1A01_LAYER3_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER3_PC
 class: EIZ2R1A01_LAYER3_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER3_PCB1_BOARD1 is_of_class EIZ2R1A01_LAYER3_PCB1MMG_ELTX_Board_CLASS
 
@@ -12512,8 +12556,12 @@ object: EIZ2R1A01_LAYER3_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER3_PC
 class: EIZ2R1A01_LAYER3_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER3_PCB2_BOARD1 is_of_class EIZ2R1A01_LAYER3_PCB2MMG_ELTX_Board_CLASS
 
@@ -12558,8 +12606,12 @@ object: EIZ2R1A01_LAYER3_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER3_PC
 class: EIZ2R1A01_LAYER3_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER3_PCB3_BOARD1 is_of_class EIZ2R1A01_LAYER3_PCB3MMG_ELTX_Board_CLASS
 
@@ -12604,8 +12656,12 @@ object: EIZ2R1A01_LAYER3_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER3_PC
 class: EIZ2R1A01_LAYER3_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER3_PCB4_BOARD1 is_of_class EIZ2R1A01_LAYER3_PCB4MMG_ELTX_Board_CLASS
 
@@ -12650,8 +12706,12 @@ object: EIZ2R1A01_LAYER3_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER3_PC
 class: EIZ2R1A01_LAYER3_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER3_PCB5_BOARD1 is_of_class EIZ2R1A01_LAYER3_PCB5MMG_ELTX_Board_CLASS
 
@@ -12738,8 +12798,12 @@ object: EIZ2R1A01_LAYER4_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER4_PC
 class: EIZ2R1A01_LAYER4_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER4_PCB1_BOARD2 is_of_class EIZ2R1A01_LAYER4_PCB1MMG_ELTX_Board_CLASS
 
@@ -12784,8 +12848,12 @@ object: EIZ2R1A01_LAYER4_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER4_PC
 class: EIZ2R1A01_LAYER4_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER4_PCB2_BOARD2 is_of_class EIZ2R1A01_LAYER4_PCB2MMG_ELTX_Board_CLASS
 
@@ -12830,8 +12898,12 @@ object: EIZ2R1A01_LAYER4_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER4_PC
 class: EIZ2R1A01_LAYER4_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER4_PCB3_BOARD1 is_of_class EIZ2R1A01_LAYER4_PCB3MMG_ELTX_Board_CLASS
 
@@ -12884,8 +12956,12 @@ object: EIZ2R1A01_LAYER4_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER4_PC
 class: EIZ2R1A01_LAYER4_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER4_PCB4_BOARD1 is_of_class EIZ2R1A01_LAYER4_PCB4MMG_ELTX_Board_CLASS
 
@@ -12938,8 +13014,12 @@ object: EIZ2R1A01_LAYER4_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ2R1A01_LAYER4_PC
 class: EIZ2R1A01_LAYER4_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R1A01_LAYER4_PCB5_BOARD1 is_of_class EIZ2R1A01_LAYER4_PCB5MMG_ELTX_Board_CLASS
 
@@ -13074,8 +13154,12 @@ object: EIZ2R2A01_LAYER1_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER1_PC
 class: EIZ2R2A01_LAYER1_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER1_PCB6_BOARD1 is_of_class EIZ2R2A01_LAYER1_PCB6MMG_ELTX_Board_CLASS
 
@@ -13128,8 +13212,12 @@ object: EIZ2R2A01_LAYER1_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER1_PC
 class: EIZ2R2A01_LAYER1_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER1_PCB7_BOARD1 is_of_class EIZ2R2A01_LAYER1_PCB7MMG_ELTX_Board_CLASS
 
@@ -13174,8 +13262,12 @@ object: EIZ2R2A01_LAYER1_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER1_PC
 class: EIZ2R2A01_LAYER1_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER1_PCB8_BOARD1 is_of_class EIZ2R2A01_LAYER1_PCB8MMG_ELTX_Board_CLASS
 
@@ -13258,8 +13350,12 @@ object: EIZ2R2A01_LAYER2_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER2_PC
 class: EIZ2R2A01_LAYER2_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER2_PCB6_BOARD2 is_of_class EIZ2R2A01_LAYER2_PCB6MMG_ELTX_Board_CLASS
 
@@ -13304,8 +13400,12 @@ object: EIZ2R2A01_LAYER2_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER2_PC
 class: EIZ2R2A01_LAYER2_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER2_PCB7_BOARD2 is_of_class EIZ2R2A01_LAYER2_PCB7MMG_ELTX_Board_CLASS
 
@@ -13350,8 +13450,12 @@ object: EIZ2R2A01_LAYER2_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER2_PC
 class: EIZ2R2A01_LAYER2_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER2_PCB8_BOARD2 is_of_class EIZ2R2A01_LAYER2_PCB8MMG_ELTX_Board_CLASS
 
@@ -13434,8 +13538,12 @@ object: EIZ2R2A01_LAYER3_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER3_PC
 class: EIZ2R2A01_LAYER3_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER3_PCB6_BOARD1 is_of_class EIZ2R2A01_LAYER3_PCB6MMG_ELTX_Board_CLASS
 
@@ -13480,8 +13588,12 @@ object: EIZ2R2A01_LAYER3_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER3_PC
 class: EIZ2R2A01_LAYER3_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER3_PCB7_BOARD1 is_of_class EIZ2R2A01_LAYER3_PCB7MMG_ELTX_Board_CLASS
 
@@ -13526,8 +13638,12 @@ object: EIZ2R2A01_LAYER3_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER3_PC
 class: EIZ2R2A01_LAYER3_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER3_PCB8_BOARD1 is_of_class EIZ2R2A01_LAYER3_PCB8MMG_ELTX_Board_CLASS
 
@@ -13610,8 +13726,12 @@ object: EIZ2R2A01_LAYER4_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER4_PC
 class: EIZ2R2A01_LAYER4_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER4_PCB6_BOARD1 is_of_class EIZ2R2A01_LAYER4_PCB6MMG_ELTX_Board_CLASS
 
@@ -13664,8 +13784,12 @@ object: EIZ2R2A01_LAYER4_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER4_PC
 class: EIZ2R2A01_LAYER4_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER4_PCB7_BOARD2 is_of_class EIZ2R2A01_LAYER4_PCB7MMG_ELTX_Board_CLASS
 
@@ -13710,8 +13834,12 @@ object: EIZ2R2A01_LAYER4_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ2R2A01_LAYER4_PC
 class: EIZ2R2A01_LAYER4_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ2R2A01_LAYER4_PCB8_BOARD2 is_of_class EIZ2R2A01_LAYER4_PCB8MMG_ELTX_Board_CLASS
 
@@ -13834,8 +13962,12 @@ object: EIZ3R1A01_LAYER1_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER1_PC
 class: EIZ3R1A01_LAYER1_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER1_PCB1_BOARD1 is_of_class EIZ3R1A01_LAYER1_PCB1MMG_ELTX_Board_CLASS
 
@@ -13880,8 +14012,12 @@ object: EIZ3R1A01_LAYER1_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER1_PC
 class: EIZ3R1A01_LAYER1_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER1_PCB2_BOARD1 is_of_class EIZ3R1A01_LAYER1_PCB2MMG_ELTX_Board_CLASS
 
@@ -13926,8 +14062,12 @@ object: EIZ3R1A01_LAYER1_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER1_PC
 class: EIZ3R1A01_LAYER1_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER1_PCB3_BOARD1 is_of_class EIZ3R1A01_LAYER1_PCB3MMG_ELTX_Board_CLASS
 
@@ -13980,8 +14120,12 @@ object: EIZ3R1A01_LAYER1_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER1_PC
 class: EIZ3R1A01_LAYER1_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER1_PCB4_BOARD1 is_of_class EIZ3R1A01_LAYER1_PCB4MMG_ELTX_Board_CLASS
 
@@ -14034,8 +14178,12 @@ object: EIZ3R1A01_LAYER1_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER1_PC
 class: EIZ3R1A01_LAYER1_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER1_PCB5_BOARD1 is_of_class EIZ3R1A01_LAYER1_PCB5MMG_ELTX_Board_CLASS
 
@@ -14130,8 +14278,12 @@ object: EIZ3R1A01_LAYER2_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER2_PC
 class: EIZ3R1A01_LAYER2_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER2_PCB1_BOARD2 is_of_class EIZ3R1A01_LAYER2_PCB1MMG_ELTX_Board_CLASS
 
@@ -14176,8 +14328,12 @@ object: EIZ3R1A01_LAYER2_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER2_PC
 class: EIZ3R1A01_LAYER2_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER2_PCB2_BOARD2 is_of_class EIZ3R1A01_LAYER2_PCB2MMG_ELTX_Board_CLASS
 
@@ -14222,8 +14378,12 @@ object: EIZ3R1A01_LAYER2_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER2_PC
 class: EIZ3R1A01_LAYER2_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER2_PCB3_BOARD2 is_of_class EIZ3R1A01_LAYER2_PCB3MMG_ELTX_Board_CLASS
 
@@ -14268,8 +14428,12 @@ object: EIZ3R1A01_LAYER2_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER2_PC
 class: EIZ3R1A01_LAYER2_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER2_PCB4_BOARD2 is_of_class EIZ3R1A01_LAYER2_PCB4MMG_ELTX_Board_CLASS
 
@@ -14314,8 +14478,12 @@ object: EIZ3R1A01_LAYER2_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER2_PC
 class: EIZ3R1A01_LAYER2_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER2_PCB5_BOARD2 is_of_class EIZ3R1A01_LAYER2_PCB5MMG_ELTX_Board_CLASS
 
@@ -14402,8 +14570,12 @@ object: EIZ3R1A01_LAYER3_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER3_PC
 class: EIZ3R1A01_LAYER3_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER3_PCB1_BOARD1 is_of_class EIZ3R1A01_LAYER3_PCB1MMG_ELTX_Board_CLASS
 
@@ -14448,8 +14620,12 @@ object: EIZ3R1A01_LAYER3_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER3_PC
 class: EIZ3R1A01_LAYER3_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER3_PCB2_BOARD1 is_of_class EIZ3R1A01_LAYER3_PCB2MMG_ELTX_Board_CLASS
 
@@ -14494,8 +14670,12 @@ object: EIZ3R1A01_LAYER3_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER3_PC
 class: EIZ3R1A01_LAYER3_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER3_PCB3_BOARD1 is_of_class EIZ3R1A01_LAYER3_PCB3MMG_ELTX_Board_CLASS
 
@@ -14540,8 +14720,12 @@ object: EIZ3R1A01_LAYER3_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER3_PC
 class: EIZ3R1A01_LAYER3_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER3_PCB4_BOARD1 is_of_class EIZ3R1A01_LAYER3_PCB4MMG_ELTX_Board_CLASS
 
@@ -14586,8 +14770,12 @@ object: EIZ3R1A01_LAYER3_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER3_PC
 class: EIZ3R1A01_LAYER3_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER3_PCB5_BOARD1 is_of_class EIZ3R1A01_LAYER3_PCB5MMG_ELTX_Board_CLASS
 
@@ -14674,8 +14862,12 @@ object: EIZ3R1A01_LAYER4_PCB1MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER4_PC
 class: EIZ3R1A01_LAYER4_PCB1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER4_PCB1_BOARD2 is_of_class EIZ3R1A01_LAYER4_PCB1MMG_ELTX_Board_CLASS
 
@@ -14720,8 +14912,12 @@ object: EIZ3R1A01_LAYER4_PCB2MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER4_PC
 class: EIZ3R1A01_LAYER4_PCB2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER4_PCB2_BOARD2 is_of_class EIZ3R1A01_LAYER4_PCB2MMG_ELTX_Board_CLASS
 
@@ -14766,8 +14962,12 @@ object: EIZ3R1A01_LAYER4_PCB3MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER4_PC
 class: EIZ3R1A01_LAYER4_PCB3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER4_PCB3_BOARD1 is_of_class EIZ3R1A01_LAYER4_PCB3MMG_ELTX_Board_CLASS
 
@@ -14820,8 +15020,12 @@ object: EIZ3R1A01_LAYER4_PCB4MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER4_PC
 class: EIZ3R1A01_LAYER4_PCB4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER4_PCB4_BOARD1 is_of_class EIZ3R1A01_LAYER4_PCB4MMG_ELTX_Board_CLASS
 
@@ -14874,8 +15078,12 @@ object: EIZ3R1A01_LAYER4_PCB5MMG_ELTX_Board_FWDM is_of_class EIZ3R1A01_LAYER4_PC
 class: EIZ3R1A01_LAYER4_PCB5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R1A01_LAYER4_PCB5_BOARD1 is_of_class EIZ3R1A01_LAYER4_PCB5MMG_ELTX_Board_CLASS
 
@@ -15010,8 +15218,12 @@ object: EIZ3R2A01_LAYER1_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER1_PC
 class: EIZ3R2A01_LAYER1_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER1_PCB6_BOARD1 is_of_class EIZ3R2A01_LAYER1_PCB6MMG_ELTX_Board_CLASS
 
@@ -15064,8 +15276,12 @@ object: EIZ3R2A01_LAYER1_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER1_PC
 class: EIZ3R2A01_LAYER1_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER1_PCB7_BOARD1 is_of_class EIZ3R2A01_LAYER1_PCB7MMG_ELTX_Board_CLASS
 
@@ -15110,8 +15326,12 @@ object: EIZ3R2A01_LAYER1_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER1_PC
 class: EIZ3R2A01_LAYER1_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER1_PCB8_BOARD1 is_of_class EIZ3R2A01_LAYER1_PCB8MMG_ELTX_Board_CLASS
 
@@ -15194,8 +15414,12 @@ object: EIZ3R2A01_LAYER2_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER2_PC
 class: EIZ3R2A01_LAYER2_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER2_PCB6_BOARD2 is_of_class EIZ3R2A01_LAYER2_PCB6MMG_ELTX_Board_CLASS
 
@@ -15240,8 +15464,12 @@ object: EIZ3R2A01_LAYER2_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER2_PC
 class: EIZ3R2A01_LAYER2_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER2_PCB7_BOARD2 is_of_class EIZ3R2A01_LAYER2_PCB7MMG_ELTX_Board_CLASS
 
@@ -15286,8 +15514,12 @@ object: EIZ3R2A01_LAYER2_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER2_PC
 class: EIZ3R2A01_LAYER2_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER2_PCB8_BOARD2 is_of_class EIZ3R2A01_LAYER2_PCB8MMG_ELTX_Board_CLASS
 
@@ -15370,8 +15602,12 @@ object: EIZ3R2A01_LAYER3_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER3_PC
 class: EIZ3R2A01_LAYER3_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER3_PCB6_BOARD1 is_of_class EIZ3R2A01_LAYER3_PCB6MMG_ELTX_Board_CLASS
 
@@ -15416,8 +15652,12 @@ object: EIZ3R2A01_LAYER3_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER3_PC
 class: EIZ3R2A01_LAYER3_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER3_PCB7_BOARD1 is_of_class EIZ3R2A01_LAYER3_PCB7MMG_ELTX_Board_CLASS
 
@@ -15462,8 +15702,12 @@ object: EIZ3R2A01_LAYER3_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER3_PC
 class: EIZ3R2A01_LAYER3_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER3_PCB8_BOARD1 is_of_class EIZ3R2A01_LAYER3_PCB8MMG_ELTX_Board_CLASS
 
@@ -15546,8 +15790,12 @@ object: EIZ3R2A01_LAYER4_PCB6MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER4_PC
 class: EIZ3R2A01_LAYER4_PCB6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER4_PCB6_BOARD1 is_of_class EIZ3R2A01_LAYER4_PCB6MMG_ELTX_Board_CLASS
 
@@ -15600,8 +15848,12 @@ object: EIZ3R2A01_LAYER4_PCB7MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER4_PC
 class: EIZ3R2A01_LAYER4_PCB7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER4_PCB7_BOARD2 is_of_class EIZ3R2A01_LAYER4_PCB7MMG_ELTX_Board_CLASS
 
@@ -15646,8 +15898,12 @@ object: EIZ3R2A01_LAYER4_PCB8MMG_ELTX_Board_FWDM is_of_class EIZ3R2A01_LAYER4_PC
 class: EIZ3R2A01_LAYER4_PCB8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
     state: READY	!color: FwStateOKPhysics
-    state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+    state: OVER_TEMP	!color: FwStateAttention1
+    state: HIGH_TEMP	!color: FwStateAttention3
+    state: CALIBRATION	!color: FwStateStandby
+    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+    state: LV_OFF	!color: FwStateShutdown
+    state: UNKNOWN	!color: FwStateAttention2
 
 object: EIZ3R2A01_LAYER4_PCB8_BOARD2 is_of_class EIZ3R2A01_LAYER4_PCB8MMG_ELTX_Board_CLASS
 
