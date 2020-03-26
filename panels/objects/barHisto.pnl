@@ -1,0 +1,265 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 492 299 N "_3DFace" 2
+"$mode"
+"$obj"
+E E E E E 1 -1 -1 0  76 51
+""0  1
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
+
+dyn_float dx1, dx2, dy1, dy2;
+dyn_string c1, c2;" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+27 0
+"barTrend"
+""
+1 4 12 E E E 1 E 1 E N "_WindowText" E N "White" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  2 10 394 108
+2 0 100 5 0 "%H:%M" 1 1
+LANG:10001 30 Sans Serif,9,-1,5,50,0,0,0,0,0
+0  0 1 0 1 0 1 N {0,0,0}
+4 0 20 0.4 2 "%H:%M" 0 1
+LANG:10001 35 Utopia,-1,11,5,50,0,0,0,0,0,Regular
+0  0 3 0 1 0 1 N {0,0,0}
+1 0 0 20 1
+LANG:10001 30 Sans Serif,9,-1,5,50,0,0,0,0,0
+0  3 0 1 0 1 N {0,0,0}
+0 0 1 0 1 N {0,0,0} 1 5 0 20 20 N {255,0,0} N {255,0,0} N {102,102,102} 1 
+"main()
+{
+  bool configExists;
+ 	int alertConfigType;
+  dyn_string alertTexts;
+	dyn_float alertLimits;
+	dyn_string alertClasses;
+  dyn_string summaryDpeList;
+	string alertPanel;
+	dyn_string alertPanelParameters;
+	string alertHelp;
+  bool isActive;
+	dyn_string exceptionInfo;
+
+
+  string boardChannel=getBoardChannel($obj);
+  string boardType=getBoardType($obj);
+  string mode=$mode;
+
+  dyn_string itemList=getAnalogItemsOfBoard(boardType);
+
+  int numberOfHistoItems;
+
+ if(boardType==\"MMFE8\")
+  {
+    if(mode==\"temperature\")
+      numberOfHistoItems=12;
+    if(mode==\"power\")
+      numberOfHistoItems=3;
+ }
+ if(boardType==\"L1DDC\")
+  {
+    if(mode==\"temperature\")
+      numberOfHistoItems=6;
+    if(mode==\"power\")
+      numberOfHistoItems=2;
+ }
+ if(boardType==\"ADDC\")
+  {
+    if(mode==\"temperature\")
+      numberOfHistoItems=6;
+    if(mode==\"power\")
+      numberOfHistoItems=2;
+ }
+
+
+  shape bartrendDisplay = getShape(this.name());
+  bartrendDisplay.xOrigin=BAR_LEFT;
+  bartrendDisplay.xCenter=1;
+
+  bartrendDisplay.xRange=numberOfHistoItems;
+
+  bartrendDisplay.xStep=1;
+  bartrendDisplay.xPrec=0;
+  bartrendDisplay.xGrid=TRUE;
+
+  bartrendDisplay.yOrigin=BAR_BOTTOM;
+
+  int itemX;
+
+
+  if(mode==\"temperature\")
+  {
+    bartrendDisplay.yCenter=0;
+    bartrendDisplay.yRange=80;
+    this.size(640,95);
+    itemX=57;
+  }
+  if(mode==\"power\")
+  {
+    bartrendDisplay.yCenter=0;
+    bartrendDisplay.yRange=3;
+    this.size(160,95);
+    itemX=690;
+  }
+
+  bartrendDisplay.yStep=1;
+  bartrendDisplay.yPrec=0;
+  bartrendDisplay.yGrid=FALSE;
+
+  int itemCounter=1;
+
+  dyn_anytype itemCounterDownUpLimitMode;
+  string boardItem;
+
+
+  for(int i=1; i<=dynlen(itemList); i++)
+  {
+
+    if(patternMatch(\"*.\"+mode, itemList[i]))
+    {
+
+      boardItem=getDetector()+\"_\"+boardChannel+itemList[i];
+
+      strreplace(itemList[i], \".\"+mode, \"\");
+      strreplace(itemList[i], \"/ai/\", \"\");
+      addSymbol(myModuleName(), myPanelName(), \"objects/itemInfoForHisto.pnl\", \"itemInfoForHisto_\"+itemCounter,
+             makeDynString(\"$item:\"+itemList[i]), itemX, 760, 0, 1, 1);
+       itemX=itemX+50;
+
+      fwAlertConfig_get(boardItem, configExists, alertConfigType, alertTexts, alertLimits,
+                                     alertClasses, summaryDpeList, alertPanel,alertPanelParameters,alertHelp,isActive,exceptionInfo);
+
+      dynClear(itemCounterDownUpLimitMode);
+      itemCounterDownUpLimitMode[1]=itemCounter;
+      itemCounterDownUpLimitMode[2]=alertLimits[1];
+      itemCounterDownUpLimitMode[3]=alertLimits[2];
+      itemCounterDownUpLimitMode[4]=mode;
+
+      dpConnectUserData(\"updateHisto\", itemCounterDownUpLimitMode, boardItem);
+
+      itemCounter++;
+
+
+    }
+
+  }
+
+
+}
+
+
+void updateHisto(dyn_anytype itemCounterDownUpLimitMode, string dpe, float value)
+{
+
+   shape bartrendDisplay = getShape(this.name());
+
+   int itemNum=itemCounterDownUpLimitMode[1];
+   float downLimit=itemCounterDownUpLimitMode[2];
+   float upLimit=itemCounterDownUpLimitMode[3];
+   string mode=itemCounterDownUpLimitMode[4];
+
+   dy1[itemNum]=0.0;
+   dy2[itemNum]=value;
+
+   dx1[itemNum]=itemNum;
+   dx2[itemNum]=itemNum+1;
+
+  if(mode==\"temperature\")
+   {
+     if (dy2[itemNum]>upLimit)
+      {
+      c1[itemNum] = \"FwStateAttention3\";
+      c2[itemNum] = \"FwStateAttention3\";
+      }
+      else if ((dy2[itemNum]>=downLimit) && (dy2[itemNum]<upLimit))
+      {
+      c1[itemNum] = \"FwStateAttention1\";
+      c2[itemNum] = \"FwStateAttention1\";
+      }
+      else
+      {
+      c1[itemNum] = \"FwStateOKPhysics\";
+      c2[itemNum] = \"FwStateOKPhysics\";
+      }
+   }
+
+  if(mode==\"power\")
+   {
+
+      if((dy2[itemNum]>=downLimit) && (dy2[itemNum]<=upLimit))
+    {
+      c1[itemNum] = \"FwStateOKPhysics\";
+      c2[itemNum] = \"FwStateOKPhysics\";
+    }
+    else
+    {
+      c1[itemNum] = \"FwStateAttention1\";
+      c2[itemNum] = \"FwStateAttention1\";
+    }
+
+   }
+
+
+  setValue(bartrendDisplay, \"data\", dx1, dx2,dy1, dy2, c1, c2);
+
+  bartrendDisplay.flush();
+
+
+
+
+}
+
+
+
+" 0
+
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

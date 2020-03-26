@@ -1,0 +1,13 @@
+class: $FWPART_ATLAS_DU_STATUS_FwDevMode_CLASS
+    state: READY
+        action: Disable(Device)
+            remove &VAL_OF_Device from $FWPART_ATLAS_DU_STATUS_FWSETSTATES
+            remove &VAL_OF_Device from $FWPART_ATLAS_DU_STATUS_FWSETACTIONS
+            move_to READY
+        action: Enable(Device)
+            insert &VAL_OF_Device in $FWPART_ATLAS_DU_STATUS_FWSETSTATES
+            insert &VAL_OF_Device in $FWPART_ATLAS_DU_STATUS_FWSETACTIONS
+            move_to READY
+
+object: $FWPART_ATLAS_DU_STATUS_FWDM is_of_class $FWPART_ATLAS_DU_STATUS_FwDevMode_CLASS
+

@@ -34,7 +34,6 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
   string objBoard=$obj+\"_BOARD\";
 
 
-
   for(int i=1; i<= numberOfBoardofPCB; i++)
   {
 
@@ -52,9 +51,9 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
    if(boardNum==4){ x=500; y=100; }
 
    addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/boardOverviewStatus.pnl\", \"Overview_Status_Board_\"+boardNum,
-             makeDynString(\"$obj:\"+objBoard+boardNum,\"$x:\"+x,\"$y:\"+y), x, y, 0, 1, 1);
+             makeDynString(\"$domain:\"+domain, \"$obj:\"+objBoard+boardNum,\"$x:\"+x,\"$y:\"+y), x, y, 0, 1, 1);
 
-  }
+}
 
 
 
@@ -256,7 +255,7 @@ LANG:10001 0
   }
 
     addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"PCBStateStatus_\"+$obj,
-              makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x-150, y+50, 0, 1.5, 1);
+              makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x-190, y+43, 0, 2.0, 1.5);
 
 }" 0
  "main(mapping event)
@@ -908,7 +907,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 2 1 2 1 E 1 0 -1 -0.9999999999999432 762.0000000000001 1 E 4 210.9999999999999 513.0000000000001
+"main()
+{
+//         fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj+\"_BOARD3\", FALSE, \"none\",\"\");
+}" 0
+ E 0 2 1 2 1 E 1 0 -1 -0.9999999999999432 762.0000000000001 1 E 4 210.9999999999999 513.0000000000001
 211 465.9999999999999
 296.5723358707319 436.2181871006899
 211 465.9999999999999
@@ -1215,7 +1218,7 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 649.0909090909091 46 694.0909090909091 61
+E E 0 1 1 2 1 E U  0 E 649.0909090909091 46 694 61
 0 2 2 "0s" 0 0 0 192 0 0  649.0909090909091 46 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
@@ -1237,12 +1240,62 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 754.0909090909091 46 792.0909090909091 61
+E E 0 1 1 2 1 E U  0 E 754.0909090909091 46 792 61
 0 2 2 "0s" 0 0 0 192 0 0  754.0909090909091 46 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 6 PCB : 
+22 90
+"COMBO_BOX1"
+""
+1 28 653 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+90 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  26 647 150 674
+4
+1
+LANG:10001 7 Board 1
+
+0
+1
+LANG:10001 7 Board 2
+
+0
+1
+LANG:10001 7 Board 3
+
+0
+1
+LANG:10001 7 Board 4
+
+0
+
+E
+"main()
+{
+   int listSelection=this.selectedPos();
+   string objBoard=$obj+\"_BOARD\"+listSelection;
+
+   addSymbol(myModuleName(), myPanelName(), \"objects/barHisto.pnl\", \"barHisto_Temperature\",
+             makeDynString(\"$obj:\"+objBoard, \"$mode:\"+\"temperature\"), 100, 720, 0, 1, 1);
+
+   addSymbol(myModuleName(), myPanelName(), \"objects/barHisto.pnl\", \"barHisto_Power\",
+             makeDynString(\"$obj:\"+objBoard, \"$mode:\"+\"power\"), 760, 720, 0, 1, 1);
+
+}" 0
+
+E
+ 0 0
 0
 LAYER, 1 
 1

@@ -24,7 +24,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 
   string pcbNum;
 
-  int x=100;
+  int x=120;
   int y=120;
 
   string objPcb=$obj+\"_PCB\";
@@ -32,7 +32,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
   float xScale=0.9;
   float yScale=0.9;
 
-  for(int i=1; i<= numberOfPCB; i++)
+  for(int i=numberOfPCB; i>0; i--)
   {
 
    pcbNum=substr(pcbList[i], strlen(pcbList[i])-1, 1);
@@ -40,34 +40,38 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
    addSymbol(myModuleName(), myPanelName(), \"objects/pcbStatusState.pnl\", \"pcbStatusState_PCB_\"+pcbNum,
              makeDynString(\"$domain:\"+domain, \"$obj:\"+objPcb+pcbNum,\"\",\"$x:\"+x,\"$y:\"+y), x, y, 0, xScale, yScale);
 
-//    yScale=yScale-0.12;
-   x=x+21;
-   if(i==1)
-   {
-     y=y+130;
-    xScale=xScale-0.12;
     yScale=yScale-0.12;
-   }
-   if(i==2)
+   x=x+21;
+   if(i==numberOfPCB)
    {
-     y=y+113;
+//      y=y+130;
+    y=y+140;
+    xScale=xScale-0.12;
+     yScale=yScale-0.12;
+   }
+   if(i==numberOfPCB-1)
+   {
+//      y=y+113;
+     y=y+123;
      x=x-2;
      xScale=xScale-0.11;
-    yScale=yScale-0.11;
+     yScale=yScale-0.11;
    }
-   if(i==3)
+   if(i==numberOfPCB-2)
    {
-     y=y+98;
+//      y=y+98;
+     y=y+108;
      x=x-5;
      xScale=xScale-0.10;
      yScale=yScale-0.10;
    }
-   if(i==4)
+   if(i==numberOfPCB-3)
    {
-     y=y+84;
+//      y=y+84;
+     y=y+94;
      x=x-7;
-     yScale=yScale-0.085;
      xScale=xScale-0.085;
+     yScale=yScale-0.085;
    }
 
   }
@@ -182,6 +186,241 @@ LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
 LANG:10001 3 MMG
 LANG:1 4 ATCA
+14 5
+"TEXT_FIELD3"
+""
+1 98 209 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0  78.54545454545456 40.99999999999999 146.5454545454545 64
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getDetector($obj));
+}" 0
+ E
+14 6
+"TEXT_FIELD4"
+""
+1 221.6363636363637 189 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0  203.5454545454546 41 266.5454545454546 64
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getChamberSide($obj));
+}" 0
+ E
+14 7
+"TEXT_FIELD5"
+""
+1 360.5454545454546 169 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0  328.5454545454546 41 442.5454545454546 64
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getChamberSector($obj));
+}" 0
+ E
+14 8
+"TEXT_FIELD6"
+""
+1 554.5454545454546 149 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0  522.5454545454546 41 636.5454545454546 64
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getChamber($obj));
+}" 0
+ E
+14 9
+"TEXT_FIELD7"
+""
+1 708.5454545454546 129 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0  692.6363636363637 41 747.6363636363637 64
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getLayer($obj));
+}" 0
+ E
+30 11
+"infoFrame"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+11 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.225693581780538 0 0.6617647058823534 -58.46779597214379 -16.02941176470594 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 4 Info
+2 12
+"PRIMITIVE_TEXT2"
+""
+1 12.54545454545462 45 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 12.54545454545462 45 76.54545454545462 60
+0 2 2 "0s" 0 0 0 192 0 0  12.54545454545462 45 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 11 Detector : 
+2 13
+"PRIMITIVE_TEXT3"
+""
+1 155.5454545454546 45 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 155.5454545454546 45 195.5454545454546 60
+0 2 2 "0s" 0 0 0 192 0 0  155.5454545454546 45 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 8 Side  : 
+2 14
+"PRIMITIVE_TEXT4"
+""
+1 275.5454545454546 45 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 275.5454545454546 45 328.5454545454546 60
+0 2 2 "0s" 0 0 0 192 0 0  275.5454545454546 45 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 10 Sector  : 
+2 15
+"PRIMITIVE_TEXT5"
+""
+1 451.5454545454546 45 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 451.5454545454546 45 522.5454545454546 60
+0 2 2 "0s" 0 0 0 192 0 0  451.5454545454546 45 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 11 Chamber  : 
+2 16
+"PRIMITIVE_TEXT6"
+""
+1 647.6363636363637 45 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 647.6363636363637 45 692.5454545454546 60
+0 2 2 "0s" 0 0 0 192 0 0  647.6363636363637 45 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 8 Layer : 
 0
 LAYER, 1 
 1

@@ -1,0 +1,13 @@
+class: $FWPART_$TOP$SYSOV_CU_PASSIVE_CLASS
+!panel: SYSOV_CU_PASSIVE.pnl
+    state: READY	!color: FwStateOKPhysics
+        when ( ($ANY$FwCHILDREN in_state UNKNOWN) or
+       ($ANY$FwCHILDREN in_state DEAD) ) move_to UNKNOWN
+        when ( $ANY$FwCHILDREN in_state STOPPED ) move_to NOT_READY
+    state: NOT_READY	!color: FwStateOKNotPhysics
+        when ( ( $ANY$FwCHILDREN in_state UNKNOWN ) or
+       ( $ANY$FwCHILDREN in_state DEAD ) )  move_to UNKNOWN
+        when ( $ALL$FwCHILDREN not_in_state STOPPED )  move_to READY
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( ( $ALL$FwCHILDREN not_in_state UNKNOWN ) and
+       ( $ALL$FwCHILDREN not_in_state DEAD ) )  move_to NOT_READY

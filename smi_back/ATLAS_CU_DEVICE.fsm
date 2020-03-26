@@ -1,0 +1,140 @@
+class: $FWPART_$TOP$ATLAS_CU_DEVICE_CLASS
+!panel: ATLAS_CU_DEVICE.pnl
+    state: READY	!color: FwStateOKPhysics
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {OFF,STANDBY} ) stay_in_state
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,OFF} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {OFF,STANDBY,ON} ) move_to NOT_READY
+        
+
+        action: GOTO_STANDBY	!visible: 1
+            do GOTO_STANDBY $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+        action: GOTO_SHUTDOWN	!visible: 1
+            do GOTO_OFF $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+    state: TRANSITION	!color: FwStateTransition
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) stay_in_state
+        
+when ( $ALL$FwCHILDREN not_in_state {OFF,STANDBY} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,OFF} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {OFF,STANDBY,ON} ) move_to NOT_READY
+        
+
+    state: STANDBY	!color: FwStateStandby
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {OFF,STANDBY} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,OFF} ) stay_in_state
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {OFF,STANDBY,ON} ) move_to NOT_READY
+        
+
+        action: GOTO_READY	!visible: 1
+            do GOTO_ON $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+        action: GOTO_SHUTDOWN	!visible: 1
+            do GOTO_OFF $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+    state: NOT_READY	!color: FwStateOKNotPhysics
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {OFF,STANDBY} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,OFF} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {OFF,STANDBY,ON} ) stay_in_state
+        
+
+        action: GOTO_READY	!visible: 1
+            do GOTO_ON $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN not_in_state READY )  then
+               move_to NOT_READY
+            endif
+            move_to READY
+        action: GOTO_SHUTDOWN	!visible: 1
+            do GOTO_OFF $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+        action: GOTO_STANDBY	!visible: 1
+            do GOTO_STANDBY $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+    state: SHUTDOWN	!color: FwStateShutdown
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) move_to UNKNOWN
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {OFF,STANDBY} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,OFF} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,STANDBY} ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state {OFF,STANDBY,ON} ) move_to NOT_READY
+        
+
+        action: GOTO_READY	!visible: 1
+            do GOTO_ON $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+        action: GOTO_STANDBY	!visible: 1
+            do GOTO_STANDBY $ALL$FwCHILDREN
+            if ( $ALL$FwCHILDREN in_state READY )  then
+               move_to READY
+            endif
+            move_to READY
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( $ANY$FwCHILDREN in_state {UNKNOWN,DEAD} ) stay_in_state
+        
+when ( $ANY$FwCHILDREN in_state TRANSITION ) move_to TRANSITION
+        
+when ( $ALL$FwCHILDREN not_in_state {OFF,STANDBY} ) move_to READY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,OFF} ) move_to STANDBY
+        
+when ( $ALL$FwCHILDREN not_in_state {ON,STANDBY} ) move_to SHUTDOWN
+        
+when ( $ANY$FwCHILDREN in_state {OFF,STANDBY,ON} ) move_to NOT_READY
+        
+

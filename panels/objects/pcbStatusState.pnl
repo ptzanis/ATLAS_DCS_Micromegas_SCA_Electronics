@@ -1,7 +1,7 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 487 365 N "FwAtlasBg" 2
+PANEL,-1 -1 998 228 N "FwAtlasBg" 2
 "$domain"
 "$obj"
 E E E E E 1 -1 -1 0  27 36
@@ -19,7 +19,7 @@ LANG:10001 0
 10 0
 "POLYGON1"
 ""
-1 187.9411764705883 316.6666666666667 E E E 1 E 1 E N {0,0,0} E N "FwAtlasFg" E E
+1 539.9411764705883 277.7450801194176 E E E 1 E 1 E N {0,0,0} E N "FwAtlasFg" E E
  "main(mapping event)
 {
          fwFsmAtlas_navigateSecondary($domain,$obj);
@@ -37,7 +37,58 @@ LANG:10001 0
 "antiAliased" "1"
 "main()
 {
-      fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
+  fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
+
+  /*
+
+  string chamber=getChamber($obj);
+  string layer=getLayer($obj);
+  string pcb=getPCB($obj);
+
+    // EIZ2R1A01
+  string axial=substr(chamber,2,2);
+  string radial=substr(chamber,4,2);
+  string side=substr(chamber,6,1);
+  string sector=substr(chamber,7,2);
+
+
+  dyn_string boardsOfPcb=dpNames(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".*\");
+
+  int numberOfBoardofPCB=dynlen(boardsOfPcb);
+
+  string boardNum;
+
+  int xFrame, yFrame;
+  getValue(\"\",\"position\",xFrame,yFrame);
+
+  int xIntial=xFrame;
+  int yInitial=yFrame;
+
+  int x, y;
+
+
+  string objBoard=$obj+\"_BOARD\";
+
+  for(int i=1; i<= numberOfBoardofPCB; i++)
+  {
+   boardNum=substr(boardsOfPcb[i], strlen(boardsOfPcb[i])-1, 1);
+
+   if(boardNum==1)
+   { x=xIntial; y=yInitial;}
+   if(boardNum==2)
+   { x=xIntial+100; y=yInitial;}
+   if(boardNum==3)
+   { x=xIntial; y=yInitial-85;}
+   if(boardNum==4)
+   { x=xIntial+100; y=yInitial-85;}
+
+    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_compactNoactionNavHoriz.pnl\",\"BoardStateStatus_\"+objBoard+boardNum,
+              makeDynString(\"$domain:\"+$domain,\"$obj:\"+objBoard+boardNum,\"$label:\"+boardNum),x-190, y+43, 0, 1.0, 1.0);
+
+  }
+
+
+*/
 
 }" 0
  "main(mapping event)
@@ -77,6 +128,34 @@ LANG:10001 0
       fwFsmAtlas_navigate($domain,$obj);
 }" 0
  0 1 1 2 1 E 1.666666666666667 0 1.666666666666667 -186.6666666666667 -646.3635765943457 1 E 235 455 15 15
+6 2
+"RECTANGLE2"
+""
+1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary($domain,$obj);
+}" 0
+ E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+        fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate($domain,$obj);
+}" 0
+ 0 1 1 2 1 E 8.25925925925926 0 1 -2361.407407407407 -65 1 E 287 93 395 96
 0
 LAYER, 1 
 1
