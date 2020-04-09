@@ -1,0 +1,417 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 258 227 N "FwAtlasBg" 3
+"$obj"
+"$x"
+"$y"
+"main()
+{
+    int x=$x;
+    int y=$y;
+    string boardNum=substr($obj,strlen($obj)-2,2);
+
+    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"boardOveviewStateStatus_\"+$obj,
+              makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+boardNum),
+              x+10, y+11, 0, 1.0, 1);
+}" 0
+ E E E E 1 -1 -1 0  0 15
+""0  1
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
+string domain=getDomain($obj);
+" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+6 13
+"RECTANGLE2"
+""
+1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+      string domain=getDomain($obj);
+      fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 2.148148148148149 0 1 -609.5185185185186 -88 1 E 287 93 395 96
+6 15
+"RECTANGLE4"
+""
+1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+      string domain=getDomain($obj);
+      fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 2.148148148148149 0 1 -610.5185185185187 -48 1 E 287 93 395 96
+6 16
+"RECTANGLE3"
+""
+1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 8.561188271817148e-17 -0.3888888888888888 1 1.703151177622146e-17 -88.00000000000003 159.6111111111109 1 E 287 93 395 96
+6 17
+"RECTANGLE5"
+""
+1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 8.561188271817148e-17 -0.3888888888888888 1 1.703151177622146e-17 145 159.6111111111111 1 E 287 93 395 96
+2 19
+"PRIMITIVE_TEXT24"
+""
+1 13 9 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 13 9 44 22
+0 2 2 "0s" 0 0 0 192 0 0  13 9 1
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Type:
+14 20
+"TEXT_FIELD20"
+""
+1 67 140.4285714285714 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  46 6.999999999999996 128 26
+2 "0s" 0 0 0 1 0 -1  E "main()
+{
+  this.text(getBoardType($obj));
+}
+
+" 0
+ E
+2 21
+"PRIMITIVE_TEXT25"
+""
+1 141 9 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 141 9 167 22
+0 2 2 "0s" 0 0 0 192 0 0  141 9 1
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 4 SCA:
+2 22
+"PRIMITIVE_TEXT26"
+""
+1 53 115 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E 0.9666666666666667 0 1.058823529411765 89.7 -101.6470588235294 0 E 53 115 126 128
+0 2 2 "0s" 0 0 0 192 0 0  53 115 1
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 12 Temperature:
+2 23
+"PRIMITIVE_TEXT27"
+""
+1 141 31 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 141 31 179 44
+0 2 2 "0s" 0 0 0 192 0 0  141 31 1
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 6 Power:
+7 24
+"ELLIPSE1"
+""
+1 136 100 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+
+  dyn_errClass err;
+
+  if( !dpExists( eltxProjectName()+getBoardChannel($obj)+\".online\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"updateStatus\",
+             eltxProjectName()+getBoardChannel($obj)+\".online\",eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+void updateStatus(string dpeOnlineStatus, bool onlineStatus, string dpeOPCConnectionStatus, bool OPCConnectionStatus)
+{
+  if (!onlineStatus || OPCConnectionStatus!=1)
+  {
+    setValue(\"\", \"backCol\", \"Red\");
+  }
+  if (onlineStatus && OPCConnectionStatus==1)
+  {
+    setValue(\"\", \"backCol\", \"Green\");
+  }
+}
+
+" 0
+ E 0 1 1 2 1 E 1 0 1 88 -85 1 E 136 100 5 5
+7 25
+"temperatureState"
+""
+1 136 100 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  string mode=\"temperature\";
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1 0 1 88 -73 1 E 136 100 5 5
+7 26
+"powerState"
+""
+1 136 100 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  string mode=\"power\";
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1 0 1 88 -61 1 E 136 100 5 5
+6 27
+"RECTANGLE6"
+""
+1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 0.5462962962962961 6.179930606808407e-17 6.209163958780061e-17 1 -207.787037037037 -67.00000000000001 1 E 287 93 395 96
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

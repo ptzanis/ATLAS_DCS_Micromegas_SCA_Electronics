@@ -7,6 +7,7 @@ string getDetector(){
     return "MMG";
 }
 
+
 string getSide(string obj){
     return substr(obj,9,1);
 }
@@ -15,72 +16,118 @@ string getSector(string obj){
     return substr(obj,18,2);
 }
 
-string getChamber(string obj){
-    return substr(obj,0,9);
-}
-
-string getChamberSide(string obj){
-    return substr(obj,6,1);
-}
-
-string getChamberZaxis(string obj){
-    return substr(obj,3,1);
-}
-
-string getChamberRaxis(string obj){
-    return substr(obj,5,1);
-}
-
-string getChamberSector(string obj){
-    return substr(obj,7,2);
-}
-
-string getChamberDomain(string obj){
-  string domain;
-  domain=getDetector($obj)+"_SIDE_"+getChamberSide($obj)+"_SECTOR_"+getChamberSector($obj);
-  return domain;
-}
-
-string getBoardDomain(string device){
-  string chamber=getChamber(device);
-  string domain;
-  domain=getDetector(chamber)+"_SIDE_"+getChamberSide(chamber)+"_SECTOR_"+getChamberSector(chamber);
-  return domain;
-}
-
-
 string getLayer(string obj){
-    return substr(obj,15,1);
-}
-
-string getPCB(string obj){
-    return substr(obj,20,1);
+    return substr(obj,27,1);
 }
 
 string getBoard(string obj){
-    return substr(obj,27,1);
+    return substr(obj,35,2);
+}
+
+string getDomain(string obj){
+  string domain;
+  domain=getDetector($obj)+"_SIDE_"+getSide($obj)+"_SECTOR_"+getSector($obj);
+  return domain;
+}
+
+
+string getChamberZaxis(string obj){
+   int layer=getLayer(obj);
+   if(layer<=4)
+     return "2";
+   if(layer>=5)
+     return "3";
+}
+
+
+string getChamberBoard(string obj){
+
+  string board=getBoard(obj);
+  if(board=="01" || board=="05" || board=="09" || board=="13" || board=="17" || board=="21" || board=="25" || board=="29" )
+    return "1";
+  if(board=="02" || board=="06" || board=="10" || board=="14" || board=="18" || board=="22" || board=="26" || board=="30" )
+    return "2";
+  if(board=="03" || board=="07" || board=="11" || board=="15" || board=="19" || board=="23" || board=="27" || board=="31" )
+    return "3";
+  if(board=="04" || board=="08" || board=="12" || board=="16" || board=="20" || board=="24" || board=="28" || board=="32" )
+    return "4";
+}
+
+string getChamberLayer(string obj){
+
+  int layer=getLayer(obj);
+  if(layer<=4)
+    layer=layer;
+  if(layer>=5)
+    layer=layer-4;
+
+   return layer;
+
+}
+string getChamberPCB(string obj){
+
+  string board=getBoard(obj);
+  if(board=="01" || board=="02" || board=="03" || board=="04" )
+    return "1";
+  if(board=="05" || board=="06" || board=="07" || board=="08" )
+    return "2";
+  if(board=="09" || board=="10" || board=="11" || board=="12" )
+    return "3";
+  if(board=="13" || board=="14" || board=="15" || board=="16" )
+    return "4";
+  if(board=="17" || board=="18" || board=="19" || board=="20" )
+    return "5";
+  if(board=="21" || board=="22" || board=="23" || board=="24" )
+    return "6";
+  if(board=="25" || board=="26" || board=="27" || board=="28" )
+    return "7";
+  if(board=="29" || board=="30" || board=="31" || board=="32" )
+    return "8";
+
+}
+
+string getChamberRaxis(string obj){
+
+    int pcb=getChamberPCB(obj);
+    if(pcb<=5)
+      return "1";
+    if(pcb>=6)
+      return "2";
+}
+
+string getChamber(string obj){
+
+    string Z=getChamberZaxis(obj);
+    string R=getChamberRaxis(obj);
+    string side=getSide(obj);
+    string sector=getSector(obj);
+
+    string chamber="EIZ"+Z+"R"+R+side+sector;
+
+    return chamber;
 }
 
 string getBoardChannel(string obj){
 
   string channel;
-  dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".info.channel",channel);
+  dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".info.channel",channel);
   return channel;
 
 }
 
+
+
 string getBoardType(string obj){
 
   string type;
-  dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".info.type",type);
+  dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".info.type",type);
   return type;
 
 }
 
 string getBoardLVChannel(string obj){
 
-  string channel=eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".power.isLVOn";
-//   dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".power.isLVOn",channel);
+  string channel=eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".power.isLVOn";
   return channel;
 
 }
@@ -94,10 +141,9 @@ int getBoardState(string obj, string mode){
 
 void setBoardState(string obj, string mode, int valueToSet){
 
- dpSet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".state."+mode, valueToSet);
+ dpSet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".state."+mode, valueToSet);
 
 }
-
 
 
 
@@ -464,6 +510,17 @@ dyn_string getChannelListOfBoardTypeFromMappingList(mapping mappingList,string b
 
 }
 
+void updateBoardState(string mode, string dpeChannel, int value){
 
+  shape stateShape=getShape(mode+"State");
+
+  if(value==1)
+   stateShape.backCol("green");
+  if(value==2)
+   stateShape.backCol("yellow");
+  if(value==3)
+   stateShape.backCol("red");
+
+}
 
 

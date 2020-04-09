@@ -8,7 +8,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
   addLogoNTUABNL(670,800);
 
   // state/status object
-   string domain=getChamberDomain($obj);
+   string domain=getDomain($obj);
    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),640,330,0,1.5,1);
 
 
@@ -67,19 +67,7 @@ void switchTemperatureButtonEnabled()
 
 
 }
-
-void updateBoardState(string mode, string dpeChannel, int value){
-
-  shape stateShape=getShape(mode+\"State\");
-
-  if(value==1)
-   stateShape.backCol(\"green\");
-  if(value==2)
-   stateShape.backCol(\"yellow\");
-  if(value==3)
-   stateShape.backCol(\"red\");
-
-}" 0
+" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -126,7 +114,7 @@ LANG:1 0
 "main()
 {
 
-  this.text(\"Chamber \"+getChamber($obj)+\" | Layer \"+getLayer($obj)+\" | PCB \"+getPCB($obj)+\" | Board \"+getBoardType($obj));
+  this.text(\"Chamber \"+getChamber($obj)+\" | Layer \"+getChamberLayer($obj)+\" | PCB \"+getChamberPCB($obj)+\" | Board \"+getBoardType($obj));
 
 }" 0
  E 0 1 1 2 1 E U  0 E 207 0 882 31
@@ -193,7 +181,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 61 841 84
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberSide($obj));
+  this.text(getSide($obj));
 }" 0
  E
 14 8
@@ -214,7 +202,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 81 841 104
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberSector($obj));
+  this.text(getSector($obj));
 }" 0
  E
 14 9
@@ -256,7 +244,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 121 841 144
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getLayer($obj));
+  this.text(getChamberLayer($obj));
 }" 0
  E
 14 11
@@ -277,7 +265,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 141 841 164
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getPCB($obj));
+  this.text(getChamberPCB($obj));
 }" 0
  E
 14 12
@@ -298,7 +286,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 161 841 184
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getBoard($obj));
+  this.text(getChamberBoard($obj));
 }" 0
  E
 30 13
@@ -1837,7 +1825,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"temperature\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getChamberLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
@@ -1862,7 +1850,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"power\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getChamberLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 

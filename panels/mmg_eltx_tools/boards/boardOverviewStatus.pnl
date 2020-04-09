@@ -1,8 +1,7 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 446 339 N "FwAtlasBg" 4
-"$domain"
+PANEL,-1 -1 446 339 N "FwAtlasBg" 3
 "$obj"
 "$x"
 "$y"
@@ -11,25 +10,18 @@ PANEL,-1 -1 446 339 N "FwAtlasBg" 4
     int x=$x;
     int y=$y;
 
-    string domain=getChamberDomain($obj);
-    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"boardOveviewStateStatus_\"+$obj,makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),x+30, y+153, 0, 1.5, 1);
+    string domain=getDomain($obj);
+    addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"boardOveviewStateStatus_\"+$obj,
+              makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),
+              x+30, y+153, 0, 1.5, 1);
 }" 0
  E E E E 1 -1 -1 0  -4.000000000000027 10
 ""0  1
 E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
-void updateBoardState(string mode, string dpeChannel, int value){
+string domain=getDomain($obj);
 
-  shape stateShape=getShape(mode+\"State\");
-
-  if(value==1)
-   stateShape.backCol(\"green\");
-  if(value==2)
-   stateShape.backCol(\"yellow\");
-  if(value==3)
-   stateShape.backCol(\"red\");
-
-}" 0
+" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -46,7 +38,7 @@ LANG:10001 0
 1 637 258 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 3 0 0 0 0 0
@@ -62,7 +54,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"temperature\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
@@ -75,7 +67,7 @@ LANG:10001 0
 1 637 258 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 4 0 0 0 0 0
@@ -91,7 +83,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"power\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
@@ -104,7 +96,7 @@ LANG:10001 0
 1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 0 0 0 0 0 0
@@ -125,7 +117,7 @@ LANG:10001 0
 }" 0
  "main(mapping event)
 {
-      fwFsmAtlas_navigate($domain,$obj);
+      fwFsmAtlas_navigate(domain,$obj);
 }" 0
  0 1 1 2 1 E 0.3101449275362319 0 2.485294117647058 1.492753623188406 -135.0882352941177 0 E 50 62 741 131
 1
@@ -148,7 +140,7 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 39.99999999999991 138 122 153
+E E 0 1 1 2 1 E 0.9999999999999999 0 1 0 0 0 E 39.99999999999991 138 122 153
 0 2 2 "0s" 0 0 0 192 0 0  39.99999999999991 138 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
@@ -440,7 +432,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 14 0 0 0 0 0
@@ -455,11 +447,12 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-        fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+      string domain=getDomain($obj);
+      fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
 }" 0
  "main(mapping event)
 {
-    fwFsmAtlas_navigate($domain,$obj);
+    fwFsmAtlas_navigate(domain,$obj);
 }" 0
  0 1 1 2 1 E 1.425925925925926 0 1 -333.2407407407409 -67 1 E 287 93 395 96
 6 15
@@ -468,7 +461,7 @@ LANG:10001 0
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 15 0 0 0 0 0
@@ -483,11 +476,12 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-        fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
 }" 0
  "main(mapping event)
 {
-    fwFsmAtlas_navigate($domain,$obj);
+    fwFsmAtlas_navigate(domain,$obj);
 }" 0
  0 1 1 2 1 E 8.561188271817148e-17 -1.481481481481481 1 6.488194962370081e-17 136 612.1851851851852 1 E 287 93 395 96
 6 16
@@ -496,7 +490,7 @@ LANG:10001 0
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 16 0 0 0 0 0
@@ -511,11 +505,12 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-        fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
 }" 0
  "main(mapping event)
 {
-    fwFsmAtlas_navigate($domain,$obj);
+    fwFsmAtlas_navigate(domain,$obj);
 }" 0
  0 1 1 2 1 E 2 -5.102694996447273e-18 -4.926973049549756e-18 1 -558 94 1 E 287 93 395 96
 6 17
@@ -524,7 +519,7 @@ LANG:10001 0
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 17 0 0 0 0 0
@@ -539,11 +534,12 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-        fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
 }" 0
  "main(mapping event)
 {
-    fwFsmAtlas_navigate($domain,$obj);
+    fwFsmAtlas_navigate(domain,$obj);
 }" 0
  0 1 1 2 1 E 8.561188271817148e-17 -1.481481481481481 1 6.488194962370081e-17 -77.00000000000003 612.1851851851852 1 E 287 93 395 96
 6 18
@@ -552,7 +548,7 @@ LANG:10001 0
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
 {
-     fwFsmAtlas_navigateSecondary($domain,$obj);
+     fwFsmAtlas_navigateSecondary(domain,$obj);
 }" 0
  E
 18 0 0 0 0 0
@@ -567,7 +563,8 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-        fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
 }" 0
  E 0 1 1 2 1 E 0.08333333333333331 -5.102694996447273e-18 -2.052905437312399e-19 1 -6.916666666666661 -66 1 E 287 93 395 96
 0

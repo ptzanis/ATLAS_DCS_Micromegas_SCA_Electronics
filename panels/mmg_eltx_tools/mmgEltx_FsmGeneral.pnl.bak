@@ -752,7 +752,7 @@ LANG:10001 4 View
       fwFsmUi_view(\"MMG_ELTX\", \"MMG_ELTX\");
 }" 0
  E E E
-1 52 0 "" 2
+1 56 0 "" 2
 0
 13 50
 "PUSH_BUTTON9"
@@ -1063,6 +1063,107 @@ void addBoardPart(){
 //   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
 }" 0
 
+13 55
+"PUSH_BUTTON11"
+""
+1 96.6153846153846 472.2 E E E 1 E 1 E N "WF_ParamIncorrect" E N "_Button" E E
+ E E
+42 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+0  170 501 397.9999999999999 561
+
+T 
+1
+LANG:10001 16 Create ELTX Tree
+"main(){
+
+  prBar(\"Creating MMG_ELTX FSM tree...\");
+
+  mmgEltx_createFsmTree();
+
+}
+mmgEltx_createFsmTree()
+{
+
+  string prefix = \"EI\";
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  int board;
+  int countObjects;
+
+  dyn_string layer1_5=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"28\",\"29\",\"32\");
+  dyn_string layer2_6=makeDynString(\"02\",\"03\",\"06\",\"07\",\"10\",\"11\",\"14\",\"15\",\"18\",\"19\",\"22\",\"23\",\"26\",\"27\",\"30\",\"31\");
+  dyn_string layer3_7=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"12\",\"13\",\"16\",\"17\",\"20\",\"21\",\"24\",\"25\",\"28\",\"29\",\"32\");
+  dyn_string layer4_8=makeDynString(\"02\",\"03\",\"06\",\"07\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"26\",\"27\",\"30\",\"31\");
+  dyn_string boardList;
+
+  fwFsmAtlas_createNode(\"FSM\",
+                        \"MMG_ELTX\",
+                        \"MMG_ELTX\", \"ELTX\", \"ATL_MMG_ELTX_OVERVIEW.pnl\", 1);
+
+  for(int i_side = 1; i_side <=1 ; i_side++)
+  {
+   fwFsmAtlas_createNode(\"MMG_ELTX\",
+                         \"MMG_SIDE_\"+side[i_side],
+                         \"MMG_ELTX_Side\", \"Side \"+side[i_side], \"ATL_MMG_ELTX_SIDE.pnl\", 1);
+
+     for(int i_sector = 1; i_sector <= 1; i_sector++)
+    {
+       fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side],
+                             \"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],
+                             \"MMG_ELTX_Sector\", \"Sector \"+sector[i_sector], \"ATL_MMG_ELTX_SECTOR.pnl\", 1);
+
+       for(int layer=1;layer<=8;layer++)
+          {
+             fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],
+                                   \"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+\"LAYER_\"+layer,
+                                   \"MMG_ELTX_Layer\",\"Layer \"+layer,\"ATL_MMG_ELTX_LAYER.pnl\", 0);
+
+             dynClear(boardList);
+
+             if(layer==1 || layer==5)
+                 boardList= layer1_5;
+             if(layer==2 || layer==6)
+                 boardList= layer2_6;
+             if(layer==3 || layer==7)
+                 boardList= layer3_7;
+             if(layer==4 || layer==8)
+                 boardList= layer4_8;
+
+             DebugN(layer, dynlen(boardList));
+
+             for(int board=1;board<=dynlen(boardList);board++)
+               {
+                     fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+\"LAYER_\"+layer,
+                                           \"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector]+\"_\"+\"LAYER_\"+layer+\"_\"+\"BOARD_\"+boardList[board],
+                                           \"MMG_ELTX_Board\",\"Board \"+boardList[board],\"ATL_MMG_ELTX_BOARD.pnl\", 2);
+                    countObjects++;
+               }
+      }//layer
+     }//sector
+    }//side A,C
+
+    prBar(\"MMG ELTX FSM Tree: READY\");
+    DebugTN(\"MMG ELTX FSM Tree\",\"READY\");
+
+DebugN(\"DU Objects:\",countObjects);
+
+
+
+
+}
+
+
+" 0
+ E E E
 0
 LAYER, 1 
 1

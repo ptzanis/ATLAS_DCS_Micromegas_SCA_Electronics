@@ -158,7 +158,7 @@ LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0  296 128 371.0000000000001 153
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberSide($obj));
+  this.text(getSide($obj));
 }" 0
  E
 14 22
@@ -179,7 +179,7 @@ LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0  296 148 371.0000000000001 173
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberSector($obj));
+  this.text(getSector($obj));
 }" 0
  E
 14 23
@@ -242,7 +242,7 @@ LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0  296 208 371.0000000000001 233
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getPCB($obj));
+  this.text(getChamberPCB($obj));
 }" 0
  E
 14 26
@@ -263,7 +263,7 @@ LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0  296 228 371.0000000000001 253
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getBoard($obj));
+  this.text(getChamberBoard($obj));
 }" 0
  E
 30 27

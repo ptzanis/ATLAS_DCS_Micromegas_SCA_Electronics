@@ -6,6 +6,117 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 "main()
 {
 
+  string layer=getLayer($obj);
+  string domain=getDomain($obj);
+
+  int x=0;
+  int y=0;
+
+  int xInitial=340;
+  int yInitial=725;
+
+  float slope=0.006;
+
+  dyn_string allChildren;
+  dyn_int allFlags;
+
+  int boardNum;
+
+  fwFsmAtlasGetTreeNodes(allChildren, allFlags,$obj);
+// DebugN(allChildren);
+
+
+   int countBoard=1;
+
+  for(int board_i=2; board_i<=dynlen(allChildren); board_i++)
+  {
+
+   boardNum=getChamberBoard(allChildren[board_i]);
+
+   if(boardNum==1)
+   { x=xInitial; y=yInitial;}
+   if(boardNum==2)
+   {
+    x=xInitial+100; y=yInitial;
+   }
+   if(boardNum==3)
+   {
+    x=xInitial; y=yInitial-43;
+    if(layer==2 || layer==6 || layer==4 || layer==8)
+    {yInitial=y-47;}
+   }
+   if(boardNum==4)
+   {
+
+    if(layer==4 || layer==8)
+    {
+      x=xInitial+100;
+      yInitial=y+47;
+    }
+    else
+    {
+    x=xInitial+100;
+    y=yInitial-43;
+    }
+
+//      countBoard=1;
+    yInitial=y-47;
+   }
+
+   if(boardNum==1)
+     x=x-countBoard*slope*x;
+   if(boardNum==2)
+     x=x+countBoard*slope*x;
+   if(boardNum==3)
+     x=x-countBoard*slope*x;
+   if(boardNum==4)
+     x=x+countBoard*slope*x;
+
+
+    addSymbol(myModuleName(),myPanelName(),\"/objects/boardStatusState.pnl\",\"StatusState_\"+allChildren[board_i] ,
+    makeDynString(\"$domain:\"+domain,\"$obj:\"+allChildren[board_i],\"$label:\"+\"\"),
+    x,y,0,0.6,0.6);
+
+     countBoard++;
+
+     string boardObj=substr(allChildren[board_i],strlen(allChildren[board_i])-1,1);
+     int boardOddOrEven=boardObj;
+
+    if(boardOddOrEven%2==0)
+      x=600;
+    else
+      x=20;
+
+
+      addSymbol(myModuleName(), myPanelName(), \"mmg_eltx_tools/boards/boardOverviewStatus_mini.pnl\", \"Overview_Status_Board_\"+allChildren[board_i],
+              makeDynString(\"$obj:\"+allChildren[board_i],\"$x:\"+x,\"$y:\"+y), x, y, 0, 1, 1);
+
+  }
+
+  /*
+  for(int i=1; i<=dynlen(Rindicator);i++)
+  {
+    for(int pcb=1; pcb<=8; pcb++)
+    {
+      for(int board=1; board<=4; board++)
+      {
+        if(dpExists(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board))
+        {
+//         dpGet(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\", channel);
+//         dpGet(\"MMG_Side\"+side+\".Sector\"+sector+\".\"+axial+\".\"+radial+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\", type);
+
+        addSymbol(myModuleName(),myPanelName(),\"/objects/boardStatusState.pnl\",\"StatusState_\"+objBoard+boardNum ,
+        makeDynString(\"$domain:\"+domain,\"$obj:\"+objBoard+boardNum,\"$label:\"+\"\"),
+        x,y,0,0.6,0.6);
+
+        }
+      }
+    }
+  }
+
+  */
+
+/*
   string chamber=getChamber($obj);
   string layer=getLayer($obj);
 
@@ -24,63 +135,69 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 
   string pcbNum;
 
-  int x=120;
+  int x=30;
   int y=120;
 
   string objPcb=$obj+\"_PCB\";
 
   float xScale=0.9;
-  float yScale=0.9;
+  float yScale=0.8;
 
   for(int i=numberOfPCB; i>0; i--)
   {
 
    pcbNum=substr(pcbList[i], strlen(pcbList[i])-1, 1);
 
-   addSymbol(myModuleName(), myPanelName(), \"objects/pcbStatusState.pnl\", \"pcbStatusState_PCB_\"+pcbNum,
+   addSymbol(myModuleName(), myPanelName(), \"objects/pcbState.pnl\", \"pcbState_PCB_\"+pcbNum,
              makeDynString(\"$domain:\"+domain, \"$obj:\"+objPcb+pcbNum,\"\",\"$x:\"+x,\"$y:\"+y), x, y, 0, xScale, yScale);
+   addSymbol(myModuleName(), myPanelName(), \"objects/pcbStatus.pnl\", \"pcbStatus_PCB_\"+pcbNum,
+             makeDynString(\"$domain:\"+domain, \"$obj:\"+objPcb+pcbNum,\"\",\"$x:\"+x,\"$y:\"+y), x, y, 0);
+      addSymbol(myModuleName(), myPanelName(), \"objects/pcbOverviewStatus.pnl\", \"pcbOverviewStatus_\"+pcbNum,
+             makeDynString(\"$domain:\"+domain, \"$obj:\"+objPcb+pcbNum,\"\",\"$x:\"+x,\"$y:\"+y), x+300, y, 0);
 
-    yScale=yScale-0.12;
+    yScale=yScale-0.04;
    x=x+21;
    if(i==numberOfPCB)
    {
 //      y=y+130;
-    y=y+140;
+    y=y+120;
     xScale=xScale-0.12;
-     yScale=yScale-0.12;
+//     yScale=yScale-0.12;
    }
    if(i==numberOfPCB-1)
    {
 //      y=y+113;
-     y=y+123;
+     y=y+103;
      x=x-2;
      xScale=xScale-0.11;
-     yScale=yScale-0.11;
+//      yScale=yScale-0.11;
    }
    if(i==numberOfPCB-2)
    {
 //      y=y+98;
-     y=y+108;
+     y=y+88;
      x=x-5;
      xScale=xScale-0.10;
-     yScale=yScale-0.10;
+//      yScale=yScale-0.10;
    }
    if(i==numberOfPCB-3)
    {
 //      y=y+84;
-     y=y+94;
+     y=y+74;
      x=x-7;
      xScale=xScale-0.085;
-     yScale=yScale-0.085;
+//      yScale=yScale-0.085;
    }
 
   }
+
+  */
 }" 0
  E E E E 1 -1 -1 0  163 151
 ""0  1
 E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
-string domain=getChamberDomain($obj);" 0
+string domain=getDomain($obj);" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -151,7 +268,7 @@ LANG:1 0
 "main()
 {
 
-  this.text(\"Chamber \"+getChamber($obj)+\" | Layer \"+getLayer($obj));
+  this.text(\"Sector \"+getSector($obj)+\" | Layer \"+getLayer($obj));
 
 }" 0
  E 0 1 1 2 1 E U  0 E 288 0 963 31
@@ -160,7 +277,7 @@ LANG:1 0
 LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
-LANG:10001 19 Chamber X | Layer X
+LANG:10001 18 Sector X | Layer X
 LANG:1 4 ATCA
 2 4
 "PRIMITIVE_TEXT20"
@@ -186,241 +303,138 @@ LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
 LANG:10001 3 MMG
 LANG:1 4 ATCA
-14 5
-"TEXT_FIELD3"
+10 18
+"POLYGON3"
 ""
-1 98 209 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 274 135 E E E 1 E 1 E N {0,0,0} E N "FwAtlasFg" E E
  E E
-5 0 0 0 0 0
+18 0 0 0 0 0
 E E E
 0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  78.54545454545456 40.99999999999999 146.5454545454545 64
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getDetector($obj));
-}" 0
- E
-14 6
-"TEXT_FIELD4"
-""
-1 221.6363636363637 189 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
- E E
-6 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  203.5454545454546 41 266.5454545454546 64
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getChamberSide($obj));
-}" 0
- E
-14 7
-"TEXT_FIELD5"
-""
-1 360.5454545454546 169 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
- E E
-7 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  328.5454545454546 41 442.5454545454546 64
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getChamberSector($obj));
-}" 0
- E
-14 8
-"TEXT_FIELD6"
-""
-1 554.5454545454546 149 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
- E E
-8 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  522.5454545454546 41 636.5454545454546 64
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getChamber($obj));
-}" 0
- E
-14 9
-"TEXT_FIELD7"
-""
-1 708.5454545454546 129 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
- E E
-9 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  692.6363636363637 41 747.6363636363637 64
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getLayer($obj));
-}" 0
- E
-30 11
-"infoFrame"
-""
-1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
- E E
-11 0 0 0 0 0
-E E E
-1
 1
 LANG:10001 0 
 
 3
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 2 1 E 1.225693581780538 0 0.6617647058823534 -58.46779597214379 -16.02941176470594 0 E 50 62 741 131
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 4 Info
-2 12
-"PRIMITIVE_TEXT2"
+"antiAliased" "1"
+E E 0 1 1 2 1 E 1 0 1.052554744525547 0.7727272727273089 -103.0948905109489 1 E 4 274 135
+588 135
+520 820
+340 820
+ 1
+4 19
+"LINE1"
 ""
-1 12.54545454545462 45 E E E 1 E 1 E N "White" E N "_Window" E E
+1 332.7655502392345 669.4802919708029 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
-12 0 0 0 0 0
+19 0 0 0 0 0
 E E E
 0
 1
 LANG:10001 0 
 
-4
+3
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 12.54545454545462 45 76.54545454545462 60
-0 2 2 "0s" 0 0 0 192 0 0  12.54545454545462 45 1
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 11 Detector : 
-2 13
-"PRIMITIVE_TEXT3"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  332.7655502392345 669.4802919708029 528.7655502392345 669.4802919708029
+4 20
+"LINE2"
 ""
-1 155.5454545454546 45 E E E 1 E 1 E N "White" E N "_Window" E E
+1 325 581.0656934306569 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
-13 0 0 0 0 0
+20 0 0 0 0 0
 E E E
 0
 1
 LANG:10001 0 
 
-4
+3
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 155.5454545454546 45 195.5454545454546 60
-0 2 2 "0s" 0 0 0 192 0 0  155.5454545454546 45 1
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 8 Side  : 
-2 14
-"PRIMITIVE_TEXT4"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  325 581.0656934306569 537 581.0656934306569
+4 21
+"LINE3"
 ""
-1 275.5454545454546 45 E E E 1 E 1 E N "White" E N "_Window" E E
+1 315 489.4934306569343 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
-14 0 0 0 0 0
+21 0 0 0 0 0
 E E E
 0
 1
 LANG:10001 0 
 
-4
+3
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 275.5454545454546 45 328.5454545454546 60
-0 2 2 "0s" 0 0 0 192 0 0  275.5454545454546 45 1
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 10 Sector  : 
-2 15
-"PRIMITIVE_TEXT5"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  315 489.4934306569343 545.9999999999998 489.4934306569343
+4 22
+"LINE4"
 ""
-1 451.5454545454546 45 E E E 1 E 1 E N "White" E N "_Window" E E
+1 308 401.0788321167883 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
-15 0 0 0 0 0
+22 0 0 0 0 0
 E E E
 0
 1
 LANG:10001 0 
 
-4
+3
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 451.5454545454546 45 522.5454545454546 60
-0 2 2 "0s" 0 0 0 192 0 0  451.5454545454546 45 1
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 11 Chamber  : 
-2 16
-"PRIMITIVE_TEXT6"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  308 401.0788321167883 553.9999999999998 401.0788321167883
+4 23
+"LINE5"
 ""
-1 647.6363636363637 45 E E E 1 E 1 E N "White" E N "_Window" E E
+1 299.9999999999999 312.6642335766423 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
-16 0 0 0 0 0
+23 0 0 0 0 0
 E E E
 0
 1
 LANG:10001 0 
 
-4
+3
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 647.6363636363637 45 692.5454545454546 60
-0 2 2 "0s" 0 0 0 192 0 0  647.6363636363637 45 1
+"antiAliased" "1"
+E E 0 1 1 2 1 E  299.9999999999999 312.6642335766423 561.9999999999998 312.6642335766423
+4 24
+"LINE6"
+""
+1 291.9999999999999 222.1445255474453 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+24 0 0 0 0 0
+E E E
+0
 1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 8 Layer : 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  291.9999999999999 222.1445255474453 570.9999999999998 222.1445255474453
+4 25
+"LINE7"
+""
+1 284.0000000000001 133.7299270072993 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 1 2 1 E  284.0000000000001 133.7299270072993 578.9999999999999 133.7299270072993
 0
 LAYER, 1 
 1
@@ -450,4 +464,10 @@ LAYER, 7
 1
 LANG:10001 0 
 0
+1 0 "SHAPE_GROUP1" -1
+8 0 
+18 19 20 21 22 23 24 25 
+
+"layoutAlignment" "AlignNone"
+"" ""
 0
