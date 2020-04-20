@@ -244,7 +244,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 121 841 144
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberLayer($obj));
+  this.text(getLayer($obj));
 }" 0
  E
 14 11
@@ -286,7 +286,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0  727 161 841 184
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
-  this.text(getChamberBoard($obj));
+  this.text(getBoard($obj));
 }" 0
  E
 30 13

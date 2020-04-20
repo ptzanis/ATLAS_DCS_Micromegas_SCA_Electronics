@@ -524,3 +524,27 @@ void updateBoardState(string mode, string dpeChannel, int value){
 }
 
 
+dyn_string returnBoardsOfLayer(int layer)
+{
+
+  dyn_string layer1_5=makeDynString("01","04","05","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","28","29","32");
+  dyn_string layer2_6=makeDynString("02","03","06","07","10","11","14","15","18","19","22","23","26","27","30","31");
+  dyn_string layer3_7=makeDynString("01","04","05","08","09","12","13","16","17","20","21","24","25","28","29","32");
+  dyn_string layer4_8=makeDynString("02","03","06","07","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","26","27","30","31");
+
+  dyn_string layerBoards;
+
+  if(layer==1 || layer==5)
+    layerBoards=layer1_5;
+  if(layer==2 || layer==6)
+    layerBoards=layer2_6;
+  if(layer==3 || layer==7)
+    layerBoards=layer3_7;
+  if(layer==4 || layer==8)
+    layerBoards=layer4_8;
+
+
+  return layerBoards;
+
+
+}

@@ -1,7 +1,8 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 258 227 N "FwAtlasBg" 3
+PANEL,-1 -1 389 225 N "FwAtlasBg" 4
+"$LorR"
 "$obj"
 "$x"
 "$y"
@@ -14,6 +15,15 @@ PANEL,-1 -1 258 227 N "FwAtlasBg" 3
     addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"boardOveviewStateStatus_\"+$obj,
               makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+boardNum),
               x+10, y+11, 0, 1.0, 1);
+
+
+    shape LorR=getShape($LorR);
+//     shape frameLorR=getShape(\"frame\"+$LorR);
+
+    setValue(LorR,\"visible\",1);
+//     setValue()
+
+
 }" 0
  E E E E 1 -1 -1 0  0 15
 ""0  1
@@ -89,7 +99,7 @@ LANG:10001 0
 }" 0
  0 1 1 2 1 E 2.148148148148149 0 1 -610.5185185185187 -48 1 E 287 93 395 96
 6 16
-"RECTANGLE3"
+"frameL"
 ""
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
@@ -118,7 +128,7 @@ LANG:10001 0
 }" 0
  0 1 1 2 1 E 8.561188271817148e-17 -0.3888888888888888 1 1.703151177622146e-17 -88.00000000000003 159.6111111111109 1 E 287 93 395 96
 6 17
-"RECTANGLE5"
+"frameR"
 ""
 1 287 93 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
  "main(mapping event)
@@ -324,7 +334,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"temperature\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getChamberLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
@@ -349,13 +359,71 @@ LANG:10001 0
 "main()
 {
   string mode=\"power\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getChamberLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
 }
 " 0
  E 0 1 1 2 1 E 1 0 1 88 -61 1 E 136 100 5 5
+6 27
+"L"
+""
+1 287 93 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 1.194444444444444 6.179930606808407e-17 1.357596865563776e-16 1 -463.8055555555554 -67.00000000000001 1 E 287 93 395 96
+6 28
+"R"
+""
+1 287 93 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ "main(mapping event)
+{
+     fwFsmAtlas_navigateSecondary(domain,$obj);
+}" 0
+ E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+        string domain=getDomain($obj);
+        fwFsmAtlas_connectStateButton(domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+}" 0
+ "main(mapping event)
+{
+    fwFsmAtlas_navigate(domain,$obj);
+}" 0
+ 0 1 1 2 1 E 1.101851851851851 6.179930606808407e-17 1.252356798465809e-16 1 -75.2314814814814 -67.00000000000001 1 E 287 93 395 96
 0
 LAYER, 1 
 1
