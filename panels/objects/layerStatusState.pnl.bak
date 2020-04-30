@@ -4,7 +4,7 @@ LANG:10001 0
 PANEL,-1 -1 280 256 N "FwAtlasBg" 2
 "$domain"
 "$obj"
-E E E E E 1 -1 -1 0  60 25
+E E E E E 1 -1 -1 0  0 0
 ""0  1
 E E 3
 "CBRef" "1"
@@ -39,6 +39,11 @@ LANG:10001 0
 {
   fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
 
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
 }" 0
  "main(mapping event)
 {
@@ -70,7 +75,13 @@ LANG:10001 0
 "antiAliased" "1"
 "main()
 {
-    fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+  fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
 }" 0
  "main(mapping event)
 {

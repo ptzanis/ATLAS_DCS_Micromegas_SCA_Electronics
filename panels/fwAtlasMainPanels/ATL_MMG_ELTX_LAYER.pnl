@@ -26,13 +26,20 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
   fwFsmAtlasGetTreeNodes(allChildren, allFlags,$obj);
 // DebugN(allChildren);
 
+  string Zaxis;
+  string Raxis;
+  int cLayer;
+  int pcb;
+  int cBoard;
 
-   int countBoard=1;
+  int countBoard=1;
 
   for(int board_i=2; board_i<=dynlen(allChildren); board_i++)
   {
 
-   boardNum=getChamberBoard(allChildren[board_i]);
+   getBoardChamberInfo(getSide(allChildren[board_i]), getLayer(allChildren[board_i]), getBoard(allChildren[board_i]),Zaxis, Raxis, cLayer, pcb, cBoard);
+   boardNum=cBoard;
+
 
    if(boardNum==1)
    { x=xInitial; y=yInitial;}

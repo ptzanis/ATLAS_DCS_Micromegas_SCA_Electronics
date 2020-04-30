@@ -31,69 +31,61 @@ string getDomain(string obj){
 }
 
 
-string getChamberZaxis(string obj){
-   int layer=getLayer(obj);
-   if(layer<=4)
-     return "2";
-   if(layer>=5)
-     return "3";
-}
+getBoardChamberInfo(string side, int layer, string board,  string &Zaxis, string &Raxis, string &cLayer, string &pcb, string &cBoard ){
 
+  if(side=="A")
+  {
+    //Zaxis
+    if(layer<=4)
+      Zaxis="Z2";
+    if(layer>=5)
+      Zaxis="Z3";
 
-string getChamberBoard(string obj){
-
-  string board=getBoard(obj);
-  if(board=="01" || board=="05" || board=="09" || board=="13" || board=="17" || board=="21" || board=="25" || board=="29" )
-    return "1";
-  if(board=="02" || board=="06" || board=="10" || board=="14" || board=="18" || board=="22" || board=="26" || board=="30" )
-    return "2";
-  if(board=="03" || board=="07" || board=="11" || board=="15" || board=="19" || board=="23" || board=="27" || board=="31" )
-    return "3";
-  if(board=="04" || board=="08" || board=="12" || board=="16" || board=="20" || board=="24" || board=="28" || board=="32" )
-    return "4";
-}
-
-string getChamberLayer(string obj){
-
-  int layer=getLayer(obj);
-  if(layer<=4)
-    layer=layer;
-  if(layer>=5)
-    layer=layer-4;
-
-   return layer;
-
-}
-string getChamberPCB(string obj){
-
-  string board=getBoard(obj);
+    //pcb
   if(board=="01" || board=="02" || board=="03" || board=="04" )
-    return "1";
+    pcb="1";
   if(board=="05" || board=="06" || board=="07" || board=="08" )
-    return "2";
+    pcb="2";
   if(board=="09" || board=="10" || board=="11" || board=="12" )
-    return "3";
+    pcb="3";
   if(board=="13" || board=="14" || board=="15" || board=="16" )
-    return "4";
+    pcb="4";
   if(board=="17" || board=="18" || board=="19" || board=="20" )
-    return "5";
+    pcb="5";
   if(board=="21" || board=="22" || board=="23" || board=="24" )
-    return "6";
+    pcb="6";
   if(board=="25" || board=="26" || board=="27" || board=="28" )
-    return "7";
+    pcb="7";
   if(board=="29" || board=="30" || board=="31" || board=="32" )
-    return "8";
+    pcb="8";
 
-}
-
-string getChamberRaxis(string obj){
-
-    int pcb=getChamberPCB(obj);
+  //Raxis
     if(pcb<=5)
-      return "1";
+      Raxis="R1";
     if(pcb>=6)
-      return "2";
+      Raxis="R2";
+
+  //cLayer
+  if(layer<=4)
+    cLayer=layer;
+  if(layer>=5)
+    cLayer=layer-4;
+
+  //cBoard
+   if(board=="01" || board=="05" || board=="09" || board=="13" || board=="17" || board=="21" || board=="25" || board=="29" )
+    cBoard="1";
+  if(board=="02" || board=="06" || board=="10" || board=="14" || board=="18" || board=="22" || board=="26" || board=="30" )
+    cBoard="2";
+  if(board=="03" || board=="07" || board=="11" || board=="15" || board=="19" || board=="23" || board=="27" || board=="31" )
+    cBoard="3";
+  if(board=="04" || board=="08" || board=="12" || board=="16" || board=="20" || board=="24" || board=="28" || board=="32" )
+    cBoard="4";
+
+
+  }
+
 }
+
 
 string getChamber(string obj){
 
@@ -110,38 +102,37 @@ string getChamber(string obj){
 string getBoardChannel(string obj){
 
   string channel;
-  dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".info.channel",channel);
+  dpGet(eltxProjectName()+getDetector(obj)+"_ELTX_"+getSide(obj)+getSector(obj)+".Layer"+getLayer(obj)+".Board"+getBoard(obj)+".info.channel",channel);
   return channel;
 
 }
 
 
-
 string getBoardType(string obj){
 
   string type;
-  dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".info.type",type);
+  dpGet(eltxProjectName()+getDetector(obj)+"_ELTX_"+getSide(obj)+getSector(obj)+".Layer"+getLayer(obj)+".Board"+getBoard(obj)+".info.type",type);
   return type;
 
 }
 
 string getBoardLVChannel(string obj){
 
-  string channel=eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".power.isLVOn";
-  return channel;
+  string channelLV=eltxProjectName()+getDetector(obj)+"_ELTX_"+getSide(obj)+getSector(obj)+".Layer"+getLayer(obj)+".Board"+getBoard(obj)+".power.isLVOn";
+  return channelLV;
 
 }
 
 int getBoardState(string obj, string mode){
 
  int valueState;
- dpGet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getChamberSide(obj)+".Sector"+getChamberSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getLayer(obj)+".PCB"+getPCB(obj)+".Board"+getBoard(obj)+".state."+mode, valueState);
+ dpGet(eltxProjectName()+getDetector(obj)+"_ELTX_"+getSide(obj)+getSector(obj)+".Layer"+getLayer(obj)+".Board"+getBoard(obj)+".state."+mode, valueState);
  return valueState;
 }
 
 void setBoardState(string obj, string mode, int valueToSet){
 
- dpSet(eltxProjectName(obj)+getDetector(obj)+"_Side"+getSide(obj)+".Sector"+getSector(obj)+".Z"+getChamberZaxis(obj)+".R"+getChamberRaxis(obj)+".Layer"+getChamberLayer(obj)+".PCB"+getChamberPCB(obj)+".Board"+getChamberBoard(obj)+".state."+mode, valueToSet);
+ dpSet(eltxProjectName()+getDetector(obj)+"_ELTX_"+getSide(obj)+getSector(obj)+".Layer"+getLayer(obj)+".Board"+getBoard(obj)+".state."+mode, valueToSet);
 
 }
 
@@ -512,7 +503,8 @@ dyn_string getChannelListOfBoardTypeFromMappingList(mapping mappingList,string b
 
 void updateBoardState(string mode, string dpeChannel, int value){
 
-  shape stateShape=getShape(mode+"State");
+//   shape stateShape=getShape(mode+"State");
+   shape stateShape=getShape("");
 
   if(value==1)
    stateShape.backCol("green");

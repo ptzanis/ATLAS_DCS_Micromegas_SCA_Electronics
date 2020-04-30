@@ -1,22 +1,21 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 859 866 N "FwAtlasBg" 1
-"$obj"
-E E E E E 1 -1 -1 0  117 143
+PANEL,-1 -1 859 866 N "FwAtlasBg" 0
+"main()
+{
+  mmgGeneral_drawChambers_Side(200,220,1.0,\"A\");
+  mmgGeneral_drawChambers_Side(200,590,1.0,\"C\");
+}" 0
+ E E E E 1 -1 -1 0  117 143
 ""0  1
 E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"
 
-void mmgGeneral_drawChambers(int x_center, int y_center,int layer,float sc,string side, string type)
+void mmgGeneral_drawChambers_Side(int x_center, int y_center,float sc,string side)
 {
   float x ,y, phi, phiRad, scale, a, b, c1,c2, d1,d2, x_circle, y_circle;
   string channel;
-  int rackNum;
-
-  if (side == \"A\")
-   rackNum = 1;
-  else if (side == \"C\")
-   rackNum = 2;
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
 
   scale = sc*12.20; //since 610.1 = 5 pvss squares
   b =  610.1/scale;//50;
@@ -27,6 +26,8 @@ void mmgGeneral_drawChambers(int x_center, int y_center,int layer,float sc,strin
   a = 74/sc;//8*(b+402.9/scale)/6.28;//74; //127.5; //100;//2000/scale;
 
   phi=22.5;
+
+  string sectorObj;
 
     //create the large chambers
     for (int n=1; n<=16; n++)
@@ -39,11 +40,12 @@ void mmgGeneral_drawChambers(int x_center, int y_center,int layer,float sc,strin
         x_circle = x_center - (a+d1/2)*cos(phiRad)-10/sc;
         y_circle  = y_center - (a+d1/2)*sin(phiRad)-10/sc;
 
-
-             addSymbol(myModuleName(),myPanelName(),\"/objects/LargeChamber.pnl\",\"\",makeDynString(\"$name:\"+side,\"$domain:MMG_ELTX\",\"$obj:\"+\"MMG_SIDE_A_SECTOR_01_EIZ2R1A01\"), x, y, 90.-phi, 1/sc, 1/sc);
+        sectorObj=getDetector()+\"_SIDE_\"+side+\"_SECTOR_\"+sector[n];
+        addSymbol(myModuleName(),myPanelName(),\"/objects/LargeChamber.pnl\",\"\",makeDynString(\"$domain:\"+sectorObj,\"$obj:\"+sectorObj), x, y, 90.-phi, 1/sc, 1/sc);
 
           }
     }
+
 
     //create the small chamners
     for (int n=1; n<=16; n++)
@@ -56,8 +58,8 @@ void mmgGeneral_drawChambers(int x_center, int y_center,int layer,float sc,strin
         x_circle = x_center - (a+d2/2)*cos(phiRad)-10/sc;
         y_circle  = y_center - (a+d2/2)*sin(phiRad)-10/sc;
 
-
-        addSymbol(myModuleName(),myPanelName(),\"/objects/SmallChamber.pnl\",\"\",makeDynString(\"$name:\"+side,\"$domain:MMG_ELTX\",\"$obj:\"+\"MMG_SIDE_A_SECTOR_01_EIZ2R1A01\"), x, y, 90.-phi, 1/sc, 1/sc);
+        sectorObj=getDetector()+\"_SIDE_\"+side+\"_SECTOR_\"+sector[n];
+        addSymbol(myModuleName(),myPanelName(),\"/objects/SmallChamber.pnl\",\"\",makeDynString(\"$domain:\"+sectorObj,\"$obj:\"+sectorObj), x, y, 90.-phi, 1/sc, 1/sc);
 
         }
       }
@@ -78,54 +80,6 @@ DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
 LAYER, 0 
 1
 LANG:10001 0 
-14 1
-"TEXT_FIELD2"
-""
-1 539 830 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
- E E
-1 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  537 816 824 858
-3 "0s" 0 0 0 0 0 -1  E "main()
-{
-  this.text($obj);
-}" 0
- E
-13 4
-"PUSH_BUTTON2"
-""
-1 25 808 E E E 1 E 1 E N "violett" E N "_Button" E E
- E E
-4 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,24,5,75,0,0,0,0,0,Bold
-0  23 791 249 840
-
-T 
-1
-LANG:10001 16 Chamber creation
-"main(mapping event)
-{
-  mmgGeneral_drawChambers(200,220,1,1.0,\"A\",\"ELTX\");
-  mmgGeneral_drawChambers(200,590,1,1.0,\"C\",\"ELTX\");
-}
-" 0
- E E E
 6 5
 "RECTANGLE7"
 ""

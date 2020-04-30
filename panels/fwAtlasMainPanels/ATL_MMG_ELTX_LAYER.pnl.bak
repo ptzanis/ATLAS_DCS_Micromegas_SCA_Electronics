@@ -26,13 +26,20 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
   fwFsmAtlasGetTreeNodes(allChildren, allFlags,$obj);
 // DebugN(allChildren);
 
+  string Zaxis;
+  string Raxis;
+  int cLayer;
+  int pcb;
+  int cBoard;
 
-   int countBoard=1;
+  int countBoard=1;
 
   for(int board_i=2; board_i<=dynlen(allChildren); board_i++)
   {
 
-   boardNum=getChamberBoard(allChildren[board_i]);
+   getBoardChamberInfo(getSide(allChildren[board_i]), getLayer(allChildren[board_i]), getBoard(allChildren[board_i]),Zaxis, Raxis, cLayer, pcb, cBoard);
+   boardNum=cBoard;
+
 
    if(boardNum==1)
    { x=xInitial; y=yInitial;}
@@ -237,7 +244,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 0.8535031847133761 0 1.052554744525547 61.14012738853495 -83.0948905109488 1 E 4 274 135
+E E 0 1 1 2 1 E 0.8535031847133761 0 1.052554744525547 60.14012738853495 -83.0948905109488 1 E 4 274 135
 588 135
 520 820
 340 820
@@ -245,7 +252,7 @@ E E 0 1 1 2 1 E 0.8535031847133761 0 1.052554744525547 61.14012738853495 -83.094
 4 19
 "LINE1"
 ""
-1 344.4970590924329 689.480291970803 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 343.4970590924329 689.480291970803 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 19 0 0 0 0 0
 E E E
@@ -257,11 +264,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  344.4970590924329 689.480291970803 511.7836832962547 689.480291970803
+E E 0 1 1 2 1 E  343.4970590924329 689.480291970803 510.7836832962547 689.480291970803
 4 20
 "LINE2"
 ""
-1 337.8691372321945 601.065693430657 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 336.8691372321945 601.065693430657 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 20 0 0 0 0 0
 E E E
@@ -273,11 +280,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  337.8691372321945 601.065693430657 518.8118123914302 601.065693430657
+E E 0 1 1 2 1 E  336.8691372321945 601.065693430657 517.8118123914302 601.065693430657
 4 21
 "LINE3"
 ""
-1 329.3341053850608 509.4934306569344 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 328.3341053850608 509.4934306569344 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 21 0 0 0 0 0
 E E E
@@ -289,11 +296,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  329.3341053850608 509.4934306569344 526.4933410538504 509.4934306569344
+E E 0 1 1 2 1 E  328.3341053850608 509.4934306569344 525.4933410538504 509.4934306569344
 4 22
 "LINE4"
 ""
-1 323.3595830920672 421.0788321167884 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 322.3595830920672 421.0788321167884 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 22 0 0 0 0 0
 E E E
@@ -305,11 +312,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  323.3595830920672 421.0788321167884 533.3213665315576 421.0788321167884
+E E 0 1 1 2 1 E  322.3595830920672 421.0788321167884 532.3213665315576 421.0788321167884
 4 23
 "LINE5"
 ""
-1 316.5315576143601 332.6642335766423 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 315.5315576143601 332.6642335766423 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 23 0 0 0 0 0
 E E E
@@ -321,11 +328,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  316.5315576143601 332.6642335766423 540.1493920092645 332.6642335766423
+E E 0 1 1 2 1 E  315.5315576143601 332.6642335766423 539.1493920092645 332.6642335766423
 4 24
 "LINE6"
 ""
-1 309.7035321366531 242.1445255474454 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 308.7035321366531 242.1445255474454 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 24 0 0 0 0 0
 E E E
@@ -337,11 +344,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  309.7035321366531 242.1445255474454 547.8309206716849 242.1445255474454
+E E 0 1 1 2 1 E  308.7035321366531 242.1445255474454 546.8309206716849 242.1445255474454
 4 25
 "LINE7"
 ""
-1 302.8755066589462 153.7299270072994 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+1 301.8755066589462 153.7299270072994 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 25 0 0 0 0 0
 E E E
@@ -353,7 +360,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E  302.8755066589462 153.7299270072994 554.6589461493919 153.7299270072994
+E E 0 1 1 2 1 E  301.8755066589462 153.7299270072994 553.6589461493919 153.7299270072994
 7 27
 "ELLIPSE1"
 ""
@@ -369,11 +376,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343.5 616.5 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342.5 616.5 1 E 86.5 121.5 11.5 11.5
 2 28
 "PRIMITIVE_TEXT21"
 ""
-1 424 726 E E E 1 E 1 E N "White" E N "_Window" E E
+1 423 726 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 28 0 0 0 0 0
 E E E
@@ -386,8 +393,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 424 726 437 748
-0 2 2 "0s" 0 0 0 192 0 0  424 726 1
+E E 0 1 1 2 1 E U  0 E 423 726 436 748
+0 2 2 "0s" 0 0 0 192 0 0  423 726 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -407,11 +414,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343 525.5 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342 525.5 1 E 86.5 121.5 11.5 11.5
 2 30
 "PRIMITIVE_TEXT22"
 ""
-1 424.25 635.75 E E E 1 E 1 E N "White" E N "_Window" E E
+1 423.25 635.75 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 30 0 0 0 0 0
 E E E
@@ -424,8 +431,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 424.25 635.75 437 658
-0 2 2 "0s" 0 0 0 192 0 0  424.25 635.75 1
+E E 0 1 1 2 1 E U  0 E 423.25 635.75 436 658
+0 2 2 "0s" 0 0 0 192 0 0  423.25 635.75 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -445,11 +452,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343 435 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342 435 1 E 86.5 121.5 11.5 11.5
 2 32
 "PRIMITIVE_TEXT23"
 ""
-1 423.5 544.5 E E E 1 E 1 E N "White" E N "_Window" E E
+1 422.5 544.5 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 32 0 0 0 0 0
 E E E
@@ -462,8 +469,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 423.5 544.5 436 567
-0 2 2 "0s" 0 0 0 192 0 0  423.5 544.5 1
+E E 0 1 1 2 1 E U  0 E 422.5 544.5 435 567
+0 2 2 "0s" 0 0 0 192 0 0  422.5 544.5 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -483,11 +490,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343.5 344 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342.5 344 1 E 86.5 121.5 11.5 11.5
 2 34
 "PRIMITIVE_TEXT24"
 ""
-1 423.875 453.625 E E E 1 E 1 E N "White" E N "_Window" E E
+1 422.875 453.625 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 34 0 0 0 0 0
 E E E
@@ -500,8 +507,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 423.875 453.625 436 476
-0 2 2 "0s" 0 0 0 192 0 0  423.875 453.625 1
+E E 0 1 1 2 1 E U  0 E 422.875 453.625 435 476
+0 2 2 "0s" 0 0 0 192 0 0  422.875 453.625 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -521,11 +528,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343 257.5 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342 257.5 1 E 86.5 121.5 11.5 11.5
 2 40
 "PRIMITIVE_TEXT25"
 ""
-1 423.5 368 E E E 1 E 1 E N "White" E N "_Window" E E
+1 422.5 368 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 40 0 0 0 0 0
 E E E
@@ -538,8 +545,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 423.5 368 436 390
-0 2 2 "0s" 0 0 0 192 0 0  423.5 368 1
+E E 0 1 1 2 1 E U  0 E 422.5 368 435 390
+0 2 2 "0s" 0 0 0 192 0 0  422.5 368 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -559,11 +566,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343.5 166.5 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342.5 166.5 1 E 86.5 121.5 11.5 11.5
 2 42
 "PRIMITIVE_TEXT26"
 ""
-1 423.75 276.75 E E E 1 E 1 E N "White" E N "_Window" E E
+1 422.75 276.75 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 42 0 0 0 0 0
 E E E
@@ -576,8 +583,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 423.75 276.75 436 299
-0 2 2 "0s" 0 0 0 192 0 0  423.75 276.75 1
+E E 0 1 1 2 1 E U  0 E 422.75 276.75 435 299
+0 2 2 "0s" 0 0 0 192 0 0  422.75 276.75 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -597,11 +604,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343.5 76 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342.5 76 1 E 86.5 121.5 11.5 11.5
 2 44
 "PRIMITIVE_TEXT27"
 ""
-1 424 186.5 E E E 1 E 1 E N "White" E N "_Window" E E
+1 423 186.5 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 44 0 0 0 0 0
 E E E
@@ -614,8 +621,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 424 186.5 437 209
-0 2 2 "0s" 0 0 0 192 0 0  424 186.5 1
+E E 0 1 1 2 1 E U  0 E 423 186.5 436 209
+0 2 2 "0s" 0 0 0 192 0 0  423 186.5 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1
@@ -635,11 +642,11 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "1"
-E E 0 1 1 2 1 E 1 0 1 343 -15 1 E 86.5 121.5 11.5 11.5
+E E 0 1 1 2 1 E 1 0 1 342 -15 1 E 86.5 121.5 11.5 11.5
 2 46
 "PRIMITIVE_TEXT28"
 ""
-1 424.25 95.25 E E E 1 E 1 E N "White" E N "_Window" E E
+1 423.25 95.25 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 46 0 0 0 0 0
 E E E
@@ -652,8 +659,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 424.25 95.25 437 117
-0 2 2 "0s" 0 0 0 192 0 0  424.25 95.25 1
+E E 0 1 1 2 1 E U  0 E 423.25 95.25 436 117
+0 2 2 "0s" 0 0 0 192 0 0  423.25 95.25 1
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 0 1

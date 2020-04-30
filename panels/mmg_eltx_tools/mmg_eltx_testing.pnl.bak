@@ -447,7 +447,7 @@ LANG:10001 3 OFF
   if(board!=\"\")
   {
      obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".power.isLVOn\",0);
+     dpSet(getBoardLVChannel(obj),0);
      DebugN(side,sector,layer,board,getBoardChannel(obj),\"LV\",0);
   }
   else
@@ -455,7 +455,7 @@ LANG:10001 3 OFF
      for(int i=1; i<=dynlen(layerBoards); i++)
      {
      obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".power.isLVOn\",0);
+     dpSet(getBoardLVChannel(obj),0);
      DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"LV\",0);
 
      }
@@ -468,7 +468,7 @@ LANG:10001 3 OFF
 13 27
 "PUSH_BUTTON3"
 ""
-1 117 334.2666666666667 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 117 335 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -480,7 +480,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  115 324 167 359
+0  115 324.7333333333333 167 359.7333333333333
 
 T 
 1
@@ -499,7 +499,7 @@ LANG:10001 2 ON
   if(board!=\"\")
   {
      obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".power.isLVOn\",1);
+     dpSet(getBoardLVChannel(obj),1);
      DebugN(side,sector,layer,board,getBoardChannel(obj),\"LV\",1);
   }
   else
@@ -507,7 +507,7 @@ LANG:10001 2 ON
      for(int i=1; i<=dynlen(layerBoards); i++)
      {
      obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".power.isLVOn\",1);
+     dpSet(getBoardLVChannel(obj),1);
      DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"LV\",1);
 
      }
@@ -571,11 +571,7 @@ LANG:10001 1 1
   if(board!=\"\")
   {
      obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-          int test;
-     dpGet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",test);
-     DebugN(\"********\",test);
-
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",(int)this.text());
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.temperature\",(int)this.text());
      DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
   }
   else
@@ -583,111 +579,7 @@ LANG:10001 1 1
      for(int i=1; i<=dynlen(layerBoards); i++)
      {
      obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",(int)this.text());
-     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
-
-     }
-   }
-
- }
-
-" 0
- E E E
-13 31
-"PUSH_BUTTON6"
-""
-1 93 406 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-31 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  91 395.7333333333333 127 430.7333333333333
-
-T 
-1
-LANG:10001 1 2
-"main(mapping event)
-{
-  string obj;
-  string side=radioSideSelection.text(radioSideSelection.number());
-  string sector=comboSectorSelection.text();
-  string layer=comboLayerSelection.text();
-  string board=boardList.text();
-
-  dyn_string layerBoards=returnBoardsOfLayer(layer);
-
-
-  if(board!=\"\")
-  {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",(int)this.text());
-     DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
-  }
-  else
-  {
-     for(int i=1; i<=dynlen(layerBoards); i++)
-     {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",(int)this.text());
-     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
-
-     }
-   }
-
- }
-
-" 0
- E E E
-13 32
-"PUSH_BUTTON7"
-""
-1 134 406 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-32 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  132 395.7333333333333 168 430.7333333333333
-
-T 
-1
-LANG:10001 1 3
-"main(mapping event)
-{
-  string obj;
-  string side=radioSideSelection.text(radioSideSelection.number());
-  string sector=comboSectorSelection.text();
-  string layer=comboLayerSelection.text();
-  string board=boardList.text();
-
-  dyn_string layerBoards=returnBoardsOfLayer(layer);
-
-
-  if(board!=\"\")
-  {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",(int)this.text());
-     DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
-  }
-  else
-  {
-     for(int i=1; i<=dynlen(layerBoards); i++)
-     {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.temperature\",(int)this.text());
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.temperature\",(int)this.text());
      DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
 
      }
@@ -717,110 +609,6 @@ E E 0 1 1 2 1 E 1 0 1.638888888888889 1 113.2222222222222 0 E 46 200 185 237
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
 0 1
 LANG:10001 5 Power
-13 37
-"PUSH_BUTTON11"
-""
-1 54 470 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-37 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  52 459.7333333333333 88 494.7333333333333
-
-T 
-1
-LANG:10001 1 1
-"main(mapping event)
-{
-  string obj;
-  string side=radioSideSelection.text(radioSideSelection.number());
-  string sector=comboSectorSelection.text();
-  string layer=comboLayerSelection.text();
-  string board=boardList.text();
-
-  dyn_string layerBoards=returnBoardsOfLayer(layer);
-
-
-  if(board!=\"\")
-  {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.power\",(int)this.text());
-     DebugN(side,sector,layer,board,getBoardChannel(obj),\"power\",(int)this.text());
-  }
-  else
-  {
-     for(int i=1; i<=dynlen(layerBoards); i++)
-     {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.power\",(int)this.text());
-     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"power\",(int)this.text());
-
-     }
-   }
-
- }
-
-" 0
- E E E
-13 38
-"PUSH_BUTTON12"
-""
-1 94 470 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-38 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  92 459.7333333333333 128 494.7333333333333
-
-T 
-1
-LANG:10001 1 2
-"main(mapping event)
-{
-  string obj;
-  string side=radioSideSelection.text(radioSideSelection.number());
-  string sector=comboSectorSelection.text();
-  string layer=comboLayerSelection.text();
-  string board=boardList.text();
-
-  dyn_string layerBoards=returnBoardsOfLayer(layer);
-
-
-  if(board!=\"\")
-  {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.power\",(int)this.text());
-     DebugN(side,sector,layer,board,getBoardChannel(obj),\"power\",(int)this.text());
-  }
-  else
-  {
-     for(int i=1; i<=dynlen(layerBoards); i++)
-     {
-     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
-     dpSet(eltxProjectName(obj)+getDetector(obj)+\"_Side\"+getSide(obj)+\".Sector\"+getSector(obj)+\".Z\"+getChamberZaxis(obj)+\".R\"+getChamberRaxis(obj)+\".Layer\"+getChamberLayer(obj)+\".PCB\"+getChamberPCB(obj)+\".Board\"+getChamberBoard(obj)+\".state.power\",(int)this.text());
-     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"power\",(int)this.text());
-
-     }
-   }
-
- }
-
-" 0
- E E E
 30 41
 "FRAME13"
 ""
@@ -1016,6 +804,214 @@ LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
 0 2
 LANG:10001 6 Temp :
 LANG:1 12 Current List
+13 46
+"PUSH_BUTTON16"
+""
+1 94 406 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+46 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  92 395.7333333333333 128 430.7333333333333
+
+T 
+1
+LANG:10001 1 2
+"main(mapping event)
+{
+  string obj;
+  string side=radioSideSelection.text(radioSideSelection.number());
+  string sector=comboSectorSelection.text();
+  string layer=comboLayerSelection.text();
+  string board=boardList.text();
+
+  dyn_string layerBoards=returnBoardsOfLayer(layer);
+
+
+  if(board!=\"\")
+  {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.temperature\",(int)this.text());
+     DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
+  }
+  else
+  {
+     for(int i=1; i<=dynlen(layerBoards); i++)
+     {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.temperature\",(int)this.text());
+     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
+
+     }
+   }
+
+ }
+
+" 0
+ E E E
+13 47
+"PUSH_BUTTON17"
+""
+1 137 406 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+47 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  135 395.7333333333333 171 430.7333333333333
+
+T 
+1
+LANG:10001 1 3
+"main(mapping event)
+{
+  string obj;
+  string side=radioSideSelection.text(radioSideSelection.number());
+  string sector=comboSectorSelection.text();
+  string layer=comboLayerSelection.text();
+  string board=boardList.text();
+
+  dyn_string layerBoards=returnBoardsOfLayer(layer);
+
+
+  if(board!=\"\")
+  {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.temperature\",(int)this.text());
+     DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
+  }
+  else
+  {
+     for(int i=1; i<=dynlen(layerBoards); i++)
+     {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.temperature\",(int)this.text());
+     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
+
+     }
+   }
+
+ }
+
+" 0
+ E E E
+13 48
+"PUSH_BUTTON18"
+""
+1 55 467 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+48 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  53 456.7333333333333 89 491.7333333333333
+
+T 
+1
+LANG:10001 1 1
+"main(mapping event)
+{
+  string obj;
+  string side=radioSideSelection.text(radioSideSelection.number());
+  string sector=comboSectorSelection.text();
+  string layer=comboLayerSelection.text();
+  string board=boardList.text();
+
+  dyn_string layerBoards=returnBoardsOfLayer(layer);
+
+
+  if(board!=\"\")
+  {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.power\",(int)this.text());
+     DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
+  }
+  else
+  {
+     for(int i=1; i<=dynlen(layerBoards); i++)
+     {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.power\",(int)this.text());
+     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
+
+     }
+   }
+
+ }
+
+" 0
+ E E E
+13 49
+"PUSH_BUTTON19"
+""
+1 96 467 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+49 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  94 456.7333333333333 130 491.7333333333333
+
+T 
+1
+LANG:10001 1 2
+"main(mapping event)
+{
+  string obj;
+  string side=radioSideSelection.text(radioSideSelection.number());
+  string sector=comboSectorSelection.text();
+  string layer=comboLayerSelection.text();
+  string board=boardList.text();
+
+  dyn_string layerBoards=returnBoardsOfLayer(layer);
+
+
+  if(board!=\"\")
+  {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+board;
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.power\",(int)this.text());
+     DebugN(side,sector,layer,board,getBoardChannel(obj),\"temperature\",(int)this.text());
+  }
+  else
+  {
+     for(int i=1; i<=dynlen(layerBoards); i++)
+     {
+     obj=\"MMG_SIDE_\"+side+\"_SECTOR_\"+sector+\"_LAYER_\"+layer+\"_BOARD_\"+layerBoards[i];
+     dpSet(eltxProjectName()+getDetector(obj)+\"_ELTX_\"+getSide(obj)+getSector(obj)+\".Layer\"+getLayer(obj)+\".Board\"+getBoard(obj)+\".state.power\",(int)this.text());
+     DebugN(side,sector,layer,layerBoards[i],getBoardChannel(obj),\"temperature\",(int)this.text());
+
+     }
+   }
+
+ }
+
+" 0
+ E E E
 0
 LAYER, 1 
 1

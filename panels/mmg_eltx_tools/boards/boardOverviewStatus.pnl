@@ -54,7 +54,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"temperature\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getChamberLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
@@ -83,7 +83,7 @@ LANG:10001 0
 "main()
 {
   string mode=\"power\";
-  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getSide($obj)+\".Sector\"+getSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getChamberLayer($obj)+\".PCB\"+getChamberPCB($obj)+\".Board\"+getChamberBoard($obj)+\".state.\"+mode;
+  string dpe=eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
 
   dpConnectUserData(\"updateBoardState\",mode,dpe);
 
@@ -127,7 +127,7 @@ LANG:10001 7 Board X
 2 1
 "PRIMITIVE_TEXT22"
 ""
-1 39.99999999999991 138 E E E 1 E 1 E N "black" E N "_Window" E E
+1 39.99999999999991 137 E E E 1 E 1 E N "black" E N "_Window" E E
  E E
 1 0 0 0 0 0
 E E E
@@ -140,8 +140,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 39.99999999999991 138 122 153
-0 2 2 "0s" 0 0 0 192 0 0  39.99999999999991 138 1
+E E 0 1 1 2 1 E U  0 E 39.99999999999991 137 122 152
+0 2 2 "0s" 0 0 0 192 0 0  39.99999999999991 137 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1

@@ -1,0 +1,3681 @@
+#uses "MMG_ELTX_Board.ctl"
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_01_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_01");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_01_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_01");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_01");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_04_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_04");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_04_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_04");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_04");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_05_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_05");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_05_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_05");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_05");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_08_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_08");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_08_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_08");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_08");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_09_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_09");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_09_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_09");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_09");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_10_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_10");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_10_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_10");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_10");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_11_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_11");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_11_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_11");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_11");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_12_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_12");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_12_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_12");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_12");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_13_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_13");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_13_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_13");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_13");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_14_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_14");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_14_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_14");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_14");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_15_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_15");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_15_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_15");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_15");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_16_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_16");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_16_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_16");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_16");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_17_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_17");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_17_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_17");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_17");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_18_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_18");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_18_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_18");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_18");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_19_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_19");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_19_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_19");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_19");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_20_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_20");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_20_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_20");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_20");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_21_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_21");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_21_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_21");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_21");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_22_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_22");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_22_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_22");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_22");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_23_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_23");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_23_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_23");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_23");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_24_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_24");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_24_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_24");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_24");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_25_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_25");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_25_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_25");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_25");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_28_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_28");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_28_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_28");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_28");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_29_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_29");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_29_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_29");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_29");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_32_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_32");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_32_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_32");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_1_BOARD_32");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_02_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_02");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_02_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_02");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_02");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_03_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_03");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_03_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_03");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_03");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_06_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_06");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_06_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_06");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_06");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_07_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_07");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_07_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_07");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_07");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_10_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_10");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_10_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_10");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_10");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_11_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_11");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_11_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_11");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_11");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_14_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_14");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_14_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_14");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_14");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_15_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_15");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_15_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_15");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_15");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_18_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_18");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_18_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_18");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_18");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_19_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_19");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_19_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_19");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_19");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_22_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_22");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_22_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_22");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_22");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_23_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_23");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_23_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_23");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_23");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_26_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_26");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_26_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_26");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_26");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_27_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_27");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_27_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_27");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_27");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_30_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_30");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_30_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_30");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_30");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_31_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_31");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_31_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_31");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_2_BOARD_31");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_01_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_01");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_01_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_01");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_01");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_04_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_04");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_04_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_04");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_04");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_05_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_05");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_05_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_05");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_05");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_08_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_08");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_08_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_08");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_08");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_09_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_09");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_09_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_09");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_09");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_12_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_12");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_12_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_12");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_12");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_13_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_13");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_13_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_13");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_13");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_16_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_16");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_16_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_16");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_16");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_17_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_17");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_17_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_17");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_17");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_20_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_20");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_20_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_20");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_20");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_21_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_21");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_21_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_21");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_21");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_24_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_24");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_24_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_24");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_24");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_25_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_25");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_25_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_25");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_25");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_28_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_28");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_28_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_28");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_28");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_29_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_29");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_29_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_29");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_29");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_32_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_32");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_32_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_32");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_3_BOARD_32");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_02_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_02");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_02_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_02");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_02");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_03_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_03");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_03_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_03");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_03");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_06_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_06");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_06_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_06");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_06");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_07_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_07");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_07_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_07");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_07");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_09_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_09");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_09_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_09");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_09");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_10_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_10");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_10_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_10");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_10");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_11_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_11");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_11_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_11");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_11");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_12_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_12");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_12_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_12");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_12");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_13_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_13");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_13_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_13");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_13");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_14_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_14");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_14_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_14");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_14");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_15_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_15");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_15_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_15");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_15");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_16_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_16");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_16_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_16");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_16");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_17_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_17");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_17_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_17");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_17");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_18_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_18");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_18_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_18");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_18");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_19_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_19");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_19_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_19");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_19");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_20_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_20");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_20_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_20");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_20");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_21_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_21");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_21_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_21");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_21");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_22_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_22");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_22_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_22");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_22");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_23_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_23");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_23_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_23");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_23");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_24_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_24");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_24_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_24");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_24");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_26_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_26");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_26_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_26");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_26");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_27_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_27");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_27_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_27");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_27");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_30_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_30");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_30_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_30");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_30");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_31_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_31");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_31_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_31");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_4_BOARD_31");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_01_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_01");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_01_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_01");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_01");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_04_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_04");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_04_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_04");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_04");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_05_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_05");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_05_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_05");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_05");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_08_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_08");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_08_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_08");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_08");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_09_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_09");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_09_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_09");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_09");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_10_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_10");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_10_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_10");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_10");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_11_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_11");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_11_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_11");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_11");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_12_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_12");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_12_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_12");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_12");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_13_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_13");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_13_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_13");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_13");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_14_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_14");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_14_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_14");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_14");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_15_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_15");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_15_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_15");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_15");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_16_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_16");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_16_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_16");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_16");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_17_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_17");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_17_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_17");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_17");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_18_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_18");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_18_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_18");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_18");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_19_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_19");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_19_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_19");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_19");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_20_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_20");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_20_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_20");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_20");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_21_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_21");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_21_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_21");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_21");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_22_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_22");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_22_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_22");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_22");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_23_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_23");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_23_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_23");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_23");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_24_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_24");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_24_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_24");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_24");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_25_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_25");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_25_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_25");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_25");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_28_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_28");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_28_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_28");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_28");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_29_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_29");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_29_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_29");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_29");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_32_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_32");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_32_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_32");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_5_BOARD_32");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_02_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_02");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_02_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_02");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_02");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_03_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_03");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_03_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_03");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_03");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_06_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_06");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_06_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_06");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_06");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_07_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_07");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_07_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_07");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_07");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_10_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_10");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_10_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_10");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_10");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_11_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_11");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_11_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_11");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_11");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_14_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_14");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_14_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_14");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_14");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_15_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_15");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_15_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_15");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_15");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_18_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_18");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_18_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_18");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_18");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_19_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_19");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_19_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_19");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_19");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_22_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_22");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_22_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_22");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_22");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_23_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_23");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_23_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_23");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_23");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_26_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_26");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_26_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_26");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_26");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_27_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_27");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_27_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_27");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_27");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_30_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_30");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_30_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_30");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_30");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_31_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_31");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_31_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_31");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_6_BOARD_31");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_01_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_01");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_01_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_01");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_01");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_04_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_04");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_04_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_04");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_04");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_05_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_05");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_05_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_05");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_05");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_08_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_08");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_08_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_08");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_08");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_09_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_09");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_09_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_09");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_09");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_12_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_12");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_12_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_12");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_12");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_13_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_13");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_13_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_13");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_13");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_16_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_16");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_16_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_16");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_16");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_17_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_17");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_17_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_17");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_17");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_20_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_20");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_20_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_20");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_20");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_21_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_21");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_21_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_21");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_21");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_24_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_24");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_24_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_24");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_24");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_25_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_25");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_25_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_25");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_25");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_28_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_28");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_28_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_28");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_28");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_29_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_29");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_29_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_29");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_29");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_32_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_32");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_32_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_32");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_7_BOARD_32");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_02_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_02");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_02_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_02");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_02");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_03_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_03");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_03_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_03");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_03");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_06_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_06");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_06_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_06");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_06");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_07_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_07");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_07_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_07");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_07");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_09_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_09");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_09_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_09");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_09");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_10_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_10");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_10_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_10");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_10");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_11_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_11");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_11_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_11");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_11");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_12_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_12");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_12_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_12");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_12");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_13_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_13");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_13_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_13");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_13");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_14_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_14");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_14_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_14");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_14");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_15_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_15");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_15_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_15");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_15");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_16_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_16");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_16_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_16");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_16");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_17_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_17");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_17_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_17");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_17");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_18_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_18");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_18_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_18");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_18");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_19_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_19");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_19_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_19");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_19");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_20_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_20");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_20_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_20");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_20");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_21_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_21");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_21_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_21");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_21");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_22_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_22");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_22_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_22");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_22");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_23_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_23");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_23_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_23");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_23");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_24_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_24");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_24_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_24");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_24");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_26_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_26");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_26_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_26");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_26");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_27_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_27");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_27_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_27");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_27");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_30_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_30");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_30_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_30");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_30");
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_31_install()
+{
+   string devdp;
+
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_31");
+   if(!globalExists("MMG_ELTX_Board_CurrDUActions"))
+   {
+      addGlobal("MMG_ELTX_Board_CurrDUActions",DYN_STRING_VAR);
+      fwDU_getAllActions("MMG_ELTX_Board",MMG_ELTX_Board_CurrDUActions);
+   }
+   MMG_ELTX_Board_initialize("MMG_SIDE_A_SECTOR_14", devdp);
+   fwDU_setDefaultParameters("MMG_SIDE_A_SECTOR_14", devdp);
+}
+
+MMG_SIDE_A_SECTOR_14_MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_31_uninstall(string dp, int running)
+{
+   string devdp;
+
+DebugN("uninstalling MMG_SIDE_A_SECTOR_14 MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_31");
+   if(running) return;
+   devdp = ""+fwDU_getPhysicalName("MMG_SIDE_A_SECTOR_14_LAYER_8_BOARD_31");
+}
+

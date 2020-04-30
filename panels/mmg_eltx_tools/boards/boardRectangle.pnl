@@ -1,7 +1,10 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 94 67 N "_3DFace" 0
+PANEL,-1 -1 94 67 N "FwAtlasBg" 3
+"$domain"
+"$mode"
+"$obj"
 E E E E E 1 -1 -1 0  29 6
 ""0  1
 E E 3
@@ -17,8 +20,12 @@ LANG:10001 0
 6 0
 "RECTANGLE1"
 ""
-1 29 6 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
- E E
+1 29 6 E E E 1 E 1 E N {0,0,0} E N "FwAtlasFg" E E
+ "main(mapping event)
+{
+   fwFsmAtlas_navigateSecondary($domain,$obj);
+}" 0
+ E
 0 0 0 0 0 0
 E E E
 0
@@ -29,7 +36,101 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.214285714285714 0 1 -1.214285714285707 0 1 E 29 6 1 32
+"main()
+{
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+
+  if($mode==\"State\")
+     fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
+  if($mode==\"Status\")
+     fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+  if($mode==\"TempManager\")
+     dpConnectUserData(\"updateBoardState\",
+                       \"temperature\",
+                       eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.temperature\");
+  if($mode==\"PowManager\")
+     dpConnectUserData(\"updateBoardState\",
+                       \"power\",
+                       eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.power\");
+
+  bool configExists;
+ 	int alertConfigType;
+  dyn_string alertTexts;
+	dyn_float alertLimits;
+	dyn_string alertClasses;
+  dyn_string summaryDpeList;
+	string alertPanel;
+	dyn_string alertPanelParameters;
+	string alertHelp;
+  bool isActive;
+	dyn_string exceptionInfo;
+
+  string boardItem;
+  dyn_float upDownLimit;
+
+  if($mode==\"SCATemp\")
+  {
+     boardItem=eltxProjectName()+getDetector($obj)+\"_\"+getBoardChannel($obj)+\"/ai/internalTemperature.temperature\";
+     fwAlertConfig_get(boardItem, configExists, alertConfigType, alertTexts, alertLimits,
+                                 alertClasses, summaryDpeList, alertPanel,alertPanelParameters,alertHelp,isActive,exceptionInfo);
+     upDownLimit[1]=alertLimits[1];
+     upDownLimit[2]=alertLimits[2];
+
+     dpConnectUserData(\"updateValue\", upDownLimit, boardItem);
+
+   }
+
+
+
+
+}
+
+updateValue(dyn_float upDownLimit, string dpe, float value){
+
+  if(value>upDownLimit[1])
+    this.backCol(\"red\");
+  else if(value>upDownLimit[2] && value<upDownLimit[1])
+    this.backCol(\"yellow\");
+  else
+    this.backCol(\"green\");
+
+
+}" 0
+ "main(mapping event)
+{
+   fwFsmAtlas_navigate($domain,$obj);
+}" 0
+ 0 1 1 2 1 E 1.214285714285714 0 1 -1.214285714285707 0 1 E 29 6 1 32
+2 1
+"PRIMITIVE_TEXT1"
+""
+1 7 12 E E E 1 E 0 E N "White" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(getBoard($obj));
+}" 0
+ E 0 1 1 2 1 E 1.625 0 1.368421052631579 16.625 24.57894736842105 0 E 7 12 27 27
+0 2 2 "0s" 0 0 0 192 0 0  7 12 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 2 XX
 0
 LAYER, 1 
 1

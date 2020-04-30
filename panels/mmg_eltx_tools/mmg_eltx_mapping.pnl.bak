@@ -464,148 +464,136 @@ LANG:10001 13 Auto set[dev]
 "main(mapping event)
 {
 
-//   DebugN(boardsTotal(filePath.text())); //testing
   dyn_string side = makeDynString(\"A\",\"C\");
-  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
-  dyn_string radial= makeDynString(\"R1\",\"R2\");
   dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
-  int pcbStart, pcbEnd;
-  int board;
+  dyn_string boardList;
+  string boardType, boardLocation;
 
-   for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
+
+ for(int i_side = 1; i_side <= 1; i_side++)
+   {
+//    for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
+   for(int i_sector = 1; i_sector <= 16; i_sector++)
     {
-     for(int i_axial = 1; i_axial <= dynlen(axial); i_axial++)
+     for(int i_layer= 1; i_layer <= 8; i_layer++)
       {
-        for(int i_radial =1 ; i_radial <= dynlen(radial); i_radial++)
-        {
-        for(int layer=1;layer<=4;layer++)
-          {
-            if(i_radial==1)  //XM1
-             {
-              pcbStart=1;
-              pcbEnd=5;
-             }
-            if(i_radial==2)  //XM2
-             {
-              pcbStart=6;
-              pcbEnd=8;
-             }
+         dynClear(boardList);
+         boardList=returnBoardsOfLayer(i_layer);
 
-            if(layer==1 || layer==4)
-              {
-                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
-                {
-                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
-                    {
-                     for(int board=1;board<=4;board++)
-                      {
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
-                      }
-                     }
-                   else // MMFE8(Analog)
-                    {
-                   if(layer==1)   board=1; //Left
-                   if(layer==4)   board=2; //Left
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
-                   if(layer==1)   board=4; //Right
-                   if(layer==4)   board=3; //Right
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
-                    }
-                }
-              }//layer 1 || 4
-            if(layer==2 || layer==3)
-              {
-                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
-                {
-                 if(layer==2)   board=2; //Left
-                 if(layer==3)   board=1; //Left
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
-                 if(layer==2)   board=3; //Right
-                 if(layer==3)   board=4; //Right
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
-                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
-                }
-              }//layer 2 || 3
-          }//layer
-        }//radial
-      }//axial
-    }//sector
+         for(int i_board=1; i_board<=dynlen(boardList); i_board++)
+         {
+
+             returnBoardTypeLocation(side[i_side], i_layer, boardList[i_board], boardType, boardLocation);
+             dpSet(\"MMG_ELTX_\"+side[i_side]+sector[i_sector]+\".Layer\"+i_layer+\".Board\"+boardList[i_board]+\".info.channel\", boardLocation);
+             dpSet(\"MMG_ELTX_\"+side[i_side]+sector[i_sector]+\".Layer\"+i_layer+\".Board\"+boardList[i_board]+\".info.type\", boardType);
+
+         }//i_board
+      }//i_layer
+    }//i_sector
+   }//i_side
+
+
 
 }
 
-string returnBoardType(int layer,int pcb,int board)
+returnBoardTypeLocation(string side, int layer, string board, string &boardType, string &boardLocation)
 {
+  string Zaxis;
+  string Raxis;
+  int cLayer;
+  int pcb;
+  int cBoard;
 
-  if(layer==2 || layer==3)
+  getBoardChamberInfo( side, layer, board, Zaxis, Raxis, cLayer, pcb, cBoard );
+//   DebugN(Zaxis, Raxis,\"Layer \"+cLayer,\"PCB \"+ pcb,\"Bpard \"+ cBoard);
+
+
+  if(cLayer==2 || cLayer==3)
   {
-    return \"MMFE8\";
+    boardType=\"MMFE8\";
   }
 
-  if(layer==1)
+  if(cLayer==1)
   {
    if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
-     return \"MMFE8\";
+     boardType= \"MMFE8\";
 
    if(pcb==3 || pcb==6)
     {
-     if(board==1)
-      return \"MMFE8\";
-     if(board==2)
-      return \"ADDC\";
-     if(board==3)
-      return \"ADDC\";
-     if(board==4)
-      return \"MMFE8\";
+     if(cBoard==1)
+      boardType= \"MMFE8\";
+     if(cBoard==2)
+      boardType= \"ADDC\";
+     if(cBoard==3)
+      boardType= \"ADDC\";
+     if(cBoard==4)
+      boardType= \"MMFE8\";
     }
 
     if(pcb==4 || pcb==5)
     {
-     if(board==1)
-      return \"MMFE8\";
-     if(board==2)
-      return \"L1DDC\";
-     if(board==3)
-      return \"L1DDC\";
-     if(board==4)
-      return \"MMFE8\";
+     if(cBoard==1)
+      boardType= \"MMFE8\";
+     if(cBoard==2)
+      boardType= \"L1DDC\";
+     if(cBoard==3)
+      boardType= \"L1DDC\";
+     if(cBoard==4)
+      boardType= \"MMFE8\";
     }
   }
 
-    if(layer==4)
+    if(cLayer==4)
   {
    if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
-     return \"MMFE8\";
+     boardType= \"MMFE8\";
 
    if(pcb==3 || pcb==6)
     {
-     if(board==1)
-      return \"ADDC\";
-     if(board==2)
-      return \"MMFE8\";
-     if(board==3)
-      return \"MMFE8\";
-     if(board==4)
-      return \"ADDC\";
+     if(cBoard==1)
+      boardType= \"ADDC\";
+     if(cBoard==2)
+      boardType= \"MMFE8\";
+     if(cBoard==3)
+      boardType= \"MMFE8\";
+     if(cBoard==4)
+      boardType= \"ADDC\";
     }
 
     if(pcb==4 || pcb==5)
     {
-     if(board==1)
-      return \"L1DDC\";
-     if(board==2)
-      return \"MMFE8\";
-     if(board==3)
-      return \"MMFE8\";
-     if(board==4)
-      return \"L1DDC\";
+     if(cBoard==1)
+      boardType= \"L1DDC\";
+     if(cBoard==2)
+      boardType= \"MMFE8\";
+     if(cBoard==3)
+      boardType= \"MMFE8\";
+     if(cBoard==4)
+      boardType= \"L1DDC\";
     }
-  }
+   }
+   string IPorHO;
+   string RorL;
+
+  if(Zaxis==\"Z2\")
+    IPorHO=\"IP\";
+  if(Zaxis==\"Z3\")
+    IPorHO=\"HO\";
+
+  if(cBoard==2 || cBoard==4)
+    RorL=\"R\";
+  else
+    RorL=\"L\";
+
+
+  boardLocation=boardType+\"_L\"+cLayer+\"P\"+pcb+\"_\"+IPorHO+RorL;
+
+
+
+
 
 }
+
 
 string returnIPHO(string axial)
 {
@@ -874,6 +862,190 @@ LANG:1 5 Close
 {
   PanelOff();
 }" 0
+ E E E
+13 28
+"PUSH_BUTTON3"
+""
+1 914 503 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+28 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  912 490 1072 531
+
+T 
+1
+LANG:10001 13 Auto set[dev]
+"main(mapping event)
+{
+
+//   DebugN(boardsTotal(filePath.text())); //testing
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
+  dyn_string radial= makeDynString(\"R1\",\"R2\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  int pcbStart, pcbEnd;
+  int board;
+
+   for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
+    {
+     for(int i_axial = 1; i_axial <= dynlen(axial); i_axial++)
+      {
+        for(int i_radial =1 ; i_radial <= dynlen(radial); i_radial++)
+        {
+        for(int layer=1;layer<=4;layer++)
+          {
+            if(i_radial==1)  //XM1
+             {
+              pcbStart=1;
+              pcbEnd=5;
+             }
+            if(i_radial==2)  //XM2
+             {
+              pcbStart=6;
+              pcbEnd=8;
+             }
+
+            if(layer==1 || layer==4)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
+                    {
+                     for(int board=1;board<=4;board++)
+                      {
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                      }
+                     }
+                   else // MMFE8(Analog)
+                    {
+                   if(layer==1)   board=1; //Left
+                   if(layer==4)   board=2; //Left
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                   if(layer==1)   board=4; //Right
+                   if(layer==4)   board=3; //Right
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                    }
+                }
+              }//layer 1 || 4
+            if(layer==2 || layer==3)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                 if(layer==2)   board=2; //Left
+                 if(layer==3)   board=1; //Left
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                 if(layer==2)   board=3; //Right
+                 if(layer==3)   board=4; //Right
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                }
+              }//layer 2 || 3
+          }//layer
+        }//radial
+      }//axial
+    }//sector
+
+}
+
+string returnBoardType(int layer,int pcb,int board)
+{
+
+  if(layer==2 || layer==3)
+  {
+    return \"MMFE8\";
+  }
+
+  if(layer==1)
+  {
+   if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
+     return \"MMFE8\";
+
+   if(pcb==3 || pcb==6)
+    {
+     if(board==1)
+      return \"MMFE8\";
+     if(board==2)
+      return \"ADDC\";
+     if(board==3)
+      return \"ADDC\";
+     if(board==4)
+      return \"MMFE8\";
+    }
+
+    if(pcb==4 || pcb==5)
+    {
+     if(board==1)
+      return \"MMFE8\";
+     if(board==2)
+      return \"L1DDC\";
+     if(board==3)
+      return \"L1DDC\";
+     if(board==4)
+      return \"MMFE8\";
+    }
+  }
+
+    if(layer==4)
+  {
+   if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
+     return \"MMFE8\";
+
+   if(pcb==3 || pcb==6)
+    {
+     if(board==1)
+      return \"ADDC\";
+     if(board==2)
+      return \"MMFE8\";
+     if(board==3)
+      return \"MMFE8\";
+     if(board==4)
+      return \"ADDC\";
+    }
+
+    if(pcb==4 || pcb==5)
+    {
+     if(board==1)
+      return \"L1DDC\";
+     if(board==2)
+      return \"MMFE8\";
+     if(board==3)
+      return \"MMFE8\";
+     if(board==4)
+      return \"L1DDC\";
+    }
+  }
+
+}
+
+string returnIPHO(string axial)
+{
+  if(axial==\"Z2\")
+    return \"IP\";
+  if(axial==\"Z3\")
+    return \"HO\";
+
+}
+
+string returnLR(int board)
+{
+  if(board==2 || board==4)
+    return \"R\";
+  else
+    return \"L\";
+}
+" 0
  E E E
 0
 LAYER, 1 

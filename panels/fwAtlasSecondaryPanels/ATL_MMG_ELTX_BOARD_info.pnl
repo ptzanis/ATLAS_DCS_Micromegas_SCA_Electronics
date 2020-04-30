@@ -182,27 +182,6 @@ LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
   this.text(getSector($obj));
 }" 0
  E
-14 23
-"TEXT_FIELD6"
-""
-1 317.3636363636364 276 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
- E E
-23 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  296 168 371.0000000000001 193
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getChamber($obj));
-}" 0
- E
 14 24
 "TEXT_FIELD7"
 ""
@@ -222,27 +201,6 @@ LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getLayer($obj));
-}" 0
- E
-14 25
-"TEXT_FIELD8"
-""
-1 317.3636363636364 276 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
- E E
-25 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  296 208 371.0000000000001 233
-2 "0s" 0 0 0 1 0 -1  E "main()
-{
-  this.text(getChamberPCB($obj));
 }" 0
  E
 14 26
@@ -352,28 +310,6 @@ E E 0 1 1 2 1 E U  0 E 233 152 299 165
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 19 Sector           : 
-2 31
-"PRIMITIVE_TEXT5"
-""
-1 233 172 E E E 1 E 1 E N "White" E N "_Window" E E
- E E
-31 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-4
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 233 172 298 185
-0 2 2 "0s" 0 0 0 192 0 0  233 172 1
-1
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 13 Chamber    : 
 2 32
 "PRIMITIVE_TEXT6"
 ""
@@ -396,28 +332,6 @@ E E 0 1 1 2 1 E U  0 E 233 192 297 205
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 19 Layer            : 
-2 33
-"PRIMITIVE_TEXT7"
-""
-1 233 211 E E E 1 E 1 E N "White" E N "_Window" E E
- E E
-33 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-4
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E U  0 E 233 211 298 224
-0 2 2 "0s" 0 0 0 192 0 0  233 211 1
-1
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0 1
-LANG:10001 20 PCB               : 
 2 34
 "PRIMITIVE_TEXT8"
 ""

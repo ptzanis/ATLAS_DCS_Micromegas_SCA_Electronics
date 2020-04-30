@@ -1,10 +1,32 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 1014 717 N "_3DFace" 0
+PANEL,-1 -1 1014 717 N "_3DFace" 1
+"$obj"
 E E E E E 1 -1 -1 0  9 38
 ""0  1
-E E 3
+E "returnBoardsOfLayerTest(int layer, dyn_string &layerBoards)
+{
+
+  dyn_string layer1_5=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"28\",\"29\",\"32\");
+  dyn_string layer2_6=makeDynString(\"02\",\"03\",\"06\",\"07\",\"10\",\"11\",\"14\",\"15\",\"18\",\"19\",\"22\",\"23\",\"26\",\"27\",\"30\",\"31\");
+  dyn_string layer3_7=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"12\",\"13\",\"16\",\"17\",\"20\",\"21\",\"24\",\"25\",\"28\",\"29\",\"32\");
+  dyn_string layer4_8=makeDynString(\"02\",\"03\",\"06\",\"07\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"26\",\"27\",\"30\",\"31\");
+
+
+  if(layer==1 || layer==5)
+    layerBoards=layer1_5;
+  if(layer==2 || layer==6)
+    layerBoards=layer2_6;
+  if(layer==3 || layer==7)
+    layerBoards=layer3_7;
+  if(layer==4 || layer==8)
+    layerBoards=layer4_8;
+
+
+
+}" 0
+ 3
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
@@ -1249,6 +1271,150 @@ mapping getBoardsListOfChannelAndTypeOfChamberLayerPCB(string chamber, int layer
               }//objectsUnderBoard_i
 
  return channelAndTypeList;
+
+}" 0
+ E E E
+30 62
+"FRAME5"
+""
+1 50 62 E E E 1 E 0 E N "White" E N {0,0,0} E E
+ E E
+62 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3101449275362319 0 1.647058823529411 736.4927536231884 368.8823529411765 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 12 Board Status
+2 63
+"PRIMITIVE_TEXT22"
+""
+1 774.9999999999999 499 E E E 1 E 0 E N "White" E N "_Window" E E
+ E E
+63 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 774.9999999999999 499 857 514
+0 2 2 "0s" 0 0 0 192 0 0  774.9999999999999 499 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 11 Temperature
+2 64
+"PRIMITIVE_TEXT23"
+""
+1 887.9999999999999 499 E E E 1 E 0 E N "White" E N "_Window" E E
+ E E
+64 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 887.9999999999999 499 928 514
+0 2 2 "0s" 0 0 0 192 0 0  887.9999999999999 499 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Power
+6 65
+"temperatureState"
+""
+1 637 258 E E E 1 E 0 E N {0,0,0} E N {255,255,255} E E
+ E E
+65 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  string mode=\"temperature\";
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1.164556962025316 0 1 27.17721518987366 262 1 E 637 258 716 280
+6 66
+"powerState"
+""
+1 637 258 E E E 1 E 0 E N {0,0,0} E N {255,255,255} E E
+ E E
+66 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  string mode=\"power\";
+  string dpe=eltxProjectName($obj)+getDetector($obj)+\"_Side\"+getChamberSide($obj)+\".Sector\"+getChamberSector($obj)+\".Z\"+getChamberZaxis($obj)+\".R\"+getChamberRaxis($obj)+\".Layer\"+getLayer($obj)+\".PCB\"+getPCB($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1.164556962025316 0 1 118.1772151898733 262 1 E 637 258 716 280
+13 67
+"PUSH_BUTTON4"
+""
+1 46 510 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+67 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  44 505 103 529
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON4
+"main(mapping event)
+{
+  dyn_string boards;
+  returnBoardsOfLayerTest(2, boards);
+
+  DebugN(boards);
+
 
 }" 0
  E E E

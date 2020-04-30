@@ -5,9 +5,9 @@
    <prop name="en_US.utf8"></prop>
    <prop name="en_US.iso88591"></prop>
   </prop>
-  <prop name="Size">119 104</prop>
+  <prop name="Size">120 104</prop>
   <prop name="BackColor">_3DFace</prop>
-  <prop name="RefPoint">0 0</prop>
+  <prop name="RefPoint">-3 0</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
   <prop name="RefFileName"></prop>
@@ -74,37 +74,14 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
 }]]></script>
     <script name="Initialize" isEscaped="1"><![CDATA[main()
 {
+ fwFsmAtlas_connectStateButton($domain,$obj,FALSE, &quot;none&quot;,&quot;&quot;);
+
   string state,status;
-  string name = $name;
-
-  if (substr(name,0,2)!= &quot;C_&quot;)
-    fwFsmAtlas_connectStateButton($domain,$obj,FALSE, &quot;none&quot;,&quot;&quot;);
-  else
-    name = substr(name,2);
-
-  this.name(name);
-
   fwFsmAtlas_getStatus($domain,$obj,status);
-
   state = mmgGeneral_Fsm_getState($domain, $obj);
 
-  this.toolTipText(name+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
-  if (strpos($domain,&quot;PS&quot;)&gt;2) //Check if the layer drawn is PS and not Temperature related
-  {
-    string layer=name;
-    if (strlen(name)&gt;4)
-    {
-      strreplace(layer,&quot;_&quot;,&quot;.&quot;);
-      dpConnect(&quot;checkLayersInterlock&quot;,&quot;ATLCSCSCS:&quot;+layer+&quot;.interlocked&quot;);
-    }
-    else
-    {
-      dyn_string layers;
-      for (int i=1;i&lt;=4;i++)
-        layers[i]=layer+&quot;.L&quot;+i+&quot;.interlocked&quot;;
-      dpConnect(&quot;checkMultipleLayersInterlock&quot;,layers);
-    }
-  }
+  this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
+
 }]]></script>
     <script name="RightMousePressed" isEscaped="1"><![CDATA[main()
 {  
@@ -145,55 +122,19 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
 }]]></script>
     <script name="Initialize" isEscaped="1"><![CDATA[main()
 {
+
+  fwFsmAtlas_connectStateButton($domain, &quot;STATUS_&quot; + $obj, FALSE, &quot;none&quot;,&quot;&quot;);
   string state,status;
-  string name = $name;
-
-  if (substr(name,0,2)== &quot;C_&quot;)
-    name = substr(name,2);
-
-  fwFsmAtlas_connectStateButton($domain,&quot;STATUS_&quot; + $obj,FALSE, &quot;none&quot;,&quot;&quot;);
-
-  this.name(name);
-
   fwFsmAtlas_getStatus($domain,$obj,status);
   state = mmgGeneral_Fsm_getState($domain, $obj);
 
-  this.toolTipText(name+&quot; State: &quot;+state+&quot;, Status: &quot;+status+&quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);
+  this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; State: &quot;+state+&quot;, Status: &quot;+status+&quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);
 }]]></script>
     <script name="RightMousePressed" isEscaped="1"><![CDATA[main()
 {
   fwFsmAtlas_navigateSecondary($domain,$obj);
 }]]></script>
    </events>
-  </shape>
-  <shape Name="interlockedRectangle" shapeType="RECTANGLE" layerId="0">
-   <properties>
-    <prop name="serialId">7</prop>
-    <prop name="Type"></prop>
-    <prop name="RefPoint">20 30</prop>
-    <prop name="Enable">True</prop>
-    <prop name="Visible">False</prop>
-    <prop name="ForeColor">_dpdoesnotexist</prop>
-    <prop name="BackColor">_Transparent</prop>
-    <prop name="TabOrder">10</prop>
-    <prop name="ToolTipText">
-     <prop name="en_US.utf8"></prop>
-     <prop name="en_US.iso88591"></prop>
-    </prop>
-    <prop name="layoutAlignment">AlignCenter</prop>
-    <prop name="snapMode">Point</prop>
-    <prop name="DashBackColor">_Transparent</prop>
-    <prop name="AntiAliased">False</prop>
-    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,3]</prop>
-    <prop name="BorderZoomable">False</prop>
-    <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">0.6000000000000001 0 0 1 20 0</prop>
-    <prop name="BorderStyle">Normal</prop>
-    <prop name="Location">20 30</prop>
-    <prop name="Size">51 31</prop>
-    <prop name="CornerRadius">0</prop>
-    <prop name="Transformable">True</prop>
-   </properties>
   </shape>
  </shapes>
 </panel>
