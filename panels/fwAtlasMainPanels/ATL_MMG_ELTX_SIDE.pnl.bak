@@ -35,10 +35,10 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
     mmgGeneral_drawChambers_Sector_Layer(540,200,sc,\"A\",3);
     mmgGeneral_drawChambers_Sector_Layer(755,200,sc,\"A\",4);
 
-    mmgGeneral_drawChambers_Sector_Layer(110,500,sc,\"A\",5);
-    mmgGeneral_drawChambers_Sector_Layer(325,500,sc,\"A\",6);
-    mmgGeneral_drawChambers_Sector_Layer(540,500,sc,\"A\",7);
-    mmgGeneral_drawChambers_Sector_Layer(755,500,sc,\"A\",8);
+    mmgGeneral_drawChambers_Sector_Layer(110,545,sc,\"A\",5);
+    mmgGeneral_drawChambers_Sector_Layer(325,545,sc,\"A\",6);
+    mmgGeneral_drawChambers_Sector_Layer(540,545,sc,\"A\",7);
+    mmgGeneral_drawChambers_Sector_Layer(755,545,sc,\"A\",8);
 
 
 }" 0
@@ -273,6 +273,166 @@ LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
 LANG:10001 3 MMG
 LANG:1 4 ATCA
+30 6
+"FRAME1"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+6 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 -9 -116.5882352941177 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 1
+30 7
+"FRAME2"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+7 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 205 -116.5882352941177 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 2
+30 8
+"FRAME3"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+8 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 419 -116.5882352941177 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 3
+30 9
+"FRAME4"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+9 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 633 -116.5882352941177 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 4
+30 10
+"FRAME5"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+10 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 -9 228.4117647058823 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 5
+30 11
+"FRAME6"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+11 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 206 228.4117647058823 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 6
+30 12
+"FRAME7"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+12 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 419 227.4117647058823 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 7
+30 13
+"FRAME8"
+""
+1 50 62 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+13 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.3 0 3.235294117647059 633 227.4117647058823 0 E 50 62 741 131
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 7 Layer 8
 0
 LAYER, 1 
 1

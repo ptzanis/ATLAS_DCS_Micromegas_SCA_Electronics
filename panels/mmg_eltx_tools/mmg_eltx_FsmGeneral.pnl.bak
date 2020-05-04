@@ -1,10 +1,10 @@
 V 14
 1
 LANG:10001 0 
-PANEL,-1 -1 770 614 N "FwAtlasBg" 0
+PANEL,-1 -1 770 480 N "FwAtlasBg" 0
 "main()
 {
-  addLogoNTUABNL(580,550);
+  addLogoNTUABNL(5,410);
 }" 0
  E E E E 1 -1 -1 0  40 130
 ""0  1
@@ -202,7 +202,7 @@ E E 0 1 1 2 1 E  765 27 765 47
 2 9
 "PRIMITIVE_TEXT7"
 ""
-1 732 9 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 730 9 E E E 1 E 1 E N "White" E N "_Transparent" E E
  E E
 8 0 0 0 0 0
 E E E
@@ -215,10 +215,10 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 732 9 764 22
-0 2 2 "0s" 0 0 0 192 0 0  732 9 1
+E E 0 1 1 2 1 E U  1 E 730 9 767 24
+0 2 2 "0s" 0 0 0 192 0 0  730 9 1
 2
-LANG:10001 39 Utopia,-1,11,5,75,1,0,0,0,0,Bold Italic
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,1,0,0,0,0
 0 2
 LANG:10001 3 MMG
@@ -294,7 +294,7 @@ E
 13 19
 "stopFSMButton"
 ""
-1 23.72180451127815 89 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 23.72180451127815 106 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 18 0 0 0 0 0
 E E E
@@ -306,7 +306,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 83 130 107
+0  22 100 130 124
 
 T 
 1
@@ -320,7 +320,7 @@ LANG:10001 8 Stop FSM
 13 20
 "removeFSMButton"
 ""
-1 -76.03704828423926 115 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 -76.03704828423926 132 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 19 0 0 0 0 0
 E E E
@@ -332,7 +332,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  22 109 130 133
+0  22 126 130 150
 
 T 
 1
@@ -366,7 +366,7 @@ LANG:10001 3 DPT
 13 23
 "createChamberDPSButton"
 ""
-1 518 160 E E E 1 E 1 E N "WF_Info" E N "_Button" E E
+1 518 160 E E E 1 E 1 E N "black" E N "_Button" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -412,7 +412,7 @@ LANG:1 9 Create DP
 13 28
 "PUSH_BUTTON3"
 ""
-1 167 101 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 167 118 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -424,7 +424,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  165 95 243 119
+0  165 112 243 136
 
 T 
 1
@@ -438,7 +438,7 @@ LANG:10001 12 Generate FSM
 13 29
 "PUSH_BUTTON4"
 ""
-1 97 127 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 97 144 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 28 0 0 0 0 0
 E E E
@@ -450,7 +450,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  165 121 243 145
+0  165 138 243 162
 
 T 
 1
@@ -707,7 +707,7 @@ LANG:1 9 Create DP
 13 36
 "closeButton"
 ""
-1 701 517 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 703 432 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 35 0 0 0 0 0
 E E E
@@ -721,7 +721,7 @@ LANG:1 0
 2
 LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
 LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
-0  699 507.3 761.25 533.3
+0  701 422.3 763.25 448.3
 
 T 
 2
@@ -735,7 +735,7 @@ LANG:1 5 Close
 13 37
 "viewButton"
 ""
-1 267 115 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 267 132 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 36 0 0 0 0 0
 E E E
@@ -747,7 +747,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  265 106 393 139
+0  265 123 393 156
 
 T 
 1
@@ -759,319 +759,10 @@ LANG:10001 4 View
  E E E
 1 61 0 "" 2
 0
-13 50
-"PUSH_BUTTON9"
-""
-1 -2 523 E E E 1 E 1 E N "red" E N "_Button" E E
- E E
-40 0 0 0 0 0
-E E E
-8
-1
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-1
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  31 532 139 556
-
-T 
-1
-LANG:10001 16 Create ELTX Tree
-"main(){
-
-  prBar(\"Creating MMG_ELTX FSM tree...\");
-
-  mmgEltx_createFsmTree();
-
-}
-mmgEltx_createFsmTree()
-{
-
-  string prefix = \"EI\";
-  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
-  dyn_string side = makeDynString(\"A\",\"C\");
-  dyn_string radial= makeDynString(\"R1\",\"R2\");
-  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
-  string chamberName;
-  int board;
-  int pcbStart, pcbEnd;
-  int countObjects;
-
-  fwFsmAtlas_createNode(\"FSM\", \"MMG_ELTX\", \"MMG_ELTX\", \"ELTX\", \"ATL_MMG_ELTX_OVERVIEW.pnl\", 1);
-
-  for(int i_side = 1; i_side <=1 ; i_side++)
-  {
-   fwFsmAtlas_createNode(\"MMG_ELTX\", \"MMG_SIDE_\"+side[i_side], \"MMG_ELTX_Side\", \"Side \"+side[i_side], \"ATL_MMG_ELTX_SIDE.pnl\", 1);
-
-     for(int i_sector = 1; i_sector <= 1; i_sector++)
-    {
-       fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side],\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector], \"MMG_ELTX_Sector\", \"Sector \"+sector[i_sector], \"ATL_MMG_ELTX_SECTOR.pnl\", 1);
-
-      for(int i_axial = 1; i_axial <= 2; i_axial++)
-      {
-        for(int i_radial =1 ; i_radial <= 2; i_radial++)
-        {
-            chamberName = prefix  + axial[i_axial] + radial[i_radial] + side[i_side] + sector[i_sector];
-            fwFsmAtlas_createNode(\"MMG_SIDE_\"+side[i_side]+\"_SECTOR_\"+sector[i_sector],chamberName, \"MMG_ELTX_CHAMBER\",chamberName, \"ATL_MMG_ELTX_CHAMBER.pnl\", 0);
-
-          for(int layer=1;layer<=4;layer++)
-            {
-               fwFsmAtlas_createNode(chamberName,chamberName+\"_\"+\"LAYER\"+layer, \"MMG_ELTX_Layer\",\"Layer \"+layer,\"ATL_MMG_ELTX_LAYER.pnl\", 0);
-
-                if(i_radial==1)  //XM1
-                {
-                  pcbStart=1;
-                  pcbEnd=5;
-                }
-                if(i_radial==2)  //XM2
-                {
-                  pcbStart=6;
-                  pcbEnd=8;
-                }
-
-            if(layer==1 || layer==4)
-              {
-                 for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
-                  {
-//                    if(countObjects>993)
-//                    { break;}
-                 fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"MMG_ELTX_Pcb\",\"PCB \"+pcb, \"ATL_MMG_ELTX_PCB.pnl\", 0);
-                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
-                    {
-                      for(int board=1;board<=4;board++)
-                      {
-                      fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
-                      countObjects++;
-                      }
-                    }
-                      else // MMFE8(Analog)
-                    {
-                   if(layer==1)   board=1; //Left
-                   if(layer==4)   board=2; //Left
-                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
-                    countObjects++;
-                   if(layer==1)   board=4; //Right
-                   if(layer==4)   board=3; //Right
-                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
-                    countObjects++;
-                    }
-              }
-            }//layer 1/4
-            if(layer==2 || layer==3)
-              {
-                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
-                {
-                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb, \"MMG_ELTX_Pcb\",\"PCB \"+pcb, \"ATL_MMG_ELTX_PCB.pnl\", 0);
-
-                 if(layer==2)   board=2; //Left
-                 if(layer==3)   board=1; //Left
-                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
-                    countObjects++;
-                 if(layer==2)   board=3; //Right
-                 if(layer==3)   board=4; //Right
-                    fwFsmAtlas_createNode(chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb,chamberName+\"_\"+\"LAYER\"+layer+\"_\"+\"PCB\"+pcb+\"_\"+\"BOARD\"+board, \"MMG_ELTX_Board\",\"Board \"+board, \"ATL_MMG_ELTX_BOARD.pnl\", 2);
-                    countObjects++;
-                }
-              }//layer 2/3
-
-         }//layer
-        }//radial R1,R2
-      }//axial Z2,Z3
-     }//sector
-    }//side A,C
-
-    prBar(\"MMG ELTX FSM Tree: READY\");
-    DebugTN(\"MMG ELTX FSM Tree\",\"READY\");
-
-DebugN(\"DU Objects:\",countObjects);
-
-
-
-
-}
-
-
-" 0
- E E E
-13 51
-"PUSH_BUTTON10"
-""
-1 169 531 E E E 1 E 1 E N "red" E N "_Button" E E
- E E
-41 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  167 514.695306122449 333 553.2238775510205
-
-T 
-2
-LANG:10001 30 MMG _ELTX_Board
-Create DP type
-LANG:1 9 Create DP
-" global int i=1;
- global int j=1;
-
- global dyn_dyn_string elements;
- global dyn_dyn_int types;
-
-main(mapping event)
-{
-  MMG_ELTX_CreateChamberDpType();
-}
-
-MMG_ELTX_CreateChamberDpType()
-{
-
-  elements[i]=makeDynString(\"MMG_ELTX_Board\",\"\");
-  types[j]=makeDynInt(DPEL_STRUCT);
-
-  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
-  dyn_string radial= makeDynString(\"R1\",\"R2\");
-  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
-  int pcbStart, pcbEnd;
-  int board;
-
-   for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
-    {
-        i=i+1; elements[i]=makeDynString(\"\",\"Sector\"+sector[i_sector],\"\");
-        j=j+1; types[j]=makeDynInt(0,DPEL_STRUCT);
-
-     for(int i_axial = 1; i_axial <= dynlen(axial); i_axial++)
-      {
-        i=i+1; elements[i]=makeDynString(\"\",\"\",axial[i_axial],\"\");
-        j=j+1; types[j]=makeDynInt(0,0,DPEL_STRUCT);
-
-        for(int i_radial =1 ; i_radial <= dynlen(radial); i_radial++)
-        {
-          i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",radial[i_radial],\"\");
-          j=j+1; types[j]=makeDynInt(0,0,0,DPEL_STRUCT);
-        for(int layer=1;layer<=4;layer++)
-          {
-            i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"Layer\"+layer,\"\");
-            j=j+1; types[j]=makeDynInt(0,0,0,0,DPEL_STRUCT);
-
-            if(i_radial==1)  //XM1
-             {
-              pcbStart=1;
-              pcbEnd=5;
-             }
-            if(i_radial==2)  //XM2
-             {
-              pcbStart=6;
-              pcbEnd=8;
-             }
-
-            if(layer==1 || layer==4)
-              {
-                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
-                {
-                  i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"PCB\"+pcb,\"\");
-                  j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRUCT);
-                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
-                    {
-                     for(int board=1;board<=4;board++)
-                      {
-                        i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
-                        j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
-                       addBoardPart();
-                      }
-                     }
-                   else // MMFE8(Analog)
-                    {
-                   if(layer==1)   board=1; //Left
-                   if(layer==4)   board=2; //Left
-                   i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
-                   j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
-                   addBoardPart();
-                   if(layer==1)   board=4; //Right
-                   if(layer==4)   board=3; //Right
-                   i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
-                   j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
-                   addBoardPart();
-                    }
-                }
-              }//layer 1 || 4
-            if(layer==2 || layer==3)
-              {
-                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
-                {
-                 i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"PCB\"+pcb,\"\");
-                 j=j+1; types[j]=makeDynInt(0,0,0,0,0,DPEL_STRUCT);
-                 if(layer==2)   board=2; //Left
-                 if(layer==3)   board=1; //Left
-                 i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
-                 j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
-                 addBoardPart();
-                 if(layer==2)   board=3; //Right
-                 if(layer==3)   board=4; //Right
-                 i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"Board\"+board,\"\");
-                 j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,DPEL_STRUCT);
-                 addBoardPart();
-                }
-              }//layer 2 || 3
-          }//layer
-        }//radial
-      }//axial
-    }//sector
-
-int x=dpTypeChange(elements,types);
-
- if (x == 0){
-    DebugN(\"MMG_ELTX_Board - CREATED\");
-    this.enabled(FALSE);
-  }
-  else {
-   DebugN(\"MMG_ELTX_Board - FAILED\");
-  }
-
-}
-
-void addBoardPart(){
-
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"info\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,DPEL_STRUCT);
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"channel\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"type\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
-
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"power\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,DPEL_STRUCT);
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"channel\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_STRING);
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"isLVOn\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_BOOL);
-
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"state\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,DPEL_STRUCT);
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"power\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_INT);
-      i=i+1; elements[i]=makeDynString(\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"temperature\");
-      j=j+1; types[j]=makeDynInt(0,0,0,0,0,0,0,0,DPEL_INT);
-
-}
-
-" 0
- E E "main()
-{
-//   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
-}" 0
-
 13 55
 "PUSH_BUTTON11"
 ""
-1 -51.99999999999999 106 E E E 1 E 1 E N "WF_Info" E N "_Button" E E
+1 -50.99999999999999 123 E E E 1 E 1 E N "black" E N "_Button" E E
  E E
 42 0 0 0 0 0
 E E E
@@ -1083,7 +774,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-0  21.38461538461542 134.8 129.3846153846154 158.8
+0  22.38461538461542 151.8 130.3846153846154 175.8
 
 T 
 1
@@ -1156,7 +847,7 @@ DebugN(\"DU Objects:\",countObjects);
 13 59
 "PUSH_BUTTON12"
 ""
-1 518 111 E E E 1 E 1 E N "WF_Info" E N "_Button" E E
+1 518 111 E E E 1 E 1 E N "black" E N "_Button" E E
  E E
 43 0 0 0 0 0
 E E E
@@ -1260,48 +951,26 @@ void addBoardPart(){
 //   this.enabled(!checkDPTexistance(\"MMG_ELTX_Chamber\"));
 }" 0
 
-13 60
-"PUSH_BUTTON13"
+30 64
+"FRAME4"
 ""
-1 168 577 E E E 1 E 1 E N "red" E N "_Button" E E
+1 109 433 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
  E E
-44 0 0 0 0 0
+45 0 0 0 0 0
 E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
 1
+1
+LANG:10001 0 
+
+3
 "layoutAlignment" "AlignNone"
-2
-LANG:10001 32 Utopia,-1,12,5,75,0,0,0,0,0,Bold
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  166 560.695306122449 332 599.2238775510205
-
-T 
-2
-LANG:10001 35 MMG _ELTX_Board
-Create Chambers DPs
-LANG:1 9 Create DP
-"main(mapping event)
-{
-   string dpType;
-   dpType = \"MMG_ELTX_Board\";
-
-  dyn_string side = makeDynString(\"A\",\"C\");
-
-  for(int i_side = 1; i_side <=1 ; i_side++)
-  {
-      dpCreate(getDetector()+\"_\"+\"Side\"+side[i_side],dpType);
-  }
-
-  DebugTN(\"DONE\",\"MMG_ELTX_Chamber DPs created\");
-
-
-}
-" 0
- E E E
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.745762711864407 0 0.75 30.71186440677965 -273.75 0 E 109 433 228 498
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0 1
+LANG:10001 0 
 0
 LAYER, 1 
 1
@@ -1334,6 +1003,6 @@ LANG:10001 0
 3 0 "PANEL_REF1" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 275 475 T 37 1 0 1 284 -79
+"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 275 475 T 37 1 0 1 -57 -421
 0
 0
