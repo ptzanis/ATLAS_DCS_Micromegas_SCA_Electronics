@@ -26,9 +26,11 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
       makeDynString(\"$domain:\"+domain,\"$obj:\"+layerObj,\"$label:\"+i),
           x+5, y-25, 0, 0.7, 1.0);
 
+
       addSymbol(myModuleName(),myPanelName(),\"/objects/layerStatusState.pnl\",\"layerStateStatus_\"+layerObj,
             makeDynString(\"$domain:\"+domain,\"$obj:\"+layerObj,\"$label:\"+\"\"),
             x, y, 0, 0.5, 0.5);
+
        x=x+105;
     }
 
@@ -51,6 +53,16 @@ void showRectangles(string mode){
   int xBoard=0;
   int yBoard=0;
 
+  dyn_string boardList;
+  string obj;
+
+  int boardNum;
+  string Zaxis;
+  string Raxis;
+  int cLayer;
+  int pcb;
+  int cBoard;
+
  for(int i=1; i<=8 ;i++)
   {
    layerObj=$obj+\"_LAYER_\"+i;
@@ -59,28 +71,16 @@ void showRectangles(string mode){
 
   int xBoard=0;
   int yBoard=0;
+  boardList=returnBoardsOfLayer(i);
 
-  dyn_string allChildren;
-  dyn_int allFlags;
-
-  int boardNum;
-  string Zaxis;
-  string Raxis;
-  int cLayer;
-  int pcb;
-  int cBoard;
-  fwFsmAtlasGetTreeNodes(allChildren, allFlags,layerObj);
-
-//   int xInitial=20+110*(i-1);
   int xInitial=x-70;
   int yInitial=580;
 
-   int countBoard=1;
-
-  for(int board_i=2; board_i<=dynlen(allChildren); board_i++)
+  for(int board_i=1; board_i<=dynlen(boardList); board_i++)
   {
+   obj=layerObj+\"_BOARD_\"+boardList[board_i];
+   getBoardChamberInfo(getSide(obj), getLayer(obj), getBoard(obj),Zaxis, Raxis, cLayer, pcb, cBoard);
 
-   getBoardChamberInfo(getSide(allChildren[board_i]), getLayer(allChildren[board_i]), getBoard(allChildren[board_i]),Zaxis, Raxis, cLayer, pcb, cBoard);
    boardNum=cBoard;
 
    if(boardNum==1)
@@ -113,33 +113,32 @@ void showRectangles(string mode){
     yInitial=yBoard-20;
    }
 
-    addSymbol(myModuleName(),myPanelName(),\"/mmg_eltx_tools/boards/boardRectangle.pnl\",\"StatusState_\"+allChildren[board_i] ,
-    makeDynString(\"$domain:\"+domain,\"$obj:\"+allChildren[board_i],\"$mode:\"+mode),
+    addSymbol(myModuleName(),myPanelName(),\"/mmg_eltx_tools/boards/boardRectangle.pnl\",\"StatusState_\"+obj ,
+    makeDynString(\"$domain:\"+domain,\"$obj:\"+obj,\"$mode:\"+mode),
     xBoard,yBoard,0,0.6,0.6);
 
-     countBoard++;
-
   }
 
-  }
+ }
 
 }
 
 void deleteRectangles(){
 
  string layerObj;
+ string obj;
+
+ dyn_string boardList;
+
  for(int i=1; i<=8 ;i++)
   {
    layerObj=$obj+\"_LAYER_\"+i;
+   boardList=returnBoardsOfLayer(i);
 
-   dyn_string allChildren;
-   dyn_int allFlags;
-
-  fwFsmAtlasGetTreeNodes(allChildren, allFlags,layerObj);
-
-    for(int board_i=2; board_i<=dynlen(allChildren); board_i++)
+    for(int board_i=1; board_i<=dynlen(boardList); board_i++)
     {
-    removeSymbol(myModuleName(), myPanelName(),\"StatusState_\"+allChildren[board_i]);
+    obj=layerObj+\"_BOARD_\"+boardList[board_i];
+    removeSymbol(myModuleName(), myPanelName(),\"StatusState_\"+obj);
     }
   }
 
@@ -273,7 +272,7 @@ LANG:10001 7 Layer 1
 19 14
 "RADIO_BOX1"
 ""
-1 184 62 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 207 63 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -286,8 +285,8 @@ LANG:10001 0
 "horizontal" ""
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
-0  182 60 629 90.00000000000003
-5
+0  205 61 834 91.00000000000003
+6
 T 
 1
 LANG:10001 5 State
@@ -326,7 +325,16 @@ E E
 0 0 0 0 0
 T 
 1
-LANG:10001 9 SCA Temp.
+LANG:10001 15 SCA Temperature
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+1
+LANG:10001 10 SCA Status
 
 0 
 1
@@ -354,6 +362,8 @@ E E
     showRectangles(\"PowManager\");
   if(button==4)
     showRectangles(\"SCATemp\");
+  if(button==5)
+    showRectangles(\"SCAStatus\");
 
 }" 0
 
@@ -512,11 +522,33 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1 0 0.6610169491525424 0 25.55932203389831 0 E 161 40 637 100
+E E 0 1 1 2 1 E 1.728421052631579 0 0.6610169491525424 -263.2757894736841 26.55932203389831 0 E 161 40 637 100
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
 0 1
 LANG:10001 0 
+2 31
+"PRIMITIVE_TEXT21"
+""
+1 53 66 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 53 66 189 84
+0 2 2 "0s" 0 0 0 192 0 0  53 66 1
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 18 Select board view:
 0
 LAYER, 1 
 1

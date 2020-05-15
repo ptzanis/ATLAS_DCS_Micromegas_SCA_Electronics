@@ -74,11 +74,26 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
 {
 
   fwFsmAtlas_connectStateButton($domain,$obj,FALSE, &quot;none&quot;,&quot;&quot;);
+  /*
   string state,status;
   fwFsmAtlas_getStatus($domain,$obj,status);
   state = mmgGeneral_Fsm_getState($domain, $obj);
 
   this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; State: &quot;+state+&quot;, Status: &quot;+status + &quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);
+  */
+
+}]]></script>
+    <script name="MouseOver" isEscaped="1"><![CDATA[main(bool enter)
+{
+
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  if(patternMatch(&quot;*LAYER*&quot;,$obj))
+    this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; | Layer &quot;+getLayer($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
+  else
+    this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
 
 }]]></script>
     <script name="RightMousePressed" isEscaped="1"><![CDATA[main()
@@ -127,6 +142,19 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
   state = mmgGeneral_Fsm_getState($domain, $obj);
 
   this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; State: &quot;+state+&quot;, Status: &quot;+status+&quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);
+}]]></script>
+    <script name="MouseOver" isEscaped="1"><![CDATA[main(bool enter)
+{
+
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  if(patternMatch(&quot;*LAYER*&quot;,$obj))
+    this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; | Layer &quot;+getLayer($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
+  else
+    this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
+
 }]]></script>
     <script name="RightMousePressed" isEscaped="1"><![CDATA[main()
 { 

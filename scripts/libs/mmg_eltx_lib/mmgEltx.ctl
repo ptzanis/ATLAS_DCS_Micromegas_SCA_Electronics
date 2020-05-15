@@ -8,6 +8,9 @@ string getDetector(){
 }
 
 
+
+
+
 string getSide(string obj){
     return substr(obj,9,1);
 }
@@ -23,6 +26,9 @@ string getLayer(string obj){
 string getBoard(string obj){
     return substr(obj,35,2);
 }
+
+
+
 
 string getDomain(string obj){
   string domain;
@@ -99,6 +105,8 @@ string getChamber(string obj){
     return chamber;
 }
 
+
+
 string getBoardChannel(string obj){
 
   string channel;
@@ -115,6 +123,7 @@ string getBoardType(string obj){
   return type;
 
 }
+
 
 string getBoardLVChannel(string obj){
 
@@ -137,6 +146,18 @@ void setBoardState(string obj, string mode, int valueToSet){
 }
 
 
+void updateBoardState(string mode, string dpeChannel, int value){
+
+   shape stateShape=getShape("");
+
+  if(value==1)
+   stateShape.backCol("green");
+  if(value==2)
+   stateShape.backCol("yellow");
+  if(value==3)
+   stateShape.backCol("red");
+
+}
 
 string getSCAOnlineChannel(string boardChannel){
 
@@ -259,6 +280,7 @@ dyn_string getTotalScaNames(){
   return scaNamesList;
 }
 
+
 string mmgGeneral_Fsm_getState(string domain, string obj)
 {
  int isDU = fwFsm_isDU($domain, $obj);
@@ -272,220 +294,112 @@ string mmgGeneral_Fsm_getState(string domain, string obj)
  return state;
 }
 
+// Mapping ------------------------------------------------------------------------------
 
 mapping getBoardsListOfChannelAndTypeOfSide(string side){
 
-  dyn_string objectsUnderSide=dpNames("MMG_Side"+side+".*");
-  dyn_string objectsUnderSector, objectsUnderZ, objectsUnderR, objectsUnderLayer, objectsUnderPCB, objectsUnderBoard;
+  dyn_string objectsSide=dpNames("*_"+side+"*","MMG_ELTX_Board");
+  dyn_string objectSector, objectLayer, objectBoard;
 
   string channel, type;
   mapping channelAndTypeList;
 
-  for(int objectsUnderSector_i=1; objectsUnderSector_i<=dynlen(objectsUnderSide);objectsUnderSector_i++)
+  for(int objectsUnderSide_i=1; objectsUnderSide_i<=dynlen(objectsSide); objectsUnderSide_i++)
   {
-    objectsUnderZ=dpNames(objectsUnderSide[objectsUnderSector_i]+".*");
-    for(int objectsUnderZ_i=1; objectsUnderZ_i<=dynlen(objectsUnderZ);objectsUnderZ_i++)
+    objectSector=dpNames(objectsSide[objectsUnderSide_i]+".*");
+    for(int objectSector_i=1; objectSector_i<=dynlen(objectSector); objectSector_i++)
       {
-        objectsUnderR=dpNames(objectsUnderZ[objectsUnderZ_i]+".*");
-        for(int objectsUnderR_i=1;objectsUnderR_i<=dynlen(objectsUnderR);objectsUnderR_i++)
+        objectLayer=dpNames(objectSector[objectSector_i]+".*");
+        for(int objectLayer_i=1;objectLayer_i<=dynlen(objectLayer);objectLayer_i++)
         {
-          objectsUnderLayer=dpNames(objectsUnderR[objectsUnderR_i]+".*");
-          for(int objectsUnderLayer_i=1;objectsUnderLayer_i<=dynlen(objectsUnderLayer);objectsUnderLayer_i++)
+          objectBoard=dpNames(objectLayer[objectLayer_i]);
+          for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
           {
-            objectsUnderPCB=dpNames(objectsUnderLayer[objectsUnderLayer_i]+".*");
-            for(int objectsUnderPCB_i=1;objectsUnderPCB_i<=dynlen(objectsUnderPCB);objectsUnderPCB_i++)
-            {
-              objectsUnderBoard=dpNames(objectsUnderPCB[objectsUnderPCB_i]+".*");
-              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
-              {
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
+                dpGet(objectBoard[objectBoard_i]+".info.channel",channel);
+                dpGet(objectBoard[objectBoard_i]+".info.type",type);
                 if(channel!="" && type!="")
                   channelAndTypeList[channel]=type;
 
               }//objectsUnderBoard_i
-            }//objectsUnderPCB_i
           }//objectsUnderLayer_i
-        }//objectsUnderR_i
-      }//objectsUnderZ_i
     }//objectsUnderSector_i
+  }//objectsUnderSide_i
 
  return channelAndTypeList;
 }
 
-mapping getBoardsListOfChannelAndTypeOfSector(string side, string sector){
+mapping getBoardsListOfChannelAndTypeOfSector(string sector){
 
-  dyn_string objectsUnderSector=dpNames("MMG_Side"+side+".Sector"+sector);
-  dyn_string objectsUnderZ, objectsUnderR, objectsUnderLayer, objectsUnderPCB, objectsUnderBoard;
+  dyn_string objectSector=dpNames("*_"+sector+"*","MMG_ELTX_Board");
+  dyn_string objectLayer, objectBoard;
 
   string channel, type;
   mapping channelAndTypeList;
 
-
-    objectsUnderZ=dpNames(objectsUnderSector[1]+".*");
-    for(int objectsUnderZ_i=1; objectsUnderZ_i<=dynlen(objectsUnderZ);objectsUnderZ_i++)
+    for(int objectSector_i=1; objectSector_i<=dynlen(objectSector); objectSector_i++)
       {
-        objectsUnderR=dpNames(objectsUnderZ[objectsUnderZ_i]+".*");
-        for(int objectsUnderR_i=1;objectsUnderR_i<=dynlen(objectsUnderR);objectsUnderR_i++)
+        objectLayer=dpNames(objectSector[objectSector_i]+".*");
+        for(int objectLayer_i=1; objectLayer_i<=dynlen(objectLayer); objectLayer_i++)
         {
-          objectsUnderLayer=dpNames(objectsUnderR[objectsUnderR_i]+".*");
-          for(int objectsUnderLayer_i=1;objectsUnderLayer_i<=dynlen(objectsUnderLayer);objectsUnderLayer_i++)
+          objectBoard=dpNames(objectLayer[objectLayer_i]+".*");
+          for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
           {
-            objectsUnderPCB=dpNames(objectsUnderLayer[objectsUnderLayer_i]+".*");
-            for(int objectsUnderPCB_i=1;objectsUnderPCB_i<=dynlen(objectsUnderPCB);objectsUnderPCB_i++)
-            {
-              objectsUnderBoard=dpNames(objectsUnderPCB[objectsUnderPCB_i]+".*");
-              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
-              {
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
+                dpGet(objectBoard[objectBoard_i]+".info.channel",channel);
+                dpGet(objectBoard[objectBoard_i]+".info.type",type);
                 if(channel!="" && type!="")
                   channelAndTypeList[channel]=type;
 
-              }//objectsUnderBoard_i
-            }//objectsUnderPCB_i
-          }//objectsUnderLayer_i
-        }//objectsUnderR_i
-      }//objectsUnderZ_i
-
+              }//objectBoard_i
+          }//objectLayer_i
+    }//objectSector_i
 
  return channelAndTypeList;
-
 }
 
-mapping getBoardsListOfChannelAndTypeOfChamber(string chamber){
+mapping getBoardsListOfChannelAndTypeOfSectorLayer(string sector, int layer){
 
-  // EIZ2R1A01
-  string axial=substr(chamber,2,2);
-  string radial=substr(chamber,4,2);
-  string side=substr(chamber,6,1);
-  string sector=substr(chamber,7,2);
-
-  dyn_string objectsUnderLayer, objectsUnderPCB, objectsUnderBoard;
+  dyn_string objectLayer=dpNames("*_"+sector+".Layer"+layer,"MMG_ELTX_Board");
+  dyn_string objectBoard;
 
   string channel, type;
   mapping channelAndTypeList;
 
+  if(dynlen(objectLayer)!=0)
+    objectBoard=dpNames(objectLayer[1]+".*");
 
-          objectsUnderLayer=dpNames("MMG_Side"+side+".Sector"+sector+"."+axial+"."+radial+".*");
-          for(int objectsUnderLayer_i=1;objectsUnderLayer_i<=dynlen(objectsUnderLayer);objectsUnderLayer_i++)
+     for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
           {
-            objectsUnderPCB=dpNames(objectsUnderLayer[objectsUnderLayer_i]+".*");
-            for(int objectsUnderPCB_i=1;objectsUnderPCB_i<=dynlen(objectsUnderPCB);objectsUnderPCB_i++)
-            {
-              objectsUnderBoard=dpNames(objectsUnderPCB[objectsUnderPCB_i]+".*");
-              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
-              {
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
+                dpGet(objectBoard[objectBoard_i]+".info.channel",channel);
+                dpGet(objectBoard[objectBoard_i]+".info.type",type);
                 if(channel!="" && type!="")
                   channelAndTypeList[channel]=type;
 
-              }//objectsUnderBoard_i
-            }//objectsUnderPCB_i
-          }//objectsUnderLayer_i
-
+              }//objectBoard_i
 
  return channelAndTypeList;
-
 }
 
-mapping getBoardsListOfChannelAndTypeOfChamberLayer(string chamber, int layer){
+mapping getBoardsListOfChannelAndTypeOfSectorLayerBoard(string sector, int layer, string board){
 
-  // EIZ2R1A01
-  string axial=substr(chamber,2,2);
-  string radial=substr(chamber,4,2);
-  string side=substr(chamber,6,1);
-  string sector=substr(chamber,7,2);
-
-  dyn_string  objectsUnderPCB, objectsUnderBoard;
+  string objectBoard=dpNames("*_"+sector+".Layer"+layer+".Board"+board,"MMG_ELTX_Board");
 
   string channel, type;
   mapping channelAndTypeList;
 
+  dpGet(objectBoard+".info.channel",channel);
+  dpGet(objectBoard+".info.type",type);
 
-            objectsUnderPCB=dpNames("MMG_Side"+side+".Sector"+sector+"."+axial+"."+radial+".Layer"+layer+".*");
-            for(int objectsUnderPCB_i=1;objectsUnderPCB_i<=dynlen(objectsUnderPCB);objectsUnderPCB_i++)
-            {
-              objectsUnderBoard=dpNames(objectsUnderPCB[objectsUnderPCB_i]+".*");
-              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
-              {
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
-                if(channel!="" && type!="")
-                  channelAndTypeList[channel]=type;
-
-              }//objectsUnderBoard_i
-            }//objectsUnderPCB_i
+  if(channel!="" && type!="")
+    channelAndTypeList[channel]=type;
 
 
  return channelAndTypeList;
-
-}
-
-mapping getBoardsListOfChannelAndTypeOfChamberLayerPCB(string chamber, int layer, int pcb){
-
-  // EIZ2R1A01
-  string axial=substr(chamber,2,2);
-  string radial=substr(chamber,4,2);
-  string side=substr(chamber,6,1);
-  string sector=substr(chamber,7,2);
-
-  dyn_string objectsUnderBoard;
-
-  string channel, type;
-  mapping channelAndTypeList;
-
-              objectsUnderBoard=dpNames("MMG_Side"+side+".Sector"+sector+"."+axial+"."+radial+".Layer"+layer+".PCB"+pcb+".*");
-              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
-              {
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
-                if(channel!="" && type!="")
-                  channelAndTypeList[channel]=type;
-
-              }//objectsUnderBoard_i
-
- return channelAndTypeList;
-
 }
 
 
-// alternate mapping ChannelAndTypeOfChamberLayerPCB --------------------------------------------------------------------------------------------------------------------------------------------
 
-mapping getBoardsListOfChannelAndTypeOfPCB(string chamber, int layer, int pcb){
 
-  // EIZ2R1A01
-  string axial=substr(chamber,2,2);
-  string radial=substr(chamber,4,2);
-  string side=substr(chamber,6,1);
-  string sector=substr(chamber,7,2);
-
-  dyn_string objectsUnderBoard;
-
-  string channel, type;
-  dyn_string channelType;
-  mapping channelAndTypeList;
-
-              objectsUnderBoard=dpNames("MMG_Side"+side+".Sector"+sector+"."+axial+"."+radial+".Layer"+layer+".PCB"+pcb+".*");
-              for(int objectsUnderBoard_i=1;objectsUnderBoard_i<=dynlen(objectsUnderBoard);objectsUnderBoard_i++)
-              {
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.channel",channel);
-                dpGet(objectsUnderBoard[objectsUnderBoard_i]+".info.type",type);
-                channelType[1]=channel;
-                channelType[2]=type;
-
-                if(channel!="" && type!="")
-                  channelAndTypeList["Board"+objectsUnderBoard_i]=channelType;
-
-              }//objectsUnderBoard_i
-
- return channelAndTypeList;
-
-}
-
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+// Mapping ------------------------------------------------------------------------------
 
 dyn_string getChannelListOfBoardTypeFromMappingList(mapping mappingList,string boardType)
 {
@@ -498,20 +412,6 @@ dyn_string getChannelListOfBoardTypeFromMappingList(mapping mappingList,string b
   }
 
   return list;
-
-}
-
-void updateBoardState(string mode, string dpeChannel, int value){
-
-//   shape stateShape=getShape(mode+"State");
-   shape stateShape=getShape("");
-
-  if(value==1)
-   stateShape.backCol("green");
-  if(value==2)
-   stateShape.backCol("yellow");
-  if(value==3)
-   stateShape.backCol("red");
 
 }
 

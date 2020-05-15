@@ -17,25 +17,10 @@
  </properties>
  <events>
   <script name="ScopeLib" isEscaped="1"><![CDATA[#uses &quot;mmg_eltx_lib/mmgEltx.ctl&quot;
-
-void checkLayersInterlock(string interlockedDp,bool interlocked)
-{
-  if (interlocked)
-    interlockedRectangle.visible=true;
-  else
-    interlockedRectangle.visible=false;
-}
-
-void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
-{
-  if (interlocked[1] || interlocked[2] || interlocked[3] || interlocked[4])
-    interlockedRectangle.visible=true;
-  else
-    interlockedRectangle.visible=false;
-}]]></script>
+]]></script>
  </events>
  <shapes>
-  <shape Name="LL1" shapeType="POLYGON" layerId="0">
+  <shape Name="rectangle" shapeType="POLYGON" layerId="0">
    <properties>
     <prop name="serialId">2</prop>
     <prop name="Type"></prop>
@@ -74,13 +59,30 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
 }]]></script>
     <script name="Initialize" isEscaped="1"><![CDATA[main()
 {
- fwFsmAtlas_connectStateButton($domain,$obj,FALSE, &quot;none&quot;,&quot;&quot;);
+   fwFsmAtlas_connectStateButton($domain,$obj,FALSE, &quot;none&quot;,&quot;&quot;);
 
+  this.name(&quot;Rectangle_&quot;+$obj);
+
+/*
   string state,status;
   fwFsmAtlas_getStatus($domain,$obj,status);
   state = mmgGeneral_Fsm_getState($domain, $obj);
 
   this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
+  */
+
+}]]></script>
+    <script name="MouseOver" isEscaped="1"><![CDATA[main(bool enter)
+{
+
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  if(patternMatch(&quot;*LAYER*&quot;,$obj))
+    this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; | Layer &quot;+getLayer($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
+  else
+    this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot;\n State: &quot;+state+&quot;,\n Status: &quot;+status+&quot;.\n    Left-click: Navigate to.\n Right-click: Open in secondary panel.&quot;);
 
 }]]></script>
     <script name="RightMousePressed" isEscaped="1"><![CDATA[main()
@@ -123,8 +125,18 @@ void checkMultipleLayersInterlock(dyn_string interlockedDp,dyn_bool interlocked)
     <script name="Initialize" isEscaped="1"><![CDATA[main()
 {
 
-  fwFsmAtlas_connectStateButton($domain, &quot;STATUS_&quot; + $obj, FALSE, &quot;none&quot;,&quot;&quot;);
+  fwFsmAtlas_connectStateButton($domain, &quot;STATUS_&quot; + $obj, FALSE,&quot;none&quot;,&quot;&quot;);
+  /*
   string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(&quot;Sector &quot;+getSector($obj)+&quot; State: &quot;+state+&quot;, Status: &quot;+status+&quot;.    Left-click: Navigate to. Right-click: Open in secondary panel.&quot;);
+  */
+}]]></script>
+    <script name="MouseOver" isEscaped="1"><![CDATA[main(bool enter)
+{
+    string state,status;
   fwFsmAtlas_getStatus($domain,$obj,status);
   state = mmgGeneral_Fsm_getState($domain, $obj);
 

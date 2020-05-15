@@ -63,30 +63,45 @@ createBoardPowerTemperatureAlarms(string board, string boardType)
    string dpe, dpeType;
    dyn_string alarmColors;
    dyn_string alarmText;
+   dyn_float limits;
 
    for(int i=1;i<=dynlen(analogItemsOfBoard);i++)
    {
+
      analogItemForEdit=analogItemsOfBoard[i];
 
      strreplace(analogItemForEdit,\"/ai/\",\"\");
+
      if(strreplace(analogItemForEdit,\".power\",\"\")!=0)
      {
+       dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".downLimit\",downLimit);
+       dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".upLimit\",upLimit);
+
       alarmColors=makeDynString(\"_fwWarningNack.\",\"\",\"_fwWarningNack.\");
       alarmText=makeDynString(\"WARNING\",\"READY\",\"WARNING\");
-     }
-     if(strreplace(analogItemForEdit,\".temperature\",\"\")!=0)
-     {
-      alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\");
-      alarmText=makeDynString(\"READY\",\"OVER_TEMP\",\"HIGH_TEMP\");
+      limits=makeDynFloat(downLimit,upLimit);
      }
 
-     dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".downLimit\",downLimit);
-     dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".upLimit\",upLimit);
+     if(strreplace(analogItemForEdit,\".temperature\",\"\")!=0)
+     {
+       dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".downLimit\",downLimit);
+       dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".upLimit\",upLimit);
+
+      alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\");
+      alarmText=makeDynString(\"READY\",\"OVER_TEMP\",\"HIGH_TEMP\");
+      limits=makeDynFloat(downLimit,upLimit);
+        if(patternMatch(\"*vmmPdo*\",analogItemForEdit))
+         {
+          alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\",\"Board_Settings.calibrationVMMAlertClass\");
+          alarmText=makeDynString(\"READY\",\"OVER_TEMP\",\"HIGH_TEMP\",\"CALIBRATION\");
+          limits=makeDynFloat(downLimit,upLimit,200.0);
+         }
+     }
 
      dpe=eltxProjectName()+detector+\"_\"+board+analogItemsOfBoard[i]+dpeType;
 
      fwAlertConfig_set(dpe,DPCONFIG_ALERT_NONBINARYSIGNAL,
-                     alarmText,makeDynFloat(downLimit,upLimit),alarmColors,
+                     alarmText,limits,alarmColors,
                      makeDynString(),\"\",makeDynString(),\"\",exceptionInfo);
 
    }
@@ -242,36 +257,31 @@ mapping mappingBasedOnOptions()
 
 string side=radioSideSelection.text(radioSideSelection.number());
 string sector=comboSectorSelection.text();
-string chamber=comboChamberSelection.text();
 string layer=comboLayerSelection.text();
-string pcb=comboPCBSelection.text();
+string board=boardList.text();
 
 mapping listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfSide(side);
 
     if(sector!=\"\")
     {
       mappingClear(listOfBoardsChannelAndType);
-      listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfSector(side,sector);
-      if(chamber!=\"\")
+      listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfSector(side+sector);
+      if(layer!=\"\")
       {
         mappingClear(listOfBoardsChannelAndType);
-        listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfChamber(chamber);
-        if(layer!=\"\")
+        listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfSectorLayer(side+sector,layer);
+        if(board!=\"\")
         {
           mappingClear(listOfBoardsChannelAndType);
-          listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfChamberLayer(chamber,layer);
-          if(pcb!=\"\")
-          {
-            mappingClear(listOfBoardsChannelAndType);
-            listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfChamberLayerPCB(chamber,layer,pcb);
-          }
+          listOfBoardsChannelAndType=getBoardsListOfChannelAndTypeOfSectorLayerBoard(side+sector,layer,board);
         }
       }
     }
 
    return listOfBoardsChannelAndType;
 
-}" 0
+}
+" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -435,7 +445,7 @@ LANG:1 3 MDT
 17 9
 "dpList"
 ""
-1 377 480 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
+1 377 479 E E E 1 E 1 E N "_WindowText" E N "FwAtlasFg" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -449,7 +459,7 @@ LANG:1 0
 2
 LANG:10001 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
 LANG:1 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
-0  375 478 603.0000000000001 838.0000000000001
+0  375 477 603.0000000000001 837.0000000000001
 0
 
 E
@@ -923,6 +933,8 @@ LANG:10001 34 Create and Activate
 
  updateLists();
 
+ DebugN(\"DONE!\");
+
 }" 0
  E E E
 13 27
@@ -1192,7 +1204,7 @@ E E 0 1 1 2 1 E 0.75 0 1 205.25 18 1 E 29 70 141 92
 6 59
 "RECTANGLE3"
 ""
-1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmErrorAck" E E
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmWarnUnack" E E
  E E
 59 0 0 0 0 0
 E E E
@@ -1336,7 +1348,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 2.7525 0 3.9375 -1127.7825 -285.5625 0 E 413 87 814 184
+E E 0 1 1 2 1 E 2.7525 0 3.9375 -1124.7825 -285.5625 0 E 413 87 814 184
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -1356,7 +1368,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 2.7525 0 4.406249999999999 -1127.7825 56.6562500000001 0 E 413 87 814 184
+E E 0 1 1 2 1 E 2.7525 0 4.406249999999999 -1124.7825 56.65625000000004 0 E 413 87 814 184
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -1436,7 +1448,7 @@ LANG:1 12 Current List
 6 72
 "RECTANGLE5"
 ""
-1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmErrorAck" E E
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmWarnUnack" E E
  E E
 72 0 0 0 0 0
 E E E
@@ -1468,7 +1480,7 @@ E E 0 1 1 2 1 E 0.75 0 1 687.2500000000001 21 1 E 29 70 141 92
 6 74
 "RECTANGLE7"
 ""
-1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmErrorAck" E E
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmWarnUnack" E E
  E E
 74 0 0 0 0 0
 E E E
@@ -1576,7 +1588,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.675 0 0.8020833333333333 336.225 1.21875 0 E 413 87 814 184
+E E 0 1 1 2 1 E 0.6949999999999997 0 0.8020833333333333 327.9650000000001 1.21875 0 E 413 87 814 184
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -1690,7 +1702,11 @@ LANG:10001 0
 E E
 0 0 0 0 0
 1
-E E
+E "main(int button)
+{
+  updateLists();
+}" 0
+
 2 102
 "PRIMITIVE_TEXT17"
 ""
@@ -1792,6 +1808,7 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
 
 "main()
 {
+       this.appendItem(\"\");
   for(int i=1; i<=8;i++)
   {
      this.appendItem(i);
@@ -1803,49 +1820,14 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
   boardList.deleteAllItems();
   boardList.appendItem(\"\");
 
+  dyn_string boards=returnBoardsOfLayer((int)this.text());
 
-  dyn_string layer1_5=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"28\",\"29\",\"32\");
-  dyn_string layer2_6=makeDynString(\"02\",\"03\",\"06\",\"07\",\"10\",\"11\",\"14\",\"15\",\"18\",\"19\",\"22\",\"23\",\"26\",\"27\",\"30\",\"31\");
-  dyn_string layer3_7=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"12\",\"13\",\"16\",\"17\",\"20\",\"21\",\"24\",\"25\",\"28\",\"29\",\"32\");
-  dyn_string layer4_8=makeDynString(\"02\",\"03\",\"06\",\"07\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"26\",\"27\",\"30\",\"31\");
-
-
-  if(this.text()==1 || this.text()==5)
+  for(int i=1;i<=dynlen(boards);i++)
   {
-    for(int i=1;i<=dynlen(layer1_5);i++)
-    {
-      boardList.appendItem(layer1_5[i]);
-    }
+      boardList.appendItem(boards[i]);
   }
 
-  if(this.text()==2 || this.text()==6)
-  {
-    for(int i=1;i<=dynlen(layer2_6);i++)
-    {
-      boardList.appendItem(layer2_6[i]);
-    }
-  }
-
-   if(this.text()==3 || this.text()==7)
-  {
-    for(int i=1;i<=dynlen(layer3_7);i++)
-    {
-      boardList.appendItem(layer3_7[i]);
-    }
-  }
-
-  if(this.text()==4 || this.text()==8)
-  {
-    for(int i=1;i<=dynlen(layer4_8);i++)
-    {
-      boardList.appendItem(layer4_8[i]);
-    }
-  }
-
-
-
-
-
+  updateLists();
 
 }" 0
 
@@ -1898,61 +1880,22 @@ LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
   boardList.deleteAllItems();
   boardList.appendItem(\"\");
 
-  dyn_string boards=returnBoardsOfLayer(comboLayerSelection.text());
+  dyn_string boards=returnBoardsOfLayer((int)comboLayerSelection.text());
 
   for(int i=1;i<=dynlen(boards);i++)
-    {
+  {
       boardList.appendItem(boards[i]);
-    }
-
-
-  /*
-
-  dyn_string layer1_5=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"28\",\"29\",\"32\");
-  dyn_string layer2_6=makeDynString(\"02\",\"03\",\"06\",\"07\",\"10\",\"11\",\"14\",\"15\",\"18\",\"19\",\"22\",\"23\",\"26\",\"27\",\"30\",\"31\");
-  dyn_string layer3_7=makeDynString(\"01\",\"04\",\"05\",\"08\",\"09\",\"12\",\"13\",\"16\",\"17\",\"20\",\"21\",\"24\",\"25\",\"28\",\"29\",\"32\");
-  dyn_string layer4_8=makeDynString(\"02\",\"03\",\"06\",\"07\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"26\",\"27\",\"30\",\"31\");
-
-
-  if(comboLayerSelection.text()==1 || comboLayerSelection.text()==5)
-  {
-    for(int i=1;i<=dynlen(layer1_5);i++)
-    {
-      boardList.appendItem(layer1_5[i]);
-    }
   }
-
-  if(comboLayerSelection.text()==2 || comboLayerSelection.text()==6)
-  {
-    for(int i=1;i<=dynlen(layer2_6);i++)
-    {
-      boardList.appendItem(layer2_6[i]);
-    }
-  }
-
-   if(comboLayerSelection.text()==3 || comboLayerSelection.text()==7)
-  {
-    for(int i=1;i<=dynlen(layer3_7);i++)
-    {
-      boardList.appendItem(layer3_7[i]);
-    }
-  }
-
-  if(comboLayerSelection.text()==4 || comboLayerSelection.text()==8)
-  {
-    for(int i=1;i<=dynlen(layer4_8);i++)
-    {
-      boardList.appendItem(layer4_8[i]);
-    }
-  }
-
-
-*/
-
 
 }" 0
 
-E
+"main()
+{
+
+  updateLists();
+
+}" 0
+
 E
  0 0
 2 108
@@ -1979,6 +1922,42 @@ LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
 0 2
 LANG:10001 7 Board :
 LANG:1 12 Current List
+13 109
+"PUSH_BUTTON9"
+""
+1 53 116 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+109 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0  51 95.05084745762709 180 142.0508474576271
+
+T 
+1
+LANG:10001 29 Create VMM
+Calibration Alert 
+"main(mapping event)
+{
+
+  dpSet(\"Board_Settings.calibrationVMMAlertClass:_alert_class.._type\",DPCONFIG_ALERT_CLASS,
+        \"Board_Settings.calibrationVMMAlertClass:_alert_class.._ack_type\",1,
+        \"Board_Settings.calibrationVMMAlertClass:_alert_class.._single_ack\",FALSE,
+        \"Board_Settings.calibrationVMMAlertClass:_alert_class.._archive\",TRUE,
+        \"Board_Settings.calibrationVMMAlertClass:_alert_class.._color_c_ack\",\"FwStateStandby\",
+        \"Board_Settings.calibrationVMMAlertClass:_alert_class.._prior\",90
+        );
+
+  DebugN(\"VMM Calibration Alert Class\",\"DONE\");
+
+}" 0
+ E E E
 0
 LAYER, 1 
 1

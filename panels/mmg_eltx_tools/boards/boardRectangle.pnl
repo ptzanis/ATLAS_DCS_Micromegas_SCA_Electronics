@@ -7,7 +7,8 @@ PANEL,-1 -1 94 67 N "FwAtlasBg" 3
 "$obj"
 E E E E E 1 -1 -1 0  29 6
 ""0  1
-E E 3
+E "#uses \"mmg_eltx_lib/mmgEltx.ctl\"" 0
+ 3
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
@@ -27,7 +28,18 @@ LANG:10001 0
 }" 0
  E
 0 0 0 0 0 0
-E E E
+E E "main(bool enter)
+{
+
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+
+
+}" 0
+
 0
 1
 LANG:10001 0 
@@ -38,11 +50,11 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-  string state,status;
-  fwFsmAtlas_getStatus($domain,$obj,status);
-  state = mmgGeneral_Fsm_getState($domain, $obj);
+//   string state,status;
+//   fwFsmAtlas_getStatus($domain,$obj,status);
+//   state = mmgGeneral_Fsm_getState($domain, $obj);
 
-  this.toolTipText(\"Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+//   this.toolTipText(\"Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
 
   if($mode==\"State\")
      fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
@@ -56,6 +68,7 @@ LANG:10001 0
      dpConnectUserData(\"updateBoardState\",
                        \"power\",
                        eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.power\");
+
 
   bool configExists;
  	int alertConfigType;
@@ -85,7 +98,19 @@ LANG:10001 0
    }
 
 
+ if($mode==\"SCAStatus\")
+     dpConnect(\"updateSCA\",
+                       getSCAOnlineChannel(getBoardChannel($obj)));
 
+
+}
+
+updateSCA(string dpe, bool value){
+
+  if(value)
+    this.backCol(\"green\");
+  else
+    this.backCol(\"red\");
 
 }
 
@@ -108,10 +133,25 @@ updateValue(dyn_float upDownLimit, string dpe, float value){
 2 1
 "PRIMITIVE_TEXT1"
 ""
-1 7 12 E E E 1 E 0 E N "White" E N "_Window" E E
- E E
+1 7 12 E E E 1 E 1 E N "black" E N "black" E E
+ "main(mapping event)
+{
+   fwFsmAtlas_navigateSecondary($domain,$obj);
+}" 0
+ E
 1 0 0 0 0 0
-E E E
+E E "main(bool enter)
+{
+
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+
+
+}" 0
+
 0
 1
 LANG:10001 0 
@@ -125,7 +165,11 @@ LANG:10001 0
 {
   this.text(getBoard($obj));
 }" 0
- E 0 1 1 2 1 E 1.625 0 1.368421052631579 16.625 24.57894736842105 0 E 7 12 27 27
+ "main(mapping event)
+{
+   fwFsmAtlas_navigate($domain,$obj);
+}" 0
+ 0 1 1 2 1 E 1.625 0 1.368421052631579 -8.375 -5.421052631578949 0 E 7 12 27 27
 0 2 2 "0s" 0 0 0 192 0 0  7 12 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold

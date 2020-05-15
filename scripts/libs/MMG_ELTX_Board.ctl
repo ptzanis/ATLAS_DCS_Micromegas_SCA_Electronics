@@ -1,4 +1,3 @@
-#uses "mmg_eltx_lib/mmgEltx_datapointHandling.ctl"
 #uses "mmg_eltx_lib/mmgEltx_deviceUnitHandling.ctl"
 
 MMG_ELTX_Board_initialize(string domain, string device)
@@ -12,7 +11,6 @@ MMG_ELTX_Board_valueChanged( string domain, string device, string &fwState)
 {
 }
 
-#uses "mmg_eltx_lib/mmgEltx_datapointHandling.ctl"
 #uses "mmg_eltx_lib/mmgEltx_deviceUnitHandling.ctl"
 
 MMG_ELTX_Board_doCommand(string domain, string device, string command)

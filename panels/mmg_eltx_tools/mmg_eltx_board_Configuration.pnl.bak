@@ -273,7 +273,7 @@ LANG:1 5 Close
 19 20
 "boardSelection"
 ""
-1 316.0000000000001 63.99999999999999 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 316 65 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 20 0 0 0 0 0
 E E E
@@ -286,7 +286,7 @@ LANG:10001 0
 "horizontal" ""
 1
 LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
-0  314.0000000000001 61.99999999999999 594 92
+0  314 63 593.9999999999999 93
 3
 T 
 1
@@ -334,12 +334,15 @@ E "main(int button)
 
 
   dyn_string setupAnalogItems;
-  dpGet(\"MMG_ELTX_\"+boards[choice+1]+\".AnalogItems\",setupAnalogItems);
+  setupAnalogItems=dpNames(\"Board_Settings.\"+boards[choice+1]+\".*.*\",\"MMG_ELTX_Board_Settings\");
 
   setupAnalogItemsTable.deleteAllLines();
 
   for(int i=1;i<=dynlen(setupAnalogItems);i++)
   {
+    strreplace(setupAnalogItems[i], getSystemName(),\"\");
+    strreplace(setupAnalogItems[i], \"Board_Settings.\"+boards[choice+1]+\".\",\"/ai/\");
+
     setupAnalogItemsTable.appendLine(\"Num\",i,\"Item\",setupAnalogItems[i]);
   }
 

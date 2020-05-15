@@ -1158,7 +1158,7 @@ LANG:10001 12 PUSH_BUTTON1
 13 60
 "PUSH_BUTTON2"
 ""
-1 173 645 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 162 472 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 60 0 0 0 0 0
 E E E
@@ -1170,7 +1170,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  171 617 300 688
+0  160 444 289 515
 
 T 
 1
@@ -1196,7 +1196,7 @@ LANG:10001 12 PUSH_BUTTON2
 13 61
 "PUSH_BUTTON3"
 ""
-1 364 522 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 322 395 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 61 0 0 0 0 0
 E E E
@@ -1208,7 +1208,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  362 488 497 570
+0  320 361 455 443
 
 T 
 1
@@ -1391,7 +1391,7 @@ LANG:10001 0
 13 67
 "PUSH_BUTTON4"
 ""
-1 46 510 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 52 399 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 67 0 0 0 0 0
 E E E
@@ -1403,7 +1403,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
-0  44 505 103 529
+0  50 394 109 418
 
 T 
 1
@@ -1736,6 +1736,287 @@ LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
 0 2
 LANG:10001 7 Board :
 LANG:1 12 Current List
+13 76
+"PUSH_BUTTON5"
+""
+1 718 655 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+76 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  716 611 1008 713
+
+T 
+1
+LANG:10001 4 Maps
+"main(mapping event)
+{
+
+  mapping boardList=getBoardsListOfChannelAndTypeOfSectorLayerBoard(\"A01\",1,\"04\");
+  DebugN(boardList);
+
+}
+
+mapping getBoardsListOfChannelAndTypeOfSide(string side){
+
+  dyn_string objectsSide=dpNames(\"*_\"+side+\"*\",\"MMG_ELTX_Board\");
+  dyn_string objectSector, objectLayer, objectBoard;
+
+  string channel, type;
+  mapping channelAndTypeList;
+
+  for(int objectsUnderSide_i=1; objectsUnderSide_i<=dynlen(objectsSide); objectsUnderSide_i++)
+  {
+    objectSector=dpNames(objectsSide[objectsUnderSide_i]+\".*\");
+    for(int objectSector_i=1; objectSector_i<=dynlen(objectSector); objectSector_i++)
+      {
+        objectLayer=dpNames(objectSector[objectSector_i]+\".*\");
+        for(int objectLayer_i=1;objectLayer_i<=dynlen(objectLayer);objectLayer_i++)
+        {
+          objectBoard=dpNames(objectLayer[objectLayer_i]);
+          for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
+          {
+                dpGet(objectBoard[objectBoard_i]+\".info.channel\",channel);
+                dpGet(objectBoard[objectBoard_i]+\".info.type\",type);
+                if(channel!=\"\" && type!=\"\")
+                  channelAndTypeList[channel]=type;
+
+              }//objectsUnderBoard_i
+          }//objectsUnderLayer_i
+    }//objectsUnderSector_i
+  }//objectsUnderSide_i
+
+ return channelAndTypeList;
+}
+
+mapping getBoardsListOfChannelAndTypeOfSector(string sector){
+
+  dyn_string objectSector=dpNames(\"*_\"+sector+\"*\",\"MMG_ELTX_Board\");
+  dyn_string objectLayer, objectBoard;
+
+  string channel, type;
+  mapping channelAndTypeList;
+
+    for(int objectSector_i=1; objectSector_i<=dynlen(objectSector); objectSector_i++)
+      {
+        objectLayer=dpNames(objectSector[objectSector_i]+\".*\");
+        for(int objectLayer_i=1; objectLayer_i<=dynlen(objectLayer); objectLayer_i++)
+        {
+          objectBoard=dpNames(objectLayer[objectLayer_i]+\".*\");
+          for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
+          {
+                dpGet(objectBoard[objectBoard_i]+\".info.channel\",channel);
+                dpGet(objectBoard[objectBoard_i]+\".info.type\",type);
+                if(channel!=\"\" && type!=\"\")
+                  channelAndTypeList[channel]=type;
+
+              }//objectBoard_i
+          }//objectLayer_i
+    }//objectSector_i
+
+ return channelAndTypeList;
+}
+
+mapping getBoardsListOfChannelAndTypeOfSectorLayer(string sector, int layer){
+
+  dyn_string objectLayer=dpNames(\"*_\"+sector+\".Layer\"+layer,\"MMG_ELTX_Board\");
+  dyn_string objectBoard;
+
+  string channel, type;
+  mapping channelAndTypeList;
+
+          objectBoard=dpNames(objectLayer[1]+\".*\");
+          for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
+          {
+                dpGet(objectBoard[objectBoard_i]+\".info.channel\",channel);
+                dpGet(objectBoard[objectBoard_i]+\".info.type\",type);
+                if(channel!=\"\" && type!=\"\")
+                  channelAndTypeList[channel]=type;
+
+              }//objectBoard_i
+
+ return channelAndTypeList;
+}
+
+mapping getBoardsListOfChannelAndTypeOfSectorLayerBoard(string sector, int layer, string board){
+
+  string objectBoard=dpNames(\"*_\"+sector+\".Layer\"+layer+\".Board\"+board,\"MMG_ELTX_Board\");
+
+  string channel, type;
+  mapping channelAndTypeList;
+
+  dpGet(objectBoard+\".info.channel\",channel);
+  dpGet(objectBoard+\".info.type\",type);
+
+  if(channel!=\"\" && type!=\"\")
+    channelAndTypeList[channel]=type;
+
+
+ return channelAndTypeList;
+}" 0
+ E E E
+13 77
+"PUSH_BUTTON6"
+""
+1 446 632 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+77 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  444 602 589 677
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON6
+"main(mapping event)
+{
+  dpConnect(\"updateTest\",\"MMG_ADDC_L1P3_HOL/ai/feastTemp1v5.temperature:_alert_hdl.._act_text\");
+
+}
+
+void updateTest(string dpe, string text){
+
+  DebugN(text);
+
+
+}" 0
+ E E E
+13 78
+"PUSH_BUTTON7"
+""
+1 47 628 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+78 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  45 594 288 677
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON7
+"main(mapping event)
+{
+  string dpe=\"MMG_MMFE8_L1P1_HOL/ai/0V65for1V3A.temperature:_alert_hdl.._act_text\";
+
+  dpe= dpSubStr(dpe, DPSUB_SYS_DP_EL);
+  DebugN(dpe);
+
+}" 0
+ E E E
+13 79
+"PUSH_BUTTON8"
+""
+1 679 273 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+79 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  677 219 753 341
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON8
+"main(mapping event)
+{
+
+  dpSet(\"Board_Settings.calibrationAlertClass:_alert_class.._type\",DPCONFIG_ALERT_CLASS,
+        \"Board_Settings.calibrationAlertClass:_alert_class.._ack_type\",1,
+        \"Board_Settings.calibrationAlertClass:_alert_class.._single_ack\",FALSE,
+        \"Board_Settings.calibrationAlertClass:_alert_class.._archive\",TRUE,
+        \"Board_Settings.calibrationAlertClass:_alert_class.._color_c_ack\",\"FwStateStandby\",
+        \"Board_Settings.calibrationAlertClass:_alert_class.._prior\",90
+        );
+
+
+  /*
+			    dpSet(		dpe + \":_address.._type\", DPCONFIG_PERIPH_ADDR_MAIN,
+						dpe + \":_address.._reference\", ref,
+						dpe + \":_address.._datatype\", datatype,
+						dpe + \":_address.._mode\", mode,
+						dpe + \":_address.._drv_ident\", fwPeriphAddress_TYPE_OPCUA);
+    */
+
+
+}" 0
+ E E E
+22 80
+"COMBO_BOX1"
+""
+1 99 21 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+80 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  97 15 221 42
+4
+1
+LANG:10001 7 Board 1
+
+0
+1
+LANG:10001 7 Board 2
+
+0
+1
+LANG:10001 7 Board 3
+
+0
+1
+LANG:10001 7 Board 4
+
+0
+
+E
+"main()
+{
+   int listSelection=this.selectedPos();
+   string objBoard=$obj+\"_BOARD\"+listSelection;
+
+   addSymbol(myModuleName(), myPanelName(), \"objects/barHisto.pnl\", \"barHisto_Temperature\",
+             makeDynString(\"$obj:\"+objBoard, \"$mode:\"+\"temperature\"), 100, 720, 0, 1, 1);
+
+   addSymbol(myModuleName(), myPanelName(), \"objects/barHisto.pnl\", \"barHisto_Power\",
+             makeDynString(\"$obj:\"+objBoard, \"$mode:\"+\"power\"), 760, 720, 0, 1, 1);
+
+}" 0
+
+E
+ 0 0
 0
 LAYER, 1 
 1

@@ -1,0 +1,1079 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 1368 590 N "FwAtlasBg" 0
+"main()
+{
+  mmgGeneral_drawChambers_forMapping(190,310,1,1.0,\"A\");
+  addLogoNTUABNL(1180,520);
+}" 0
+ E E E E 1 -1 -1 0  7.25 5.34375
+""0  1
+E "#uses \"CtrlXml\"
+#uses \"mmg_eltx_lib/mmgEltx.ctl\"
+#uses \"fwSca/fwScaConfigParser.ctl\"
+#uses \"fwSca/fwScaCreateDpts.ctl\"
+
+void mmgGeneral_drawChambers_forMapping(int x_center, int y_center,int layer,float sc,string side)
+{
+  float x ,y, phi, phiRad, scale, a, b, c1,c2, d1,d2, x_circle, y_circle;
+  string channel;
+  int rackNum;
+
+  if (side == \"A\")
+   rackNum = 1;
+  else if (side == \"C\")
+   rackNum = 2;
+
+  scale = sc*12.20; //since 610.1 = 5 pvss squares
+  b =  610.1/scale;//50;
+  c1 =  1170.9/scale;//130;
+  c2 = 753.5/scale;
+  d1 =  1149.6/scale;//110;
+  d2 = 1197.3/scale;
+  a = 74/sc;//8*(b+402.9/scale)/6.28;//74; //127.5; //100;//2000/scale;
+
+  phi=22.5;
+
+    //create the large chambers
+    for (int n=1; n<=16; n++)
+    {
+      if (n%2!=0) {  //take the odd numbers
+        phi = (n-1)*22.5;
+        phiRad = deg2rad(phi);
+        x = x_center - (a+d1)*cos(phiRad) - c1/2.*sin(phiRad);
+        y = y_center - (a+d1)*sin(phiRad) + c1/2.*cos(phiRad);
+        x_circle = x_center - (a+d1/2)*cos(phiRad)-10/sc;
+        y_circle  = y_center - (a+d1/2)*sin(phiRad)-10/sc;
+
+       if(n<=9)
+        addSymbol(myModuleName(),myPanelName(),\"/objects/LargeChamberMapping.pnl\",\"Sector0\"+n,makeDynString(\"$sector:0\"+n,\"$side:\"+side), x, y, 90.-phi, 1/sc, 1/sc);
+       else
+        addSymbol(myModuleName(),myPanelName(),\"/objects/LargeChamberMapping.pnl\",\"Sector\"+n,makeDynString(\"$sector:\"+n,\"$side:\"+side), x, y, 90.-phi, 1/sc, 1/sc);
+          }
+    }
+
+    //create the small chamners
+    for (int n=1; n<=16; n++)
+    {
+      if (n%2==0) {
+        phi = (n-2)*22.5+22.5;
+        phiRad = deg2rad(phi);
+        x = x_center - (a+d2)*cos(phiRad) - c2/2.*sin(phiRad);
+        y = y_center - (a+d2)*sin(phiRad) + c2/2.*cos(phiRad);
+        x_circle = x_center - (a+d2/2)*cos(phiRad)-10/sc;
+        y_circle  = y_center - (a+d2/2)*sin(phiRad)-10/sc;
+
+       if(n<=9)
+        addSymbol(myModuleName(),myPanelName(),\"/objects/SmallChamberMapping.pnl\",\"Sector0\"+n,makeDynString(\"$sector:0\"+n,\"$side:\"+side), x, y, 90.-phi, 1/sc, 1/sc);
+      else
+        addSymbol(myModuleName(),myPanelName(),\"/objects/SmallChamberMapping.pnl\",\"Sector0\"+n,makeDynString(\"$sector:\"+n,\"$side:\"+side), x, y, 90.-phi, 1/sc, 1/sc);
+
+
+        }
+      }
+
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:1\"), x_center-60/sc, y_center, 0, 1/sc, 1/sc);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:5\"), x_center, y_center-65/sc, 0, 1/sc, 1/sc);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:9\"), x_center+60/sc, y_center, 0, 1/sc, 1/sc);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/chamberNumber.pnl\",\"\",makeDynString(\"$number:13\"), x_center, y_center+55/sc, 0, 1/sc, 1/sc);
+
+}
+
+dyn_string boardsTotal(string configFileName)
+{
+  string errMsg;
+  int errLine;
+  int errColumn;
+  int docNum =
+    xmlDocumentFromFile (configFileName, errMsg, errLine, errColumn);
+
+
+
+ int firstNode = xmlFirstChild (docNum);
+  if (firstNode < 0)
+    {
+      DebugN (\"Cant get the first child of the config file.\");
+      return -1;
+    }
+  while (xmlNodeName (docNum, firstNode) != \"configuration\")
+    {
+      firstNode = xmlNextSibling (docNum, firstNode);
+      if (firstNode < 0)
+	{
+	  DebugTN (\"configuration node not found, sorry.\");
+	  return -1;
+	}
+    }
+  // now firstNode holds configuration node
+  dyn_int numberOfBoards = fwSca_getChildNodesWithName (docNum, firstNode, \"SCA\");
+
+  string boardName;
+  dyn_string boardsTotalList;
+
+
+  for (int i = 1; i <= dynlen (numberOfBoards); i++)
+    {
+       xmlGetElementAttribute (docNum,numberOfBoards[i], \"name\", boardName);
+       dynAppend(boardsTotalList,boardName);
+
+       } //numberOfBoards
+
+  xmlCloseDocument(docNum);
+  return boardsTotalList;
+
+}
+
+" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+2 1
+"PRIMITIVE_TEXT6"
+""
+1 21.25 13.34375 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 21.25 13.34375 688 38
+0 2 2 "0s" 0 0 0 192 0 0  21.25 13.34375 1
+2
+LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
+LANG:1 33 MS Shell Dlg,-1,19,5,75,0,0,0,0,0
+0 2
+LANG:10001 60 ATLAS MMG  DCS  ---  ELTX PROJECT   :  Mapping CONFIGURATION
+LANG:1 56 ATLAS MDT  DCS  ---  ELTX PROJECT   :  FSM CONFIGURATION
+4 2
+"LINE2"
+""
+1 7.249999999999999 5.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  7.25 5.34375 1331 5.34375
+4 3
+"LINE3"
+""
+1 7.249999999999999 4.728885825163399 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  7.249999999999998 4.7288858251634 7.249999999999998 39.7288858251634
+4 4
+"LINE4"
+""
+1 7.058823529411766 40 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  7.058823529411765 39.99999999999999 1364.058823529412 39.99999999999999
+4 5
+"LINE6"
+""
+1 1331.107142857143 5.200892857142856 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  1331.107142857143 5.200892857142856 1331.107142857143 25.20089285714286
+4 6
+"LINE7"
+""
+1 1331 25.34375 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  1331 25.34375 1366.999999999998 25.34375
+4 7
+"LINE8"
+""
+1 1367 25.32142857142857 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E  1367 25.32142857142857 1367 40.32142857142856
+2 8
+"PRIMITIVE_TEXT15"
+""
+1 1338.714285714285 7 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 1338.714285714285 7 1370 20
+0 2 2 "0s" 0 0 0 192 0 0  1338.714285714285 7 1
+2
+LANG:10001 39 Utopia,-1,11,5,75,1,0,0,0,0,Bold Italic
+LANG:1 33 MS Shell Dlg,-1,11,5,75,1,0,0,0,0
+0 2
+LANG:10001 3 MMG
+LANG:1 3 MDT
+30 10
+"FRAME1"
+""
+1 792 168 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+10 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1.590225563909775 0 1.11734693877551 -398.458646616542 44.28571428571425 0 E 792 168 1059 365
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0 1
+LANG:10001 19 Configuration files
+22 11
+"sectorNumberSelection"
+""
+1 1033 272 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
+0  1031 264.7826086956522 1106 298.7826086956522
+16
+1
+LANG:10001 2 01
+
+0
+1
+LANG:10001 2 02
+
+0
+1
+LANG:10001 2 03
+
+0
+1
+LANG:10001 2 04
+
+0
+1
+LANG:10001 2 05
+
+0
+1
+LANG:10001 2 06
+
+0
+1
+LANG:10001 2 07
+
+0
+1
+LANG:10001 2 08
+
+0
+1
+LANG:10001 2 09
+
+0
+1
+LANG:10001 2 10
+
+0
+1
+LANG:10001 2 11
+
+0
+1
+LANG:10001 2 12
+
+0
+1
+LANG:10001 2 13
+
+0
+1
+LANG:10001 2 14
+
+0
+1
+LANG:10001 2 15
+
+0
+1
+LANG:10001 2 16
+
+0
+
+E
+E
+E
+ 1 0
+14 13
+"filePath"
+""
+1 890 345 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  888 343 1221 370
+3 "0s" 0 0 0 0 0 -1  E E E
+13 14
+"browse"
+""
+1 1228 346 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 15 Browse for file
+LANG:1 15 Browse for file
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:1 26 Arial,-1,13,5,40,0,0,0,0,0
+0  1226 344 1250 368
+
+T 
+2
+LANG:10001 3 ...
+LANG:1 3 ...
+"main()
+{
+  string path;
+  
+  fileSelector(path);
+  filePath.text = path;
+}" 0
+ E E E
+13 15
+"PUSH_BUTTON2"
+""
+1 996 399 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  994 386 1154 427
+
+T 
+1
+LANG:10001 13 Auto set[dev]
+"main(mapping event)
+{
+
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  dyn_string boardList;
+  string boardType, boardLocation;
+
+
+ for(int i_side = 1; i_side <= 1; i_side++)
+   {
+//    for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
+   for(int i_sector = 1; i_sector <= 16; i_sector++)
+    {
+     for(int i_layer= 1; i_layer <= 8; i_layer++)
+      {
+         dynClear(boardList);
+         boardList=returnBoardsOfLayer(i_layer);
+
+         for(int i_board=1; i_board<=dynlen(boardList); i_board++)
+         {
+
+             returnBoardTypeLocation(side[i_side], i_layer, boardList[i_board], boardType, boardLocation);
+             dpSet(\"MMG_ELTX_\"+side[i_side]+sector[i_sector]+\".Layer\"+i_layer+\".Board\"+boardList[i_board]+\".info.channel\", boardLocation);
+             dpSet(\"MMG_ELTX_\"+side[i_side]+sector[i_sector]+\".Layer\"+i_layer+\".Board\"+boardList[i_board]+\".info.type\", boardType);
+
+         }//i_board
+      }//i_layer
+    }//i_sector
+   }//i_side
+
+
+
+}
+
+returnBoardTypeLocation(string side, int layer, string board, string &boardType, string &boardLocation)
+{
+  string Zaxis;
+  string Raxis;
+  int cLayer;
+  int pcb;
+  int cBoard;
+
+  getBoardChamberInfo( side, layer, board, Zaxis, Raxis, cLayer, pcb, cBoard );
+//   DebugN(Zaxis, Raxis,\"Layer \"+cLayer,\"PCB \"+ pcb,\"Bpard \"+ cBoard);
+
+
+  if(cLayer==2 || cLayer==3)
+  {
+    boardType=\"MMFE8\";
+  }
+
+  if(cLayer==1)
+  {
+   if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
+     boardType= \"MMFE8\";
+
+   if(pcb==3 || pcb==6)
+    {
+     if(cBoard==1)
+      boardType= \"MMFE8\";
+     if(cBoard==2)
+      boardType= \"ADDC\";
+     if(cBoard==3)
+      boardType= \"ADDC\";
+     if(cBoard==4)
+      boardType= \"MMFE8\";
+    }
+
+    if(pcb==4 || pcb==5)
+    {
+     if(cBoard==1)
+      boardType= \"MMFE8\";
+     if(cBoard==2)
+      boardType= \"L1DDC\";
+     if(cBoard==3)
+      boardType= \"L1DDC\";
+     if(cBoard==4)
+      boardType= \"MMFE8\";
+    }
+  }
+
+    if(cLayer==4)
+  {
+   if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
+     boardType= \"MMFE8\";
+
+   if(pcb==3 || pcb==6)
+    {
+     if(cBoard==1)
+      boardType= \"ADDC\";
+     if(cBoard==2)
+      boardType= \"MMFE8\";
+     if(cBoard==3)
+      boardType= \"MMFE8\";
+     if(cBoard==4)
+      boardType= \"ADDC\";
+    }
+
+    if(pcb==4 || pcb==5)
+    {
+     if(cBoard==1)
+      boardType= \"L1DDC\";
+     if(cBoard==2)
+      boardType= \"MMFE8\";
+     if(cBoard==3)
+      boardType= \"MMFE8\";
+     if(cBoard==4)
+      boardType= \"L1DDC\";
+    }
+   }
+   string IPorHO;
+   string RorL;
+
+  if(Zaxis==\"Z2\")
+    IPorHO=\"IP\";
+  if(Zaxis==\"Z3\")
+    IPorHO=\"HO\";
+
+  if(cBoard==2 || cBoard==4)
+    RorL=\"R\";
+  else
+    RorL=\"L\";
+
+
+  boardLocation=boardType+\"_L\"+cLayer+\"P\"+pcb+\"_\"+IPorHO+RorL;
+
+
+
+
+
+}
+
+
+string returnIPHO(string axial)
+{
+  if(axial==\"Z2\")
+    return \"IP\";
+  if(axial==\"Z3\")
+    return \"HO\";
+
+}
+
+string returnLR(int board)
+{
+  if(board==2 || board==4)
+    return \"R\";
+  else
+    return \"L\";
+}
+" 0
+ E E E
+30 16
+"FRAME2"
+""
+1 4 48 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+16 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.8886198547215496 0 1.216704288939052 0.4455205811138017 -10.40180586907448 0 E 4 48 418 492
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 6 Side A
+30 17
+"FRAME3"
+""
+1 4 48 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+17 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.9564164648910412 0 0.3769751693002257 371.1743341404358 29.90519187358916 0 E 4 48 418 492
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Axial
+30 18
+"FRAME4"
+""
+1 4 48 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+18 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.9564164648910412 0 0.6523702031602708 371.1743341404358 184.686230248307 0 E 4 48 418 492
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Layer
+30 19
+"FRAME5"
+""
+1 4 48 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+19 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.9564164648910412 0 0.182844243792325 371.1743341404359 496.2234762979683 0 E 4 48 418 492
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 5 Board
+30 20
+"FRAME6"
+""
+1 804 54 E E E 1 E 1 E N "White" E N {0,0,0} E E
+ E E
+20 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1 0 1 16 -6 0 E 804 54 1292 217
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 14 Board Settings
+2 21
+"PRIMITIVE_TEXT16"
+""
+1 836 88 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 836 88 923 110
+0 2 2 "0s" 0 0 0 192 0 0  836 88 1
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 9 Channel :
+14 22
+"channelInfo"
+""
+1 926 89 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  924 83 1294 113
+2 "0s" 0 0 0 1 0 -1  E E E
+2 23
+"PRIMITIVE_TEXT17"
+""
+1 837 126 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 837 126 928 148
+0 2 2 "0s" 0 0 0 192 0 0  837 126 1
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 15 Type         : 
+14 24
+"typeInfo"
+""
+1 927 127 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  925 121 1295 151
+2 "0s" 0 0 0 1 0 -1  E E E
+2 25
+"PRIMITIVE_TEXT18"
+""
+1 914 270 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 914 270 1018 292
+0 2 2 "0s" 0 0 0 192 0 0  914 270 1
+1
+LANG:10001 32 Utopia,-1,19,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 17 Sector         : 
+2 26
+"PRIMITIVE_TEXT19"
+""
+1 891 322 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 891 322 1026 339
+0 2 2 "0s" 0 0 0 192 0 0  891 322 1
+1
+LANG:10001 32 Utopia,-1,15,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 19 Configuration File:
+13 27
+"closeButton"
+""
+1 1294 496 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+27 0 0 0 0 0
+E E E
+8
+2
+LANG:10001 0 
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:10001 27 Utopia,-1,16,5,75,0,0,0,0,0
+LANG:1 27 Utopia,-1,16,5,75,0,0,0,0,0
+0  1292 486.3 1354.25 512.3
+
+T 
+2
+LANG:10001 5 Close
+LANG:1 5 Close
+"main(mapping event)
+{
+  PanelOff();
+}" 0
+ E E E
+13 28
+"PUSH_BUTTON3"
+""
+1 914 503 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+28 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+0  912 490 1072 531
+
+T 
+1
+LANG:10001 13 Auto set[dev]
+"main(mapping event)
+{
+
+//   DebugN(boardsTotal(filePath.text())); //testing
+  dyn_string side = makeDynString(\"A\",\"C\");
+  dyn_string axial = makeDynString(\"Z2\",\"Z3\");
+  dyn_string radial= makeDynString(\"R1\",\"R2\");
+  dyn_string sector = makeDynString(\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\");
+  int pcbStart, pcbEnd;
+  int board;
+
+   for(int i_sector = 1; i_sector <= dynlen(sector); i_sector++)
+    {
+     for(int i_axial = 1; i_axial <= dynlen(axial); i_axial++)
+      {
+        for(int i_radial =1 ; i_radial <= dynlen(radial); i_radial++)
+        {
+        for(int layer=1;layer<=4;layer++)
+          {
+            if(i_radial==1)  //XM1
+             {
+              pcbStart=1;
+              pcbEnd=5;
+             }
+            if(i_radial==2)  //XM2
+             {
+              pcbStart=6;
+              pcbEnd=8;
+             }
+
+            if(layer==1 || layer==4)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                 if(pcb==3 || pcb==4 || pcb==5 || pcb==6) // L1DDC, ADDC(Digital) + MMFE8(Analog)
+                    {
+                     for(int board=1;board<=4;board++)
+                      {
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                      }
+                     }
+                   else // MMFE8(Analog)
+                    {
+                   if(layer==1)   board=1; //Left
+                   if(layer==4)   board=2; //Left
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                   if(layer==1)   board=4; //Right
+                   if(layer==4)   board=3; //Right
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                    }
+                }
+              }//layer 1 || 4
+            if(layer==2 || layer==3)
+              {
+                for(int pcb=pcbStart;pcb<=pcbEnd;pcb++)
+                {
+                 if(layer==2)   board=2; //Left
+                 if(layer==3)   board=1; //Left
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                 if(layer==2)   board=3; //Right
+                 if(layer==3)   board=4; //Right
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.channel\",returnBoardType(layer,pcb,board)+\"_L\"+layer+\"P\"+pcb+\"_\"+returnIPHO(axial[i_axial])+returnLR(board));
+                         dpSet(\"MMG_Side\"+side[1]+\".Sector\"+sectorNumberSelection.text()+\".\"+axial[i_axial]+\".\"+radial[i_radial]+\".Layer\"+layer+\".PCB\"+pcb+\".Board\"+board+\".info.type\",returnBoardType(layer,pcb,board));
+                }
+              }//layer 2 || 3
+          }//layer
+        }//radial
+      }//axial
+    }//sector
+
+}
+
+string returnBoardType(int layer,int pcb,int board)
+{
+
+  if(layer==2 || layer==3)
+  {
+    return \"MMFE8\";
+  }
+
+  if(layer==1)
+  {
+   if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
+     return \"MMFE8\";
+
+   if(pcb==3 || pcb==6)
+    {
+     if(board==1)
+      return \"MMFE8\";
+     if(board==2)
+      return \"ADDC\";
+     if(board==3)
+      return \"ADDC\";
+     if(board==4)
+      return \"MMFE8\";
+    }
+
+    if(pcb==4 || pcb==5)
+    {
+     if(board==1)
+      return \"MMFE8\";
+     if(board==2)
+      return \"L1DDC\";
+     if(board==3)
+      return \"L1DDC\";
+     if(board==4)
+      return \"MMFE8\";
+    }
+  }
+
+    if(layer==4)
+  {
+   if(pcb==1 || pcb==2 || pcb==7 || pcb==8)
+     return \"MMFE8\";
+
+   if(pcb==3 || pcb==6)
+    {
+     if(board==1)
+      return \"ADDC\";
+     if(board==2)
+      return \"MMFE8\";
+     if(board==3)
+      return \"MMFE8\";
+     if(board==4)
+      return \"ADDC\";
+    }
+
+    if(pcb==4 || pcb==5)
+    {
+     if(board==1)
+      return \"L1DDC\";
+     if(board==2)
+      return \"MMFE8\";
+     if(board==3)
+      return \"MMFE8\";
+     if(board==4)
+      return \"L1DDC\";
+    }
+  }
+
+}
+
+string returnIPHO(string axial)
+{
+  if(axial==\"Z2\")
+    return \"IP\";
+  if(axial==\"Z3\")
+    return \"HO\";
+
+}
+
+string returnLR(int board)
+{
+  if(board==2 || board==4)
+    return \"R\";
+  else
+    return \"L\";
+}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0

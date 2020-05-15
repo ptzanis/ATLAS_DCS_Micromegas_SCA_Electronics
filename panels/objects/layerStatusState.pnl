@@ -26,7 +26,15 @@ LANG:10001 0
 }" 0
  E
 1 0 0 0 0 0
-E E E
+E E "main(bool enter)
+{
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+}" 0
+
 0
 1
 LANG:10001 0 
@@ -39,11 +47,6 @@ LANG:10001 0
 {
   fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
 
-  string state,status;
-  fwFsmAtlas_getStatus($domain,$obj,status);
-  state = mmgGeneral_Fsm_getState($domain, $obj);
-
-  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
 }" 0
  "main(mapping event)
 {
@@ -64,7 +67,15 @@ LANG:10001 0
 }" 0
  E
 2 0 0 0 0 0
-E E E
+E E "main(bool enter)
+{
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+}" 0
+
 0
 1
 LANG:10001 0 
@@ -77,11 +88,7 @@ LANG:10001 0
 {
   fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
 
-  string state,status;
-  fwFsmAtlas_getStatus($domain,$obj,status);
-  state = mmgGeneral_Fsm_getState($domain, $obj);
 
-  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
 }" 0
  "main(mapping event)
 {
