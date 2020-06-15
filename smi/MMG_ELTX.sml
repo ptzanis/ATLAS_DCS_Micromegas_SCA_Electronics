@@ -107,13 +107,20 @@ objectset: STATUS_MMG_ELTXFWCHILDREN_FWSETSTATES union {STATUS_MMG_ELTXATLAS_STA
 class: TOP_MMG_ELTX_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_OVERVIEW.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in FWCHILDREN_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in FWCHILDREN_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_ELTX_SIDE_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_ELTX_SIDE_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in FWCHILDREN_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in FWCHILDREN_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in FWCHILDREN_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in FWCHILDREN_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_ELTX_SIDE_FWSETSTATES in_state READY ) move_to READY
+        when ( any_in MMG_ELTX_SIDE_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in FWCHILDREN_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_ELTX_SIDE_FWSETSTATES in_state READY )  move_to READY
+        when (  not ( any_in MMG_ELTX_SIDE_FWSETSTATES in_state {UNKNOWN,DEAD} )  ) move_to NOT_READY
+        action: REFRESH	!visible: 1
+            do REFRESH all_in FWCHILDREN_FWSETACTIONS
 
 object: MMG_ELTX is_of_class TOP_MMG_ELTX_CLASS
 
@@ -646,8 +653,11 @@ objectset: FWCHILDMODE_FWSETACTIONS is_of_class VOID {MMG_SIDE_A_FWM }
 class: ASS_MMG_ELTX_Side_CLASS/associated
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl
     state: READY	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
     state: NOT_READY	!color: FwStateOKNotPhysics
-    state: ERROR	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
+    state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A::MMG_SIDE_A is_of_class ASS_MMG_ELTX_Side_CLASS
 

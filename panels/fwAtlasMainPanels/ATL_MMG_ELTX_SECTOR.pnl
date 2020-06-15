@@ -7,13 +7,6 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 {
     addLogoNTUABNL(670,800);
 
-//      addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmAtlas_cu.pnl\",\"sectorStateStatus_\"+$obj,
-//               makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),
-//               300, 20, 0, 1.0, 1.0);
-
-
-
-
     string layerObj;
 
     int x=10;
@@ -33,6 +26,8 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 
        x=x+105;
     }
+
+
 
 
 
@@ -142,6 +137,19 @@ void deleteRectangles(){
     }
   }
 
+
+}
+
+
+void deleteBoardViewColor(){
+
+  removeSymbol(myModuleName(), myPanelName(),\"boardView_Color\");
+
+}
+
+void deleteConnectivity(){
+
+  removeSymbol(myModuleName(), myPanelName(),\"connectivityView_\"+domain);
 
 }" 0
  3
@@ -270,9 +278,9 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 7 Layer 1
 19 14
-"RADIO_BOX1"
+"modeSelection"
 ""
-1 207 63 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 153 62 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -285,11 +293,11 @@ LANG:10001 0
 "horizontal" ""
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
-0  205 61 834 91.00000000000003
-6
+0  11 61 732 91
+8
 T 
 1
-LANG:10001 5 State
+LANG:10001 6 Status
 
 1 
 1
@@ -298,7 +306,7 @@ E E
 0 0 0 0 0
 T 
 1
-LANG:10001 6 Status
+LANG:10001 5 State
 
 0 
 1
@@ -325,6 +333,15 @@ E E
 0 0 0 0 0
 T 
 1
+LANG:10001 2 LV
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
+T 
+1
 LANG:10001 15 SCA Temperature
 
 0 
@@ -341,31 +358,103 @@ LANG:10001 10 SCA Status
 LANG:10001 0 
 E E
 0 0 0 0 0
+T 
+1
+LANG:10001 4 Type
+
+0 
+1
+LANG:10001 0 
+E E
+0 0 0 0 0
 1
 "main()
 {
     this.number(0);
-    showRectangles(\"State\");
+    string mode=\"Status\";
+    showRectangles(mode);
+
+    // L1DDC Connectivity widget
+
+    int x=70;
+    int y=630;
+     addSymbol(myModuleName(),myPanelName(),\"/mmg_eltx_tools/boards/connectivityView.pnl\",\"connectivityView_\"+domain,
+      makeDynString(\"$domain:\"+domain,\"$x:\"+x,\"$y:\"+y,\"$mode:\"+mode),
+          x, y, 0, 1.0, 1.0);
+
 }" 0
  "main(int button)
 {
 
   deleteRectangles();
+  deleteBoardViewColor();
+
+  string mode;
 
   if(button==0)
-    showRectangles(\"State\");
+  {
+    mode=\"Status\";
+  }
   if(button==1)
-    showRectangles(\"Status\");
+  {
+    mode=\"State\";
+  }
   if(button==2)
-    showRectangles(\"TempManager\");
+  {
+    mode=\"TempManager\";
+    showBoardViewColor(button);
+  }
   if(button==3)
-    showRectangles(\"PowManager\");
+    {
+    mode=\"PowManager\";
+    showBoardViewColor(button);
+    }
   if(button==4)
-    showRectangles(\"SCATemp\");
+    {
+    mode=\"LV\";
+    showBoardViewColor(button);
+    }
   if(button==5)
-    showRectangles(\"SCAStatus\");
+    {
+    mode=\"SCATemp\";
+    showBoardViewColor(button);
+    }
+  if(button==6)
+    {
+    mode=\"SCAStatus\";
+    showBoardViewColor(button);
+    }
+  if(button==7)
+    {
+    mode=\"Type\";
+    showBoardViewColor(button);
+    }
 
-}" 0
+
+  showRectangles(mode);
+
+    // L1DDC Connectivity widget
+    deleteConnectivity();
+
+    int x=70;
+    int y=630;
+     addSymbol(myModuleName(),myPanelName(),\"/mmg_eltx_tools/boards/connectivityView.pnl\",\"connectivityView_\"+domain,
+      makeDynString(\"$domain:\"+domain,\"$x:\"+x,\"$y:\"+y,\"$mode:\"+mode),
+          x, y, 0, 1.0, 1.0);
+
+
+
+}
+
+void showBoardViewColor(int button){
+
+    addSymbol(myModuleName(),myPanelName(),\"/objects/boardView_Color.pnl\",\"boardView_Color\",
+    makeDynString(\"$mode:\"+this.text(button)),
+    740,25,0,1.0,1.0);
+
+
+}
+" 0
 
 30 22
 "FRAME9"
@@ -522,7 +611,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 1.728421052631579 0 0.6610169491525424 -263.2757894736841 26.55932203389831 0 E 161 40 637 100
+E E 0 1 1 2 1 E 1.524210526315789 0 0.9661016949152542 -238.3978947368419 -3.644067796610166 0 E 161 40 637 100
 1
 LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
 0 1
@@ -530,7 +619,7 @@ LANG:10001 0
 2 31
 "PRIMITIVE_TEXT21"
 ""
-1 53 66 E E E 1 E 1 E N "White" E N "_Window" E E
+1 15 45 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 31 0 0 0 0 0
 E E E
@@ -543,69 +632,12 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 53 66 189 84
-0 2 2 "0s" 0 0 0 192 0 0  53 66 1
+E E 0 1 1 2 1 E U  0 E 15 45 151 63
+0 2 2 "0s" 0 0 0 192 0 0  15 45 1
 1
-LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
+LANG:10001 32 Utopia,-1,16,5,75,0,1,0,0,0,Bold
 0 1
 LANG:10001 18 Select board view:
-30 32
-"Frame4"
-""
-1 650 653 E E E 1 E 1 E N "White" E N "_Transparent" E E
- E E
-32 0 0 0 0 0
-E E E
-1
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 1.109170305676856 0 0.7554856493561087 -571.9606986899564 369.667870970461 0 E 650 543 880 653
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 25 Arial,-1,9,5,50,0,0,0,0,0
-0 2
-LANG:10001 22 Board State Color Code
-LANG:1 16 State Color Code
-6 33
-"Border5"
-""
-1 660 583 E E E 1 E 1 E N "_WindowText" E N "FwStateOKPhysics" E E
- E E
-33 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -230.4523536165328 471.0338235294118 1 E 660 563 680 583
-6 34
-"Border8"
-""
-1 776 581 E E E 1 E 1 E N "_WindowText" E N {0,102,255} E E
- E E
-34 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -186.374282433984 479.210294117647 1 E 776 561 796 581
 30 35
 "Frame5"
 ""
@@ -793,259 +825,6 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 69.54764638346714 464.1227124183006 1 E 660 563 680 583
-6 44
-"RECTANGLE4"
-""
-1 777 634 E E E 1 E 1 E N "_WindowText" E N "FwStateStandby" E E
- E E
-44 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.6343283582089549 0 0.588235294117647 -225.2361469421789 430.5148237287302 1 E 777 614 797 634
-6 45
-"Border9"
-""
-1 776 607 E E E 1 E 1 E N "_WindowText" E N "FwStateAttention2" E E
- E E
-45 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -186.374282433984 499.9161764705882 1 E 776 587 796 607
-6 46
-"RECTANGLE30"
-""
-1 776 581 E E E 1 E 1 E N "_WindowText" E N "FwStateShutdown" E E
- E E
-46 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -186.374282433984 497.210294117647 1 E 776 561 796 581
-6 47
-"RECTANGLE31"
-""
-1 777 634 E E E 1 E 1 E N "_WindowText" E N "FwStateAttention1" E E
- E E
-47 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.5882352941176469 -298.9598163030998 458.0338235294118 1 E 777 614 797 634
-6 48
-"RECTANGLE32"
-""
-1 669 764 E E E 1 E 1 E N "_WindowText" E N {255,0,0} E E
- E E
-48 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -235.7221584385763 400.5632352941177 1 E 669 744 689 764
-2 49
-"PRIMITIVE_TEXT30"
-""
-1 51.99999999999977 1058.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-49 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 176.7518814930618 801.0357447490477 216 814
-0 2 0 "0s" 0 0 0 192 0 0  176.7518814930618 801.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 5 READY
-LANG:1 2 OK
-2 50
-"PRIMITIVE_TEXT31"
-""
-1 51.99999999999977 1076.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-50 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 176.7518814930618 819.0357447490477 245 832
-0 2 0 "0s" 0 0 0 192 0 0  176.7518814930618 819.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 9 OVER_TEMP
-LANG:1 2 OK
-2 51
-"PRIMITIVE_TEXT32"
-""
-1 51.99999999999977 1093.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-51 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 176.7518814930618 836.0357447490477 245 849
-0 2 0 "0s" 0 0 0 192 0 0  176.7518814930618 836.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 9 HIGH_TEMP
-LANG:1 2 OK
-2 52
-"PRIMITIVE_TEXT33"
-""
-1 163.9999999999998 1048.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-52 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 288.7518814930619 791.0357447490477 366 804
-0 2 0 "0s" 0 0 0 192 0 0  288.7518814930619 791.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 11 CALIBRATION
-LANG:1 2 OK
-2 53
-"PRIMITIVE_TEXT34"
-""
-1 163.9999999999998 1065.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-53 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 288.7518814930619 808.0357447490477 378 821
-0 2 0 "0s" 0 0 0 192 0 0  288.7518814930619 808.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 12 DISCONNECTED
-LANG:1 2 OK
-2 54
-"PRIMITIVE_TEXT35"
-""
-1 163.9999999999998 1084.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-54 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 288.7518814930619 827.0357447490477 331 840
-0 2 0 "0s" 0 0 0 192 0 0  288.7518814930619 827.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 6 LV_OFF
-LANG:1 2 OK
-2 55
-"PRIMITIVE_TEXT36"
-""
-1 163.9999999999998 1102.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-55 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 288.7518814930619 845.0357447490477 350 858
-0 2 0 "0s" 0 0 0 192 0 0  288.7518814930619 845.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 7 UNKNOWN
-LANG:1 2 OK
 30 56
 "FRAME17"
 ""
@@ -1102,7 +881,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 51.75188149306177 801.0357447490477 90.99999999999994 814
+E E 0 1 1 0 1 E U  0 E 51.75188149306177 801.0357447490477 91 814
 0 2 0 "0s" 0 0 0 192 0 0  51.75188149306177 801.0357447490477 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
@@ -1167,7 +946,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 52.75188149306211 840.0607447490478 114.0000000000002 853.0250000000001
+E E 0 1 1 0 1 E U  0 E 52.75188149306211 840.0607447490478 114 853
 0 2 0 "0s" 0 0 0 192 0 0  52.75188149306211 840.0607447490478 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
@@ -1192,6 +971,234 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -423.3742824339838 491.2352941176471 1 E 776 561 796 581
+30 63
+"Frame4"
+""
+1 650 653 E E E 1 E 1 E N "White" E N "_Transparent" E E
+ E E
+63 0 0 0 0 0
+E E E
+1
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 1.109170305676856 0 0.7554856493561087 -572.9606986899564 369.667870970461 0 E 650 543 880 653
+2
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+LANG:1 25 Arial,-1,9,5,50,0,0,0,0,0
+0 2
+LANG:10001 22 Board State Color Code
+LANG:1 16 State Color Code
+6 64
+"Border5"
+""
+1 660 583 E E E 1 E 1 E N "_WindowText" E N "FwStateOKPhysics" E E
+ E E
+64 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -231.4523536165328 482.0338235294118 1 E 660 563 680 583
+6 65
+"RECTANGLE4"
+""
+1 777 634 E E E 1 E 1 E N "_WindowText" E N "FwStateStandby" E E
+ E E
+65 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.6343283582089549 0 0.588235294117647 -226.2361469421789 441.5148237287302 1 E 777 614 797 634
+6 66
+"Border9"
+""
+1 776 607 E E E 1 E 1 E N "_WindowText" E N "FwStateAttention2" E E
+ E E
+66 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -187.374282433984 492.9161764705882 1 E 776 587 796 607
+6 67
+"RECTANGLE30"
+""
+1 776 581 E E E 1 E 1 E N "_WindowText" E N "FwStateShutdown" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -187.374282433984 490.210294117647 1 E 776 561 796 581
+6 68
+"RECTANGLE32"
+""
+1 669 764 E E E 1 E 1 E N "_WindowText" E N {255,0,0} E E
+ E E
+68 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -236.7221584385762 393.5882352941178 1 E 669 744 689 764
+2 69
+"PRIMITIVE_TEXT30"
+""
+1 48.99999999999977 1069.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+69 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 173.7518814930618 812.0357447490477 255 825
+0 2 0 "0s" 0 0 0 192 0 0  173.7518814930618 812.0357447490477 1
+2
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 11 OPERATIONAL
+LANG:1 2 OK
+2 70
+"PRIMITIVE_TEXT33"
+""
+1 162.9999999999998 1059.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+70 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 287.7518814930619 802.0357447490477 365 815
+0 2 0 "0s" 0 0 0 192 0 0  287.7518814930619 802.0357447490477 1
+2
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 11 CALIBRATION
+LANG:1 2 OK
+2 71
+"PRIMITIVE_TEXT34"
+""
+1 49 1090 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+71 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 173.7518814930621 832.0607447490478 263 845
+0 2 0 "0s" 0 0 0 192 0 0  173.7518814930621 832.0607447490478 1
+2
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 12 DISCONNECTED
+LANG:1 2 OK
+2 72
+"PRIMITIVE_TEXT35"
+""
+1 162.9999999999998 1077.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+72 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 287.7518814930619 820.0357447490477 330 833
+0 2 0 "0s" 0 0 0 192 0 0  287.7518814930619 820.0357447490477 1
+2
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 6 LV_OFF
+LANG:1 2 OK
+2 73
+"PRIMITIVE_TEXT36"
+""
+1 162.9999999999998 1095.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+ E E
+73 0 0 0 0 0
+E E E
+0
+2
+LANG:10001 0 
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 287.7518814930619 838.0357447490477 349 851
+0 2 0 "0s" 0 0 0 192 0 0  287.7518814930619 838.0357447490477 1
+2
+LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
+LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
+0 2
+LANG:10001 7 UNKNOWN
+LANG:1 2 OK
 0
 LAYER, 1 
 1

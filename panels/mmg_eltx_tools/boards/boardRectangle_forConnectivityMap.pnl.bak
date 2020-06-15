@@ -155,7 +155,7 @@ void updateValue(dyn_float upDownLimit, string dpe, float value){
 {
    fwFsmAtlas_navigate($domain,$obj);
 }" 0
- 0 1 1 2 1 E 1.214285714285714 0 1 -1.214285714285707 0 1 E 29 6 1 32
+ 0 1 1 2 1 E 2 0 1 -1.999999999999993 0 1 E 29 6 1 32
 2 1
 "PRIMITIVE_TEXT1"
 ""
@@ -189,13 +189,13 @@ LANG:10001 0
 "transformable" "0"
 "main()
 {
-  this.text(getBoard($obj));
+  this.text(\"L\"+getLayer($obj)+\"_\"+getBoard($obj));
 }" 0
  "main(mapping event)
 {
    fwFsmAtlas_navigate($domain,$obj);
 }" 0
- 0 1 1 2 1 E 1.625 0 1.368421052631579 -6.375 -6.421052631578949 0 E 7 12 27 27
+ 0 1 1 2 1 E 2.695650353398319 0 1.368421052631579 -15.71658208555254 -4.421052631578949 0 E 7 12 27 27
 0 2 2 "0s" 0 0 0 192 0 0  7 12 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold

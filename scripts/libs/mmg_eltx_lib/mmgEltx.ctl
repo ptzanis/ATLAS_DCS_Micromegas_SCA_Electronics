@@ -153,9 +153,9 @@ void updateBoardState(string mode, string dpeChannel, int value){
   if(value==1)
    stateShape.backCol("green");
   if(value==2)
-   stateShape.backCol("yellow");
+   stateShape.backCol("FwAlarmWarnUnack");
   if(value==3)
-   stateShape.backCol("red");
+   stateShape.backCol("FwAlarmErrorUnack");
 
 }
 

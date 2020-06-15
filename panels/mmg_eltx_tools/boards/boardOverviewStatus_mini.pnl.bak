@@ -287,14 +287,14 @@ LANG:10001 0
 
   dyn_errClass err;
 
-  if( !dpExists( eltxProjectName()+getBoardChannel($obj)+\".online\"))
+  if( !dpExists(getSCAOnlineChannel(getBoardChannel($obj))))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getBoardChannel($obj)+\".online\",eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
+             getSCAOnlineChannel(getBoardChannel($obj)),eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -315,7 +315,7 @@ void updateStatus(string dpeOnlineStatus, bool onlineStatus, string dpeOPCConnec
 }
 
 " 0
- E 0 1 1 2 1 E 1 0 1 88 -85 1 E 136 100 5 5
+ E 0 1 1 2 1 E 1 0 1 88 -84 1 E 136 100 5 5
 7 25
 "temperatureState"
 ""

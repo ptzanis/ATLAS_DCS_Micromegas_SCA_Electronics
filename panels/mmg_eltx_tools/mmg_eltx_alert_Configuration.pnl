@@ -78,7 +78,7 @@ createBoardPowerTemperatureAlarms(string board, string boardType)
        dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".upLimit\",upLimit);
 
       alarmColors=makeDynString(\"_fwWarningNack.\",\"\",\"_fwWarningNack.\");
-      alarmText=makeDynString(\"WARNING\",\"READY\",\"WARNING\");
+      alarmText=makeDynString(\"WARNING\",\"GOOD\",\"WARNING\");
       limits=makeDynFloat(downLimit,upLimit);
      }
 
@@ -87,13 +87,13 @@ createBoardPowerTemperatureAlarms(string board, string boardType)
        dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".downLimit\",downLimit);
        dpGet(\"Board_Settings.\"+boardType+\".\"+analogItemForEdit+\".upLimit\",upLimit);
 
-      alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\");
-      alarmText=makeDynString(\"READY\",\"OVER_TEMP\",\"HIGH_TEMP\");
+      alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwErrorNack.\");
+      alarmText=makeDynString(\"GOOD\",\"OVER_TEMP\",\"HIGH_TEMP\");
       limits=makeDynFloat(downLimit,upLimit);
         if(patternMatch(\"*vmmPdo*\",analogItemForEdit))
          {
-          alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwFatalNack.\",\"Board_Settings.calibrationVMMAlertClass\");
-          alarmText=makeDynString(\"READY\",\"OVER_TEMP\",\"HIGH_TEMP\",\"CALIBRATION\");
+          alarmColors=makeDynString(\"\",\"_fwWarningNack.\",\"_fwErrorNack.\",\"Board_Settings.calibrationVMMAlertClass\");
+          alarmText=makeDynString(\"GOOD\",\"OVER_TEMP\",\"HIGH_TEMP\",\"CALIBRATION\");
           limits=makeDynFloat(downLimit,upLimit,200.0);
          }
      }
@@ -1220,7 +1220,7 @@ E E 0 1 1 2 1 E 0.75 0 1 290.25 18 1 E 29 70 141 92
 6 60
 "RECTANGLE4"
 ""
-1 29 70 E E E 1 E 1 E N {0,0,0} E N "red" E E
+1 29 70 E E E 1 E 1 E N {0,0,0} E N "FwAlarmErrorUnack" E E
  E E
 60 0 0 0 0 0
 E E E
@@ -1395,7 +1395,7 @@ E E 0 1 1 2 1 E U  1 E 248 92 293 111
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
 0 2
-LANG:10001 5 READY
+LANG:10001 4 GOOD
 LANG:1 12 Current List
 2 70
 "middleText"
@@ -1424,7 +1424,7 @@ LANG:1 12 Current List
 2 71
 "upText"
 ""
-1 400 92 E E E 1 E 1 E N "black" E N "_Transparent" E E
+1 400 91 E E E 1 E 1 E N "black" E N "_Transparent" E E
  E E
 71 0 0 0 0 0
 E E E
@@ -1437,8 +1437,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 400 92 492 111
-0 2 2 "0s" 0 0 0 64 0 0  400 92 1
+E E 0 1 1 2 1 E U  1 E 400 91 492 110
+0 2 2 "0s" 0 0 0 64 0 0  400 91 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
@@ -1596,7 +1596,7 @@ LANG:10001 16 Power alarm info
 2 80
 "PRIMITIVE_TEXT27"
 ""
-1 731.0000000000001 96 E E E 1 E 1 E N "black" E N "_Transparent" E E
+1 731.0000000000001 95 E E E 1 E 1 E N "black" E N "_Transparent" E E
  E E
 80 0 0 0 0 0
 E E E
@@ -1609,13 +1609,13 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  1 E 731.0000000000001 96 776.0000000000001 115
-0 2 2 "0s" 0 0 0 64 0 0  731.0000000000001 96 1
+E E 0 1 1 2 1 E U  1 E 731.0000000000001 95 776.0000000000001 114
+0 2 2 "0s" 0 0 0 64 0 0  731.0000000000001 95 1
 2
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 LANG:1 33 MS Shell Dlg,-1,11,5,75,0,0,0,0,0
 0 2
-LANG:10001 5 READY
+LANG:10001 4 GOOD
 LANG:1 12 Current List
 2 84
 "PRIMITIVE_TEXT31"

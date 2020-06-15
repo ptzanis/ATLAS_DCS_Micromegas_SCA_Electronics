@@ -1,9 +1,12 @@
 class: ASS_MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1

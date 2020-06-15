@@ -9,7 +9,7 @@ PANEL,-1 -1 859 866 N "FwAtlasBg" 1
 
   // state/status object
    string domain=getDomain($obj);
-   addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),640,330,0,1.5,1);
+   addSymbol(myModuleName(),myPanelName(),\"/objects/fsmAtlas/fwFsmObj_verysmall.pnl\",\"fd\",makeDynString(\"$domain:\"+domain,\"$obj:\"+$obj,\"$label:\"+\"\"),645,365,0,1.5,1.2);
 
 
 }" 0
@@ -98,7 +98,7 @@ E E 0 1 1 2 1 E 1.038081395348837 0 0.6904761904761904 -0.9619186046511636 -2.30
 2 4
 "titleLabel"
 ""
-1 207 0 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
+1 288 0 E E E 1 E 1 E N "FwAtlasBg" E N "_Transparent" E E
  E E
 4 0 0 0 0 0
 E E E
@@ -114,16 +114,16 @@ LANG:1 0
 "main()
 {
 
-  this.text(\"Side \"+getSide($obj)+\" | Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj));
+  this.text(\"Side \"+getSide($obj)+\" | Sector \"+getSector($obj)+\" | Layer \"+getLayer($obj)+\" | Board \"+getBoard($obj));
 
 }" 0
- E 0 1 1 2 1 E U  0 E 207 0 882 31
-0 2 2 "0s" 0 0 0 64 0 0  207 0 1
+ E 0 1 1 2 1 E U  0 E 288 0 963 31
+0 2 2 "0s" 0 0 0 64 0 0  288 0 1
 2
 LANG:10001 32 Utopia,-1,21,5,75,0,0,0,0,0,Bold
 LANG:1 31 Sans Serif,-1,27,5,75,0,0,0,0,0
 0 2
-LANG:10001 37 Chamber X | Layer X | PCB X | Board X
+LANG:10001 37 Side X | Sector X | Layer X | Board X
 LANG:1 4 ATCA
 4 5
 "LINE4"
@@ -145,7 +145,7 @@ E E 0 1 1 2 1 E  -2.27142857142857 24 856.7285714285714 24
 2 22
 "PRIMITIVE_TEXT9"
 ""
-1 32 46 E E E 1 E 1 E N "White" E N "_Window" E E
+1 28 48 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -158,8 +158,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 32 46 86 64
-0 2 2 "0s" 0 0 0 192 0 0  32 46 1
+E E 0 1 1 2 1 E U  0 E 28 48 82 66
+0 2 2 "0s" 0 0 0 192 0 0  28 48 1
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -167,7 +167,7 @@ LANG:10001 6 Name:
 14 24
 "TEXT_FIELD10"
 ""
-1 170 213 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 166 215 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -179,7 +179,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
-0  87.99999999999999 45 385.9999999999999 67.99999999999999
+0  83.99999999999999 47 381.9999999999999 69.99999999999999
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getBoardChannel($obj));
@@ -219,7 +219,7 @@ LANG:10001 0
 
 
 }" 0
- E 0 1 1 2 1 E 0.8652173913043479 0 2.970588235294118 -31.2608695652174 18.82352941176467 0 E 50 62 741 131
+ E 0 1 1 2 1 E 0.8652173913043479 0 2.970588235294118 -15.2608695652174 -23.17647058823533 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -227,7 +227,7 @@ LANG:10001 10 Board View
 2 27
 "PRIMITIVE_TEXT10"
 ""
-1 25 73 E E E 1 E 1 E N "White" E N "_Window" E E
+1 21 75 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -240,8 +240,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 25 73 95 91
-0 2 2 "0s" 0 0 0 192 0 0  25 73 1
+E E 0 1 1 2 1 E U  0 E 21 75 91 93
+0 2 2 "0s" 0 0 0 192 0 0  21 75 1
 1
 LANG:10001 32 Utopia,-1,16,5,75,0,0,0,0,0,Bold
 0 1
@@ -249,7 +249,7 @@ LANG:10001 9 Address:
 14 28
 "TEXT_FIELD11"
 ""
-1 168 241 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 164 243 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 28 0 0 0 0 0
 E E E
@@ -261,7 +261,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  88.99999999999999 71 386.9999999999999 94
+0  84.99999999999999 73 382.9999999999999 96
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSCAAddress(getBoardChannel($obj)));
@@ -270,7 +270,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 2 29
 "PRIMITIVE_TEXT11"
 ""
-1 437 45 E E E 1 E 1 E N "White" E N "_Window" E E
+1 668 156 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 29 0 0 0 0 0
 E E E
@@ -283,8 +283,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 437 45 520 60
-0 2 2 "0s" 0 0 0 192 0 0  437 45 1
+E E 0 1 1 2 1 E U  0 E 668 156 751 171
+0 2 2 "0s" 0 0 0 192 0 0  668 156 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -292,7 +292,7 @@ LANG:10001 12 GBT-SCA ID:
 14 30
 "TEXT_FIELD12"
 ""
-1 537 227 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 768 338 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 30 0 0 0 0 0
 E E E
@@ -304,7 +304,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  515.9999999999999 40.99999999999999 598 64
+0  746.9999999999999 152 829 175
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
   this.text(getSCAID(getBoardChannel($obj)));
@@ -325,7 +325,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.5550724637681159 0 1.117647058823529 -14.7536231884058 -43.29411764705878 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.5550724637681159 0 1.117647058823529 -18.75362318840581 -41.29411764705878 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -345,7 +345,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.3405797101449275 0 1.411764705882352 382.9710144927536 -62.52941176470581 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.2840579710144927 0 1.411764705882352 628.7971014492754 48.4705882352942 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -353,7 +353,7 @@ LANG:10001 8 SCA Info
 2 34
 "PRIMITIVE_TEXT12"
 ""
-1 471 70 E E E 1 E 1 E N "White" E N "_Window" E E
+1 702 181 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 34 0 0 0 0 0
 E E E
@@ -366,8 +366,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 471 70 515 85
-0 2 2 "0s" 0 0 0 192 0 0  471 70 1
+E E 0 1 1 2 1 E U  0 E 702 181 746 196
+0 2 2 "0s" 0 0 0 192 0 0  702 181 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -375,7 +375,7 @@ LANG:10001 7 Status:
 14 36
 "TEXT_FIELD14"
 ""
-1 535 252 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
+1 766 363 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
  E E
 36 0 0 0 0 0
 E E E
@@ -387,20 +387,20 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  514 66 596 89
+0  745 177 827 200
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
   dyn_errClass err;
 
-  if( !dpExists( eltxProjectName()+getBoardChannel($obj)+\".online\"))
+  if( !dpExists( getSCAOnlineChannel(getBoardChannel($obj))))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"updateStatus\",
-             eltxProjectName()+getBoardChannel($obj)+\".online\",eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
+             getSCAOnlineChannel(getBoardChannel($obj)),eltxProjectName()+getBoardOPCServer(getBoardChannel($obj))+\".State.ConnState\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -439,7 +439,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.5550724637681159 0 1.279411764705882 -15.7536231884058 25.67647058823534 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.5550724637681159 0 1.279411764705882 379.2463768115942 -53.32352941176468 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -447,7 +447,7 @@ LANG:10001 8 OPC Info
 2 38
 "PRIMITIVE_TEXT13"
 ""
-1 28 123 E E E 1 E 1 E N "White" E N "_Window" E E
+1 422 44 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 38 0 0 0 0 0
 E E E
@@ -460,8 +460,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 28 123 95 138
-0 2 2 "0s" 0 0 0 192 0 0  28 123 1
+E E 0 1 1 2 1 E U  0 E 422 44 489 59
+0 2 2 "0s" 0 0 0 192 0 0  422 44 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -469,7 +469,7 @@ LANG:10001 10 ConnInfo:
 14 39
 "TEXT_FIELD15"
 ""
-1 165.8095238095239 289 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 559.8095238095239 210 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 39 0 0 0 0 0
 E E E
@@ -481,7 +481,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  91 119 389 142
+0  485 40 783 63
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -496,7 +496,7 @@ LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 2 40
 "PRIMITIVE_TEXT14"
 ""
-1 29 147 E E E 1 E 1 E N "White" E N "_Window" E E
+1 423 68 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 40 0 0 0 0 0
 E E E
@@ -509,8 +509,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 29 147 99 162
-0 2 2 "0s" 0 0 0 192 0 0  29 147 1
+E E 0 1 1 2 1 E U  0 E 423 68 493 83
+0 2 2 "0s" 0 0 0 192 0 0  423 68 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -518,7 +518,7 @@ LANG:10001 10 ConnState:
 14 41
 "TEXT_FIELD16"
 ""
-1 118 328 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
+1 512 249 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
  E E
 41 0 0 0 0 0
 E E E
@@ -530,7 +530,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  97 142 179 165
+0  491 63 573 86
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -570,7 +570,7 @@ void updateStatus(string dpeOPCConnectionStatus, bool OPCConnectionStatus)
 2 44
 "PRIMITIVE_TEXT16"
 ""
-1 23 171 E E E 1 E 1 E N "White" E N "_Window" E E
+1 417 92 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 44 0 0 0 0 0
 E E E
@@ -583,8 +583,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 23 171 99 186
-0 2 2 "0s" 0 0 0 192 0 0  23 171 1
+E E 0 1 1 2 1 E U  0 E 417 92 493 107
+0 2 2 "0s" 0 0 0 192 0 0  417 92 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -592,7 +592,7 @@ LANG:10001 12 ServerState:
 14 45
 "TEXT_FIELD18"
 ""
-1 700.5569620253164 266 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
+1 1094.556962025316 187 E E E 1 E 1 E N "black" E N "FwAtlasBg" E E
  E E
 45 0 0 0 0 0
 E E E
@@ -604,7 +604,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  97 166 318 189
+0  491 87 712 110
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -863,7 +863,7 @@ LANG:1 4 ATCA
 2 73
 "PRIMITIVE_TEXT21"
 ""
-1 433 95 E E E 1 E 1 E N "White" E N "_Window" E E
+1 664 206 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 73 0 0 0 0 0
 E E E
@@ -876,8 +876,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 433 95 516 110
-0 2 2 "0s" 0 0 0 192 0 0  433 95 1
+E E 0 1 1 2 1 E U  0 E 664 206 747 221
+0 2 2 "0s" 0 0 0 192 0 0  664 206 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -885,7 +885,7 @@ LANG:10001 15 Last reply [s]:
 14 74
 "TEXT_FIELD19"
 ""
-1 537 277 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
+1 768 388 E E E 1 E 1 E N "White" E N "FwAtlasBg" E E
  E E
 74 0 0 0 0 0
 E E E
@@ -897,7 +897,7 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
-0  515.9999999999999 91 598 114
+0  746.9999999999999 202 829 225
 2 "0s" 0 0 0 1 0 -1  E "main()
 {
 
@@ -940,15 +940,15 @@ LANG:10001 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E 0.3101449275362319 0 1.647058823529411 609.4927536231884 141.8823529411765 0 E 50 62 741 131
+E E 0 1 1 2 1 E 0.2840579710144928 0 2.11764705882353 626.7971014492754 114.7058823529412 0 E 50 62 741 131
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
-LANG:10001 12 Board Status
+LANG:10001 14 Board Overview
 2 113
 "PRIMITIVE_TEXT22"
 ""
-1 647.9999999999999 272 E E E 1 E 1 E N "White" E N "_Window" E E
+1 674 274 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 113 0 0 0 0 0
 E E E
@@ -961,8 +961,8 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 647.9999999999999 272 730 287
-0 2 2 "0s" 0 0 0 192 0 0  647.9999999999999 272 1
+E E 0 1 1 2 1 E U  0 E 674 274 757 289
+0 2 2 "0s" 0 0 0 192 0 0  674 274 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
@@ -970,7 +970,7 @@ LANG:10001 11 Temperature
 2 114
 "PRIMITIVE_TEXT23"
 ""
-1 760.9999999999999 272 E E E 1 E 1 E N "White" E N "_Window" E E
+1 711 307 E E E 1 E 1 E N "White" E N "_Window" E E
  E E
 114 0 0 0 0 0
 E E E
@@ -983,62 +983,12 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 760.9999999999999 272 801 287
-0 2 2 "0s" 0 0 0 192 0 0  760.9999999999999 272 1
+E E 0 1 1 2 1 E U  0 E 711 307 752 322
+0 2 2 "0s" 0 0 0 192 0 0  711 307 1
 1
 LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
 0 1
 LANG:10001 5 Power
-6 115
-"temperatureState"
-""
-1 637 258 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
- E E
-115 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"main()
-{
-  string mode=\"temperature\";
-  string dpe=eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
-
-  dpConnectUserData(\"updateBoardState\",mode,dpe);
-
-}
-" 0
- E 0 1 1 2 1 E 1.164556962025316 0 1 -99.82278481012634 35 1 E 637 258 716 280
-6 116
-"powerState"
-""
-1 637 258 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
- E E
-116 0 0 0 0 0
-E E E
-0
-1
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"main()
-{
-  string mode=\"power\";
-  string dpe=eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
-
-  dpConnectUserData(\"updateBoardState\",mode,dpe);
-
-}
-" 0
- E 0 1 1 2 1 E 1.164556962025316 0 1 -8.822784810126677 35 1 E 637 258 716 280
 30 117
 "Frame4"
 ""
@@ -1055,7 +1005,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 1.109170305676856 0 0.7554856493561087 -713.9606986899564 372.667870970461 0 E 650 543 880 653
+E E 0 1 1 0 1 E 1.109170305676856 0 0.7554856493561087 -713.9606986899564 371.667870970461 0 E 650 543 880 653
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 25 Arial,-1,9,5,50,0,0,0,0,0
@@ -1078,24 +1028,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -372.4523536165328 474.0338235294118 1 E 660 563 680 583
-6 119
-"Border8"
-""
-1 776 581 E E E 1 E 1 E N "_WindowText" E N {0,102,255} E E
- E E
-119 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -328.374282433984 482.210294117647 1 E 776 561 796 581
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -372.4523536165328 484.0338235294118 1 E 660 563 680 583
 30 120
 "Frame5"
 ""
@@ -1112,7 +1045,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5764192139737991 0 0.7522935779816535 -82.67248908296966 279.1860091743101 0 E 650 670 880 780
+E E 0 1 1 0 1 E 0.5764192139737991 0 0.7522935779816535 -82.67248908296966 278.1860091743101 0 E 650 670 880 780
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 25 Arial,-1,9,5,50,0,0,0,0,0
@@ -1135,7 +1068,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -78.30769230769243 393.1227124183006 1 E 670 716 690 736
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -78.30769230769243 392.1227124183006 1 E 670 716 690 736
 6 122
 "Border16"
 ""
@@ -1152,11 +1085,11 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.6343283582089549 0 0.588235294117647 -110.6733640341291 394.4892283400507 1 E 669 744 689 764
+E E 0 1 1 0 1 E 0.6343283582089549 0 0.588235294117647 -110.6733640341291 393.4892283400507 1 E 669 744 689 764
 2 123
 "Text11"
 ""
-1 229.9999999999997 1055.063888888889 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 229.9999999999997 1054.063888888889 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 123 0 0 0 0 0
 E E E
@@ -1169,8 +1102,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 354.7518814930618 797.1246336379367 373 810
-0 2 0 "0s" 0 0 0 192 0 0  354.7518814930618 797.1246336379367 1
+E E 0 1 1 0 1 E U  0 E 354.7518814930618 796.1246336379367 373 809
+0 2 0 "0s" 0 0 0 192 0 0  354.7518814930618 796.1246336379367 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1180,7 +1113,7 @@ LANG:1 2 OK
 2 124
 "Text12"
 ""
-1 290.9999999999997 998.0638888888888 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 290.9999999999997 997.0638888888888 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 124 0 0 0 0 0
 E E E
@@ -1193,8 +1126,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 335.8644407216512 814.0348181545054 393 827
-0 2 0 "0s" 0 0 0 192 0 0  335.8644407216512 814.0348181545054 1
+E E 0 1 1 0 1 E U  0 E 335.8644407216512 813.0348181545054 393 826
+0 2 0 "0s" 0 0 0 192 0 0  335.8644407216512 813.0348181545054 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1204,7 +1137,7 @@ LANG:1 8  WARNING
 2 125
 "Text14"
 ""
-1 279.9999999999997 1014.063888888889 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 279.9999999999997 1013.063888888889 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 125 0 0 0 0 0
 E E E
@@ -1217,8 +1150,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 344.6038821685238 832.0974418654056 384 845
-0 2 0 "0s" 0 0 0 192 0 0  344.6038821685238 832.0974418654056 1
+E E 0 1 1 0 1 E U  0 E 344.6038821685238 831.0974418654056 384 844
+0 2 0 "0s" 0 0 0 192 0 0  344.6038821685238 831.0974418654056 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1241,11 +1174,11 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -77.50914071314199 411.6068753988748 1 E 669 744 689 764
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -77.50914071314199 410.6068753988748 1 E 669 744 689 764
 2 127
 "PRIMITIVE_TEXT29"
 ""
-1 274.9999999999997 917.0638888888888 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 274.9999999999997 916.0638888888888 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 127 0 0 0 0 0
 E E E
@@ -1258,8 +1191,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 345.3844877272855 848.076354027483 382 861
-0 2 0 "0s" 0 0 0 192 0 0  345.3844877272855 848.076354027483 1
+E E 0 1 1 0 1 E U  0 E 345.3844877272855 847.076354027483 382 860
+0 2 0 "0s" 0 0 0 192 0 0  345.3844877272855 847.076354027483 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1282,7 +1215,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -72.45235361653286 467.1227124183006 1 E 660 563 680 583
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -72.45235361653286 466.1227124183006 1 E 660 563 680 583
 6 129
 "RECTANGLE4"
 ""
@@ -1299,7 +1232,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.6343283582089549 0 0.588235294117647 -367.2361469421789 433.5148237287302 1 E 777 614 797 634
+E E 0 1 1 0 1 E 0.6343283582089549 0 0.588235294117647 -367.2361469421789 443.5148237287302 1 E 777 614 797 634
 6 130
 "Border9"
 ""
@@ -1316,7 +1249,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -328.374282433984 502.9161764705882 1 E 776 587 796 607
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -328.374282433984 494.9161764705882 1 E 776 587 796 607
 6 131
 "RECTANGLE30"
 ""
@@ -1333,24 +1266,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -328.374282433984 500.210294117647 1 E 776 561 796 581
-6 132
-"RECTANGLE31"
-""
-1 777 634 E E E 1 E 1 E N "_WindowText" E N "FwStateAttention1" E E
- E E
-132 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.5882352941176469 -440.9598163030998 461.0338235294118 1 E 777 614 797 634
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -328.374282433984 492.210294117647 1 E 776 561 796 581
 6 133
 "RECTANGLE32"
 ""
@@ -1367,11 +1283,11 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -377.7221584385763 403.5632352941177 1 E 669 744 689 764
+E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -377.7221584385762 395.5882352941178 1 E 669 744 689 764
 2 134
 "PRIMITIVE_TEXT30"
 ""
-1 -90.00000000000023 1061.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 -92.00000000000023 1071.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 134 0 0 0 0 0
 E E E
@@ -1384,66 +1300,18 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 34.75188149306183 804.0357447490477 74 817
-0 2 0 "0s" 0 0 0 192 0 0  34.75188149306183 804.0357447490477 1
+E E 0 1 1 0 1 E U  0 E 32.75188149306183 814.0357447490477 114 827
+0 2 0 "0s" 0 0 0 192 0 0  32.75188149306183 814.0357447490477 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
 0 2
-LANG:10001 5 READY
-LANG:1 2 OK
-2 135
-"PRIMITIVE_TEXT31"
-""
-1 -90.00000000000023 1079.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-135 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 34.75188149306183 822.0357447490477 103 835
-0 2 0 "0s" 0 0 0 192 0 0  34.75188149306183 822.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 9 OVER_TEMP
-LANG:1 2 OK
-2 136
-"PRIMITIVE_TEXT32"
-""
-1 -90.00000000000023 1096.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
- E E
-136 0 0 0 0 0
-E E E
-0
-2
-LANG:10001 0 
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 34.75188149306183 839.0357447490477 103 852
-0 2 0 "0s" 0 0 0 192 0 0  34.75188149306183 839.0357447490477 1
-2
-LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
-LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
-0 2
-LANG:10001 9 HIGH_TEMP
+LANG:10001 11 OPERATIONAL
 LANG:1 2 OK
 2 137
 "PRIMITIVE_TEXT33"
 ""
-1 21.99999999999977 1051.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 21.99999999999977 1061.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 137 0 0 0 0 0
 E E E
@@ -1456,8 +1324,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 146.7518814930619 794.0357447490477 224 807
-0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 794.0357447490477 1
+E E 0 1 1 0 1 E U  0 E 146.7518814930619 804.0357447490477 224 817
+0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 804.0357447490477 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1467,7 +1335,7 @@ LANG:1 2 OK
 2 138
 "PRIMITIVE_TEXT34"
 ""
-1 21.99999999999977 1068.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 -92 1092 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 138 0 0 0 0 0
 E E E
@@ -1480,8 +1348,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 146.7518814930619 811.0357447490477 236 824
-0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 811.0357447490477 1
+E E 0 1 1 0 1 E U  0 E 32.75188149306211 834.0607447490478 122 847
+0 2 0 "0s" 0 0 0 192 0 0  32.75188149306211 834.0607447490478 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1491,7 +1359,7 @@ LANG:1 2 OK
 2 139
 "PRIMITIVE_TEXT35"
 ""
-1 21.99999999999977 1087.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 21.99999999999977 1079.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 139 0 0 0 0 0
 E E E
@@ -1504,8 +1372,8 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 146.7518814930619 830.0357447490477 189 843
-0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 830.0357447490477 1
+E E 0 1 1 0 1 E U  0 E 146.7518814930619 822.0357447490477 189 835
+0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 822.0357447490477 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
@@ -1515,7 +1383,7 @@ LANG:1 2 OK
 2 140
 "PRIMITIVE_TEXT36"
 ""
-1 21.99999999999977 1105.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
+1 21.99999999999977 1097.975 E E E 1 E 1 E N "FwAtlasFg" E N "_Transparent" E E
  E E
 140 0 0 0 0 0
 E E E
@@ -1528,14 +1396,119 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 0 1 E U  0 E 146.7518814930619 848.0357447490477 208 861
-0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 848.0357447490477 1
+E E 0 1 1 0 1 E U  0 E 146.7518814930619 840.0357447490477 208 853
+0 2 0 "0s" 0 0 0 192 0 0  146.7518814930619 840.0357447490477 1
 2
 LANG:10001 32 Utopia,-1,11,5,75,0,0,0,0,0,Bold
 LANG:1 26 Arial,-1,11,5,50,0,0,0,0,0
 0 2
 LANG:10001 7 UNKNOWN
 LANG:1 2 OK
+7 141
+"ELLIPSE1"
+""
+1 769 269 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+141 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  string mode=\"temperature\";
+  string dpe=eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 0.9999999999999999 0 1 -11.99999999999989 35.00000000000003 1 E 791 247 13 13
+7 142
+"ELLIPSE2"
+""
+1 769 269 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+142 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  string mode=\"power\";
+  string dpe=eltxProjectName()+getDetector($obj)+\"_ELTX_\"+getSide($obj)+getSector($obj)+\".Layer\"+getLayer($obj)+\".Board\"+getBoard($obj)+\".state.\"+mode;
+
+  dpConnectUserData(\"updateBoardState\",mode,dpe);
+
+}
+" 0
+ E 0 1 1 2 1 E 1 0 1 10 45.00000000000003 1 E 769 269 13 13
+2 143
+"PRIMITIVE_TEXT37"
+""
+1 730 339 E E E 1 E 1 E N "White" E N "_Window" E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 730 339 749 354
+0 2 2 "0s" 0 0 0 192 0 0  730 339 1
+1
+LANG:10001 32 Utopia,-1,13,5,75,0,0,0,0,0,Bold
+0 1
+LANG:10001 2 LV
+7 144
+"ELLIPSE3"
+""
+1 769 269 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+144 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+
+  string dpeLV=getBoardLVChannel($obj);
+
+  dpConnect(\"updateLV\",dpeLV);
+
+}
+
+void updateLV(string dpe,bool isOn){
+
+  if(isOn)
+    this.backCol(\"green\");
+  else
+    this.backCol(\"red\");
+}
+" 0
+ E 0 1 1 2 1 E 1 0 1 9 78.00000000000003 1 E 769 269 13 13
 0
 LAYER, 1 
 1

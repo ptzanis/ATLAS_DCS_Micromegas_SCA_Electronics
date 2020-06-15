@@ -1887,13 +1887,22 @@ objectset: STATUS_MMG_SIDE_A_SECTOR_01FWCHILDREN_FWSETSTATES union {STATUS_MMG_S
 class: MMG_SIDE_A_SECTOR_01_LAYER_1TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_1 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_1TOP_MMG_ELTX_Layer_CLASS
 
@@ -1913,13 +1922,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_1_BOARD_01 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_1MMG_ELTX_Board_CLASS
 
@@ -2025,13 +2037,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_1FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_2TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_2 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_2TOP_MMG_ELTX_Layer_CLASS
 
@@ -2051,13 +2072,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_2_BOARD_02 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_2MMG_ELTX_Board_CLASS
 
@@ -2131,13 +2155,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_2FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_3TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_3 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_3TOP_MMG_ELTX_Layer_CLASS
 
@@ -2157,13 +2190,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_3_BOARD_01 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_3MMG_ELTX_Board_CLASS
 
@@ -2237,13 +2273,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_3FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_4TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_4 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_4TOP_MMG_ELTX_Layer_CLASS
 
@@ -2263,13 +2308,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_4_BOARD_02 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_4MMG_ELTX_Board_CLASS
 
@@ -2375,13 +2423,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_4FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_5TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_5 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_5TOP_MMG_ELTX_Layer_CLASS
 
@@ -2401,13 +2458,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_5_BOARD_01 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_5MMG_ELTX_Board_CLASS
 
@@ -2513,13 +2573,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_5FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_6TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_6 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_6TOP_MMG_ELTX_Layer_CLASS
 
@@ -2539,13 +2608,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_6_BOARD_02 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_6MMG_ELTX_Board_CLASS
 
@@ -2619,13 +2691,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_6FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_7TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_7 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_7TOP_MMG_ELTX_Layer_CLASS
 
@@ -2645,13 +2726,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_7_BOARD_01 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_7MMG_ELTX_Board_CLASS
 
@@ -2725,13 +2809,22 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_7FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: MMG_SIDE_A_SECTOR_01_LAYER_8TOP_MMG_ELTX_Layer_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state LV_OFF ) stay_in_state READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {OPERATIONAL,LV_OFF} )  move_to READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY
+        when ( any_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETSTATES in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_BOARD_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_8 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_8TOP_MMG_ELTX_Layer_CLASS
 
@@ -2751,13 +2844,16 @@ object: MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_Board_FWDM is_of_class MMG_SIDE_A_S
 
 class: MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_Board_CLASS/associated
 !panel: MMG_ELTX_Board.pnl
-    state: READY	!color: FwStateOKPhysics
-    state: OVER_TEMP	!color: FwStateAttention1
-    state: HIGH_TEMP	!color: FwStateAttention3
+    state: OPERATIONAL	!color: FwStateOKPhysics
+        action: REFRESH	!visible: 1
+    state: DISCONNECTED	!color: FwStateAttention3
+        action: REFRESH	!visible: 1
     state: CALIBRATION	!color: FwStateStandby
-    state: DISCONNECTED	!color: FwAlarmOKNotPhysics
+        action: REFRESH	!visible: 1
     state: LV_OFF	!color: FwStateShutdown
+        action: REFRESH	!visible: 1
     state: UNKNOWN	!color: FwStateAttention2
+        action: REFRESH	!visible: 1
 
 object: MMG_SIDE_A_SECTOR_01_LAYER_8_BOARD_02 is_of_class MMG_SIDE_A_SECTOR_01_LAYER_8MMG_ELTX_Board_CLASS
 
@@ -2863,13 +2959,20 @@ objectset: MMG_SIDE_A_SECTOR_01_LAYER_8FWCHILDREN_FWSETSTATES union {MMG_SIDE_A_
 class: TOP_MMG_ELTX_Sector_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_SECTOR.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( any_in FWCHILDREN_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( any_in FWCHILDREN_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_ELTX_LAYER_FWSETSTATES in_state NOT_READY ) move_to NOT_READY
+        when ( any_in MMG_ELTX_LAYER_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in FWCHILDREN_FWSETACTIONS
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( any_in FWCHILDREN_FWSETSTATES in_state ERROR ) move_to ERROR
-        when ( all_in FWCHILDREN_FWSETSTATES in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( all_in FWCHILDREN_FWSETSTATES not_in_state ERROR ) move_to NOT_READY
+        when ( all_in MMG_ELTX_LAYER_FWSETSTATES in_state READY ) move_to READY
+        when ( any_in MMG_ELTX_LAYER_FWSETSTATES in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH all_in FWCHILDREN_FWSETACTIONS
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( any_in MMG_ELTX_LAYER_FWSETSTATES in_state {UNKNOWN,DEAD} )  stay_in_state UNKNOWN
+        when (  not ( any_in MMG_ELTX_LAYER_FWSETSTATES in_state {UNKNOWN,DEAD} )  ) move_to NOT_READY
+        action: REFRESH	!visible: 1
+            do REFRESH all_in FWCHILDREN_FWSETACTIONS
 
 object: MMG_SIDE_A_SECTOR_01 is_of_class TOP_MMG_ELTX_Sector_CLASS
 
