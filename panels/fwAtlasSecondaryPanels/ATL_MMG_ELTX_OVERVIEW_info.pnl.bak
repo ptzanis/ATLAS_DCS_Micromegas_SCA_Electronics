@@ -68,10 +68,10 @@ LANG:10001 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 138 193 164 208
+E E 0 1 1 2 1 E U  0 E 138 193 175 214
 0 2 2 "0s" 0 0 0 192 0 0  138 193 1
 1
-LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+LANG:10001 35 Utopia,-1,19,5,50,0,0,0,0,0,Regular
 0 1
 LANG:10001 4 info
 0

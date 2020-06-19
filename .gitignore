@@ -8,3 +8,5 @@ msg/
 *.sql
 colorDB/
 data/
+smi/
+smi_back/

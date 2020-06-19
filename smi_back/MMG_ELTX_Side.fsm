@@ -1,10 +1,18 @@
 class: $FWPART_$TOP$MMG_ELTX_Side_CLASS
 !panel: fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl
     state: READY	!color: FwStateOKPhysics
-        when ( $ANY$FwCHILDREN in_state ERROR ) move_to ERROR
-        when ( $ANY$FwCHILDREN in_state NOT_READY ) move_to NOT_READY
+        when ( $ANY$MMG_ELTX_Sector in_state NOT_READY ) move_to NOT_READY
+        when ( $ANY$MMG_ELTX_Sector in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH $ALL$FwCHILDREN
     state: NOT_READY	!color: FwStateOKNotPhysics
-        when ( $ANY$FwCHILDREN in_state ERROR ) move_to ERROR
-        when ( $ALL$FwCHILDREN in_state READY ) move_to READY
-    state: ERROR	!color: FwStateAttention3
-        when ( $ALL$FwCHILDREN not_in_state ERROR ) move_to NOT_READY
+        when ( $ALL$MMG_ELTX_Sector in_state READY ) move_to READY
+        when ( $ANY$MMG_ELTX_Sector in_state {DEAD,UNKNOWN} ) move_to UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH $ALL$FwCHILDREN
+    state: UNKNOWN	!color: FwStateAttention2
+        when ( $ALL$MMG_ELTX_Sector in_state READY ) move_to READY
+        when ( not ( $ANY$MMG_ELTX_Sector in_state {UNKNOWN,DEAD} ) ) move_to NOT_READY
+        when ( $ANY$MMG_ELTX_Sector in_state {UNKNOWN,DEAD} )  stay_in_state UNKNOWN
+        action: REFRESH	!visible: 1
+            do REFRESH $ALL$FwCHILDREN
