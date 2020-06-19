@@ -1,0 +1,127 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 280 256 N "FwAtlasBg" 2
+"$domain"
+"$obj"
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:10001 0 
+10 1
+"POLYGON7"
+""
+1 304.625 91 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ "main(mapping event)
+{
+         fwFsmAtlas_navigateSecondary($domain,$obj);
+}" 0
+ E
+1 0 0 0 0 0
+E E "main(bool enter)
+{
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+}" 0
+
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  fwFsmAtlas_connectStateButton($domain,$obj,FALSE, \"none\",\"\");
+
+}" 0
+ "main(mapping event)
+{
+      fwFsmAtlas_navigate($domain,$obj);
+}" 0
+ 0 1 1 2 1 E 0.885 0 0.728 -261.593125 -62.248 1 E 4 304.625 91
+504.625 91
+454.625 341
+354.625 341
+ 1
+7 2
+"ELLIPSE1"
+""
+1 235 455 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ "main(mapping event)
+{
+         fwFsmAtlas_navigateSecondary($domain,$obj);
+}" 0
+ E
+2 0 0 0 0 0
+E E "main(bool enter)
+{
+  string state,status;
+  fwFsmAtlas_getStatus($domain,$obj,status);
+  state = mmgGeneral_Fsm_getState($domain, $obj);
+
+  this.toolTipText(\"Layer \"+getLayer($obj)+\"\\n State: \"+state+\",\\n Status: \"+status+\".\\n    Left-click: Navigate to.\\n Right-click: Open in secondary panel.\");
+}" 0
+
+0
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  fwFsmAtlas_connectStateButton($domain, \"STATUS_\" + $obj, FALSE, \"none\",\"\");
+
+
+}" 0
+ "main(mapping event)
+{
+      fwFsmAtlas_navigate($domain,$obj);
+}" 0
+ 0 1 1 2 1 E 1.666666666666667 0 1.666666666666667 -295.1666666666667 -663.3333333333335 1 E 235 455 15 15
+0
+LAYER, 1 
+1
+LANG:10001 0 
+0
+LAYER, 2 
+1
+LANG:10001 0 
+0
+LAYER, 3 
+1
+LANG:10001 0 
+0
+LAYER, 4 
+1
+LANG:10001 0 
+0
+LAYER, 5 
+1
+LANG:10001 0 
+0
+LAYER, 6 
+1
+LANG:10001 0 
+0
+LAYER, 7 
+1
+LANG:10001 0 
+0
+0
