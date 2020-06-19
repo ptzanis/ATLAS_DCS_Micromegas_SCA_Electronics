@@ -1,0 +1,60 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_FwFsmObjectType._FwFsmObjectType	1#1
+	panel	25#6
+	components	9#7
+	states	9#8
+	actions	9#9
+	parameters	9#11
+	functions	9#12
+
+# Datapoint/DpId
+DpName	TypeName	ID
+fwOT_MMG_ELTX	_FwFsmObjectType	3080600
+fwOT_MMG_ELTX_Side	_FwFsmObjectType	3080601
+fwOT_MMG_ELTX_Sector	_FwFsmObjectType	3080602
+fwOT_MMG_ELTX_Layer	_FwFsmObjectType	3080607
+fwOT_MMG_ELTX_Board	_FwFsmObjectType	4015349
+
+# DpValue
+Manager/User	ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+UI (1)/0	fwOT_MMG_ELTX.panel	_FwFsmObjectType	"fwAtlasMainPanels/ATL_MMG_ELTX_OVERVIEW.pnl"	0x8300000000200101	15.05.2020 15:54:15.204
+UI (1)/0	fwOT_MMG_ELTX.states	_FwFsmObjectType	"READY", "FwStateOKPhysics", "when ( $ANY$MMG_ELTX_Side in_state NOT_READY ) move_to NOT_READY|when ( $ANY$MMG_ELTX_Side in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "NOT_READY", "FwStateOKNotPhysics", "when ( $ALL$MMG_ELTX_Side in_state READY ) move_to READY|when ( $ANY$MMG_ELTX_Side in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "UNKNOWN", "FwStateAttention2", "when ( $ALL$MMG_ELTX_Side in_state READY )  move_to READY|when ( not ( $ANY$MMG_ELTX_Side in_state {UNKNOWN,DEAD} ) ) move_to NOT_READY|", "", ""	0x8300000000000101	19.06.2020 10:23:18.259
+UI (1)/0	fwOT_MMG_ELTX.actions	_FwFsmObjectType	"READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "NOT_READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "UNKNOWN/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0"	0x8300000000000101	19.06.2020 10:23:18.258
+UI (1)/0	fwOT_MMG_ELTX.functions	_FwFsmObjectType		0x8300000000000101	19.06.2020 10:23:18.261
+UI (1)/0	fwOT_MMG_ELTX_Side.panel	_FwFsmObjectType	"fwAtlasMainPanels/ATL_MMG_ELTX_SIDE.pnl"	0x8300000000200101	15.05.2020 15:53:51.101
+UI (1)/0	fwOT_MMG_ELTX_Side.states	_FwFsmObjectType	"READY", "FwStateOKPhysics", "when ( $ANY$MMG_ELTX_Sector in_state NOT_READY ) move_to NOT_READY|when ( $ANY$MMG_ELTX_Sector in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "NOT_READY", "FwStateOKNotPhysics", "when ( $ALL$MMG_ELTX_Sector in_state READY ) move_to READY|when ( $ANY$MMG_ELTX_Sector in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "UNKNOWN", "FwStateAttention2", "when ( $ALL$MMG_ELTX_Sector in_state READY ) move_to READY|when ( not ( $ANY$MMG_ELTX_Sector in_state {UNKNOWN,DEAD} ) ) move_to NOT_READY|when ( $ANY$MMG_ELTX_Sector in_state {UNKNOWN,DEAD} )  stay_in_state UNKNOWN|", "", ""	0x8300000000000101	19.06.2020 10:23:18.921
+UI (1)/0	fwOT_MMG_ELTX_Side.actions	_FwFsmObjectType	"READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "NOT_READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "UNKNOWN/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0"	0x8300000000000101	19.06.2020 10:23:18.921
+UI (1)/0	fwOT_MMG_ELTX_Side.functions	_FwFsmObjectType		0x8300000000000101	19.06.2020 10:23:18.923
+UI (1)/0	fwOT_MMG_ELTX_Sector.panel	_FwFsmObjectType	"fwAtlasMainPanels/ATL_MMG_ELTX_SECTOR.pnl"	0x8300000000200101	15.05.2020 15:53:59.543
+UI (1)/0	fwOT_MMG_ELTX_Sector.states	_FwFsmObjectType	"READY", "FwStateOKPhysics", "when ( $ANY$MMG_ELTX_Layer in_state NOT_READY ) move_to NOT_READY|when ( $ANY$MMG_ELTX_Layer in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "NOT_READY", "FwStateOKNotPhysics", "when ( $ALL$MMG_ELTX_Layer in_state READY ) move_to READY|when ( $ANY$MMG_ELTX_Layer in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "UNKNOWN", "FwStateAttention2", "when ( $ANY$MMG_ELTX_Layer in_state {UNKNOWN,DEAD} )  stay_in_state UNKNOWN|when ( not ( $ANY$MMG_ELTX_Layer in_state {UNKNOWN,DEAD} ) ) move_to NOT_READY|", "", ""	0x8300000000000101	19.06.2020 10:23:18.700
+UI (1)/0	fwOT_MMG_ELTX_Sector.actions	_FwFsmObjectType	"READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "NOT_READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "UNKNOWN/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0"	0x8300000000000101	19.06.2020 10:23:18.700
+UI (1)/0	fwOT_MMG_ELTX_Sector.functions	_FwFsmObjectType		0x8300000000000101	19.06.2020 10:23:18.702
+UI (2)/0	fwOT_MMG_ELTX_Layer.panel	_FwFsmObjectType	"fwAtlasMainPanels/ATL_MMG_ELTX_LAYER.pnl"	0x8300000000200101	18.05.2020 20:12:42.132
+UI (1)/0	fwOT_MMG_ELTX_Layer.states	_FwFsmObjectType	"READY", "FwStateOKPhysics", "when ( $ANY$MMG_ELTX_Board in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY|when ($ANY$MMG_ELTX_Board in_state LV_OFF) stay_in_state READY|when ( $ANY$MMG_ELTX_Board in_state {DEAD,UNKNOWN} )  move_to UNKNOWN|", "", "", "NOT_READY", "FwStateOKNotPhysics", "when ( $ALL$MMG_ELTX_Board in_state {OPERATIONAL,LV_OFF} )  move_to READY|when ( $ANY$MMG_ELTX_Board in_state {DEAD,UNKNOWN} ) move_to UNKNOWN|", "", "", "UNKNOWN", "FwStateAttention2", "when ( $ALL$MMG_ELTX_Board in_state {OPERATIONAL,LV_OFF} )  move_to READY|when ( $ANY$MMG_ELTX_Board in_state {CALIBRATION,DISCONNECTED} )  move_to NOT_READY|when ( $ANY$MMG_ELTX_Board in_state {DEAD,UNKNOWN} )  stay_in_state UNKNOWN|", "", ""	0x8300000000000101	19.06.2020 10:23:18.479
+UI (1)/0	fwOT_MMG_ELTX_Layer.actions	_FwFsmObjectType	"READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "NOT_READY/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0", "UNKNOWN/REFRESH", "", "1", "do REFRESH $ALL$FwCHILDREN", "0"	0x8300000000000101	19.06.2020 10:23:18.479
+UI (1)/0	fwOT_MMG_ELTX_Layer.functions	_FwFsmObjectType		0x8300000000000101	19.06.2020 10:23:18.481
+UI (3)/0	fwOT_MMG_ELTX_Board.panel	_FwFsmObjectType	"MMG_ELTX_Board.pnl"	0x8300000000000101	19.06.2020 10:22:58.046
+UI (1)/0	fwOT_MMG_ELTX_Board.components	_FwFsmObjectType	"", "", "#uses \"mmgEltx_lib/mmgEltx_deviceUnitHandling.ctl\"
+
+MMG_ELTX_Board_initialize(string domain, string device)
+{
+   mmgEltxHandle_Fsm_Board_initialize(domain,device);
+}
+
+
+", "MMG_ELTX_Board_valueChanged( string domain, string device, string &fwState)
+{
+}
+", "#uses \"mmgEltx_lib/mmgEltx_deviceUnitHandling.ctl\"
+
+MMG_ELTX_Board_doCommand(string domain, string device, string command)
+{
+  mmgEltxHandle_Fsm_Board_doCommand(domain, device, command);
+}
+"	0x8300000000000101	19.06.2020 10:23:15.679
+UI (1)/0	fwOT_MMG_ELTX_Board.states	_FwFsmObjectType	"OPERATIONAL", "FwStateOKPhysics", "", "", "", "DISCONNECTED", "FwStateAttention3", "", "", "", "CALIBRATION", "FwStateStandby", "", "", "", "LV_OFF", "FwStateShutdown", "", "", "", "UNKNOWN", "FwStateAttention2", "", "", ""	0x8300000000000101	19.06.2020 10:23:15.677
+UI (1)/0	fwOT_MMG_ELTX_Board.actions	_FwFsmObjectType	"OPERATIONAL/REFRESH", "", "1", "", "0", "DISCONNECTED/REFRESH", "", "1", "", "0", "CALIBRATION/REFRESH", "", "1", "", "0", "LV_OFF/REFRESH", "", "1", "", "0", "UNKNOWN/REFRESH", "", "1", "", "0"	0x8300000000000101	19.06.2020 10:23:15.677
+UI (1)/0	fwOT_MMG_ELTX_Board.functions	_FwFsmObjectType		0x8300000000000101	19.06.2020 10:23:15.680
