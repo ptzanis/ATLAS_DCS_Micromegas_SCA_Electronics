@@ -1,1 +1,7 @@
 *.bak
+db/
+images/
+help/
+log/
+db/
+msg/
