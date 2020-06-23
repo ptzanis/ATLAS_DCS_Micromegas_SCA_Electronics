@@ -766,6 +766,71 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 E E 0 1 1 0 1 E 0.5855338691159584 0 0.588235294117647 -421.3742824339838 492.2352941176471 1 E 776 561 796 581
+13 45
+"PUSH_BUTTON1"
+""
+1 89 728 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+45 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 35 Utopia,-1,13,5,50,0,0,0,0,0,Regular
+0  87 708 244 762
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON1
+"main(mapping event)
+{
+
+
+  dpConnect(\"callbackFunction\",\"fwAtlas_Heartbeat_10Sec.Heartbeat\");
+
+
+}
+
+void callbackFunction(string dpe, int value)
+{
+  DebugN(test(\"A01\"));
+
+}
+
+dyn_int test(string sector){
+
+  dyn_string objectSector=dpNames(\"*_\"+sector+\"*\",\"MMG_ELTX_Board\");
+  dyn_string objectLayer, objectBoard;
+
+  dyn_int list;
+
+  int number;
+  string channel, type;
+  mapping channelAndTypeList;
+
+    for(int objectSector_i=1; objectSector_i<=dynlen(objectSector); objectSector_i++)
+      {
+        objectLayer=dpNames(objectSector[objectSector_i]+\".*\");
+        for(int objectLayer_i=1; objectLayer_i<=dynlen(objectLayer); objectLayer_i++)
+        {
+          objectBoard=dpNames(objectLayer[objectLayer_i]+\".*\");
+          for(int objectBoard_i=1; objectBoard_i<=dynlen(objectBoard);objectBoard_i++)
+          {
+                dpGet(objectBoard[objectBoard_i]+\".state.temperature\",number);
+                dynAppend(list,number);
+
+
+              }//objectBoard_i
+          }//objectLayer_i
+    }//objectSector_i
+
+ return list;
+}" 0
+ E E E
 0
 LAYER, 1 
 1
